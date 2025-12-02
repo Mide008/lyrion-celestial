@@ -146,33 +146,6 @@ Edit `automation/order-broker/wrangler.toml`:
 
 **Set secrets:**
 
-```bash
-cd automation/order-broker
-
-wrangler xxxxxxxxxxxxxxxxxxxx
-# Paste: hello@lyrion.co.uk
-
-wrangler secret put PRINTFUL_API_KEY
-# Paste: hello@lyrion.co.uk
-
-wrangler secret put GELATO_API_KEY
-# Paste: hello@lyrion.co.uk
-
-wrangler secret put ORDER_NOTIFICATION_EMAIL
-# Paste: hello@lyrion.co.uk
-
-wrangler secret put STRIPE_WEBHOOK_SECRET
-# Get this after creating webhook in Step 5
-
-wrangler secret put PRINTIFY_API_KEY
-# Get from Printify dashboard when ready
-
-wrangler secret put PRINTIFY_SHOP_ID
-# Get from Printify dashboard when ready
-
-wrangler secret put INKTHREADABLE_API_KEY
-# Get from Inkthreadable when ready
-```
 
 **Deploy:**
 
