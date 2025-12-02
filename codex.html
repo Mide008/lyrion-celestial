@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The LYRĪON Codex - Celestial insights, style guides, and cosmic wisdom for intentional living.">
+    <title>The Codex | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Enhanced Hero Section */
+        .codex-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.85) 0%, rgba(15, 13, 11, 0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=1600&h=500&fit=crop') center/cover;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-cream);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .codex-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(196, 164, 73, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .codex-hero h1 {
+            color: var(--color-gold-primary);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1rem;
+            font-family: var(--font-serif);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+        
+        .codex-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--color-cream);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Enhanced Featured Article */
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .featured-article::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-gold-accent), var(--color-gold-primary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .featured-article:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+        
+        .featured-article:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .featured-image {
+            aspect-ratio: 4/3;
+            background: var(--color-cream-dark);
+            overflow: hidden;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .featured-article:hover .featured-image img {
+            transform: scale(1.05);
+        }
+        
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .article-badge {
+            display: inline-block;
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            padding: 0.4rem 0.8rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+        
+        .article-meta {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .meta-divider {
+            color: var(--color-gold-accent);
+        }
+        
+        /* Enhanced Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .article-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-medium);
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-gold-accent), var(--color-gold-primary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .article-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+            text-decoration: none;
+        }
+        
+        .article-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .article-image {
+            aspect-ratio: 16/10;
+            background: var(--color-cream-dark);
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .article-card:hover .article-image img {
+            transform: scale(1.05);
+        }
+        
+        .article-content {
+            padding: 2rem;
+        }
+        
+        .article-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-ink);
+            line-height: 1.3;
+            transition: color var(--transition-medium);
+        }
+        
+        .article-card:hover .article-title {
+            color: var(--color-gold-primary);
+        }
+        
+        .article-excerpt {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .article-category {
+            color: var(--color-gold-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .read-more {
+            color: var(--color-gold-primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap var(--transition-medium);
+        }
+        
+        .article-card:hover .read-more {
+            gap: 0.75rem;
+        }
+        
+        /* Categories Filter */
+        .categories-filter {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            justify-content: center;
+        }
+        
+        .category-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--color-cream-dark);
+            background: var(--color-white);
+            color: var(--color-ink);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+        }
+        
+        .category-btn:hover {
+            border-color: var(--color-gold-primary);
+            color: var(--color-gold-primary);
+        }
+        
+        .category-btn.active {
+            background: var(--color-gold-primary);
+            border-color: var(--color-gold-primary);
+            color: var(--color-white);
+        }
+        
+        /* Enhanced Newsletter */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--color-ink) 0%, #1a1a1a 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-section::before {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            color: rgba(196, 164, 73, 0.05);
+            pointer-events: none;
+        }
+        
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(196, 164, 73, 0.3);
+            border-top-color: var(--color-gold-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 968px) {
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-content {
+                padding: 2rem;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories-filter {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Codex Hero -->
+    <section class="codex-hero">
+        <div>
+            <h1>The Codex</h1>
+            <p>Celestial insights, style guides, and cosmic wisdom for intentional living</p>
+        </div>
+    </section>
+
+    <!-- Categories Filter -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="categories-filter">
+                <button class="category-btn active" data-category="all">All Articles</button>
+                <button class="category-btn" data-category="astrology">Astrology</button>
+                <button class="category-btn" data-category="style">Style</button>
+                <button class="category-btn" data-category="rituals">Rituals</button>
+                <button class="category-btn" data-category="seasonal">Seasonal</button>
+                <button class="category-btn" data-category="care">Care</button>
+                <button class="category-btn" data-category="lunar">Lunar Wisdom</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="section">
+        <div class="container">
+            <a href="article-template.html" class="featured-article" data-category="style">
+                <div class="featured-image">
+                    <img src="https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f5?w=800&h=600&fit=crop" alt="Dressing Your Sign" loading="lazy">
+                </div>
+                <div class="featured-content">
+                    <span class="article-badge">Featured</span>
+                    <h2 style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 1rem;">
+                        Dressing Your Sign: A Guide to Zodiac Style
+                    </h2>
+                    <div class="article-meta">
+                        <span>By LYRĪON</span>
+                        <span class="meta-divider">•</span>
+                        <span>January 15, 2025</span>
+                        <span class="meta-divider">•</span>
+                        <span>8 min read</span>
+                    </div>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #666; margin-bottom: 1.5rem;">
+                        Each zodiac sign carries distinct energetic qualities that can be expressed through style. From Aries' bold confidence to Pisces' flowing grace, discover how to dress in alignment with your cosmic essence.
+                    </p>
+                    <span class="btn btn-primary">Read Article</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="section-sm">
+        <div class="container">
+            <h2 class="text-center mb-lg">Latest Insights</h2>
+            
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <a href="article-mercury-retrograde.html" class="article-card" data-category="astrology">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=700&h=440&fit=crop" alt="Mercury Retrograde" loading="lazy">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">Astrology</div>
+                        <h3 class="article-title">Navigating Mercury Retrograde with Grace</h3>
+                        <div class="article-meta">January 10, 2025 • 5 min read</div>
+                        <p class="article-excerpt">
+                            Mercury retrograde isn't something to fear. Learn how to work with this cosmic cycle for reflection, revision, and recalibration.
+                        </p>
+                        <span class="read-more">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+                
+                <!-- Article 2 -->
+                <a href="sacred-altar.html" class="article-card" data-category="rituals">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?w=700&h=440&fit=crop" alt="Altar Space" loading="lazy">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">Rituals</div>
+                        <h3 class="article-title">Creating Your Sacred Altar Space</h3>
+                        <div class="article-meta">January 5, 2025 • 6 min read</div>
+                        <p class="article-excerpt">
+                            A guide to designing an altar that honours your intentions. From choosing placement to selecting meaningful objects.
+                        </p>
+                        <span class="read-more">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+                
+                <!-- Article 3 -->
+                <a href="lunar-phases.html" class="article-card" data-category="lunar">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=700&h=440&fit=crop" alt="Moon Phases" loading="lazy">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">Lunar Wisdom</div>
+                        <h3 class="article-title">Working With Lunar Phases</h3>
+                        <div class="article-meta">December 28, 2024 • 7 min read</div>
+                        <p class="article-excerpt">
+                            The moon's cycle offers a natural rhythm for intention-setting, action, and release. Learn to align your life with lunar energy.
+                        </p>
+                        <span class="read-more">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+                
+                <!-- Article 4 -->
+                <a href="capsule-wardrobe.html" class="article-card" data-category="style">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=700&h=440&fit=crop" alt="Capsule Wardrobe" loading="lazy">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">Style</div>
+                        <h3 class="article-title">The Cosmic Capsule Wardrobe</h3>
+                        <div class="article-meta">December 20, 2024 • 8 min read</div>
+                        <p class="article-excerpt">
+                            Build a wardrobe that reflects your essence. Quality over quantity, intention over trends—the LYRĪON approach to style.
+                        </p>
+                        <span class="read-more">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+                
+                <!-- Article 5 -->
+                <a href="winter-solstice.html" class="article-card" data-category="seasonal">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&h=440&fit=crop" alt="Winter Solstice" loading="lazy">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">Seasonal</div>
+                        <h3 class="article-title">Honouring the Winter Solstice</h3>
+                        <div class="article-meta">December 15, 2024 • 5 min read</div>
+                        <p class="article-excerpt">
+                            The darkest night of the year is a portal for introspection and renewal. Rituals for welcoming the return of light.
+                        </p>
+                        <span class="read-more">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+                
+                <!-- Article 6 -->
+                <a href="care-guide.html" class="article-card" data-category="care">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1523438097201-512ae7d59c44?w=700&h=440&fit=crop" alt="Care Guide" loading="lazy">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">Care</div>
+                        <h3 class="article-title">Caring for Your Celestial Pieces</h3>
+                        <div class="article-meta">December 10, 2024 • 4 min read</div>
+                        <p class="article-excerpt">
+                            Quality pieces deserve quality care. Our guide to washing, storing, and maintaining your LYRĪON collection.
+                        </p>
+                        <span class="read-more">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div style="max-width: 600px; margin: 0 auto; position: relative; z-index: 2;">
+                <h2 style="color: var(--color-gold-primary); margin-bottom: 1rem; font-family: var(--font-serif); font-weight: 400; font-size: 2rem;">Stay Cosmically Connected</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.7; color: var(--color-cream);">
+                    Receive new articles, cosmic updates, and exclusive insights delivered to your inbox.
+                </p>
+                <form id="newsletterForm" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <input type="email" placeholder="Your email address" required style="flex: 1; min-width: 250px; padding: 1rem; border: 2px solid var(--color-gold-accent); border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-white); color: var(--color-ink);">
+                    <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Subscribe</button>
+                </form>
+                <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); margin-top: 1rem;">
+                    By subscribing, you agree to our Privacy Policy
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="codex.html">The Codex</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs, articles...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+    
+    <script>
+        // Enhanced Article System
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const articleCards = document.querySelectorAll('.article-card');
+            const featuredArticle = document.querySelector('.featured-article');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            
+            // Hide loading overlay after page load
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+            }, 500);
+            
+            // Category filtering
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.dataset.category;
+                    
+                    // Update active button
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Filter articles
+                    articleCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                    
+                    // Show/hide featured article based on category
+                    if (category === 'all' || category === 'style') {
+                        featuredArticle.style.display = 'grid';
+                        setTimeout(() => {
+                            featuredArticle.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        featuredArticle.style.opacity = '0';
+                        setTimeout(() => {
+                            featuredArticle.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletterForm');
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[type="email"]').value;
+                
+                // Simulate subscription
+                newsletterForm.innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="font-size: 3rem; color: var(--color-gold-primary); margin-bottom: 1rem;">✦</div>
+                        <h3 style="color: var(--color-gold-primary); margin-bottom: 1rem;">Welcome to the Constellation</h3>
+                        <p style="color: var(--color-cream);">Thank you for subscribing! Check your email for cosmic updates.</p>
+                    </div>
+                `;
+            });
+            
+            // Smooth transitions for article clicks
+            articleCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = card.getAttribute('href');
+                    
+                    // Show loading overlay
+                    loadingOverlay.classList.remove('hidden');
+                    
+                    // Navigate after a brief delay for smooth transition
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                });
+            });
+            
+            // Featured article click
+            featuredArticle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = featuredArticle.getAttribute('href');
+                
+                loadingOverlay.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

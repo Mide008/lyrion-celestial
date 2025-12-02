@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order confirmation | LYRĪON Celestial Couture">
+    <title>Order Confirmed | LYRĪON</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        .success-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--color-gold-primary) 0%, var(--color-gold-hover) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: successPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes successPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .success-icon svg {
+            width: 60px;
+            height: 60px;
+            color: var(--color-white);
+        }
+        
+        .order-details-card {
+            background: var(--color-cream-dark);
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            margin: 3rem 0;
+            text-align: left;
+        }
+        
+        .order-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .order-detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .order-detail-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .order-detail-value {
+            font-weight: 600;
+            color: var(--color-ink);
+        }
+        
+        .order-items-list {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+        }
+        
+        .order-item-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-item-row:last-child {
+            border-bottom: none;
+        }
+        
+        .order-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+        }
+        
+        .next-steps {
+            background: var(--color-white);
+            border: 2px solid var(--color-gold-accent);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .next-steps h3 {
+            font-family: var(--font-serif);
+            margin-bottom: 1.5rem;
+            color: var(--color-gold-primary);
+        }
+        
+        .next-steps ul {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .next-steps li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .next-steps li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold-primary);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Minimal Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+        </nav>
+    </div>
+
+    <!-- Success Message -->
+    <section class="section">
+        <div class="container">
+            <div class="success-container">
+                <!-- Success Icon -->
+                <div class="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                
+                <h1 style="margin-bottom: 1rem; font-size: 2.5rem;">Order Confirmed!</h1>
+                <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">
+                    Thank you for your purchase. Your order has been received and is being prepared.
+                </p>
+                
+                <!-- Order Details Card -->
+                <div class="order-details-card" id="orderDetailsCard">
+                    <h2 style="font-family: var(--font-serif); margin-bottom: 1.5rem; text-align: center;">
+                        Order Details
+                    </h2>
+                    
+                    <div class="order-detail-row">
+                        <span class="order-detail-label">Order Number</span>
+                        <span class="order-detail-value" id="orderNumber">Loading...</span>
+                    </div>
+                    
+                    <div class="order-detail-row">
+                        <span class="order-detail-label">Date</span>
+                        <span class="order-detail-value" id="orderDate">Loading...</span>
+                    </div>
+                    
+                    <div class="order-detail-row">
+                        <span class="order-detail-label">Email</span>
+                        <span class="order-detail-value" id="orderEmail">Loading...</span>
+                    </div>
+                    
+                    <div class="order-detail-row">
+                        <span class="order-detail-label">Total Paid</span>
+                        <span class="order-detail-value" style="color: var(--color-gold-primary); font-size: 1.3rem;" id="orderTotal">£0.00</span>
+                    </div>
+                    
+                    <!-- Order Items -->
+                    <div class="order-items-list">
+                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem; text-align: center;">Items Ordered</h3>
+                        <div id="orderItemsList">
+                            <!-- Items will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- What Happens Next -->
+                <div class="next-steps">
+                    <h3>What Happens Next?</h3>
+                    <ul>
+                        <li>You'll receive a confirmation email at the address provided within 5 minutes</li>
+                        <li>Your order will be processed and shipped within 2-3 business days</li>
+                        <li>Once shipped, you'll receive tracking information via email</li>
+                        <li>Standard delivery takes 5-7 business days</li>
+                        <li>For questions, contact us at <a href="mailto:hello@lyrion.co.uk" style="color: var(--color-gold-primary);">hello@lyrion.co.uk</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem;">
+                    <a href="index.html" class="btn btn-primary">Return Home</a>
+                    <a href="shop.html" class="btn btn-secondary">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - LOAD MAIN.JS FIRST -->
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        // Helper functions - self-contained
+        function getFromStorage(key) {
+            try {
+                const item = localStorage.getItem(key);
+                return item ? JSON.parse(item) : null;
+            } catch (e) {
+                console.error('Error reading from localStorage:', e);
+                return null;
+            }
+        }
+        
+        function removeFromStorage(key) {
+            try {
+                localStorage.removeItem(key);
+                return true;
+            } catch (e) {
+                console.error('Error removing from localStorage:', e);
+                return false;
+            }
+        }
+        
+        function formatPrice(price) {
+            return `£${parseFloat(price).toFixed(2)}`;
+        }
+        
+        // Load order details from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderData = getFromStorage('last_order');
+            
+            if (!orderData) {
+                // No order data found - redirect to home
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 3000);
+                
+                document.querySelector('.success-container').innerHTML = `
+                    <div class="success-icon" style="background: #f44336;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </div>
+                    <h1>No Order Found</h1>
+                    <p style="color: #666; margin-top: 1rem;">Redirecting to home page...</p>
+                `;
+                return;
+            }
+            
+            // Format order number
+            const orderNumber = orderData.id.substring(orderData.id.length - 8).toUpperCase();
+            
+            // Format date
+            const orderDate = new Date(orderData.timestamp).toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            
+            // Update order details
+            document.getElementById('orderNumber').textContent = `#${orderNumber}`;
+            document.getElementById('orderDate').textContent = orderDate;
+            document.getElementById('orderEmail').textContent = orderData.customer.email || orderData.customer.name || 'N/A';
+            document.getElementById('orderTotal').textContent = formatPrice(orderData.amount);
+            
+            // Render order items
+            renderOrderItems(orderData.items);
+            
+            // Send confirmation email (via Cloudflare Worker)
+            sendConfirmationEmail(orderData);
+            
+            // Clear order from localStorage after 1 hour
+            setTimeout(() => {
+                removeFromStorage('last_order');
+            }, 3600000);
+        });
+        
+        // Render order items
+        function renderOrderItems(items) {
+            const container = document.getElementById('orderItemsList');
+            
+            if (!items || items.length === 0) {
+                container.innerHTML = '<p style="color: #666; text-align: center;">No items found</p>';
+                return;
+            }
+            
+            container.innerHTML = items.map(item => `
+                <div class="order-item-row">
+                    <img src="assets/products/${item.image}" 
+                         alt="${item.title}"
+                         class="order-item-image"
+                         onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=120&h=120&fit=crop'">
+                    <div style="flex: 1; text-align: left;">
+                        <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem;">${item.title}</h4>
+                        ${item.variant ? `<p style="margin: 0; font-size: 0.85rem; color: #666;">Size: ${item.variant}</p>` : ''}
+                        <p style="margin: 0; font-size: 0.85rem; color: #666;">Qty: ${item.quantity}</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="margin: 0; font-weight: 600; color: var(--color-gold-primary);">
+                            ${formatPrice(item.price * item.quantity)}
+                        </p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Send confirmation email
+        async function sendConfirmationEmail(orderData) {
+            try {
+                // This would call your Cloudflare Worker to send email
+                console.log('Confirmation email would be sent to:', orderData.customer.email);
+                
+                // In production, uncomment and update URL:
+                /*
+                await fetch('https://lyrion-order-broker.workers.dev/send-confirmation', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+                */
+            } catch (error) {
+                console.error('Error sending confirmation email:', error);
+            }
+        }
+    </script>
+</body>
+</html>

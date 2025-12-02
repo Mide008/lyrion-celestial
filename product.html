@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Product details | LYRĪON Celestial Couture">
+    <title>Product | LYRĪON</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Product Detail Specific Styles */
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 2rem 0;
+        }
+        
+        .product-images-section {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        .main-product-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--color-cream-dark);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .main-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            cursor: zoom-in;
+        }
+        
+        .main-product-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        .product-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .thumbnail {
+            aspect-ratio: 3/4;
+            background: var(--color-cream-dark);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color var(--transition-medium);
+        }
+        
+        .thumbnail.active {
+            border-color: var(--color-gold-primary);
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info-section {
+            padding-top: 1rem;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .breadcrumb a {
+            color: inherit;
+            transition: color var(--transition-medium);
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--color-gold-primary);
+        }
+        
+        .product-badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .badge {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+        }
+        
+        .badge-sale {
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+        }
+        
+        .badge-england {
+            background: var(--color-cream-dark);
+            color: var(--color-ink);
+            border: 1px solid #ddd;
+        }
+        
+        .product-title-main {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-price-main {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .price-main-current {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-gold-primary);
+        }
+        
+        .price-main-compare {
+            font-size: 1.5rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .product-description-main {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .size-selector {
+            margin-bottom: 2rem;
+        }
+        
+        .size-selector-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+        
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .size-option {
+            min-width: 60px;
+            padding: 0.75rem 1.25rem;
+            background: var(--color-white);
+            border: 2px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            text-align: center;
+        }
+        
+        .size-option:hover {
+            border-color: var(--color-gold-primary);
+        }
+        
+        .size-option.active {
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            border-color: var(--color-gold-primary);
+        }
+        
+        .product-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--color-cream-dark);
+            border-radius: var(--radius-md);
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .meta-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+        }
+        
+        .meta-value {
+            font-size: 1rem;
+            color: var(--color-ink);
+            font-weight: 500;
+        }
+        
+        @media (max-width: 968px) {
+            .product-detail-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-images-section {
+                position: relative;
+                top: 0;
+            }
+            
+            .product-title-main {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Product Detail -->
+    <section class="section-sm">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb" id="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>→</span>
+                <a href="shop.html">Shop</a>
+                <span>→</span>
+                <span>Loading...</span>
+            </div>
+            
+            <!-- Product Container -->
+            <div class="product-detail-container" id="productContainer">
+                <!-- Loading State -->
+                <div class="product-images-section">
+                    <div class="main-product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-thumbnails">
+                        <div class="thumbnail"><div class="skeleton skeleton-image"></div></div>
+                        <div class="thumbnail"><div class="skeleton skeleton-image"></div></div>
+                        <div class="thumbnail"><div class="skeleton skeleton-image"></div></div>
+                    </div>
+                </div>
+                
+                <div class="product-info-section">
+                    <div class="skeleton skeleton-text" style="width: 40%; height: 20px; margin-bottom: 1rem;"></div>
+                    <div class="skeleton skeleton-title" style="height: 50px; margin-bottom: 1rem;"></div>
+                    <div class="skeleton skeleton-text" style="width: 60%; height: 30px; margin-bottom: 2rem;"></div>
+                    <div class="skeleton skeleton-text" style="width: 100%; height: 100px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                        <li><a href="shop.html?category=Home">Home & Altar</a></li>
+                        <li><a href="shop.html?category=Accessories">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="codex.html">Codex</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved. Made with intention in England.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose" aria-label="Close cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cartItems"></div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs..." style="border-color: var(--color-gold-accent);">
+                <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </span>
+            </div>
+            
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+    
+    <script>
+        // Product Detail Logic
+        let currentProduct = null;
+        let selectedVariant = null;
+        
+        // Load product on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sku = urlParams.get('sku');
+            
+            if (!sku) {
+                showError('No product specified');
+                return;
+            }
+            
+            try {
+                // Load products
+                const response = await fetch('data/products.json');
+                const products = await response.json();
+                
+                // Find product
+                currentProduct = products.find(p => p.sku === sku);
+                
+                if (!currentProduct) {
+                    showError('Product not found');
+                    return;
+                }
+                
+                // Render product
+                renderProduct(currentProduct);
+                updateBreadcrumb(currentProduct);
+                
+            } catch (error) {
+                console.error('Error loading product:', error);
+                showError('Unable to load product');
+            }
+        });
+        
+        // Render product
+        function renderProduct(product) {
+            const container = document.getElementById('productContainer');
+            
+            // Build image gallery
+            const images = [
+                product.image_front,
+                product.image_back,
+                product.image_side
+            ].filter(Boolean);
+            
+            // Build size selector
+            const hasSizes = product.variants && product.variants.length > 0;
+            selectedVariant = hasSizes ? product.variants[0] : null;
+            
+            const sizeSelector = hasSizes ? `
+                <div class="size-selector">
+                    <label class="size-selector-label">Select Size</label>
+                    <div class="size-options">
+                        ${product.variants.map((size, index) => `
+                            <button class="size-option ${index === 0 ? 'active' : ''}" data-size="${size}">
+                                ${size}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : '';
+            
+            container.innerHTML = `
+                <div class="product-images-section">
+                    <div class="main-product-image">
+                        <img id="mainImage" src="assets/products/${images[0]}" alt="${product.title}" onerror="this.src='assets/img/placeholder.png'">
+                    </div>
+                    <div class="product-thumbnails">
+                        ${images.map((img, index) => `
+                            <div class="thumbnail ${index === 0 ? 'active' : ''}" data-image="assets/products/${img}">
+                                <img src="assets/products/${img}" alt="${product.title}" onerror="this.src='assets/img/placeholder.png'">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="product-info-section">
+                    <div class="product-badges">
+                        ${product.compare_at_price > 0 ? '<span class="badge badge-sale">Sale</span>' : ''}
+                        ${product.category === 'Men' || product.category === 'Women' ? '<span class="badge badge-england">Made in England</span>' : ''}
+                    </div>
+                    
+                    <h1 class="product-title-main">${product.title}</h1>
+                    <p class="product-subtitle">${product.category}${product.zodiac_sign && product.zodiac_sign !== 'None' ? ` • ${product.zodiac_sign}` : ''}</p>
+                    
+                    <div class="product-price-main">
+                        <span class="price-main-current">${window.LyrionUtils.formatPrice(product.price)}</span>
+                        ${product.compare_at_price > 0 ? `<span class="price-main-compare">${window.LyrionUtils.formatPrice(product.compare_at_price)}</span>` : ''}
+                    </div>
+                    
+                    <div class="product-description-main">
+                        ${product.description}
+                    </div>
+                    
+                    ${sizeSelector}
+                    
+                    <button id="addToCartBtn" class="btn btn-primary btn-full mb-md" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                        Add to Cart
+                    </button>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Category</span>
+                            <span class="meta-value">${product.category}</span>
+                        </div>
+                        ${product.zodiac_sign && product.zodiac_sign !== 'None' ? `
+                            <div class="meta-item">
+                                <span class="meta-label">Zodiac</span>
+                                <span class="meta-value">${product.zodiac_sign}</span>
+                            </div>
+                        ` : ''}
+                        <div class="meta-item">
+                            <span class="meta-label">SKU</span>
+                            <span class="meta-value">${product.sku}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Delivery</span>
+                            <span class="meta-value">5-7 Business Days</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Setup interactions
+            setupProductInteractions();
+        }
+        
+        // Setup product interactions
+        function setupProductInteractions() {
+            // Thumbnail clicks
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    const imageSrc = thumb.getAttribute('data-image');
+                    const mainImage = document.getElementById('mainImage');
+                    
+                    if (mainImage) {
+                        mainImage.src = imageSrc;
+                    }
+                    
+                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                });
+            });
+            
+            // Size selection
+            document.querySelectorAll('.size-option').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    selectedVariant = btn.getAttribute('data-size');
+                    
+                    document.querySelectorAll('.size-option').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+            
+            // Add to cart
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', () => {
+                    window.CartAPI.addToCart(currentProduct, selectedVariant);
+                });
+            }
+        }
+        
+        // Update breadcrumb
+        function updateBreadcrumb(product) {
+            const breadcrumb = document.getElementById('breadcrumb');
+            breadcrumb.innerHTML = `
+                <a href="index.html">Home</a>
+                <span>→</span>
+                <a href="shop.html">Shop</a>
+                <span>→</span>
+                <a href="shop.html?category=${product.category}">${product.category}</a>
+                <span>→</span>
+                <span>${product.title}</span>
+            `;
+        }
+        
+        // Show error
+        function showError(message) {
+            const container = document.getElementById('productContainer');
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.3;">✦</div>
+                    <h2 style="margin-bottom: 1rem;">${message}</h2>
+                    <a href="shop.html" class="btn btn-primary">Back to Shop</a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

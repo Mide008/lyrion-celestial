@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Virgo - Precise. Analytical. Devoted. Discover LYRĪON's Virgo zodiac collection and earth-inspired elegance.">
+    <title>Virgo | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        .zodiac-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.85) 0%, rgba(15, 13, 11, 0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=600&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.3&fit=crop') center/cover;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-cream);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .zodiac-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(196, 164, 73, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        .zodiac-symbol-large {
+            font-size: 8rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+            line-height: 1;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes gentlePulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.95; 
+                transform: scale(1.02);
+            }
+        }
+        
+        .zodiac-name {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--color-cream);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            font-weight: 400;
+        }
+        
+        .zodiac-dates {
+            font-size: 1.3rem;
+            color: var(--color-gold-accent);
+            margin-bottom: 2rem;
+            font-style: italic;
+            letter-spacing: 0.1em;
+        }
+        
+        .zodiac-essence {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-cream);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+        }
+        
+        .zodiac-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .detail-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 2px solid var(--color-cream-dark);
+            transition: all var(--transition-medium);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-gold-accent), var(--color-gold-primary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .detail-card:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(196, 164, 73, 0.15);
+        }
+        
+        .detail-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-value {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--color-gold-primary);
+            font-weight: 500;
+        }
+        
+        .personality-section {
+            background: linear-gradient(135deg, #f8f7f3 0%, #f3f2ed 100%);
+            padding: 4rem 2rem;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .personality-section::before {
+            content: '♍';
+            position: absolute;
+            top: -40px;
+            right: 20px;
+            font-size: 14rem;
+            color: rgba(196, 164, 73, 0.05);
+            pointer-events: none;
+            transform: rotate(-10deg);
+        }
+        
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .trait-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trait-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--color-gold-primary), var(--color-gold-accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .trait-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--color-gold-accent);
+            box-shadow: 0 8px 20px rgba(196, 164, 73, 0.1);
+        }
+        
+        .trait-item:hover::before {
+            opacity: 1;
+        }
+        
+        .trait-icon {
+            font-size: 1.5rem;
+            color: var(--color-gold-primary);
+            min-width: 30px;
+            margin-top: 0.25rem;
+        }
+        
+        .trait-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-ink);
+            font-weight: 600;
+        }
+        
+        .trait-content p {
+            color: #666;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .earth-element-feature {
+            background: linear-gradient(135deg, #f5f1e8 0%, #ede8dd 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+            border: 1px solid rgba(196, 164, 73, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .earth-element-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(196, 164, 73, 0.03) 2px,
+                    rgba(196, 164, 73, 0.03) 4px
+                );
+            pointer-events: none;
+        }
+        
+        .element-icon {
+            font-size: 3rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .mercury-note {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 3rem 0;
+            border-left: 4px solid var(--color-gold-primary);
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .maiden-symbolism {
+            background: linear-gradient(135deg, rgba(244, 239, 232, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            margin: 3rem 0;
+            text-align: center;
+            border: 2px dashed rgba(196, 164, 73, 0.3);
+            position: relative;
+        }
+        
+        .maiden-symbolism::before {
+            content: '♍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            color: rgba(196, 164, 73, 0.04);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .maiden-symbolism > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .products-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(180deg, var(--color-white) 0%, #faf9f7 100%);
+        }
+        
+        .products-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .wheat-icon {
+            font-size: 1.8rem;
+            color: var(--color-gold-primary);
+            margin: 0 0.5rem;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .zodiac-hero {
+                min-height: 400px;
+                padding: 2rem 1rem;
+            }
+            
+            .zodiac-symbol-large {
+                font-size: 6rem;
+            }
+            
+            .zodiac-details-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .detail-card {
+                padding: 1.5rem;
+            }
+            
+            .traits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-preview {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .earth-element-feature {
+                padding: 2rem 1.5rem;
+            }
+            
+            .personality-section::before {
+                font-size: 10rem;
+                top: -30px;
+                right: 10px;
+            }
+            
+            .maiden-symbolism::before {
+                font-size: 5rem;
+            }
+        }
+        
+        .product-card.zodiac-specific {
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card.zodiac-specific::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(196, 164, 73, 0.02), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card.zodiac-specific:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(196, 164, 73, 0.12);
+        }
+        
+        .product-card.zodiac-specific:hover::after {
+            opacity: 1;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(196, 164, 73, 0.3), transparent);
+            margin: 3rem 0;
+        }
+        
+        .grid-pattern {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: 
+                linear-gradient(90deg, var(--color-gold-primary) 1px, transparent 1px),
+                linear-gradient(0deg, var(--color-gold-primary) 1px, transparent 1px);
+            background-size: 5px 5px;
+            margin: 0 0.5rem;
+            vertical-align: middle;
+            opacity: 0.5;
+        }
+        
+        .mutable-modality {
+            background: var(--color-cream);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            margin: 2rem 0;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .precision-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-top: 1px solid rgba(196, 164, 73, 0.2);
+            border-bottom: 1px solid rgba(196, 164, 73, 0.2);
+            font-family: var(--font-serif);
+        }
+        
+        .analytical-icon {
+            width: 30px;
+            height: 30px;
+            background: 
+                linear-gradient(45deg, transparent 45%, var(--color-gold-primary) 45%, var(--color-gold-primary) 55%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, var(--color-gold-primary) 45%, var(--color-gold-primary) 55%, transparent 55%);
+            margin: 0 auto 1rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="../index.html" class="logo">
+                <img src="./logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../shop.html">Shop</a></li>
+                <li><a href="../oracle.html">The Oracle</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Zodiac Hero -->
+    <section class="zodiac-hero">
+        <div class="container-narrow">
+            <div class="zodiac-symbol-large">♍</div>
+            <h1 class="zodiac-name">Virgo</h1>
+            <p class="zodiac-dates">August 23 - September 22</p>
+            <p class="zodiac-essence">Precise. Analytical. Devoted.</p>
+        </div>
+    </section>
+
+    <!-- Zodiac Details -->
+    <section class="section">
+        <div class="container">
+            <div class="zodiac-details-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Element</div>
+                    <div class="detail-value">Earth</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Ruling Planet</div>
+                    <div class="detail-value">Mercury</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Modality</div>
+                    <div class="detail-value">Mutable</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Symbol</div>
+                    <div class="detail-value">The Maiden</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earth Element Feature -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="earth-element-feature">
+                <div class="element-icon">🌾</div>
+                <h2 class="text-center mb-sm">The Earth Element</h2>
+                <p class="text-center" style="font-size: 1.15rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto;">
+                    As an Earth sign, Virgo embodies the practical, the tangible, and the service oriented. Like fertile soil, they nurture growth through attention to detail, create order from chaos, and find beauty in perfect functionality.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Maiden Symbolism -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="maiden-symbolism">
+                <h3 class="mb-sm">The <span class="wheat-icon">🌾</span> Maiden's Grace <span class="wheat-icon">🌾</span></h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #666; max-width: 700px; margin: 0 auto;">
+                    The Maiden represents purity of purpose not innocence, but clarity. She holds wheat, symbolizing harvest: the moment when potential becomes substance, when effort yields results, when chaos becomes nourishment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mutable Modality Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="mutable-modality">
+                <p style="margin: 0; font-size: 1.1rem;">
+                    As a <strong>Mutable</strong> sign, Virgo possesses <strong>adaptable precision</strong> the ability to adjust methods while maintaining standards, to refine processes in changing circumstances, and to serve evolving needs with unwavering devotion.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Precision Quote -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="precision-quote">
+                "Excellence is not an act, but a habit. It is the daily practice of attention that transforms the ordinary into the extraordinary."
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="personality-section">
+                <h2 class="text-center mb-md">The Virgo Essence</h2>
+                <p class="text-center mb-lg" style="font-size: 1.15rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto 3rem;">
+                    Virgo represents the mind applied analysis as devotion, precision as love, service as sacrament. Ruled by Mercury, they transform information into understanding, chaos into order, raw potential into practical beauty. Their work is their prayer; their attention, their offering.
+                </p>
+                
+                <div class="traits-grid">
+                    <div class="trait-item">
+                        <div class="trait-icon">📐</div>
+                        <div class="trait-content">
+                            <h4>Analytical Mastery</h4>
+                            <p>Virgo sees patterns invisible to others the subtle flaw, the hidden connection, the elegant solution waiting to be revealed.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">📐</div>
+                        <div class="trait-content">
+                            <h4>Practical Devotion</h4>
+                            <p>Love manifests as service not grand gestures, but daily acts of care: the perfectly organized space, the thoughtfully prepared meal, the quietly solved problem.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">📐</div>
+                        <div class="trait-content">
+                            <h4>Discerning Eye</h4>
+                            <p>They distinguish quality from pretense, substance from show, what works from what merely looks like it works.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">📐</div>
+                        <div class="trait-content">
+                            <h4>Humble Expertise</h4>
+                            <p>Knowledge without arrogance, skill without showmanship. Virgo's competence is quiet, their mastery understated.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">📐</div>
+                        <div class="trait-content">
+                            <h4>Healing Touch</h4>
+                            <p>They heal through order calming anxious minds with clear systems, soothing overwhelmed spirits with practical solutions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">📐</div>
+                        <div class="trait-content">
+                            <h4>Efficient Beauty</h4>
+                            <p>Finding the most elegant path, the simplest solution, the perfectly measured response. Beauty lives in right proportion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mercury Rulership Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="mercury-note">
+                <h3 class="mb-sm">Ruled by Mercury</h3>
+                <p style="color: #666; line-height: 1.7;">
+                    Mercury governs communication, intellect, and analysis. For Virgo, this manifests as practical intelligence the ability to organize information into useful systems, to diagnose problems with clinical precision, and to communicate solutions with crystal clarity. While Gemini uses Mercury for connection, Virgo uses it for refinement.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Shop Virgo Products -->
+    <section class="section products-section">
+        <div class="container">
+            <h2 class="mb-md">Shop the Virgo Collection</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 3rem;">
+                Pieces crafted with precision and thoughtful devotion
+            </p>
+            
+            <div class="products-preview" id="virgoProducts">
+                <!-- Products will be loaded here dynamically -->
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <a href="../shop.html?zodiac=Virgo" class="btn btn-primary">View All Virgo Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Zodiac</h4>
+                    <ul class="footer-links">
+                        <li><a href="aries.html">♈ Aries</a></li>
+                        <li><a href="taurus.html">♉ Taurus</a></li>
+                        <li><a href="gemini.html">♊ Gemini</a></li>
+                        <li><a href="cancer.html">♋ Cancer</a></li>
+                        <li><a href="leo.html">♌ Leo</a></li>
+                        <li><a href="virgo.html">♍ Virgo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>More Signs</h4>
+                    <ul class="footer-links">
+                        <li><a href="libra.html">♎ Libra</a></li>
+                        <li><a href="scorpio.html">♏ Scorpio</a></li>
+                        <li><a href="sagittarius.html">♐ Sagittarius</a></li>
+                        <li><a href="capricorn.html">♑ Capricorn</a></li>
+                        <li><a href="aquarius.html">♒ Aquarius</a></li>
+                        <li><a href="pisces.html">♓ Pisces</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="../oracle.html">The Oracle</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="../checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/search.js"></script>
+    
+    <script>
+        // Load Virgo products
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('virgoProducts');
+            
+            try {
+                // Fetch products from JSON file
+                const response = await fetch('../data/products.json');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                
+                const products = await response.json();
+                
+                // Filter products for Virgo
+                const virgoProducts = products.filter(p => p.zodiac_sign === 'Virgo').slice(0, 3);
+                
+                if (virgoProducts.length === 0) {
+                    // Fallback to sample products if none found
+                    virgoProducts.push(
+                        {
+                            sku: 'A-HOOD-VIRGO',
+                            title: 'Virgo Zodiac Hoodie',
+                            category: 'Men',
+                            zodiac_sign: 'Virgo',
+                            price: 110.00,
+                            image_front: 'A-HOOD-VIRGO-image.webp',
+                            description: 'Minimalist hoodie with delicate Virgo maiden emblem in gold line art'
+                        },
+                        {
+                            sku: 'A-TEE-VIRGO',
+                            title: 'Virgo Essential Tee',
+                            category: 'Women',
+                            zodiac_sign: 'Virgo',
+                            price: 65.00,
+                            image_front: 'A-TEE-VIRGO-image.webp',
+                            description: 'Refined gold silhouette of the Virgo maiden on premium cotton'
+                        },
+                        {
+                            sku: 'K-TEE-MOON-VIRGO',
+                            title: 'Moon Girl Virgo Tee',
+                            category: 'Moon Girls',
+                            zodiac_sign: 'Virgo',
+                            price: 45.00,
+                            image_front: 'K-TEE-MOON-VIRGO-image.webp',
+                            description: 'Gentle maiden moon tee with precise, thoughtful design'
+                        }
+                    );
+                }
+                
+                container.innerHTML = virgoProducts.map(product => `
+                    <div class="product-card zodiac-specific fade-in">
+                        <div class="product-image">
+                            <img src="../assets/products/${product.image_front}" 
+                                 alt="${product.title}"
+                                 loading="lazy"
+                                 style="opacity: 1; transition: opacity 0.3s ease;"
+                                 onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop'">
+                            ${product.compare_at_price > 0 ? '<span class="product-badge">Sale</span>' : ''}
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-title">${product.title}</h3>
+                            <div class="product-price">
+                                <span class="price-current">${window.LyrionUtils?.formatPrice ? window.LyrionUtils.formatPrice(product.price) : '£' + parseFloat(product.price).toFixed(2)}</span>
+                            </div>
+                            <p class="product-description" style="font-size: 0.9rem; line-height: 1.5; color: #666; margin: 0.5rem 0 1rem;">${product.description}</p>
+                            <a href="../product.html?sku=${product.sku}" class="btn btn-primary btn-full">View Details</a>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Create grid pattern elements
+                const gridPatterns = document.querySelectorAll('.grid-pattern');
+                gridPatterns.forEach(pattern => {
+                    pattern.style.backgroundSize = '5px 5px';
+                });
+                
+                // Add precise entrance animation
+                setTimeout(() => {
+                    document.querySelectorAll('.product-card.zodiac-specific').forEach((card, index) => {
+                        card.style.animationDelay = `${index * 0.1}s`;
+                        card.classList.add('fade-in');
+                    });
+                }, 100);
+                
+            } catch (error) {
+                console.error('Error loading Virgo products:', error);
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                        <p style="color: #666; margin-bottom: 1rem;">Products catalog is being prepared.</p>
+                        <a href="../shop.html?zodiac=Virgo" class="btn btn-primary">Browse Shop Instead</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personalized astrology readings by LYRĪON. Receive cosmic guidance tailored to your birth chart and current alignment.">
+    <title>The Oracle | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        .oracle-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.95) 0%, rgba(15, 13, 11, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f5?w=1600&h=600&fit=crop') center/cover;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-cream);
+            padding: 4rem 2rem;
+        }
+        
+        .oracle-hero h1 {
+            color: var(--color-gold-primary);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+        
+        .oracle-hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-cream);
+        }
+        
+        .tier-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .tier-card {
+            background: var(--color-white);
+            border: 2px solid #ddd;
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            text-align: center;
+            transition: all var(--transition-medium);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .tier-card:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .tier-card.active {
+            border-color: var(--color-gold-primary);
+            background: rgba(184, 134, 11, 0.05);
+            border-width: 3px;
+        }
+        
+        .tier-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .tier-name {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-ink);
+        }
+        
+        .tier-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .tier-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .tier-features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .tier-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #666;
+        }
+        
+        .tier-features li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold-primary);
+        }
+        
+        .oracle-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--color-cream-dark);
+            padding: 3rem;
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        
+        .oracle-form-container.visible {
+            display: block;
+        }
+        
+        .char-counter {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .selected-tier-display {
+            background: var(--color-white);
+            border: 2px solid var(--color-gold-primary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html" class="active">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Oracle Hero -->
+    <section class="oracle-hero">
+        <div>
+            <h1>The Oracle</h1>
+            <p>Receive personalized cosmic guidance crafted by our celestial readers</p>
+        </div>
+    </section>
+
+    <!-- Tier Selection -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-md">Choose Your Reading</h2>
+            <p class="text-center mb-lg" style="color: #666; font-size: 1.1rem; max-width: 700px; margin: 0 auto 3rem;">
+                Each reading is a unique exploration of your cosmic alignment, delivered within 48-72 hours
+            </p>
+            
+            <div class="tier-cards">
+                <!-- Essence Reading -->
+                <div class="tier-card" data-tier="essence">
+                    <div class="tier-name">Essence Reading</div>
+                    <div class="tier-price">£25</div>
+                    <p class="tier-description">
+                        A focused insight into your current cosmic alignment
+                    </p>
+                    <ul class="tier-features">
+                        <li>300 words of personalized insights</li>
+                        <li>Current cosmic influences</li>
+                        <li>Delivered within 48 hours</li>
+                        <li>PDF format</li>
+                    </ul>
+                    <button class="btn btn-outline btn-full">Select Essence</button>
+                </div>
+                
+                <!-- Detailed Reading -->
+                <div class="tier-card" data-tier="detailed">
+                    <div class="tier-badge">Popular</div>
+                    <div class="tier-name">Detailed Reading</div>
+                    <div class="tier-price">£55</div>
+                    <p class="tier-description">
+                        Deep exploration of your birth chart and current transits
+                    </p>
+                    <ul class="tier-features">
+                        <li>800 words of in-depth analysis</li>
+                        <li>Birth chart interpretation</li>
+                        <li>Current transit analysis</li>
+                        <li>Delivered within 48 hours</li>
+                        <li>PDF format with charts</li>
+                    </ul>
+                    <button class="btn btn-primary btn-full">Select Detailed</button>
+                </div>
+                
+                <!-- Premium Reading -->
+                <div class="tier-card" data-tier="premium">
+                    <div class="tier-name">Premium Reading</div>
+                    <div class="tier-price">£125</div>
+                    <p class="tier-description">
+                        Comprehensive analysis with personalized ritual guidance
+                    </p>
+                    <ul class="tier-features">
+                        <li>1,500+ words of comprehensive insights</li>
+                        <li>Full birth chart analysis</li>
+                        <li>Transit forecasting (3 months)</li>
+                        <li>Personalized ritual recommendations</li>
+                        <li>Delivered within 72 hours</li>
+                        <li>Premium PDF with custom artwork</li>
+                    </ul>
+                    <button class="btn btn-outline btn-full">Select Premium</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oracle Form (Hidden until tier selected) -->
+    <section class="section" id="oracleFormSection">
+        <div class="container">
+            <div class="oracle-form-container" id="oracleFormContainer">
+                <h2 class="text-center mb-lg" style="font-family: var(--font-serif);">Your Cosmic Inquiry</h2>
+                
+                <!-- Selected Tier Display -->
+                <div class="selected-tier-display">
+                    <div>
+                        <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Selected Reading</div>
+                        <div style="font-size: 1.3rem; font-weight: 600;" id="selectedTierName">Essence Reading</div>
+                    </div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--color-gold-primary);" id="selectedPrice">£25</div>
+                </div>
+                
+                <!-- Error Container -->
+                <div id="oracle-errors"></div>
+                
+                <form id="oracleForm">
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                        <label class="form-label" for="oracleName">Full Name *</label>
+                        <input type="text" id="oracleName" name="oracleName" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="oracleEmail">Email Address *</label>
+                        <input type="email" id="oracleEmail" name="oracleEmail" class="form-input" required>
+                        <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                            Your reading will be delivered to this email
+                        </div>
+                    </div>
+                    
+                    <!-- Birth Chart Information (Optional) -->
+                    <div style="background: var(--color-white); padding: 1.5rem; border-radius: var(--radius-md); margin: 2rem 0;">
+                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Birth Chart Information (Optional)</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">
+                            Providing your birth details allows for deeper, more personalized insights
+                        </p>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="birthdate">Birth Date</label>
+                            <input type="date" id="birthdate" name="birthdate" class="form-input">
+                        </div>
+                        
+                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="birthtime">Birth Time</label>
+                                <input type="time" id="birthtime" name="birthtime" class="form-input">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="birthplace">Birth Place</label>
+                                <input type="text" id="birthplace" name="birthplace" class="form-input" placeholder="City, Country">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Your Question -->
+                    <div class="form-group">
+                        <label class="form-label" for="oracleQuestion">Your Question or Focus Area *</label>
+                        <textarea id="oracleQuestion" name="oracleQuestion" class="form-textarea" required maxlength="500" placeholder="What aspect of your life would you like cosmic guidance on? (e.g., career, relationships, personal growth)"></textarea>
+                        <div class="char-counter" id="charCounter">0 / 500 characters</div>
+                    </div>
+                    
+                    <!-- Payment Section -->
+                    <div style="background: var(--color-white); padding: 1.5rem; border-radius: var(--radius-md); margin: 2rem 0;">
+                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Payment Information</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Card Details *</label>
+                            <div style="padding: 1rem; background: var(--color-cream); border: 2px solid #ddd; border-radius: var(--radius-sm);">
+                                <div id="oracle-card-element"></div>
+                            </div>
+                            <div id="oracle-card-errors" style="color: var(--color-error); font-size: 0.9rem; margin-top: 0.5rem;"></div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem; background: rgba(184, 134, 11, 0.1); border-radius: var(--radius-sm); font-size: 0.9rem; color: var(--color-gold-primary); margin-top: 1rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                            <span>Secured by Stripe</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitOracle" class="btn btn-primary btn-full" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                        Submit & Pay
+                    </button>
+                    
+                    <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                        By submitting, you agree to our <a href="#" style="color: var(--color-gold-primary);">Terms of Service</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose" aria-label="Close cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs..." style="border-color: var(--color-gold-accent);">
+                <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </span>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/oracle.js"></script>
+</body>
+</html>

@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read the full article from The LYRĪON Codex - Celestial insights and cosmic wisdom.">
+    <title>Article Title | The Codex | LYRĪON</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Article Hero */
+        .article-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.85) 0%, rgba(15, 13, 11, 0.7) 100%);
+            color: var(--color-cream);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(196, 164, 73, 0.15) 0%, transparent 70%),
+                        radial-gradient(circle at 70% 70%, rgba(196, 164, 73, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .article-hero-image {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+        
+        .article-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-accent);
+            font-size: 0.95rem;
+        }
+        
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #333;
+        }
+        
+        .article-body h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .article-body h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--color-ink);
+        }
+        
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-body blockquote {
+            border-left: 4px solid var(--color-gold-primary);
+            padding: 2rem;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), transparent);
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--color-ink);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .article-body img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .article-body li {
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Floating Action Bar */
+        .article-actions {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .article-actions.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .action-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+        }
+        
+        .action-btn:hover {
+            background: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Author Section */
+        .author-section {
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-gold-primary);
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Related Articles */
+        .related-articles {
+            margin-top: 6rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(196, 164, 73, 0.2);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .related-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-medium);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .related-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+            text-decoration: none;
+        }
+        
+        .related-image {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .related-card:hover .related-image img {
+            transform: scale(1.05);
+        }
+        
+        .related-content {
+            padding: 1.5rem;
+        }
+        
+        /* Table of Contents */
+        .toc-container {
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .toc-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-link {
+            color: #666;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--color-gold-primary);
+            background: rgba(196, 164, 73, 0.05);
+            padding-left: 1rem;
+        }
+        
+        /* Reading Progress */
+        .reading-progress {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(196, 164, 73, 0.1);
+            z-index: 1000;
+        }
+        
+        .reading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-gold-accent), var(--color-gold-primary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Back Button */
+        .back-to-codex {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-primary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: gap var(--transition-medium);
+        }
+        
+        .back-to-codex:hover {
+            gap: 0.75rem;
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 4rem 1rem 2rem;
+            }
+            
+            .article-hero-image {
+                height: 300px;
+            }
+            
+            .article-content {
+                padding: 2rem 1rem;
+            }
+            
+            .article-body h2 {
+                font-size: 1.7rem;
+            }
+            
+            .article-body h3 {
+                font-size: 1.3rem;
+            }
+            
+            .article-actions {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            .action-btn {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .author-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-container {
+                position: static;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Reading Progress -->
+    <div class="reading-progress">
+        <div class="reading-progress-bar" id="readingProgress"></div>
+    </div>
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="container">
+            <div class="article-hero-image">
+                <img src="https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f5?w=1200&h=500&fit=crop" alt="Dressing Your Sign" loading="lazy" id="heroImage">
+            </div>
+            
+            <div class="container-narrow">
+                <a href="codex.html" class="back-to-codex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                    Back to The Codex
+                </a>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                        </svg>
+                        <span id="articleAuthor">LYRĪON</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+                        </svg>
+                        <span id="articleDate">January 15, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                        </svg>
+                        <span id="articleReadTime">8 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+                            <path d="M5 0h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        <span id="articleCategory">Style Guide</span>
+                    </div>
+                </div>
+                
+                <h1 id="articleTitle" style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--color-cream);">
+                    Dressing Your Sign: A Guide to Zodiac Style
+                </h1>
+                
+                <p id="articleExcerpt" style="font-size: 1.3rem; line-height: 1.7; color: var(--color-cream); max-width: 800px;">
+                    Each zodiac sign carries distinct energetic qualities that can be expressed through style. From Aries' bold confidence to Pisces' flowing grace, discover how to dress in alignment with your cosmic essence.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="section">
+        <div class="container">
+            <div class="article-content">
+                <div class="grid" style="grid-template-columns: 1fr 300px; gap: 3rem;">
+                    <!-- Main Content -->
+                    <div class="article-body" id="articleBody">
+                        <h2 id="section-intro">Introduction: The Language of Style</h2>
+                        <p>Style is more than fabric and form—it's a visual language that communicates your essence to the world. When aligned with your zodiac energy, clothing becomes a tool for self-expression, empowerment, and connection to your cosmic blueprint.</p>
+                        
+                        <blockquote>
+                            "What we wear is not merely decorative; it's declarative. Each garment speaks of our inner landscape before we utter a word."
+                        </blockquote>
+                        
+                        <h2 id="section-fire-signs">The Fire Signs: Aries, Leo, Sagittarius</h2>
+                        
+                        <h3>Aries ♈ (March 21 - April 19)</h3>
+                        <p><strong>Keywords:</strong> Bold, Confident, Pioneering</p>
+                        <p><strong>Style Essence:</strong> Aries energy is sharp, direct, and unapologetic. Think statement pieces, clean lines, and colours that command attention. Red is your power colour—use it as an accent or go all in.</p>
+                        <p><strong>Wardrobe Staples:</strong> Structured blazers, tailored trousers, statement accessories, bold jewellery, leather accents.</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&h=400&fit=crop" alt="Fire Sign Style" loading="lazy">
+                        
+                        <h3>Leo ♌ (July 23 - August 22)</h3>
+                        <p><strong>Keywords:</strong> Regal, Dramatic, Magnetic</p>
+                        <p><strong>Style Essence:</strong> Leo's style is theatrical and luxurious. Gold metallics, rich fabrics, and pieces that catch the light. You're not wearing clothes; you're wearing art that happens to be clothing.</p>
+                        <p><strong>Wardrobe Staples:</strong> Statement coats, dramatic silhouettes, metallic accents, luxurious fabrics, pieces with movement.</p>
+                        
+                        <h3>Sagittarius ♐ (November 22 - December 21)</h3>
+                        <p><strong>Keywords:</strong> Adventurous, Philosophical, Free</p>
+                        <p><strong>Style Essence:</strong> Sagittarius style is global and comfortable. Think travel-inspired pieces, natural fabrics, and looks that can transition from adventure to philosophical conversation.</p>
+                        <p><strong>Wardrobe Staples:</strong> Comfortable layers, travel-friendly pieces, global textiles, practical footwear, versatile accessories.</p>
+                        
+                        <h2 id="section-earth-signs">The Earth Signs: Taurus, Virgo, Capricorn</h2>
+                        
+                        <blockquote>
+                            "Earth signs understand that what endures in style, as in life, is what's built on solid foundations."
+                        </blockquote>
+                        
+                        <h3>Taurus ♉ (April 20 - May 20)</h3>
+                        <p><strong>Keywords:</strong> Sensual, Grounded, Luxurious</p>
+                        <p><strong>Style Essence:</strong> Taurus appreciates quality and comfort. Natural fabrics, timeless cuts, and pieces that feel as good as they look. Your style is an investment in sensory pleasure.</p>
+                        <p><strong>Wardrobe Staples:</strong> Quality basics, natural fabrics, comfortable luxury, timeless accessories, pieces that age beautifully.</p>
+                        
+                        <h3>Virgo ♍ (August 23 - September 22)</h3>
+                        <p><strong>Keywords:</strong> Precise, Practical, Refined</p>
+                        <p><strong>Style Essence:</strong> Virgo style is clean, considered, and functional. Tailored pieces, monochromatic palettes, and details that serve a purpose. Everything in its place, and every place considered.</p>
+                        <p><strong>Wardrobe Staples:</strong> Tailored separates, functional accessories, quality basics, organized wardrobe systems, precision details.</p>
+                        
+                        <h3>Capricorn ♑ (December 22 - January 19)</h3>
+                        <p><strong>Keywords:</strong> Structured, Authoritative, Classic</p>
+                        <p><strong>Style Essence:</strong> Capricorn style is architectural and enduring. Structured pieces, classic silhouettes, and looks that communicate competence and capability. Your style builds a legacy.</p>
+                        <p><strong>Wardrobe Staples:</strong> Structured outerwear, classic tailoring, quality leather, timeless silhouettes, investment pieces.</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&h=400&fit=crop" alt="Earth Sign Style" loading="lazy">
+                        
+                        <h2 id="section-air-signs">The Air Signs: Gemini, Libra, Aquarius</h2>
+                        
+                        <h3>Gemini ♊ (May 21 - June 20)</h3>
+                        <p><strong>Keywords:</strong> Versatile, Communicative, Playful</p>
+                        <p><strong>Style Essence:</strong> Gemini style is adaptable and expressive. Mix-and-match pieces, conversational prints, and looks that can shift with your mood or the moment.</p>
+                        <p><strong>Wardrobe Staples:</strong> Versatile layers, statement prints, convertible pieces, playful accessories, mood-reflecting colours.</p>
+                        
+                        <h3>Libra ♎ (September 23 - October 22)</h3>
+                        <p><strong>Keywords:</strong> Balanced, Harmonious, Aesthetic</p>
+                        <p><strong>Style Essence:</strong> Libra style is visually balanced and intentionally beautiful. Harmonious colour palettes, proportional silhouettes, and pieces that create visual equilibrium.</p>
+                        <p><strong>Wardrobe Staples:</strong> Balanced silhouettes, harmonious colour palettes, aesthetic accessories, proportionally perfect pieces, beauty in details.</p>
+                        
+                        <h3>Aquarius ♒ (January 20 - February 18)</h3>
+                        <p><strong>Keywords:</strong> Innovative, Independent, Futuristic</p>
+                        <p><strong>Style Essence:</strong> Aquarius style is forward-thinking and unique. Unusual silhouettes, unexpected combinations, and pieces that challenge conventions while remaining functional.</p>
+                        <p><strong>Wardrobe Staples:</strong> Innovative cuts, unique accessories, functional futurism, statement pieces, conversation-starting items.</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=400&fit=crop" alt="Air Sign Style" loading="lazy">
+                        
+                        <h2 id="section-water-signs">The Water Signs: Cancer, Scorpio, Pisces</h2>
+                        
+                        <blockquote>
+                            "Water signs understand that the most powerful style flows from feeling, moving with emotional currents rather than against them."
+                        </blockquote>
+                        
+                        <h3>Cancer ♋ (June 21 - July 22)</h3>
+                        <p><strong>Keywords:</strong> Protective, Nurturing, Nostalgic</p>
+                        <p><strong>Style Essence:</strong> Cancer style is comforting and meaningful. Soft fabrics, nostalgic elements, and pieces that feel like home or hold personal significance.</p>
+                        <p><strong>Wardrobe Staples:</strong> Comforting layers, meaningful jewellery, soft fabrics, vintage-inspired pieces, emotionally resonant items.</p>
+                        
+                        <h3>Scorpio ♏ (October 23 - November 21)</h3>
+                        <p><strong>Keywords:</strong> Intense, Mysterious, Transformative</p>
+                        <p><strong>Style Essence:</strong> Scorpio style is layered and magnetic. Darker palettes, intriguing details, and pieces that reveal themselves gradually. Your style has depth and mystery.</p>
+                        <p><strong>Wardrobe Staples:</strong> Layered pieces, intriguing details, transformative items, magnetic colours, pieces with depth.</p>
+                        
+                        <h3>Pisces ♓ (February 19 - March 20)</h3>
+                        <p><strong>Keywords:</strong> Fluid, Dreamy, Compassionate</p>
+                        <p><strong>Style Essence:</strong> Pisces style is ethereal and flowing. Soft silhouettes, watery colours, and pieces that seem to move with their own gentle current.</p>
+                        <p><strong>Wardrobe Staples:</strong> Flowing silhouettes, ethereal fabrics, dreamy accessories, water-inspired colours, gentle layers.</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&h=400&fit=crop" alt="Water Sign Style" loading="lazy">
+                        
+                        <h2 id="section-conclusion">Conclusion: Style as Self-Integration</h2>
+                        <p>Your zodiac sign offers a blueprint, not a prison. Use these guidelines as starting points, then adapt and evolve as you discover what truly resonates. The most authentic style emerges when we integrate cosmic wisdom with personal expression.</p>
+                        
+                        <p>Remember: style is a conversation between your inner essence and the outer world. When aligned, it becomes a form of self-respect, a declaration of identity, and a daily practice of cosmic connection.</p>
+                    </div>
+                    
+                    <!-- Table of Contents -->
+                    <div class="toc-container">
+                        <div class="toc-title">In This Article</div>
+                        <ul class="toc-list">
+                            <li class="toc-item"><a href="#section-intro" class="toc-link active">Introduction</a></li>
+                            <li class="toc-item"><a href="#section-fire-signs" class="toc-link">Fire Signs</a></li>
+                            <li class="toc-item"><a href="#section-earth-signs" class="toc-link">Earth Signs</a></li>
+                            <li class="toc-item"><a href="#section-air-signs" class="toc-link">Air Signs</a></li>
+                            <li class="toc-item"><a href="#section-water-signs" class="toc-link">Water Signs</a></li>
+                            <li class="toc-item"><a href="#section-conclusion" class="toc-link">Conclusion</a></li>
+                        </ul>
+                        
+                        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(196, 164, 73, 0.1);">
+                            <div style="font-size: 0.9rem; color: #999; margin-bottom: 0.5rem;">Share this article</div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('twitter')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('facebook')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('pinterest')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="copyLink()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="author-section">
+                <div class="author-info">
+                    <div class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616c113a1c1?w=200&h=200&fit=crop&crop=face" alt="LYRĪON Author">
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-ink);">
+                            Written by LYRĪON
+                        </h3>
+                        <p style="color: #666; margin-bottom: 1rem; line-height: 1.6;">
+                            The LYRĪON editorial team brings together astrologers, stylists, and spiritual guides to create content that bridges cosmic wisdom with earthly living. Our mission is to help you wear your sign with intention.
+                        </p>
+                        <a href="about.html" class="read-more" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-gold-primary); font-weight: 600; text-decoration: none;">
+                            Learn more about LYRĪON
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="section">
+        <div class="container">
+            <div class="related-articles">
+                <h2 style="font-family: var(--font-serif); font-size: 2rem; text-align: center; margin-bottom: 1rem; color: var(--color-ink);">
+                    Continue Reading
+                </h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Explore more cosmic insights from The Codex
+                </p>
+                
+                <div class="related-grid">
+                    <!-- Related Article 1 -->
+                    <a href="article-mercury-retrograde.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=400&h=250&fit=crop" alt="Mercury Retrograde">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">ASTROLOGY</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Navigating Mercury Retrograde with Grace
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">January 10, 2025</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 2 -->
+                    <a href="lunar-phases.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=400&h=250&fit=crop" alt="Moon Phases">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">LUNAR WISDOM</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Working With Lunar Phases
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">December 28, 2024</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 3 -->
+                    <a href="capsule-wardrobe.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&h=250&fit=crop" alt="Capsule Wardrobe">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">STYLE</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                The Cosmic Capsule Wardrobe
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">December 20, 2024</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="codex.html" class="btn btn-primary">View All Articles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="article-actions" id="articleActions">
+        <button class="action-btn" id="scrollToTop" aria-label="Scroll to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708 .708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="toggleDarkMode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="textSizeBtn" aria-label="Adjust text size">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.21 10.637c1.33 0 1.33.665 1.33 1.33v.665c0 .664-1.33.665-1.33.665h-.418v2.004h.836c.442 0 .836.224.836.556 0 .333-.394.557-.836.557H5.791c-.442 0-.836-.224-.836-.557 0-.332.394-.556.836-.556h.836v-2.004h-.418c-1.33 0-1.33-.664-1.33-.665v-.665c0-.665 1.33-1.33 1.33-1.33h5.962zM6.749 5.5v.05h3.999v-.05c0-1.14-.564-1.15-.564-1.15h-2.871s-.565.01-.565 1.15zM7.96 1.074h.99l.598.15s.01.17.01.45v2.797h-.01v2.709h-1.187V4.475h-.01V1.674c0-.28.01-.45.01-.45l.599-.15z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="codex.html">The Codex</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs, articles...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+    
+    <script>
+        // Enhanced Article Reading Features
+        document.addEventListener('DOMContentLoaded', () => {
+            const articleBody = document.getElementById('articleBody');
+            const readingProgress = document.getElementById('readingProgress');
+            const articleActions = document.getElementById('articleActions');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const textSizeBtn = document.getElementById('textSizeBtn');
+            const darkModeBtn = document.getElementById('toggleDarkMode');
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            const relatedCards = document.querySelectorAll('.related-card');
+            
+            let currentTextSize = 1;
+            let isDarkMode = false;
+            
+            // Reading Progress
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrolled = (scrollTop / (documentHeight - windowHeight)) * 100;
+                
+                readingProgress.style.width = scrolled + '%';
+                
+                // Show/hide action buttons
+                if (scrollTop > 300) {
+                    articleActions.classList.add('visible');
+                } else {
+                    articleActions.classList.remove('visible');
+                }
+                
+                // Update active TOC link
+                const sections = document.querySelectorAll('h2, h3');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (scrollTop >= sectionTop) {
+                        currentSection = '#' + section.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // TOC Smooth Scroll
+            tocLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Text Size Adjustment
+            textSizeBtn.addEventListener('click', () => {
+                currentTextSize += 0.1;
+                if (currentTextSize > 1.4) currentTextSize = 0.9;
+                
+                articleBody.style.fontSize = `${currentTextSize}rem`;
+                articleBody.style.lineHeight = `${1.7 + (currentTextSize - 1) * 0.2}`;
+                
+                // Show size indicator
+                const sizes = ['Small', 'Normal', 'Large', 'Extra Large'];
+                const sizeIndex = Math.min(Math.floor((currentTextSize - 0.9) / 0.1), 3);
+                
+                showToast(`Text size: ${sizes[sizeIndex]}`);
+            });
+            
+            // Dark Mode Toggle
+            darkModeBtn.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+                
+                if (isDarkMode) {
+                    document.body.style.backgroundColor = '#1a1a1a';
+                    document.body.style.color = '#e6e6e6';
+                    articleBody.style.color = '#e6e6e6';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '#ffffff';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = 'rgba(196, 164, 73, 0.1)';
+                    });
+                    showToast('Dark mode activated');
+                } else {
+                    document.body.style.backgroundColor = '';
+                    document.body.style.color = '';
+                    articleBody.style.color = '';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = '';
+                    });
+                    showToast('Light mode activated');
+                }
+            });
+            
+            // Scroll to Top
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Related card smooth transitions
+            relatedCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = card.getAttribute('href');
+                    
+                    // Show loading
+                    document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                });
+            });
+            
+            // Share functions
+            window.shareArticle = (platform) => {
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.getElementById('articleTitle').textContent);
+                let shareUrl = '';
+                
+                switch(platform) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                        break;
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                        break;
+                    case 'pinterest':
+                        shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${title}`;
+                        break;
+                }
+                
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            };
+            
+            window.copyLink = () => {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('Link copied to clipboard!');
+                });
+            };
+            
+            // Toast notification function
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.textContent = message;
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = 'var(--color-gold-primary)';
+                toast.style.color = 'var(--color-white)';
+                toast.style.padding = '1rem 2rem';
+                toast.style.borderRadius = 'var(--radius-md)';
+                toast.style.zIndex = '9999';
+                toast.style.boxShadow = 'var(--shadow-lg)';
+                toast.style.fontWeight = '600';
+                toast.style.transition = 'all 0.3s ease';
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(-50%) translateY(20px)';
+                    setTimeout(() => document.body.removeChild(toast), 300);
+                }, 2000);
+            }
+            
+            // Add back button functionality
+            document.querySelector('.back-to-codex').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    window.location.href = 'codex.html';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Celestial Style Guide: How to Dress According to Your Zodiac Sign for Authentic Self-Expression">
+    <title>Celestial Style: Dressing Your Zodiac Sign | LYRĪON</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Article Hero */
+        .article-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.85) 0%, rgba(15, 13, 11, 0.7) 100%);
+            color: var(--color-cream);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(196, 164, 73, 0.15) 0%, transparent 70%),
+                        radial-gradient(circle at 70% 70%, rgba(196, 164, 73, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .article-hero-image {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+        
+        .article-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-accent);
+            font-size: 0.95rem;
+        }
+        
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #333;
+        }
+        
+        .article-body h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .article-body h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--color-ink);
+        }
+        
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-body blockquote {
+            border-left: 4px solid var(--color-gold-primary);
+            padding: 2rem;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), transparent);
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--color-ink);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .article-body img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .article-body li {
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Floating Action Bar */
+        .article-actions {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .article-actions.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .action-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+        }
+        
+        .action-btn:hover {
+            background: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Author Section */
+        .author-section {
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-gold-primary);
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Related Articles */
+        .related-articles {
+            margin-top: 6rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(196, 164, 73, 0.2);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .related-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-medium);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .related-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+            text-decoration: none;
+        }
+        
+        .related-image {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .related-card:hover .related-image img {
+            transform: scale(1.05);
+        }
+        
+        .related-content {
+            padding: 1.5rem;
+        }
+        
+        /* Table of Contents */
+        .toc-container {
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .toc-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-link {
+            color: #666;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--color-gold-primary);
+            background: rgba(196, 164, 73, 0.05);
+            padding-left: 1rem;
+        }
+        
+        /* Reading Progress */
+        .reading-progress {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(196, 164, 73, 0.1);
+            z-index: 1000;
+        }
+        
+        .reading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-gold-accent), var(--color-gold-primary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Back Button */
+        .back-to-codex {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-primary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: gap var(--transition-medium);
+            text-decoration: none;
+        }
+        
+        .back-to-codex:hover {
+            gap: 0.75rem;
+        }
+        
+        /* Tip Box */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), rgba(196, 164, 73, 0.02));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-left: 4px solid var(--color-gold-primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .tip-box h4 {
+            color: var(--color-gold-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Zodiac Elements */
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .zodiac-item {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+            text-align: center;
+        }
+        
+        .zodiac-item:hover {
+            border-color: var(--color-gold-primary);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-3px);
+        }
+        
+        .zodiac-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Sign Cards */
+        .sign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .sign-card {
+            background: rgba(196, 164, 73, 0.03);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .sign-card:hover {
+            border-color: var(--color-gold-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .sign-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .sign-symbol {
+            font-size: 2rem;
+            color: var(--color-gold-primary);
+        }
+        
+        .sign-name {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--color-ink);
+        }
+        
+        /* Element Guide */
+        .element-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .element-card {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.02), rgba(196, 164, 73, 0.01));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .element-card:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-3px);
+        }
+        
+        .element-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-gold-primary);
+            font-weight: 600;
+        }
+        
+        /* Style Recommendations */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .style-item {
+            background: var(--color-cream);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .style-item:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-2px);
+        }
+        
+        .style-category {
+            font-weight: 600;
+            color: var(--color-gold-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Compatibility Section */
+        .compatibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .compatibility-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(196, 164, 73, 0.03);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .compatibility-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Ritual Steps */
+        .ritual-steps {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.03), rgba(196, 164, 73, 0.01));
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(196, 164, 73, 0.05);
+        }
+        
+        .step-number {
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+            background: var(--color-gold-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+        
+        /* Journal Section */
+        .journal-box {
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            font-style: italic;
+        }
+        
+        .journal-box h4 {
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+            font-style: normal;
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 4rem 1rem 2rem;
+            }
+            
+            .article-hero-image {
+                height: 300px;
+            }
+            
+            .article-content {
+                padding: 2rem 1rem;
+            }
+            
+            .article-body h2 {
+                font-size: 1.7rem;
+            }
+            
+            .article-body h3 {
+                font-size: 1.3rem;
+            }
+            
+            .article-actions {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            .action-btn {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .author-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-container {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .zodiac-grid, .sign-grid, .element-grid, .compatibility-grid, .style-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-item {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Reading Progress -->
+    <div class="reading-progress">
+        <div class="reading-progress-bar" id="readingProgress"></div>
+    </div>
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="container">
+            <div class="article-hero-image">
+                <img src="https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=500&q=80" alt="Woman in celestial-themed clothing with zodiac symbols" loading="lazy" id="heroImage">
+            </div>
+            
+            <div class="container-narrow">
+                <a href="codex.html" class="back-to-codex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                    Back to The Codex
+                </a>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                        </svg>
+                        <span id="articleAuthor">LYRĪON Astro-Stylist</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+                        </svg>
+                        <span id="articleDate">January 15, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                        </svg>
+                        <span id="articleReadTime">14 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+                            <path d="M5 0h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        <span id="articleCategory">Style Guide</span>
+                    </div>
+                </div>
+                
+                <h1 id="articleTitle" style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--color-cream);">
+                    Celestial Style: Dressing Your Zodiac Sign
+                </h1>
+                
+                <p id="articleExcerpt" style="font-size: 1.3rem; line-height: 1.7; color: var(--color-cream); max-width: 800px;">
+                    Discover how to align your wardrobe with your astrological blueprint. Each zodiac sign carries unique energy, colors, and style signatures that can enhance your authentic self-expression.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="section">
+        <div class="container">
+            <div class="article-content">
+                <div class="grid" style="grid-template-columns: 1fr 300px; gap: 3rem;">
+                    <!-- Main Content -->
+                    <div class="article-body" id="articleBody">
+                        <h2 id="section-intro">Astrological Archetypes in Fashion</h2>
+                        <p>Your zodiac sign is more than just a birth date—it's a cosmic blueprint that influences your personality, preferences, and natural style tendencies. At LYRĪON, we believe that understanding your astrological makeup can unlock a deeper level of self-expression through clothing. When you dress in alignment with your sign's energy, you wear your cosmic identity with confidence and authenticity.</p>
+                        
+                        <blockquote>
+                            "Style is the visual language of our soul. When we dress according to our astrological nature, we speak a truth that resonates with the cosmos itself."
+                        </blockquote>
+                        
+                        <h2 id="section-elements">The Four Elements: Foundation of Zodiac Style</h2>
+                        
+                        <div class="element-grid">
+                            <div class="element-card">
+                                <div class="element-header">🔥 Fire Signs: Aries, Leo, Sagittarius</div>
+                                <p><strong>Style Essence:</strong> Bold, dramatic, confidence-driven<br>
+                                <strong>Colors:</strong> Reds, golds, oranges, bright tones<br>
+                                <strong>Fabrics:</strong> Luxurious, attention-grabbing, metallic accents<br>
+                                <strong>Signature:</strong> Statement pieces that command attention</p>
+                            </div>
+                            
+                            <div class="element-card">
+                                <div class="element-header">🌍 Earth Signs: Taurus, Virgo, Capricorn</div>
+                                <p><strong>Style Essence:</strong> Grounded, luxurious, quality-focused<br>
+                                <strong>Colors:</strong> Earth tones, greens, browns, rich neutrals<br>
+                                <strong>Fabrics:</strong> Natural fibers, structured materials, tactile textures<br>
+                                <strong>Signature:</strong> Timeless investment pieces</p>
+                            </div>
+                            
+                            <div class="element-card">
+                                <div class="element-header">🌬️ Air Signs: Gemini, Libra, Aquarius</div>
+                                <p><strong>Style Essence:</strong> Intellectual, versatile, trend-aware<br>
+                                <strong>Colors:</strong> Pastels, blues, grays, mixed palettes<br>
+                                <strong>Fabrics:</strong> Lightweight, layered, innovative materials<br>
+                                <strong>Signature:</strong> Mix-and-match creativity</p>
+                            </div>
+                            
+                            <div class="element-card">
+                                <div class="element-header">💧 Water Signs: Cancer, Scorpio, Pisces</div>
+                                <p><strong>Style Essence:</strong> Intuitive, emotional, transformative<br>
+                                <strong>Colors:</strong> Blues, purples, sea greens, deep tones<br>
+                                <strong>Fabrics:</strong> Flowing, soft, draping materials<br>
+                                <strong>Signature:</strong> Emotionally resonant pieces</p>
+                            </div>
+                        </div>
+                        
+                        <img src="https://images.pexels.com/photos/1532968961962-8a0cb3a2d4f5.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Zodiac constellations and fashion elements" loading="lazy">
+                        
+                        <h2 id="section-aries">Aries (March 21 - April 19) ♈</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♈</span>
+                                <h3 class="sign-name">The Pioneer</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Mars<br>
+                            <strong>Element:</strong> Fire<br>
+                            <strong>Style Archetype:</strong> The Trailblazer</p>
+                            
+                            <h4>Signature Aries Style</h4>
+                            <p>Aries energy is bold, confident, and always first. Your style should reflect your pioneering spirit with pieces that make a statement and show leadership.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Power Red Pieces:</strong> Command attention in bold reds</li>
+                                <li><strong>Structured Blazers:</strong> Show authority and confidence</li>
+                                <li><strong>Athletic-Inspired Elements:</strong> Reflect your active nature</li>
+                                <li><strong>Metallic Accents:</strong> Gold and bronze for Mars energy</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you mature, learn to balance your boldness with sophistication. Incorporate more tailored pieces while maintaining your signature confidence.</p>
+                        </div>
+                        
+                        <h2 id="section-taurus">Taurus (April 20 - May 20) ♉</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♉</span>
+                                <h3 class="sign-name">The Sensualist</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Venus<br>
+                            <strong>Element:</strong> Earth<br>
+                            <strong>Style Archetype:</strong> The Luxurist</p>
+                            
+                            <h4>Signature Taurus Style</h4>
+                            <p>Taurus energy is grounded, sensual, and appreciates quality above all. Your style should feel luxurious, comfortable, and deeply satisfying to wear.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Cashmere & Silk:</strong> Indulge in tactile luxury</li>
+                                <li><strong>Earth Tone Palette:</strong> Greens, browns, rich neutrals</li>
+                                <li><strong>Timeless Investment Pieces:</strong> Quality over quantity</li>
+                                <li><strong>Organic Textures:</strong> Linen, wool, natural fibers</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you grow, experiment with adding subtle luxury to everyday pieces. Your Venusian nature appreciates beauty in all forms.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <h4><span>🌟</span> Astro-Styling Tip</h4>
+                            <p>Don't just consider your sun sign! Your rising sign (ascendant) influences how you present yourself to the world, and your Venus sign affects what you find beautiful and pleasurable in fashion.</p>
+                        </div>
+                        
+                        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" alt="Luxurious fabrics and earth tones for Taurus style" loading="lazy">
+                        
+                        <h2 id="section-gemini">Gemini (May 21 - June 20) ♊</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♊</span>
+                                <h3 class="sign-name">The Communicator</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Mercury<br>
+                            <strong>Element:</strong> Air<br>
+                            <strong>Style Archetype:</strong> The Chameleon</p>
+                            
+                            <h4>Signature Gemini Style</h4>
+                            <p>Gemini energy is versatile, curious, and communicative. Your style should reflect your dual nature and ability to adapt to any situation with wit and charm.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Convertible Pieces:</strong> Dresses that transform, reversible jackets</li>
+                                <li><strong>Layered Looks:</strong> Show your multifaceted nature</li>
+                                <li><strong>Mixed Patterns:</strong> Playful combinations</li>
+                                <li><strong>Conversation-Starter Accessories:</strong> Unique jewelry and bags</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you mature, focus on creating a cohesive collection of versatile pieces that can be mixed and matched endlessly, satisfying your need for variety.</p>
+                        </div>
+                        
+                        <h2 id="section-cancer">Cancer (June 21 - July 22) ♋</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♋</span>
+                                <h3 class="sign-name">The Nurturer</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Moon<br>
+                            <strong>Element:</strong> Water<br>
+                            <strong>Style Archetype:</strong> The Comforting Classic</p>
+                            
+                            <h4>Signature Cancer Style</h4>
+                            <p>Cancer energy is nurturing, intuitive, and emotionally sensitive. Your style should feel like a protective shell—comfortable, familiar, and emotionally resonant.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Soft Silhouettes:</strong> Flowing dresses, comfortable knits</li>
+                                <li><strong>Moon-Inspired Pieces:</strong> Silver, pearl, celestial prints</li>
+                                <li><strong>Sentimental Jewelry:</strong> Family heirlooms, meaningful pieces</li>
+                                <li><strong>Cozy Layers:</strong> Cardigans, wraps, comforting textures</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you grow, learn to balance comfort with occasion-appropriate dressing. Your nurturing nature shines when you feel truly yourself in your clothing.</p>
+                        </div>
+                        
+                        <blockquote>
+                            "Your zodiac sign offers clues to your authentic style language. When you dress in alignment with your cosmic nature, you not only look good—you feel aligned with your truest self."
+                        </blockquote>
+                        
+                        <h2 id="section-leo">Leo (July 23 - August 22) ♌</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♌</span>
+                                <h3 class="sign-name">The Performer</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Sun<br>
+                            <strong>Element:</strong> Fire<br>
+                            <strong>Style Archetype:</strong> The Star</p>
+                            
+                            <h4>Signature Leo Style</h4>
+                            <p>Leo energy is radiant, dramatic, and born for the spotlight. Your style should make you feel like the center of attention, because for you, every day is a performance.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Gold Accents:</strong> Metallic threads, gold jewelry</li>
+                                <li><strong>Bold Prints:</strong> Animal prints, dramatic patterns</li>
+                                <li><strong>Statement Pieces:</strong> Pieces that can't be ignored</li>
+                                <li><strong>Luxurious Fabrics:</strong> Velvet, silk, rich textures</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you mature, refine your dramatic flair into sophisticated elegance. Your solar energy naturally attracts attention—learn to wield it with grace.</p>
+                        </div>
+                        
+                        <h2 id="section-virgo">Virgo (August 23 - September 22) ♍</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♍</span>
+                                <h3 class="sign-name">The Analyst</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Mercury<br>
+                            <strong>Element:</strong> Earth<br>
+                            <strong>Style Archetype:</strong> The Precisionist</p>
+                            
+                            <h4>Signature Virgo Style</h4>
+                            <p>Virgo energy is practical, detail-oriented, and appreciates perfection. Your style should be meticulously curated, functional, and impeccably tailored.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Tailored Basics:</strong> Perfectly fitted pieces</li>
+                                <li><strong>Neutral Palette:</strong> Beiges, creams, sophisticated neutrals</li>
+                                <li><strong>Quality Over Quantity:</strong> Fewer, better pieces</li>
+                                <li><strong>Thoughtful Details:</strong> Perfect buttons, precise stitching</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you grow, allow yourself to occasionally embrace imperfection and spontaneity. Your eye for detail is a gift—use it to curate a truly personal style.</p>
+                        </div>
+                        
+                        <img src="https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Precise tailoring and neutral palette for Virgo style" loading="lazy">
+                        
+                        <h2 id="section-libra">Libra (September 23 - October 22) ♎</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♎</span>
+                                <h3 class="sign-name">The Harmonizer</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Venus<br>
+                            <strong>Element:</strong> Air<br>
+                            <strong>Style Archetype:</strong> The Aesthetic</p>
+                            
+                            <h4>Signature Libra Style</h4>
+                            <p>Libra energy seeks balance, beauty, and harmony. Your style should be aesthetically pleasing, balanced in proportions, and effortlessly elegant.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Balanced Silhouettes:</strong> Symmetrical cuts, proportional outfits</li>
+                                <li><strong>Soft Pastels:</strong> Pinks, blues, lavender—Venusian colors</li>
+                                <li><strong>Elegant Classics:</strong> Timeless pieces with modern touches</li>
+                                <li><strong>Artistic Prints:</strong> Floral, abstract, beautiful patterns</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you mature, use your natural sense of balance to create a wardrobe that works harmoniously together. Your Venusian eye for beauty is your greatest style asset.</p>
+                        </div>
+                        
+                        <h2 id="section-scorpio">Scorpio (October 23 - November 21) ♏</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♏</span>
+                                <h3 class="sign-name">The Transformer</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Pluto/Mars<br>
+                            <strong>Element:</strong> Water<br>
+                            <strong>Style Archetype:</strong> The Mysterious</p>
+                            
+                            <h4>Signature Scorpio Style</h4>
+                            <p>Scorpio energy is intense, mysterious, and transformative. Your style should have depth, intrigue, and the power to reveal or conceal as you choose.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Rich Colors:</strong> Black, burgundy, deep purples, navy</li>
+                                <li><strong>Layered Dressing:</strong> Reveal and conceal strategically</li>
+                                <li><strong>Power Pieces:</strong> Clothing that commands respect</li>
+                                <li><strong>Mysterious Details:</strong> Hidden pockets, reversible elements</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you transform through life, allow your style to evolve with you. Your Plutonian nature understands rebirth—let your wardrobe reflect your personal transformations.</p>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <h4><span>🪐</span> Planetary Influence</h4>
+                            <p>Each planet rules different style aspects: Venus influences aesthetics and beauty, Mars affects boldness and confidence, Mercury governs versatility, and the Moon impacts emotional comfort in clothing.</p>
+                        </div>
+                        
+                        <h2 id="section-sagittarius">Sagittarius (November 22 - December 21) ♐</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♐</span>
+                                <h3 class="sign-name">The Explorer</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Jupiter<br>
+                            <strong>Element:</strong> Fire<br>
+                            <strong>Style Archetype:</strong> The Adventurer</p>
+                            
+                            <h4>Signature Sagittarius Style</h4>
+                            <p>Sagittarius energy is adventurous, optimistic, and free-spirited. Your style should be comfortable for movement, inspired by global cultures, and always ready for adventure.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Travel-Friendly Pieces:</strong> Versatile, packable items</li>
+                                <li><strong>Global Influences:</strong> Ethnic prints, cultural references</li>
+                                <li><strong>Comfortable Luxe:</strong> Quality pieces that allow movement</li>
+                                <li><strong>Optimistic Colors:</strong> Purples, deep blues, adventurous patterns</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you journey through life, let your wardrobe tell the story of your adventures. Your Jupiterian optimism naturally attracts interesting experiences—dress for them.</p>
+                        </div>
+                        
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" alt="Adventure-ready style with global influences" loading="lazy">
+                        
+                        <h2 id="section-capricorn">Capricorn (December 22 - January 19) ♑</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♑</span>
+                                <h3 class="sign-name">The Architect</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Saturn<br>
+                            <strong>Element:</strong> Earth<br>
+                            <strong>Style Archetype:</strong> The Classicist</p>
+                            
+                            <h4>Signature Capricorn Style</h4>
+                            <p>Capricorn energy is ambitious, disciplined, and values tradition and quality. Your style should be structured, authoritative, and built to last through seasons and trends.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Structured Pieces:</strong> Blazers, tailored trousers, defined silhouettes</li>
+                                <li><strong>Classic Colors:</strong> Black, gray, navy, dark green</li>
+                                <li><strong>Investment Wardrobe:</strong> Pieces that appreciate with time</li>
+                                <li><strong>Quality Materials:</strong> Wool, cashmere, fine leather</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you climb toward your goals, let your style reflect your achievements. Your Saturnine discipline creates a wardrobe that stands the test of time.</p>
+                        </div>
+                        
+                        <h2 id="section-aquarius">Aquarius (January 20 - February 18) ♒</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♒</span>
+                                <h3 class="sign-name">The Innovator</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Uranus/Saturn<br>
+                            <strong>Element:</strong> Air<br>
+                            <strong>Style Archetype:</strong> The Futurist</p>
+                            
+                            <h4>Signature Aquarius Style</h4>
+                            <p>Aquarius energy is innovative, unconventional, and forward-thinking. Your style should break rules, incorporate technology or sustainable materials, and express your unique vision.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Unconventional Pieces:</strong> Asymmetrical cuts, unique silhouettes</li>
+                                <li><strong>Tech Fabrics:</strong> Sustainable innovations, smart materials</li>
+                                <li><strong>Electric Colors:</strong> Electric blue, silver, metallic accents</li>
+                                <li><strong>Statement Accessories:</strong> Conversation-starting pieces</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you innovate through life, let your style pioneer new possibilities. Your Uranian vision sees the future of fashion—be part of creating it.</p>
+                        </div>
+                        
+                        <h2 id="section-pisces">Pisces (February 19 - March 20) ♓</h2>
+                        
+                        <div class="sign-card">
+                            <div class="sign-header">
+                                <span class="sign-symbol">♓</span>
+                                <h3 class="sign-name">The Dreamer</h3>
+                            </div>
+                            <p><strong>Ruling Planet:</strong> Neptune/Jupiter<br>
+                            <strong>Element:</strong> Water<br>
+                            <strong>Style Archetype:</strong> The Romantic</p>
+                            
+                            <h4>Signature Pisces Style</h4>
+                            <p>Pisces energy is dreamy, intuitive, and artistic. Your style should feel like wearable art—flowing, ethereal, and touched by magic and imagination.</p>
+                            
+                            <h4>LYRĪON Recommendations</h4>
+                            <ul>
+                                <li><strong>Flowing Fabrics:</strong> Chiffon, silk, ethereal materials</li>
+                                <li><strong>Ocean Colors:</strong> Sea greens, purples, iridescent tones</li>
+                                <li><strong>Artistic Elements:</strong> Hand-painted details, unique dyes</li>
+                                <li><strong>Comfortable Romance:</strong> Pieces that feel like a dream</li>
+                            </ul>
+                            
+                            <h4>Style Evolution</h4>
+                            <p>As you swim through life's currents, let your style reflect your deepening connection to the mystical. Your Neptunian imagination is your greatest style resource.</p>
+                        </div>
+                        
+                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" alt="Flowing, ethereal style for Pisces" loading="lazy">
+                        
+                        <h2 id="section-rising">The Rising Sign: Your Style Persona</h2>
+                        
+                        <p>While your sun sign represents your core identity, your rising sign (ascendant) influences how you present yourself to the world and your immediate style instincts.</p>
+                        
+                        <div class="style-grid">
+                            <div class="style-item">
+                                <div class="style-category">Fire Rising</div>
+                                <div>Confident first impressions, bold colors</div>
+                            </div>
+                            <div class="style-item">
+                                <div class="style-category">Earth Rising</div>
+                                <div>Grounded appearance, quality fabrics</div>
+                            </div>
+                            <div class="style-item">
+                                <div class="style-category">Air Rising</div>
+                                <div>Intellectual presentation, versatile layers</div>
+                            </div>
+                            <div class="style-item">
+                                <div class="style-category">Water Rising</div>
+                                <div>Emotional impression, intuitive styling</div>
+                            </div>
+                        </div>
+                        
+                        <h2 id="section-venus">Venus Sign: Your Aesthetic Taste</h2>
+                        
+                        <p>Your Venus sign reveals what you find beautiful, pleasurable, and aesthetically satisfying in fashion and personal adornment.</p>
+                        
+                        <div class="compatibility-grid">
+                            <div class="compatibility-card">
+                                <span class="compatibility-icon">💎</span>
+                                <h4>Venus in Taurus/Libra</h4>
+                                <p>Classic beauty, luxury fabrics, harmonious colors</p>
+                            </div>
+                            <div class="compatibility-card">
+                                <span class="compatibility-icon">⚡</span>
+                                <h4>Venus in Aries/Scorpio</h4>
+                                <p>Bold statements, powerful pieces, intense colors</p>
+                            </div>
+                            <div class="compatibility-card">
+                                <span class="compatibility-icon">🌀</span>
+                                <h4>Venus in Gemini/Aquarius</h4>
+                                <p>Eclectic mixes, innovative pieces, unconventional beauty</p>
+                            </div>
+                            <div class="compatibility-card">
+                                <span class="compatibility-icon">🌊</span>
+                                <h4>Venus in Cancer/Pisces</h4>
+                                <p>Emotional resonance, comforting textures, dreamy aesthetics</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <h4><span>📱</span> Digital Tool</h4>
+                            <p>Use our free birth chart calculator on The Oracle page to discover your rising sign, Venus placement, and other astrological influences on your personal style.</p>
+                        </div>
+                        
+                        <h2 id="section-compatibility">Zodiac Style Compatibility</h2>
+                        
+                        <h3>Complementary Elements</h3>
+                        <p>Fire signs (Aries, Leo, Sagittarius) inspire and energize each other with boldness and confidence.</p>
+                        
+                        <h3>Balancing Opposites</h3>
+                        <p>Opposite signs often create beautiful style synergy: Aries balances Libra's harmony with boldness, Taurus grounds Scorpio's intensity with stability.</p>
+                        
+                        <h3>Seasonal Transitions</h3>
+                        <p>Signs within the same season often share color palettes and style sensibilities, creating natural wardrobe transitions.</p>
+                        
+                        <h2 id="section-ritual">Creating Your Zodiac Style Ritual</h2>
+                        
+                        <div class="ritual-steps">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-details">
+                                    <h4>Discover Your Chart</h4>
+                                    <p>Calculate your complete birth chart to understand your sun, rising, and Venus signs. These three points create your style triangle.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-details">
+                                    <h4>Assess Current Wardrobe</h4>
+                                    <p>Review your existing pieces through your zodiac lens. What aligns with your signs? What feels authentically you? What doesn't resonate?</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-details">
+                                    <h4>Create Style Affirmations</h4>
+                                    <p>Write affirmations based on your signs: "As a Leo, I dress with confidence and radiance" or "As a Virgo, I choose quality and precision."</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">4</div>
+                                <div class="step-details">
+                                    <h4>Curate Intentionally</h4>
+                                    <p>Shop and style with your zodiac energy in mind. Choose colors, fabrics, and silhouettes that align with your cosmic blueprint.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">5</div>
+                                <div class="step-details">
+                                    <h4>Dress with Cosmic Consciousness</h4>
+                                    <p>Each morning, choose outfits that align with your day's energy needs. Use your zodiac knowledge to dress intentionally.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">6</div>
+                                <div class="step-details">
+                                    <h4>Seasonal Alignment</h4>
+                                    <p>Adjust your style with the seasons, considering which signs rule each season and how their energy influences your expression.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h2 id="section-lyrion">LYRĪON Zodiac Collections</h2>
+                        
+                        <h3>Sun Sign Essentials</h3>
+                        <p>Our core collection features pieces designed with each zodiac sign's energy in mind. From Aries-red power pieces to Pisces-flowing dresses.</p>
+                        
+                        <h3>Rising Sign Accents</h3>
+                        <p>Accessories and layering pieces that help express your ascendant's style persona and how you present yourself to the world.</p>
+                        
+                        <h3>Venus Sign Luxuries</h3>
+                        <p>Special occasion pieces and luxurious items that speak to your Venus sign's aesthetic preferences and what you find beautiful.</p>
+                        
+                        <h2 id="section-conclusion">Cosmic Self-Expression</h2>
+                        <p>Zodiac-aligned style is not about limiting yourself to stereotypes, but about understanding your natural tendencies and using that knowledge to enhance your authentic self-expression. Your birth chart offers a cosmic map to your unique style signature.</p>
+                        
+                        <p>Remember that you contain multitudes—your sun sign's core identity, your rising sign's presentation, your Venus sign's aesthetic preferences, and all the other planetary influences in your chart. The most authentic style emerges when you honor all these parts of yourself.</p>
+                        
+                        <p>As you explore zodiac-aligned dressing, let it be a journey of self-discovery. Some days you'll feel deeply connected to your sun sign's energy; other days your rising or Venus sign might take precedence. This fluidity is part of the magic—you are a constantly evolving cosmic being.</p>
+                        
+                        <blockquote>
+                            "When you dress in alignment with your zodiac nature, you wear the stars themselves. Your clothing becomes a celestial map of your unique place in the universe."
+                        </blockquote>
+                        
+                        <p>For personalized zodiac style readings, birth chart analysis, and custom zodiac-aligned styling, visit our Oracle page or book a consultation with our astro-stylists.</p>
+                        
+                        <p>May your style journey be guided by celestial wisdom, and may you shine with the unique light of your cosmic signature.</p>
+                    </div>
+                    
+                    <!-- Table of Contents -->
+                    <div class="toc-container">
+                        <div class="toc-title">In This Guide</div>
+                        <ul class="toc-list">
+                            <li class="toc-item"><a href="#section-intro" class="toc-link active">Astrological Archetypes</a></li>
+                            <li class="toc-item"><a href="#section-elements" class="toc-link">The Four Elements</a></li>
+                            <li class="toc-item"><a href="#section-aries" class="toc-link">Aries Style</a></li>
+                            <li class="toc-item"><a href="#section-taurus" class="toc-link">Taurus Style</a></li>
+                            <li class="toc-item"><a href="#section-gemini" class="toc-link">Gemini Style</a></li>
+                            <li class="toc-item"><a href="#section-cancer" class="toc-link">Cancer Style</a></li>
+                            <li class="toc-item"><a href="#section-leo" class="toc-link">Leo Style</a></li>
+                            <li class="toc-item"><a href="#section-virgo" class="toc-link">Virgo Style</a></li>
+                            <li class="toc-item"><a href="#section-libra" class="toc-link">Libra Style</a></li>
+                            <li class="toc-item"><a href="#section-scorpio" class="toc-link">Scorpio Style</a></li>
+                            <li class="toc-item"><a href="#section-sagittarius" class="toc-link">Sagittarius Style</a></li>
+                            <li class="toc-item"><a href="#section-capricorn" class="toc-link">Capricorn Style</a></li>
+                            <li class="toc-item"><a href="#section-aquarius" class="toc-link">Aquarius Style</a></li>
+                            <li class="toc-item"><a href="#section-pisces" class="toc-link">Pisces Style</a></li>
+                            <li class="toc-item"><a href="#section-rising" class="toc-link">Rising Sign Style</a></li>
+                            <li class="toc-item"><a href="#section-venus" class="toc-link">Venus Sign Aesthetics</a></li>
+                            <li class="toc-item"><a href="#section-compatibility" class="toc-link">Style Compatibility</a></li>
+                            <li class="toc-item"><a href="#section-ritual" class="toc-link">Creating Your Ritual</a></li>
+                            <li class="toc-item"><a href="#section-lyrion" class="toc-link">LYRĪON Collections</a></li>
+                            <li class="toc-item"><a href="#section-conclusion" class="toc-link">Conclusion</a></li>
+                        </ul>
+                        
+                        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(196, 164, 73, 0.1);">
+                            <div style="font-size: 0.9rem; color: #999; margin-bottom: 0.5rem;">Save this guide</div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('twitter')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('facebook')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('pinterest')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="copyLink()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="author-section">
+                <div class="author-info">
+                    <div class="author-avatar">
+                        <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop&crop=face" alt="LYRĪON Astro-Stylist">
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-ink);">
+                            Written by LYRĪON Astro-Stylist
+                        </h3>
+                        <p style="color: #666; margin-bottom: 1rem; line-height: 1.6;">
+                            Our astro-styling team combines professional astrological knowledge with fashion expertise. With certifications in both astrology and styling, we help you discover and express your cosmic style signature.
+                        </p>
+                        <a href="oracle.html" class="read-more" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-gold-primary); font-weight: 600; text-decoration: none;">
+                            Get your astro-style reading
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="section">
+        <div class="container">
+            <div class="related-articles">
+                <h2 style="font-family: var(--font-serif); font-size: 2rem; text-align: center; margin-bottom: 1rem; color: var(--color-ink);">
+                    Continue Reading
+                </h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Explore more cosmic guides from The Codex.
+                </p>
+                
+                <div class="related-grid">
+                    <!-- Related Article 1 -->
+                    <a href="moon-rituals.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.unsplash.com/photo-1532978379173-523e6a4a115e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Moon Rituals">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">RITUALS</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Lunar Style: Moon Cycle Rituals
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">February 28, 2025</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 2 -->
+                    <a href="crystal-grids.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.unsplash.com/photo-1543858741-3ffc35c3b7d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Crystal Grids">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">RITUALS</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Cosmic Alignment: Crystal Grids
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">April 18, 2025</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 3 -->
+                    <a href="sacred-altar.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.pexels.com/photos/1029894/pexels-photo-1029894.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Sacred Altar">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">RITUALS</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Creating a Sacred Altar
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">February 8, 2025</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="codex.html" class="btn btn-primary">View All Articles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="article-actions" id="articleActions">
+        <button class="action-btn" id="scrollToTop" aria-label="Scroll to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708 .708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="toggleDarkMode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="textSizeBtn" aria-label="Adjust text size">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.21 10.637c1.33 0 1.33.665 1.33 1.33v.665c0 .664-1.33.665-1.33.665h-.418v2.004h.836c.442 0 .836.224.836.556 0 .333-.394.557-.836.557H5.791c-.442 0-.836-.224-.836-.557 0-.332.394-.556.836-.556h.836v-2.004h-.418c-1.33 0-1.33-.664-1.33-.665v-.665c0-.665 1.33-1.33 1.33-1.33h5.962zM6.749 5.5v.05h3.999v-.05c0-1.14-.564-1.15-.564-1.15h-2.871s-.565.01-.565 1.15zM7.96 1.074h.99l.598.15s.01.17.01.45v2.797h-.01v2.709h-1.187V4.475h-.01V1.674c0-.28.01-.45.01-.45l.599-.15z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="codex.html">The Codex</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="care-guide.html">Care Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs, articles...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+    
+    <script>
+        // Enhanced Article Reading Features
+        document.addEventListener('DOMContentLoaded', () => {
+            const articleBody = document.getElementById('articleBody');
+            const readingProgress = document.getElementById('readingProgress');
+            const articleActions = document.getElementById('articleActions');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const textSizeBtn = document.getElementById('textSizeBtn');
+            const darkModeBtn = document.getElementById('toggleDarkMode');
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            const relatedCards = document.querySelectorAll('.related-card');
+            const signCards = document.querySelectorAll('.sign-card');
+            
+            let currentTextSize = 1;
+            let isDarkMode = false;
+            
+            // Reading Progress
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrolled = (scrollTop / (documentHeight - windowHeight)) * 100;
+                
+                readingProgress.style.width = scrolled + '%';
+                
+                // Show/hide action buttons
+                if (scrollTop > 300) {
+                    articleActions.classList.add('visible');
+                } else {
+                    articleActions.classList.remove('visible');
+                }
+                
+                // Update active TOC link
+                const sections = document.querySelectorAll('h2, h3');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (scrollTop >= sectionTop) {
+                        currentSection = '#' + section.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // TOC Smooth Scroll
+            tocLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Text Size Adjustment
+            textSizeBtn.addEventListener('click', () => {
+                currentTextSize += 0.1;
+                if (currentTextSize > 1.4) currentTextSize = 0.9;
+                
+                articleBody.style.fontSize = `${currentTextSize}rem`;
+                articleBody.style.lineHeight = `${1.7 + (currentTextSize - 1) * 0.2}`;
+                
+                // Show size indicator
+                const sizes = ['Small', 'Normal', 'Large', 'Extra Large'];
+                const sizeIndex = Math.min(Math.floor((currentTextSize - 0.9) / 0.1), 3);
+                
+                showToast(`Text size: ${sizes[sizeIndex]}`);
+            });
+            
+            // Dark Mode Toggle
+            darkModeBtn.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+                
+                if (isDarkMode) {
+                    document.body.style.backgroundColor = '#1a1a1a';
+                    document.body.style.color = '#e6e6e6';
+                    articleBody.style.color = '#e6e6e6';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '#ffffff';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = 'rgba(196, 164, 73, 0.1)';
+                    });
+                    document.querySelectorAll('.sign-card, .element-card').forEach(el => {
+                        el.style.background = 'rgba(196, 164, 73, 0.05)';
+                    });
+                    showToast('Dark mode activated');
+                } else {
+                    document.body.style.backgroundColor = '';
+                    document.body.style.color = '';
+                    articleBody.style.color = '';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = '';
+                    });
+                    document.querySelectorAll('.sign-card, .element-card').forEach(el => {
+                        el.style.background = '';
+                    });
+                    showToast('Light mode activated');
+                }
+            });
+            
+            // Scroll to Top
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Related card smooth transitions
+            relatedCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = card.getAttribute('href');
+                    
+                    // Show loading
+                    document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                });
+            });
+            
+            // Sign card interactions
+            signCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = 'var(--shadow-md)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                    }, 300);
+                });
+            });
+            
+            // Share functions
+            window.shareArticle = (platform) => {
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.getElementById('articleTitle').textContent);
+                let shareUrl = '';
+                
+                switch(platform) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                        break;
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                        break;
+                    case 'pinterest':
+                        shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${title}`;
+                        break;
+                }
+                
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            };
+            
+            window.copyLink = () => {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('Link copied to clipboard!');
+                });
+            };
+            
+            // Toast notification function
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.textContent = message;
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = 'var(--color-gold-primary)';
+                toast.style.color = 'var(--color-white)';
+                toast.style.padding = '1rem 2rem';
+                toast.style.borderRadius = 'var(--radius-md)';
+                toast.style.zIndex = '9999';
+                toast.style.boxShadow = 'var(--shadow-lg)';
+                toast.style.fontWeight = '600';
+                toast.style.transition = 'all 0.3s ease';
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(-50%) translateY(20px)';
+                    setTimeout(() => document.body.removeChild(toast), 300);
+                }, 2000);
+            }
+            
+            // Add back button functionality
+            document.querySelector('.back-to-codex').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    window.location.href = 'codex.html';
+                }, 300);
+            });
+            
+            // Zodiac sign finder (simple version)
+            function getZodiacSign(birthDate) {
+                const date = new Date(birthDate);
+                const month = date.getMonth() + 1;
+                const day = date.getDate();
+                
+                if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return 'Aries';
+                if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) return 'Taurus';
+                if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) return 'Gemini';
+                if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) return 'Cancer';
+                if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) return 'Leo';
+                if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) return 'Virgo';
+                if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) return 'Libra';
+                if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) return 'Scorpio';
+                if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) return 'Sagittarius';
+                if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) return 'Capricorn';
+                if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) return 'Aquarius';
+                if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) return 'Pisces';
+                
+                return 'Unknown';
+            }
+            
+            // Optional: Add zodiac calculator feature
+            // Uncomment to activate:
+            // const userSign = getZodiacSign('1990-04-15'); // Example
+            // console.log(`Your zodiac sign: ${userSign}`);
+        });
+    </script>
+</body>
+</html>

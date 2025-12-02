@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aries - Bold. Fearless. First. Discover LYRĪON's Aries zodiac collection and cosmic insights.">
+    <title>Aries | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        .zodiac-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.8) 0%, rgba(15, 13, 11, 0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=600&fit=crop') center/cover;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-cream);
+            padding: 4rem 2rem;
+        }
+        
+        .zodiac-symbol-large {
+            font-size: 8rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        
+        .zodiac-name {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--color-cream);
+            margin-bottom: 0.5rem;
+        }
+        
+        .zodiac-dates {
+            font-size: 1.3rem;
+            color: var(--color-gold-accent);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .zodiac-essence {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-cream);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+        
+        .zodiac-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .detail-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 2px solid var(--color-cream-dark);
+            transition: all var(--transition-medium);
+        }
+        
+        .detail-card:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-5px);
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-value {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--color-gold-primary);
+            font-weight: 500;
+        }
+        
+        .personality-section {
+            background: var(--color-cream-dark);
+            padding: 4rem 2rem;
+            border-radius: var(--radius-lg);
+        }
+        
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .trait-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .trait-icon {
+            font-size: 1.5rem;
+            color: var(--color-gold-primary);
+            min-width: 30px;
+        }
+        
+        .trait-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-ink);
+        }
+        
+        .trait-content p {
+            color: #666;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .products-section {
+            text-align: center;
+        }
+        
+        .products-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+           <a href="index.html" class="logo">
+                <img src="./logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../shop.html">Shop</a></li>
+                <li><a href="../oracle.html">The Oracle</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Zodiac Hero -->
+    <section class="zodiac-hero">
+        <div>
+            <div class="zodiac-symbol-large">♈</div>
+            <h1 class="zodiac-name">Aries</h1>
+            <p class="zodiac-dates">March 21 - April 19</p>
+            <p class="zodiac-essence">Bold. Fearless. First.</p>
+        </div>
+    </section>
+
+    <!-- Zodiac Details -->
+    <section class="section">
+        <div class="container">
+            <div class="zodiac-details-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Element</div>
+                    <div class="detail-value">Fire</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Ruling Planet</div>
+                    <div class="detail-value">Mars</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Modality</div>
+                    <div class="detail-value">Cardinal</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Symbol</div>
+                    <div class="detail-value">The Ram</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="personality-section">
+                <h2 class="text-center mb-md">The Aries Essence</h2>
+                <p class="text-center mb-lg" style="font-size: 1.15rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto 3rem;">
+                    Aries embodies the raw energy of initiation the spark that ignites action. Ruled by Mars, this sign carries the warrior's courage and the pioneer's vision. Aries doesn't wait for permission; they forge ahead, creating paths where none existed.
+                </p>
+                
+                <div class="traits-grid">
+                    <div class="trait-item">
+                        <div class="trait-icon">✦</div>
+                        <div class="trait-content">
+                            <h4>Natural Leadership</h4>
+                            <p>Aries leads by example, inspiring others through decisive action and unwavering confidence.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">✦</div>
+                        <div class="trait-content">
+                            <h4>Fearless Initiative</h4>
+                            <p>First to act, first to try. Aries embraces risk and thrives in situations requiring courage.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">✦</div>
+                        <div class="trait-content">
+                            <h4>Passionate Energy</h4>
+                            <p>Everything Aries touches ignites with intensity. Their enthusiasm is contagious and motivating.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">✦</div>
+                        <div class="trait-content">
+                            <h4>Direct Communication</h4>
+                            <p>No games, no pretense. Aries values honesty and speaks their truth without hesitation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">✦</div>
+                        <div class="trait-content">
+                            <h4>Competitive Spirit</h4>
+                            <p>Aries thrives on challenge and competition, constantly pushing boundaries and raising standards.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">✦</div>
+                        <div class="trait-content">
+                            <h4>Independent Nature</h4>
+                            <p>Self reliant and autonomous, Aries forges their own path and defines success on their terms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Aries Products -->
+    <section class="section products-section">
+        <div class="container">
+            <h2 class="mb-md">Shop the Aries Collection</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 3rem;">
+                Pieces designed to honour the fearless Aries spirit
+            </p>
+            
+            <div class="products-preview" id="ariesProducts">
+                <!-- Products will be loaded here dynamically -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <a href="../shop.html?zodiac=Aries" class="btn btn-primary">View All Aries Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Zodiac</h4>
+                    <ul class="footer-links">
+                        <li><a href="aries.html">♈ Aries</a></li>
+                        <li><a href="taurus.html">♉ Taurus</a></li>
+                        <li><a href="gemini.html">♊ Gemini</a></li>
+                        <li><a href="cancer.html">♋ Cancer</a></li>
+                        <li><a href="leo.html">♌ Leo</a></li>
+                        <li><a href="virgo.html">♍ Virgo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>More Signs</h4>
+                    <ul class="footer-links">
+                        <li><a href="libra.html">♎ Libra</a></li>
+                        <li><a href="scorpio.html">♏ Scorpio</a></li>
+                        <li><a href="sagittarius.html">♐ Sagittarius</a></li>
+                        <li><a href="capricorn.html">♑ Capricorn</a></li>
+                        <li><a href="aquarius.html">♒ Aquarius</a></li>
+                        <li><a href="pisces.html">♓ Pisces</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="../oracle.html">The Oracle</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="../checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/search.js"></script>
+    
+    <script>
+        // Load Aries products
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('ariesProducts');
+            
+            // Sample products for demonstration (remove when products.json is ready)
+            const sampleProducts = [
+                {
+                    sku: 'M-ARIES-HOOD',
+                    title: 'Aries Signature Hoodie',
+                    category: 'Men',
+                    zodiac_sign: 'Aries',
+                    price: 110.00,
+                    image_front: 'men/aries-hoodie-front.webp'
+                },
+                {
+                    sku: 'W-ARIES-TEE',
+                    title: 'Aries Essential Tee',
+                    category: 'Women',
+                    zodiac_sign: 'Aries',
+                    price: 45.00,
+                    image_front: 'women/aries-tee-front.webp'
+                },
+                {
+                    sku: 'MG-MOON-ARIES',
+                    title: 'Moon Girl Aries Tee',
+                    category: 'Moon Girls',
+                    zodiac_sign: 'Aries',
+                    price: 32.00,
+                    image_front: 'moon-girls/aries-tee-front.webp'
+                }
+            ];
+            
+            try {
+                // Try to fetch products from JSON file
+                const response = await fetch('../data/products.json');
+                
+                let products = sampleProducts; // Default to sample products
+                
+                // Only parse JSON if response is valid
+                if (response.ok) {
+                    const contentType = response.headers.get('content-type');
+                    if (contentType && contentType.includes('application/json')) {
+                        products = await response.json();
+                    }
+                }
+                
+                // Filter products for Aries
+                const ariesProducts = products.filter(p => p.zodiac_sign === 'Aries').slice(0, 3);
+                
+                if (ariesProducts.length === 0) {
+                    container.innerHTML = '<p style="grid-column: 1/-1; color: #666; text-align: center;">No Aries products available yet. Check back soon!</p>';
+                    return;
+                }
+                
+                container.innerHTML = ariesProducts.map(product => `
+                    <div class="product-card fade-in">
+                        <a href="../product.html?sku=${product.sku}" class="product-image">
+                            <img src="../assets/products/${product.image_front}" 
+                                 alt="${product.title}"
+                                 loading="lazy"
+                                 onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop'">
+                        </a>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-title">
+                                <a href="../product.html?sku=${product.sku}">${product.title}</a>
+                            </h3>
+                            <div class="product-price">
+                                <span class="price-current">£${parseFloat(product.price).toFixed(2)}</span>
+                            </div>
+                            <a href="../product.html?sku=${product.sku}" class="btn btn-outline btn-full">View Details</a>
+                        </div>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Error loading Aries products:', error);
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                        <p style="color: #666; margin-bottom: 1rem;">Products catalog is being prepared.</p>
+                        <a href="../shop.html?zodiac=Aries" class="btn btn-primary">Browse Shop Instead</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

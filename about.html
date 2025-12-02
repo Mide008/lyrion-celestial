@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about LYRĪON - where celestial wisdom meets contemporary design. Made in England with intention.">
+    <title>About Us | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.7) 0%, rgba(15, 13, 11, 0.5) 100%), 
+                        url('https://images.unsplash.com/photo-1519735777090-ec97df02a2b4?w=1600&h=600&fit=crop') center/cover;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-cream);
+            padding: 4rem 2rem;
+        }
+        
+        .about-hero h1 {
+            color: var(--color-gold-primary);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--color-cream);
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+        
+        .story-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .story-section p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-section h2 {
+            font-size: 2.2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-ink);
+        }
+        
+        .value-description {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        .image-section {
+            margin: 4rem 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        
+        .image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .made-in-england {
+            background: var(--color-cream-dark);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+        }
+        
+        .made-in-england h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .craftsmanship-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .craft-feature {
+            padding: 1.5rem;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+        }
+        
+        .craft-feature h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-gold-primary);
+        }
+        
+        .craft-feature p {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div>
+            <h1>Where Cosmos Meets Craft</h1>
+            <p>LYRĪON merges celestial wisdom with contemporary design, honouring traditional craftsmanship while embracing modern luxury.</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="section">
+        <div class="container">
+            <div class="story-section">
+                <h2>Our Story</h2>
+                
+                <p>
+                    LYRĪON was born from a simple belief: that the cosmos is not separate from our daily lives, but woven into every moment. We create pieces that honour this connection—apparel and homeware that carry intention, beauty, and the timeless wisdom of the stars.
+                </p>
+                
+                <p>
+                    Each piece is designed in England, where centuries of textile craftsmanship meet modern aesthetic sensibility. We believe in quality that lasts, design that speaks, and intention in every detail. Our zodiac-inspired collections are not mere fashion—they are expressions of cosmic identity, made tangible.
+                </p>
+                
+                <div class="image-section">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb1aea07c7eb?w=1200&h=600&fit=crop" alt="Craftsmanship" loading="lazy">
+                </div>
+                
+                <p>
+                    We work with select artisans and ethical manufacturers who share our commitment to excellence. Every hoodie, every altar cloth, every piece of celestial homeware is created with care—from the first sketch to the final stitch.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="section-sm" style="background: var(--color-cream-dark);">
+        <div class="container">
+            <h2 class="text-center mb-lg">What We Stand For</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">✦</div>
+                    <h3 class="value-title">Intentional Design</h3>
+                    <p class="value-description">
+                        Every piece is created with purpose. We design for meaning, not trends—creating items that resonate with your cosmic essence.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">✧</div>
+                    <h3 class="value-title">Quality Craftsmanship</h3>
+                    <p class="value-description">
+                        Made in England with traditional techniques and modern precision. We believe in creating pieces that last, not disposable fashion.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">✵</div>
+                    <h3 class="value-title">Ethical Production</h3>
+                    <p class="value-description">
+                        We partner with manufacturers who treat their workers fairly, use sustainable materials, and minimize environmental impact.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Made in England -->
+    <section class="section">
+        <div class="container">
+            <div class="made-in-england">
+                <h2>Made in England</h2>
+                <p style="font-size: 1.2rem; color: #666; max-width: 700px; margin: 0 auto 3rem;">
+                    Our pieces are crafted in England, honouring a legacy of textile excellence while embracing contemporary luxury.
+                </p>
+                
+                <div class="craftsmanship-features">
+                    <div class="craft-feature">
+                        <h3>Premium Materials</h3>
+                        <p>Organic cotton, sustainable fabrics, and ethically-sourced textiles</p>
+                    </div>
+                    
+                    <div class="craft-feature">
+                        <h3>Small-Batch Production</h3>
+                        <p>Limited quantities ensure quality and reduce waste</p>
+                    </div>
+                    
+                    <div class="craft-feature">
+                        <h3>Minimal Embroidery</h3>
+                        <p>Subtle gold detailing that speaks without shouting</p>
+                    </div>
+                    
+                    <div class="craft-feature">
+                        <h3>Timeless Design</h3>
+                        <p>Pieces that transcend seasons and trends</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="story-section">
+                <h2>Our Philosophy</h2>
+                
+                <p>
+                    We believe that what you wear and surround yourself with matters. Clothing is not just fabric—it's an extension of your identity, your values, your cosmic signature. When you choose LYRĪON, you're choosing to align your external expression with your internal truth.
+                </p>
+                
+                <p>
+                    The zodiac is not superstition—it's a language, a framework for understanding the archetypal energies that shape human experience. Our designs honour this ancient wisdom while remaining firmly rooted in contemporary style.
+                </p>
+                
+                <div class="image-section">
+                    <img src="https://images.unsplash.com/photo-1509909756405-be0199881695?w=1200&h=600&fit=crop" alt="Studio workspace" loading="lazy">
+                </div>
+                
+                <p>
+                    We're not chasing fast fashion or fleeting trends. We're building a brand for those who value quality, intention, and cosmic connection. For those who believe that every choice—including what you wear—is an opportunity for alignment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section" style="background: var(--color-ink); color: var(--color-cream); text-align: center;">
+        <div class="container">
+            <h2 style="color: var(--color-gold-primary); margin-bottom: 1.5rem;">Live With Intention</h2>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.8;">
+                Discover pieces that honour your cosmic essence. Explore our collections and find what resonates with your sign.
+            </p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="shop.html" class="btn btn-primary">Shop Collection</a>
+                <a href="contact.html" class="btn btn-outline" style="border-color: var(--color-gold-accent); color: var(--color-cream);">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                        <li><a href="shop.html?category=Home">Home & Altar</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved. Made with intention in England.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose" aria-label="Close cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs..." style="border-color: var(--color-gold-accent);">
+                <span class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </span>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+</body>
+</html>

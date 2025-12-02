@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pisces - Compassionate. Mystical. Fluid. Discover LYRĪON's Pisces zodiac collection and Neptune-inspired dreams.">
+    <title>Pisces | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        .zodiac-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.90) 0%, rgba(10, 20, 40, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&h=600&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.4&fit=crop') center/cover;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-cream);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .zodiac-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(70, 130, 180, 0.25) 0%, transparent 70%),
+                        radial-gradient(circle at 70% 70%, rgba(135, 206, 235, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .zodiac-symbol-large {
+            font-size: 8rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+            line-height: 1;
+            text-shadow: 0 4px 20px rgba(70, 130, 180, 0.4);
+            animation: fishSwim 5s ease-in-out infinite;
+        }
+        
+        @keyframes fishSwim {
+            0%, 100% { 
+                transform: translateX(0) rotate(0deg);
+                text-shadow: 0 4px 20px rgba(70, 130, 180, 0.4);
+            }
+            25% { 
+                transform: translateX(-3px) rotate(-1deg);
+                text-shadow: 0 6px 25px rgba(70, 130, 180, 0.6), 0 0 15px rgba(135, 206, 235, 0.3);
+            }
+            75% { 
+                transform: translateX(3px) rotate(1deg);
+                text-shadow: 0 6px 25px rgba(70, 130, 180, 0.6), 0 0 15px rgba(135, 206, 235, 0.3);
+            }
+        }
+        
+        .zodiac-name {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--color-cream);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            font-weight: 400;
+        }
+        
+        .zodiac-dates {
+            font-size: 1.3rem;
+            color: #87CEEB;
+            margin-bottom: 2rem;
+            font-style: italic;
+            letter-spacing: 0.1em;
+        }
+        
+        .zodiac-essence {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-cream);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+        }
+        
+        .zodiac-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .detail-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 2px solid var(--color-cream-dark);
+            transition: all var(--transition-medium);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4169E1, #87CEEB);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .detail-card:hover {
+            border-color: #4169E1;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(65, 105, 225, 0.15);
+        }
+        
+        .detail-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-value {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: #4169E1;
+            font-weight: 500;
+        }
+        
+        .personality-section {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f2ff 100%);
+            padding: 4rem 2rem;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .personality-section::before {
+            content: '♓';
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            font-size: 15rem;
+            color: rgba(65, 105, 225, 0.07);
+            pointer-events: none;
+            transform: rotate(15deg);
+        }
+        
+        .personality-section::after {
+            content: '🐠';
+            position: absolute;
+            bottom: -40px;
+            left: 20px;
+            font-size: 10rem;
+            color: rgba(65, 105, 225, 0.05);
+            pointer-events: none;
+            transform: rotate(-15deg);
+        }
+        
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .trait-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(65, 105, 225, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .trait-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.03), rgba(135, 206, 235, 0.01));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .trait-item:hover {
+            transform: translateY(-3px);
+            border-color: #4169E1;
+            box-shadow: 0 8px 20px rgba(65, 105, 225, 0.1);
+        }
+        
+        .trait-item:hover::before {
+            opacity: 1;
+        }
+        
+        .trait-icon {
+            font-size: 1.5rem;
+            color: #4169E1;
+            min-width: 30px;
+            margin-top: 0.25rem;
+        }
+        
+        .trait-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-ink);
+            font-weight: 600;
+        }
+        
+        .trait-content p {
+            color: #666;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .water-element-feature {
+            background: linear-gradient(135deg, #e6f2ff 0%, #d9eaff 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+            border: 1px solid rgba(65, 105, 225, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .water-element-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(65, 105, 225, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(135, 206, 235, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .element-icon {
+            font-size: 3rem;
+            color: #4169E1;
+            margin-bottom: 1rem;
+        }
+        
+        .neptune-note {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 3rem 0;
+            border-left: 4px solid #4169E1;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fish-symbolism {
+            background: linear-gradient(135deg, rgba(240, 248, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            margin: 3rem 0;
+            text-align: center;
+            border: 2px solid rgba(65, 105, 225, 0.2);
+            position: relative;
+        }
+        
+        .fish-symbolism::before {
+            content: '🐟';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10rem;
+            color: rgba(65, 105, 225, 0.05);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .fish-symbolism > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .products-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(180deg, var(--color-white) 0%, #fafafc 100%);
+        }
+        
+        .products-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .fish-icon {
+            font-size: 2rem;
+            color: #4169E1;
+            margin: 0 0.5rem;
+            vertical-align: middle;
+            animation: fishSwimIcon 3s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes fishSwimIcon {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(5px) rotate(5deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .zodiac-hero {
+                min-height: 400px;
+                padding: 2rem 1rem;
+            }
+            
+            .zodiac-symbol-large {
+                font-size: 6rem;
+            }
+            
+            .zodiac-details-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .detail-card {
+                padding: 1.5rem;
+            }
+            
+            .traits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-preview {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .water-element-feature {
+                padding: 2rem 1.5rem;
+            }
+            
+            .personality-section::before {
+                font-size: 10rem;
+                top: -20px;
+                right: 10px;
+            }
+            
+            .personality-section::after {
+                font-size: 7rem;
+                bottom: -30px;
+                left: 10px;
+            }
+            
+            .fish-symbolism::before {
+                font-size: 6rem;
+            }
+            
+            .dreamscape {
+                height: 150px;
+            }
+            
+            .depth-layers {
+                flex-direction: column;
+            }
+        }
+        
+        .product-card.zodiac-specific {
+            border: 1px solid rgba(65, 105, 225, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card.zodiac-specific::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(65, 105, 225, 0.02), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card.zodiac-specific:hover {
+            border-color: #4169E1;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(65, 105, 225, 0.12);
+        }
+        
+        .product-card.zodiac-specific:hover::after {
+            opacity: 1;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(65, 105, 225, 0.3), transparent);
+            margin: 3rem 0;
+        }
+        
+        .dream-symbol {
+            display: inline-block;
+            position: relative;
+            margin: 0 0.5rem;
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+        }
+        
+        .dream-symbol::before {
+            content: '💫';
+            font-size: 2rem;
+            animation: dreamFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes dreamFloat {
+            0%, 100% { 
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(-5px) scale(1.05);
+                opacity: 0.8;
+            }
+        }
+        
+        .mutable-modality {
+            background: var(--color-cream);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            margin: 2rem 0;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            border: 1px solid rgba(65, 105, 225, 0.1);
+        }
+        
+        .compassion-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-top: 2px solid rgba(65, 105, 225, 0.2);
+            border-bottom: 2px solid rgba(65, 105, 225, 0.2);
+            font-family: var(--font-serif);
+        }
+        
+        .mystical-note {
+            background: linear-gradient(135deg, rgba(240, 248, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #666;
+            border: 1px dashed rgba(65, 105, 225, 0.2);
+        }
+        
+        .depth-layers {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .depth-layers::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4169E1, transparent);
+            z-index: 0;
+        }
+        
+        .depth-point {
+            text-align: center;
+            padding: 1rem;
+            background: var(--color-white);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(65, 105, 225, 0.1);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .depth-point:hover {
+            transform: translateY(-5px);
+            border-color: #4169E1;
+            box-shadow: 0 5px 15px rgba(65, 105, 225, 0.1);
+        }
+        
+        .depth-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .dreamscape {
+            height: 200px;
+            position: relative;
+            margin: 3rem auto;
+            max-width: 800px;
+            background: linear-gradient(to bottom, #1a2980, #26d0ce);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        
+        .dreamscape::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            animation: dreamShimmer 6s ease-in-out infinite;
+        }
+        
+        @keyframes dreamShimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .dreamscape::after {
+            content: '🐠';
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            font-size: 2rem;
+            animation: dreamFish 10s linear infinite;
+        }
+        
+        @keyframes dreamFish {
+            0% { 
+                left: 20px;
+                transform: translateY(-50%) rotate(0deg);
+            }
+            25% { 
+                left: 25%;
+                transform: translateY(-30%) rotate(10deg);
+            }
+            50% { 
+                left: 50%;
+                transform: translateY(-50%) rotate(0deg);
+            }
+            75% { 
+                left: 75%;
+                transform: translateY(-70%) rotate(-10deg);
+            }
+            100% { 
+                left: calc(100% - 50px);
+                transform: translateY(-50%) rotate(0deg);
+            }
+        }
+        
+        .intuition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .intuition-point {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(65, 105, 225, 0.05);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .intuition-point:hover {
+            background: rgba(65, 105, 225, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .intuition-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .ocean-box {
+            background: linear-gradient(135deg, #e6f2ff, #d9eaff);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #4169E1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ocean-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                repeating-linear-gradient(0deg, 
+                    transparent, 
+                    transparent 10px, 
+                    rgba(65, 105, 225, 0.03) 10px, 
+                    rgba(65, 105, 225, 0.03) 20px);
+            pointer-events: none;
+        }
+        
+        .empathy-note {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(65, 105, 225, 0.1);
+        }
+        
+        .boundary-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .boundary-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(65, 105, 225, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .boundary-circle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
+            border: 2px dashed rgba(65, 105, 225, 0.3);
+            border-radius: 50%;
+            animation: boundaryPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes boundaryPulse {
+            0% { 
+                opacity: 1;
+                width: 80px;
+                height: 80px;
+            }
+            100% { 
+                opacity: 0;
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+        .fluid-note {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(65, 105, 225, 0.1);
+        }
+        
+        .creative-realms {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .realm-element {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(65, 105, 225, 0.05);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .realm-element:hover {
+            background: rgba(65, 105, 225, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .realm-symbol {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="../index.html" class="logo">
+                <img src="./logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../shop.html">Shop</a></li>
+                <li><a href="../oracle.html">The Oracle</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Zodiac Hero -->
+    <section class="zodiac-hero">
+        <div class="container-narrow">
+            <div class="zodiac-symbol-large">♓</div>
+            <h1 class="zodiac-name">Pisces</h1>
+            <p class="zodiac-dates">February 19 - March 20</p>
+            <p class="zodiac-essence">Compassionate. Mystical. Fluid.</p>
+        </div>
+    </section>
+
+    <!-- Zodiac Details -->
+    <section class="section">
+        <div class="container">
+            <div class="zodiac-details-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Element</div>
+                    <div class="detail-value">Water</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Ruling Planet</div>
+                    <div class="detail-value">Neptune/Jupiter</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Modality</div>
+                    <div class="detail-value">Mutable</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Symbol</div>
+                    <div class="detail-value">The Fish</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Water Element Feature -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="water-element-feature">
+                <div class="element-icon">🌊</div>
+                <h2 class="text-center mb-sm">The Water Element</h2>
+                <p class="text-center" style="font-size: 1.15rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto;">
+                    As a Water sign, Pisces embodies the deepest oceans of emotion, intuition, and spiritual connection. Like water that takes the shape of its container, they flow between realities, dissolve boundaries, and navigate the unseen currents of feeling and dream.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Fish Symbolism -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="fish-symbolism">
+                <h3 class="mb-sm">The <span class="fish-icon">🐟</span> Fish's Wisdom <span class="fish-icon">🐟</span></h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #666; max-width: 700px; margin: 0 auto;">
+                    The Fish represents dual consciousness swimming in both the material and spiritual worlds, navigating visible and invisible currents, understanding that reality has layers beyond what the eye can see. Pisces moves between dimensions with fluid grace.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mutable Modality Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="mutable-modality">
+                <p style="margin: 0; font-size: 1.1rem;">
+                    As a <strong>Mutable</strong> sign, Pisces embodies <strong>adaptive fluidity</strong> changing shape to meet each moment's needs, flowing around obstacles rather than confronting them, and understanding that flexibility is the highest form of strength.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dreamscape Animation -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="dreamscape"></div>
+            <p class="text-center" style="color: #666; font-size: 0.95rem; margin-top: 1rem;">
+                Pisces navigates the dreamscape where intuition flows and boundaries dissolve
+            </p>
+        </div>
+    </section>
+
+    <!-- Boundary Visualization -->
+    <section class="section-sm">
+        <div class="container">
+            <h3 class="text-center mb-sm">The Fluid Boundary</h3>
+            <div class="boundary-visual">
+                <div class="boundary-circle">🌊</div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; color: #4169E1;">↔️</div>
+                    <small style="color: #666;">Porous boundaries</small>
+                </div>
+                <div class="boundary-circle">💫</div>
+            </div>
+            <p class="text-center" style="color: #666; font-size: 0.95rem; margin-top: 1rem;">
+                Pisces experiences life through permeable boundaries feeling others' emotions as their own, dreaming with eyes open
+            </p>
+        </div>
+    </section>
+
+    <!-- Depth Layers -->
+    <section class="section-sm">
+        <div class="container">
+            <h3 class="text-center mb-sm">The Ocean Depths</h3>
+            <div class="depth-layers">
+                <div class="depth-point">
+                    <span class="depth-icon">🌊</span>
+                    <div>Surface</div>
+                    <small>Everyday reality</small>
+                </div>
+                <div class="depth-point">
+                    <span class="depth-icon">🌀</span>
+                    <div>Mid-Water</div>
+                    <small>Emotional currents</small>
+                </div>
+                <div class="depth-point">
+                    <span class="depth-icon">🌌</span>
+                    <div>Deep Ocean</div>
+                    <small>Collective unconscious</small>
+                </div>
+                <div class="depth-point">
+                    <span class="depth-icon">💫</span>
+                    <div>Abyss</div>
+                    <small>Spiritual mystery</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intuition Grid -->
+    <section class="section-sm">
+        <div class="container">
+            <h3 class="text-center mb-sm">Pisces Intuition</h3>
+            <div class="intuition-grid">
+                <div class="intuition-point">
+                    <span class="intuition-icon">💭</span>
+                    <div>Dreams</div>
+                    <small>Night visions</small>
+                </div>
+                <div class="intuition-point">
+                    <span class="intuition-icon">🎨</span>
+                    <div>Art</div>
+                    <small>Soul expression</small>
+                </div>
+                <div class="intuition-point">
+                    <span class="intuition-icon">🎵</span>
+                    <div>Music</div>
+                    <small>Emotional language</small>
+                </div>
+                <div class="intuition-point">
+                    <span class="intuition-icon">🌌</span>
+                    <div>Mysticism</div>
+                    <small>Spiritual connection</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compassion Quote -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="compassion-quote">
+                "To feel everything is to understand everything. The heart that knows no boundaries can hold the entire ocean of human experience."
+            </div>
+        </div>
+    </section>
+
+    <!-- Ocean Box -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="ocean-box">
+                <h3 class="mb-sm" style="color: #4169E1;">The Pisces Ocean</h3>
+                <p style="color: #666; line-height: 1.7;">
+                    Pisces swims in the collective ocean of human feeling they don't just empathize with individuals; they feel the emotional currents of humanity itself. Their apparent vagueness isn't lack of focus, but awareness of multiple realities simultaneously. Their fluidity isn't indecision, but the ability to be completely present in whatever reality they're swimming through.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empathy Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="empathy-note">
+                <h4 class="mb-sm" style="color: #4169E7;">Neptune's Gift</h4>
+                <p style="color: #666; line-height: 1.7; margin: 0;">
+                    Pisces's famous empathy isn't just feeling what others feel it's the dissolution of boundaries between self and other, the ability to experience reality from infinite perspectives, and the understanding that we're all swimming in the same ocean of consciousness.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mystical Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="mystical-note">
+                Pisces's dreaminess isn't escapism it's access to deeper realities, the ability to perceive what lies beneath surface appearances, and the wisdom that comes from listening to whispers the world has forgotten how to hear.
+            </div>
+        </div>
+    </section>
+
+    <!-- Creative Realms -->
+    <section class="section-sm">
+        <div class="container">
+            <h3 class="text-center mb-sm">The Creative Realms</h3>
+            <div class="creative-realms">
+                <div class="realm-element">
+                    <span class="realm-symbol">🎭</span>
+                    <div>Art</div>
+                    <small>Soul made visible</small>
+                </div>
+                <div class="realm-element">
+                    <span class="realm-symbol">🎵</span>
+                    <div>Music</div>
+                    <small>Emotion in sound</small>
+                </div>
+                <div class="realm-element">
+                    <span class="realm-symbol">📖</span>
+                    <div>Poetry</div>
+                    <small>Dreams in words</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fluid Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="fluid-note">
+                <h4 class="mb-sm" style="color: #4169E1;">The Mutable Mystery</h4>
+                <p style="color: #666; line-height: 1.7; margin: 0;">
+                    Pisces's fluidity is their greatest strength not weakness. Like water, they can be gentle rain or tidal wave, quiet stream or deep ocean. Their ability to adapt isn't inconsistency, but the recognition that reality itself is fluid, and wisdom lies in flowing with its currents.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="personality-section">
+                <h2 class="text-center mb-md">The Pisces Essence</h2>
+                <p class="text-center mb-lg" style="font-size: 1.15rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto 3rem;">
+                    Pisces represents the mystic poet of the zodiac the compassionate soul who feels the world's joys and sorrows as their own, the dreamer who navigates multiple realities with equal grace, and the spiritual seeker who understands that the greatest truths are felt, not told. Ruled by Neptune, they dissolve boundaries; guided by Jupiter, they find faith in the infinite.
+                </p>
+                
+                <div class="traits-grid">
+                    <div class="trait-item">
+                        <div class="trait-icon">🐟</div>
+                        <div class="trait-content">
+                            <h4>Boundless Compassion</h4>
+                            <p>Pisces feels others' emotions as deeply as their own they understand suffering without judgment and offer comfort without conditions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🐟</div>
+                        <div class="trait-content">
+                            <h4>Profound Intuition</h4>
+                            <p>They perceive what can't be seen the unspoken feelings, the hidden meanings, the spiritual connections that bind all things.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🐟</div>
+                        <div class="trait-content">
+                            <h4>Creative Imagination</h4>
+                            <p>Their inner world is rich and vivid they access dreams, visions, and artistic inspiration from deep wellsprings of psyche.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🐟</div>
+                        <div class="trait-content">
+                            <h4>Spiritual Sensitivity</h4>
+                            <p>Pisces feels connected to something greater whether through art, nature, mysticism, or direct spiritual experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🐟</div>
+                        <div class="trait-content">
+                            <h4>Adaptive Fluidity</h4>
+                            <p>They move through life like water changing shape to meet circumstances, flowing around obstacles, adapting without losing essence.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🐟</div>
+                        <div class="trait-content">
+                            <h4>Healing Presence</h4>
+                            <p>Their empathy has transformative power they don't just understand pain; they help dissolve it through acceptance and love.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neptune/Jupiter Rulership Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="neptune-note">
+                <h3 class="mb-sm">Ruled by Neptune (Traditional: Jupiter)</h3>
+                <p style="color: #666; line-height: 1.7;">
+                    Neptune governs dreams, mysticism, and dissolution of boundaries. Jupiter governs faith, expansion, and wisdom. Together, they create Pisces's unique spiritual genius: the ability to dissolve into universal consciousness (Neptune) while finding meaning and faith in the experience (Jupiter). This makes Pisces both the mystic who loses self in the divine and the sage who finds wisdom in surrender.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Shop Pisces Products -->
+    <section class="section products-section">
+        <div class="container">
+            <h2 class="mb-md">Shop the Pisces Collection</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 3rem;">
+                Pieces designed for compassion, mysticism, and fluid beauty
+            </p>
+            
+            <div class="products-preview" id="piscesProducts">
+                <!-- Products will be loaded here dynamically -->
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <a href="../shop.html?zodiac=Pisces" class="btn btn-primary">View All Pisces Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Zodiac</h4>
+                    <ul class="footer-links">
+                        <li><a href="aries.html">♈ Aries</a></li>
+                        <li><a href="taurus.html">♉ Taurus</a></li>
+                        <li><a href="gemini.html">♊ Gemini</a></li>
+                        <li><a href="cancer.html">♋ Cancer</a></li>
+                        <li><a href="leo.html">♌ Leo</a></li>
+                        <li><a href="virgo.html">♍ Virgo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>More Signs</h4>
+                    <ul class="footer-links">
+                        <li><a href="libra.html">♎ Libra</a></li>
+                        <li><a href="scorpio.html">♏ Scorpio</a></li>
+                        <li><a href="sagittarius.html">♐ Sagittarius</a></li>
+                        <li><a href="capricorn.html">♑ Capricorn</a></li>
+                        <li><a href="aquarius.html">♒ Aquarius</a></li>
+                        <li><a href="pisces.html">♓ Pisces</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="../oracle.html">The Oracle</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="../checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/search.js"></script>
+    
+    <script>
+        // Load Pisces products
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('piscesProducts');
+            
+            try {
+                // Fetch products from JSON file
+                const response = await fetch('../data/products.json');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                
+                const products = await response.json();
+                
+                // Filter products for Pisces
+                const piscesProducts = products.filter(p => p.zodiac_sign === 'Pisces').slice(0, 3);
+                
+                if (piscesProducts.length === 0) {
+                    // Fallback to sample products if none found
+                    piscesProducts.push(
+                        {
+                            sku: 'A-HOOD-PISCES',
+                            title: 'Pisces Zodiac Hoodie',
+                            category: 'Men',
+                            zodiac_sign: 'Pisces',
+                            price: 110.00,
+                            image_front: 'A-HOOD-PISCES-image.webp',
+                            description: 'Dreamy hoodie featuring the Fish symbol in ocean blue and mystical gold'
+                        },
+                        {
+                            sku: 'A-TEE-PISCES',
+                            title: 'Pisces Essential Tee',
+                            category: 'Women',
+                            zodiac_sign: 'Pisces',
+                            price: 65.00,
+                            image_front: 'A-TEE-PISCES-image.webp',
+                            description: 'Swimming fish design with flowing water and dreamlike patterns'
+                        },
+                        {
+                            sku: 'H-ALTAR-CLOTH-PISCES',
+                            title: 'Pisces Altar Cloth',
+                            category: 'Home & Altar',
+                            zodiac_sign: 'Pisces',
+                            price: 50.00,
+                            image_front: 'H-ALTAR-CLOTH-PISCES-image.webp',
+                            description: 'Mystical ceremonial cloth featuring ocean waves and dream symbols'
+                        }
+                    );
+                }
+                
+                container.innerHTML = piscesProducts.map(product => `
+                    <div class="product-card zodiac-specific fade-in">
+                        <div class="product-image">
+                            <img src="../assets/products/${product.image_front}" 
+                                 alt="${product.title}"
+                                 loading="lazy"
+                                 style="opacity: 1; transition: opacity 0.3s ease;"
+                                 onerror="this.src='https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=500&fit=crop'">
+                            ${product.compare_at_price > 0 ? '<span class="product-badge">Sale</span>' : ''}
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-title">${product.title}</h3>
+                            <div class="product-price">
+                                <span class="price-current">${window.LyrionUtils?.formatPrice ? window.LyrionUtils.formatPrice(product.price) : '£' + parseFloat(product.price).toFixed(2)}</span>
+                            </div>
+                            <p class="product-description" style="font-size: 0.9rem; line-height: 1.5; color: #666; margin: 0.5rem 0 1rem;">${product.description}</p>
+                            <a href="../product.html?sku=${product.sku}" class="btn btn-primary btn-full">View Details</a>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add dreamy entrance animation
+                setTimeout(() => {
+                    document.querySelectorAll('.product-card.zodiac-specific').forEach((card, index) => {
+                        card.style.animationDelay = `${index * 0.1}s`;
+                        card.classList.add('fade-in');
+                    });
+                }, 100);
+                
+            } catch (error) {
+                console.error('Error loading Pisces products:', error);
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                        <p style="color: #666; margin-bottom: 1rem;">Products catalog is being prepared.</p>
+                        <a href="../shop.html?zodiac=Pisces" class="btn btn-primary">Browse Shop Instead</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

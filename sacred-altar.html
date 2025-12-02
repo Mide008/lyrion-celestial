@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creating a Sacred Altar - Learn how to build a personal altar for meditation, manifestation, and spiritual connection.">
+    <title>Creating a Sacred Altar: Your Personal Cosmic Portal | The Codex | LYRĪON</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Article Hero */
+        .article-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.85) 0%, rgba(15, 13, 11, 0.7) 100%);
+            color: var(--color-cream);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(196, 164, 73, 0.15) 0%, transparent 70%),
+                        radial-gradient(circle at 70% 70%, rgba(196, 164, 73, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .article-hero-image {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+        
+        .article-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-accent);
+            font-size: 0.95rem;
+        }
+        
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #333;
+        }
+        
+        .article-body h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .article-body h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--color-ink);
+        }
+        
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-body blockquote {
+            border-left: 4px solid var(--color-gold-primary);
+            padding: 2rem;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), transparent);
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--color-ink);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .article-body img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .article-body li {
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Floating Action Bar */
+        .article-actions {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .article-actions.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .action-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+        }
+        
+        .action-btn:hover {
+            background: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Author Section */
+        .author-section {
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-gold-primary);
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Related Articles */
+        .related-articles {
+            margin-top: 6rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(196, 164, 73, 0.2);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .related-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-medium);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .related-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+            text-decoration: none;
+        }
+        
+        .related-image {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .related-card:hover .related-image img {
+            transform: scale(1.05);
+        }
+        
+        .related-content {
+            padding: 1.5rem;
+        }
+        
+        /* Table of Contents */
+        .toc-container {
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .toc-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-link {
+            color: #666;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--color-gold-primary);
+            background: rgba(196, 164, 73, 0.05);
+            padding-left: 1rem;
+        }
+        
+        /* Reading Progress */
+        .reading-progress {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(196, 164, 73, 0.1);
+            z-index: 1000;
+        }
+        
+        .reading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-gold-accent), var(--color-gold-primary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Back Button */
+        .back-to-codex {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-primary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: gap var(--transition-medium);
+            text-decoration: none;
+        }
+        
+        .back-to-codex:hover {
+            gap: 0.75rem;
+        }
+        
+        /* Tip Box */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), rgba(196, 164, 73, 0.02));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-left: 4px solid var(--color-gold-primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .tip-box h4 {
+            color: var(--color-gold-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Altar Element Styling */
+        .element-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .element-card {
+            background: rgba(196, 164, 73, 0.03);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .element-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-gold-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .element-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Zodiac Altar Section */
+        .zodiac-altar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .zodiac-altar {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            transition: all var(--transition-medium);
+        }
+        
+        .zodiac-altar:hover {
+            border-color: var(--color-gold-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .zodiac-symbol {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 4rem 1rem 2rem;
+            }
+            
+            .article-hero-image {
+                height: 300px;
+            }
+            
+            .article-content {
+                padding: 2rem 1rem;
+            }
+            
+            .article-body h2 {
+                font-size: 1.7rem;
+            }
+            
+            .article-body h3 {
+                font-size: 1.3rem;
+            }
+            
+            .article-actions {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            .action-btn {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .author-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-container {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .element-grid, .zodiac-altar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                 <li><a href="oracle.html" class="active">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Reading Progress -->
+    <div class="reading-progress">
+        <div class="reading-progress-bar" id="readingProgress"></div>
+    </div>
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="container">
+            <div class="article-hero-image">
+                <img src="https://images.pexels.com/photos/1029894/pexels-photo-1029894.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop" alt="Sacred altar with candles, crystals, and spiritual items" loading="lazy" id="heroImage">
+            </div>
+            
+            <div class="container-narrow">
+                <a href="codex.html" class="back-to-codex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                    Back to The Codex
+                </a>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                        </svg>
+                        <span id="articleAuthor">LYRĪON Ritual Guide</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+                        </svg>
+                        <span id="articleDate">February 8, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                        </svg>
+                        <span id="articleReadTime">7 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+                            <path d="M5 0h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        <span id="articleCategory">Rituals & Practices</span>
+                    </div>
+                </div>
+                
+                <h1 id="articleTitle" style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--color-cream);">
+                    Creating a Sacred Altar: Your Personal Cosmic Portal
+                </h1>
+                
+                <p id="articleExcerpt" style="font-size: 1.3rem; line-height: 1.7; color: var(--color-cream); max-width: 800px;">
+                    Transform any space into a cosmic sanctuary. Learn how to build a personal altar that serves as your spiritual anchor, manifestation portal, and daily connection to the divine.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="section">
+        <div class="container">
+            <div class="article-content">
+                <div class="grid" style="grid-template-columns: 1fr 300px; gap: 3rem;">
+                    <!-- Main Content -->
+                    <div class="article-body" id="articleBody">
+                        <h2 id="section-intro">What is a Sacred Altar?</h2>
+                        <p>A sacred altar is more than just a collection of beautiful objects—it's a living, breathing portal between worlds. It's a physical space where the material and spiritual realms meet, a dedicated spot for meditation, prayer, intention-setting, and cosmic connection.</p>
+                        
+                        <blockquote>
+                            "Your altar is where heaven meets earth in your personal space. It's not about perfection—it's about presence."
+                        </blockquote>
+                        
+                        <h2 id="section-why">Why Create a Sacred Altar?</h2>
+                        <p>In our fast-paced digital world, a physical altar provides a tangible anchor for spiritual practice. It serves multiple purposes:</p>
+                        
+                        <div class="element-grid">
+                            <div class="element-card">
+                                <span class="element-icon">📍</span>
+                                <h4>Spiritual Anchor</h4>
+                                <p>A consistent space for daily practice that helps ground your energy and maintain spiritual discipline.</p>
+                            </div>
+                            <div class="element-card">
+                                <span class="element-icon">🌀</span>
+                                <h4>Manifestation Portal</h4>
+                                <p>A focal point for visualizing and materializing your intentions, dreams, and desires.</p>
+                            </div>
+                            <div class="element-card">
+                                <span class="element-icon">⚖️</span>
+                                <h4>Energetic Balance</h4>
+                                <p>Helps harmonize the energy in your living space and within yourself.</p>
+                            </div>
+                        </div>
+                        
+                        <img src="https://images.pexels.com/photos/358482/pexels-photo-358482.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Minimalist meditation altar with candles and incense" loading="lazy">
+                        
+                        <h2 id="section-location">Choosing Your Altar Location</h2>
+                        <p>The location of your altar is crucial. Consider these factors:</p>
+                        
+                        <h3>1. Energy Flow</h3>
+                        <p>Place your altar in a spot with good natural energy flow. Avoid cluttered corners or high-traffic areas where energy might be chaotic.</p>
+                        
+                        <h3>2. Privacy and Accessibility</h3>
+                        <p>Your altar should be in a place where you can have quiet moments of reflection, yet accessible enough for daily use.</p>
+                        
+                        <h3>3. Natural Elements</h3>
+                        <p>If possible, position your altar near natural light, plants, or fresh air. East-facing locations are traditionally considered auspicious for spiritual practices.</p>
+                        
+                        <div class="tip-box">
+                            <h4><span>💡</span> Pro Tip</h4>
+                            <p>Your altar doesn't need to be large. A windowsill, small table, or even a dedicated shelf can become a powerful sacred space.</p>
+                        </div>
+                        
+                        <h2 id="section-elements">The Five Essential Elements</h2>
+                        <p>Every altar benefits from incorporating representations of the five classical elements:</p>
+                        
+                        <div class="element-grid">
+                            <div class="element-card">
+                                <span class="element-icon">🔥</span>
+                                <h4>Fire</h4>
+                                <p><strong>Representations:</strong> Candles, incense, lamp<br>
+                                <strong>Purpose:</strong> Transformation, passion, illumination</p>
+                            </div>
+                            <div class="element-card">
+                                <span class="element-icon">💧</span>
+                                <h4>Water</h4>
+                                <p><strong>Representations:</strong> Small bowl of water, seashells<br>
+                                <strong>Purpose:</strong> Emotion, intuition, purification</p>
+                            </div>
+                            <div class="element-card">
+                                <span class="element-icon">🌬️</span>
+                                <h4>Air</h4>
+                                <p><strong>Representations:</strong> Feathers, bells, incense smoke<br>
+                                <strong>Purpose:</strong> Communication, intellect, breath</p>
+                            </div>
+                            <div class="element-card">
+                                <span class="element-icon">🌍</span>
+                                <h4>Earth</h4>
+                                <p><strong>Representations:</strong> Stones, crystals, salt, plants<br>
+                                <strong>Purpose:</strong> Grounding, stability, manifestation</p>
+                            </div>
+                            <div class="element-card">
+                                <span class="element-icon">✨</span>
+                                <h4>Spirit/Ether</h4>
+                                <p><strong>Representations:</strong> Sacred symbols, deity images<br>
+                                <strong>Purpose:</strong> Connection, transcendence, divine energy</p>
+                            </div>
+                        </div>
+                        
+                        <h2 id="section-personalization">Personalizing Your Altar</h2>
+                        <p>Your altar should reflect your unique spiritual path. Consider including:</p>
+                        
+                        <h3>1. Personal Symbols</h3>
+                        <p>Items that have special meaning to you—family heirlooms, gifts from loved ones, found objects from meaningful places.</p>
+                        
+                        <h3>2. Zodiac & Planetary Items</h3>
+                        <p>Incorporate colors, crystals, and symbols related to your sun, moon, and rising signs, or current planetary transits.</p>
+                        
+                        <h3>3. Seasonal Elements</h3>
+                        <p>Rotate items according to seasons, moon phases, or astrological events to keep your altar dynamic and connected to natural cycles.</p>
+                        
+                        <img src="https://images.pexels.com/photos/2736499/pexels-photo-2736499.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Personal altar with crystals, candles, and personal items" loading="lazy">
+                        
+                        <h2 id="section-zodiac">Zodiac-Inspired Altar Ideas</h2>
+                        <p>Tailor your altar to your astrological energy:</p>
+                        
+                        <div class="zodiac-altar-grid">
+                            <div class="zodiac-altar">
+                                <span class="zodiac-symbol">♈</span>
+                                <h4>Aries Altar</h4>
+                                <p><strong>Colors:</strong> Red, white<br>
+                                <strong>Elements:</strong> Carnelian, iron, arrowheads<br>
+                                <strong>Theme:</strong> Courage, new beginnings</p>
+                            </div>
+                            <div class="zodiac-altar">
+                                <span class="zodiac-symbol">♋</span>
+                                <h4>Cancer Altar</h4>
+                                <p><strong>Colors:</strong> Silver, white, sea green<br>
+                                <strong>Elements:</strong Moonstone, shells, silver items<br>
+                                <strong>Theme:</strong> Nurturing, emotional healing</p>
+                            </div>
+                            <div class="zodiac-altar">
+                                <span class="zodiac-symbol">♎</span>
+                                <h4>Libra Altar</h4>
+                                <p><strong>Colors:</strong> Pink, blue, pastels<br>
+                                <strong>Elements:</strong> Rose quartz, feathers, balanced pairs<br>
+                                <strong>Theme:</strong> Harmony, relationships</p>
+                            </div>
+                            <div class="zodiac-altar">
+                                <span class="zodiac-symbol">♑</span>
+                                <h4>Capricorn Altar</h4>
+                                <p><strong>Colors:</strong> Black, dark green, brown<br>
+                                <strong>Elements:</strong> Obsidian, granite, mountain imagery<br>
+                                <strong>Theme:</strong> Ambition, structure</p>
+                            </div>
+                        </div>
+                        
+                        <blockquote>
+                            "Your altar grows with you. It's not a static display, but a living reflection of your spiritual journey."
+                        </blockquote>
+                        
+                        <h2 id="section-rituals">Daily Altar Rituals</h2>
+                        
+                        <h3>Morning Activation</h3>
+                        <p><strong>Time:</strong> Sunrise or morning<br>
+                        <strong>Practice:</strong> Light a candle, state your intentions for the day, do 5 minutes of mindful breathing</p>
+                        
+                        <h3>Evening Release</h3>
+                        <p><strong>Time:</strong> Sunset or before bed<br>
+                        <strong>Practice:</strong> Burn incense or sage, write down anything you want to release, express gratitude</p>
+                        
+                        <h3>Weekly Clearing</h3>
+                        <p><strong>Time:</strong> New Moon or Sunday<br>
+                        <strong>Practice:</strong> Cleanse all items, rearrange if desired, refresh water and plants</p>
+                        
+                        <img src="https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Person practicing meditation at their altar" loading="lazy">
+                        
+                        <h2 id="section-maintenance">Altar Maintenance & Energetic Cleansing</h2>
+                        
+                        <h3>Regular Cleansing Methods</h3>
+                        <ul>
+                            <li><strong>Smoke Cleansing:</strong> Using sage, palo santo, or incense</li>
+                            <li><strong>Sound Clearing:</strong> Bells, singing bowls, or chanting</li>
+                            <li><strong>Moon Bathing:</strong> Placing crystals and tools under moonlight</li>
+                            <li><strong>Salt Purification:</strong> Surrounding with sea salt or Himalayan salt</li>
+                        </ul>
+                        
+                        <h3>When to Refresh Your Altar</h3>
+                        <ul>
+                            <li>After emotional turmoil or illness</li>
+                            <li>During New and Full Moons</li>
+                            <li>When starting a new project or phase</li>
+                            <li>When items feel energetically "heavy"</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h4><span>🌟</span> Cosmic Insight</h4>
+                            <p>Align your altar maintenance with lunar cycles. Cleanse during the waning moon to release, and charge items during the waxing moon to attract.</p>
+                        </div>
+                        
+                        <h2 id="section-mobile">Creating Portable Altars</h2>
+                        <p>For those with limited space or who travel frequently:</p>
+                        
+                        <h3>1. Altar-in-a-Box</h3>
+                        <p>Use a beautiful box to store miniature versions of your altar items that can be arranged anywhere.</p>
+                        
+                        <h3>2. Digital Altar</h3>
+                        <p>Create a dedicated wallpaper or folder on your devices with sacred images and affirmations.</p>
+                        
+                        <h3>3. Nature Altars</h3>
+                        <p>Create temporary altars in nature using found objects—perfect for travel or outdoor meditation.</p>
+                        
+                        <h2 id="section-conclusion">Your Altar, Your Journey</h2>
+                        <p>Remember that your sacred altar is a deeply personal creation. There are no rules, only suggestions. What matters most is that the space feels authentic and meaningful to you.</p>
+                        
+                        <p>Your altar will evolve as you do. Some items will come and go, arrangements will change, and the energy will shift. This is not only normal but beautiful—it shows that your spiritual practice is alive and growing.</p>
+                        
+                        <p>Start simple. Begin with a candle and a meaningful object. Add as you feel inspired. Trust your intuition—if something feels right for your altar, it probably is.</p>
+                        
+                        <blockquote>
+                            "The most powerful altar isn't the most elaborate—it's the one you actually use. Consistency beats complexity every time."
+                        </blockquote>
+                        
+                        <p>May your sacred altar become a true sanctuary—a place of peace, power, and profound connection in your daily life.</p>
+                    </div>
+                    
+                    <!-- Table of Contents -->
+                    <div class="toc-container">
+                        <div class="toc-title">In This Article</div>
+                        <ul class="toc-list">
+                            <li class="toc-item"><a href="#section-intro" class="toc-link active">What is a Sacred Altar?</a></li>
+                            <li class="toc-item"><a href="#section-why" class="toc-link">Why Create One?</a></li>
+                            <li class="toc-item"><a href="#section-location" class="toc-link">Choosing Location</a></li>
+                            <li class="toc-item"><a href="#section-elements" class="toc-link">Five Elements</a></li>
+                            <li class="toc-item"><a href="#section-personalization" class="toc-link">Personalization</a></li>
+                            <li class="toc-item"><a href="#section-zodiac" class="toc-link">Zodiac Ideas</a></li>
+                            <li class="toc-item"><a href="#section-rituals" class="toc-link">Daily Rituals</a></li>
+                            <li class="toc-item"><a href="#section-maintenance" class="toc-link">Maintenance</a></li>
+                            <li class="toc-item"><a href="#section-mobile" class="toc-link">Portable Altars</a></li>
+                            <li class="toc-item"><a href="#section-conclusion" class="toc-link">Conclusion</a></li>
+                        </ul>
+                        
+                        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(196, 164, 73, 0.1);">
+                            <div style="font-size: 0.9rem; color: #999; margin-bottom: 0.5rem;">Share this article</div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('twitter')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('facebook')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('pinterest')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="copyLink()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="author-section">
+                <div class="author-info">
+                    <div class="author-avatar">
+                        <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop&crop=face" alt="LYRĪON Ritual Guide">
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-ink);">
+                            Written by LYRĪON Ritual Guide
+                        </h3>
+                        <p style="color: #666; margin-bottom: 1rem; line-height: 1.6;">
+                            Our ritual experts combine ancient wisdom with modern practice to help you create meaningful spiritual routines. We believe that daily rituals transform ordinary spaces into sacred portals.
+                        </p>
+                        <a href="about.html" class="read-more" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-gold-primary); font-weight: 600; text-decoration: none;">
+                            Explore our rituals
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="section">
+        <div class="container">
+            <div class="related-articles">
+                <h2 style="font-family: var(--font-serif); font-size: 2rem; text-align: center; margin-bottom: 1rem; color: var(--color-ink);">
+                    Continue Reading
+                </h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Explore more spiritual practices from The Codex
+                </p>
+                
+                <div class="related-grid">
+                    <!-- Related Article 1 -->
+                    <a href="article-mercury-retrograde.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Mercury Retrograde">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">ASTROLOGY</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Navigating Mercury Retrograde with Grace
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">January 10, 2025</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 2 -->
+                    <a href="article-crystal-grids.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.pexels.com/photos/1904769/pexels-photo-1904769.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Crystal Grids">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">CRYSTALS</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Crystal Grids for Manifestation
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">January 25, 2025</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 3 -->
+                    <a href="moon-rituals.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.pexels.com/photos/1496372/pexels-photo-1496372.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Moon Rituals">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">LUNAR WISDOM</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Moon Phase Rituals for Each Sign
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">February 1, 2025</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="codex.html" class="btn btn-primary">View All Articles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="article-actions" id="articleActions">
+        <button class="action-btn" id="scrollToTop" aria-label="Scroll to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708 .708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="toggleDarkMode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="textSizeBtn" aria-label="Adjust text size">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.21 10.637c1.33 0 1.33.665 1.33 1.33v.665c0 .664-1.33.665-1.33.665h-.418v2.004h.836c.442 0 .836.224.836.556 0 .333-.394.557-.836.557H5.791c-.442 0-.836-.224-.836-.557 0-.332.394-.556.836-.556h.836v-2.004h-.418c-1.33 0-1.33-.664-1.33-.665v-.665c0-.665 1.33-1.33 1.33-1.33h5.962zM6.749 5.5v.05h3.999v-.05c0-1.14-.564-1.15-.564-1.15h-2.871s-.565.01-.565 1.15zM7.96 1.074h.99l.598.15s.01.17.01.45v2.797h-.01v2.709h-1.187V4.475h-.01V1.674c0-.28.01-.45.01-.45l.599-.15z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="codex.html">The Codex</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs, articles...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+    
+    <script>
+        // Enhanced Article Reading Features
+        document.addEventListener('DOMContentLoaded', () => {
+            const articleBody = document.getElementById('articleBody');
+            const readingProgress = document.getElementById('readingProgress');
+            const articleActions = document.getElementById('articleActions');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const textSizeBtn = document.getElementById('textSizeBtn');
+            const darkModeBtn = document.getElementById('toggleDarkMode');
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            const relatedCards = document.querySelectorAll('.related-card');
+            
+            let currentTextSize = 1;
+            let isDarkMode = false;
+            
+            // Reading Progress
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrolled = (scrollTop / (documentHeight - windowHeight)) * 100;
+                
+                readingProgress.style.width = scrolled + '%';
+                
+                // Show/hide action buttons
+                if (scrollTop > 300) {
+                    articleActions.classList.add('visible');
+                } else {
+                    articleActions.classList.remove('visible');
+                }
+                
+                // Update active TOC link
+                const sections = document.querySelectorAll('h2, h3');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (scrollTop >= sectionTop) {
+                        currentSection = '#' + section.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // TOC Smooth Scroll
+            tocLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Text Size Adjustment
+            textSizeBtn.addEventListener('click', () => {
+                currentTextSize += 0.1;
+                if (currentTextSize > 1.4) currentTextSize = 0.9;
+                
+                articleBody.style.fontSize = `${currentTextSize}rem`;
+                articleBody.style.lineHeight = `${1.7 + (currentTextSize - 1) * 0.2}`;
+                
+                // Show size indicator
+                const sizes = ['Small', 'Normal', 'Large', 'Extra Large'];
+                const sizeIndex = Math.min(Math.floor((currentTextSize - 0.9) / 0.1), 3);
+                
+                showToast(`Text size: ${sizes[sizeIndex]}`);
+            });
+            
+            // Dark Mode Toggle
+            darkModeBtn.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+                
+                if (isDarkMode) {
+                    document.body.style.backgroundColor = '#1a1a1a';
+                    document.body.style.color = '#e6e6e6';
+                    articleBody.style.color = '#e6e6e6';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '#ffffff';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = 'rgba(196, 164, 73, 0.1)';
+                    });
+                    showToast('Dark mode activated');
+                } else {
+                    document.body.style.backgroundColor = '';
+                    document.body.style.color = '';
+                    articleBody.style.color = '';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = '';
+                    });
+                    showToast('Light mode activated');
+                }
+            });
+            
+            // Scroll to Top
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Related card smooth transitions
+            relatedCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = card.getAttribute('href');
+                    
+                    // Show loading
+                    document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                });
+            });
+            
+            // Share functions
+            window.shareArticle = (platform) => {
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.getElementById('articleTitle').textContent);
+                let shareUrl = '';
+                
+                switch(platform) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                        break;
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                        break;
+                    case 'pinterest':
+                        shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${title}`;
+                        break;
+                }
+                
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            };
+            
+            window.copyLink = () => {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('Link copied to clipboard!');
+                });
+            };
+            
+            // Toast notification function
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.textContent = message;
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = 'var(--color-gold-primary)';
+                toast.style.color = 'var(--color-white)';
+                toast.style.padding = '1rem 2rem';
+                toast.style.borderRadius = 'var(--radius-md)';
+                toast.style.zIndex = '9999';
+                toast.style.boxShadow = 'var(--shadow-lg)';
+                toast.style.fontWeight = '600';
+                toast.style.transition = 'all 0.3s ease';
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(-50%) translateY(20px)';
+                    setTimeout(() => document.body.removeChild(toast), 300);
+                }, 2000);
+            }
+            
+            // Add back button functionality
+            document.querySelector('.back-to-codex').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    window.location.href = 'codex.html';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

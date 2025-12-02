@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scorpio - Intense. Transformative. Magnetic. Discover LYRĪON's Scorpio zodiac collection and Pluto-inspired depth.">
+    <title>Scorpio | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        .zodiac-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.92) 0%, rgba(25, 5, 15, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=1600&h=600&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.4&fit=crop') center/cover;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-cream);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .zodiac-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(120, 10, 45, 0.25) 0%, transparent 70%),
+                        radial-gradient(circle at 30% 70%, rgba(74, 0, 45, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .zodiac-symbol-large {
+            font-size: 8rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+            line-height: 1;
+            text-shadow: 0 4px 20px rgba(196, 164, 73, 0.4);
+            animation: scorpioPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes scorpioPulse {
+            0%, 100% { 
+                transform: scale(1);
+                text-shadow: 0 4px 20px rgba(196, 164, 73, 0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                text-shadow: 0 8px 30px rgba(196, 164, 73, 0.6), 0 0 20px rgba(120, 10, 45, 0.4);
+            }
+        }
+        
+        .zodiac-name {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--color-cream);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            font-weight: 400;
+        }
+        
+        .zodiac-dates {
+            font-size: 1.3rem;
+            color: #c8a2c8;
+            margin-bottom: 2rem;
+            font-style: italic;
+            letter-spacing: 0.1em;
+        }
+        
+        .zodiac-essence {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-cream);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+        }
+        
+        .zodiac-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .detail-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 2px solid var(--color-cream-dark);
+            transition: all var(--transition-medium);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #780a2d, var(--color-gold-primary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .detail-card:hover {
+            border-color: #780a2d;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(120, 10, 45, 0.15);
+        }
+        
+        .detail-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-value {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: #780a2d;
+            font-weight: 500;
+        }
+        
+        .personality-section {
+            background: linear-gradient(135deg, #f5f0f7 0%, #f9f3f9 100%);
+            padding: 4rem 2rem;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .personality-section::before {
+            content: '♏';
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            font-size: 15rem;
+            color: rgba(120, 10, 45, 0.07);
+            pointer-events: none;
+            transform: rotate(15deg);
+        }
+        
+        .personality-section::after {
+            content: '🦂';
+            position: absolute;
+            bottom: -40px;
+            left: 20px;
+            font-size: 10rem;
+            color: rgba(120, 10, 45, 0.05);
+            pointer-events: none;
+            transform: rotate(-15deg);
+        }
+        
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .trait-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(120, 10, 45, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .trait-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(120, 10, 45, 0.03), rgba(120, 10, 45, 0.01));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .trait-item:hover {
+            transform: translateY(-3px);
+            border-color: #780a2d;
+            box-shadow: 0 8px 20px rgba(120, 10, 45, 0.1);
+        }
+        
+        .trait-item:hover::before {
+            opacity: 1;
+        }
+        
+        .trait-icon {
+            font-size: 1.5rem;
+            color: #780a2d;
+            min-width: 30px;
+            margin-top: 0.25rem;
+        }
+        
+        .trait-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-ink);
+            font-weight: 600;
+        }
+        
+        .trait-content p {
+            color: #666;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .water-element-feature {
+            background: linear-gradient(135deg, #f0f5fa 0%, #e8eef9 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+            border: 1px solid rgba(120, 10, 45, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .water-element-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(120, 10, 45, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(74, 0, 45, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .element-icon {
+            font-size: 3rem;
+            color: #780a2d;
+            margin-bottom: 1rem;
+        }
+        
+        .pluto-note {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 3rem 0;
+            border-left: 4px solid #780a2d;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .scorpion-symbolism {
+            background: linear-gradient(135deg, rgba(245, 240, 247, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            margin: 3rem 0;
+            text-align: center;
+            border: 2px solid rgba(120, 10, 45, 0.2);
+            position: relative;
+        }
+        
+        .scorpion-symbolism::before {
+            content: '🦂';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10rem;
+            color: rgba(120, 10, 45, 0.05);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .scorpion-symbolism > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .products-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(180deg, var(--color-white) 0%, #fafafc 100%);
+        }
+        
+        .products-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .scorpion-icon {
+            font-size: 2rem;
+            color: #780a2d;
+            margin: 0 0.5rem;
+            vertical-align: middle;
+            animation: scorpionSting 3s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes scorpionSting {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .zodiac-hero {
+                min-height: 400px;
+                padding: 2rem 1rem;
+            }
+            
+            .zodiac-symbol-large {
+                font-size: 6rem;
+            }
+            
+            .zodiac-details-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .detail-card {
+                padding: 1.5rem;
+            }
+            
+            .traits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-preview {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .water-element-feature {
+                padding: 2rem 1.5rem;
+            }
+            
+            .personality-section::before {
+                font-size: 10rem;
+                top: -20px;
+                right: 10px;
+            }
+            
+            .personality-section::after {
+                font-size: 7rem;
+                bottom: -30px;
+                left: 10px;
+            }
+            
+            .scorpion-symbolism::before {
+                font-size: 6rem;
+            }
+        }
+        
+        .product-card.zodiac-specific {
+            border: 1px solid rgba(120, 10, 45, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card.zodiac-specific::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(120, 10, 45, 0.02), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card.zodiac-specific:hover {
+            border-color: #780a2d;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(120, 10, 45, 0.12);
+        }
+        
+        .product-card.zodiac-specific:hover::after {
+            opacity: 1;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(120, 10, 45, 0.3), transparent);
+            margin: 3rem 0;
+        }
+        
+        .phoenix-symbol {
+            display: inline-block;
+            position: relative;
+            margin: 0 0.5rem;
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+        }
+        
+        .phoenix-symbol::before {
+            content: '🔥';
+            font-size: 2rem;
+            animation: fireFlicker 2s ease-in-out infinite;
+        }
+        
+        @keyframes fireFlicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .fixed-modality {
+            background: var(--color-cream);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            margin: 2rem 0;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            border: 1px solid rgba(120, 10, 45, 0.1);
+        }
+        
+        .transformation-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-top: 2px solid rgba(120, 10, 45, 0.2);
+            border-bottom: 2px solid rgba(120, 10, 45, 0.2);
+            font-family: var(--font-serif);
+        }
+        
+        .depth-note {
+            background: linear-gradient(135deg, rgba(245, 240, 247, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #666;
+            border: 1px dashed rgba(120, 10, 45, 0.2);
+        }
+        
+        .transformation-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .transform-stage {
+            text-align: center;
+            padding: 1rem;
+            min-width: 120px;
+        }
+        
+        .transform-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .transform-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #780a2d;
+        }
+        
+        .transform-arrow {
+            font-size: 1.5rem;
+            color: #780a2d;
+        }
+        
+        .mystery-box {
+            background: linear-gradient(135deg, #f8f5fa, #f3eff7);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #4a002d;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mystery-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(120, 10, 45, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="../index.html" class="logo">
+                <img src="./logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../shop.html">Shop</a></li>
+                <li><a href="../oracle.html">The Oracle</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Zodiac Hero -->
+    <section class="zodiac-hero">
+        <div class="container-narrow">
+            <div class="zodiac-symbol-large">♏</div>
+            <h1 class="zodiac-name">Scorpio</h1>
+            <p class="zodiac-dates">October 23 - November 21</p>
+            <p class="zodiac-essence">Intense. Transformative. Magnetic.</p>
+        </div>
+    </section>
+
+    <!-- Zodiac Details -->
+    <section class="section">
+        <div class="container">
+            <div class="zodiac-details-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Element</div>
+                    <div class="detail-value">Water</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Ruling Planet</div>
+                    <div class="detail-value">Pluto/Mars</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Modality</div>
+                    <div class="detail-value">Fixed</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Symbol</div>
+                    <div class="detail-value">The Scorpion</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Water Element Feature -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="water-element-feature">
+                <div class="element-icon">🌊</div>
+                <h2 class="text-center mb-sm">The Water Element</h2>
+                <p class="text-center" style="font-size: 1.15rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto;">
+                    As a Water sign, Scorpio embodies emotional depth, intuition, and regeneration. Like the deepest ocean currents, they flow with powerful undercurrents of feeling, possess profound psychological insight, and understand that true transformation occurs in the unseen depths.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Scorpion Symbolism -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="scorpion-symbolism">
+                <h3 class="mb-sm">The <span class="scorpion-icon">🦂</span> Scorpion's Wisdom <span class="scorpion-icon">🦂</span></h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #666; max-width: 700px; margin: 0 auto;">
+                    The Scorpion represents self preservation, regeneration, and formidable resilience. Scorpio understands that vulnerability can be a source of strength, that death makes way for rebirth, and that what doesn't kill you transforms you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fixed Modality Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="fixed-modality">
+                <p style="margin: 0; font-size: 1.1rem;">
+                    As a <strong>Fixed</strong> sign, Scorpio possesses <strong>unwavering determination</strong> once committed, they delve to the absolute depths, pursue truth without compromise, and transform with complete intensity.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformation Diagram -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="transformation-diagram">
+                <div class="transform-stage">
+                    <span class="transform-icon">🦂</span>
+                    <div class="transform-label">Scorpion</div>
+                    <small>Instinctual</small>
+                </div>
+                <div class="transform-arrow">→</div>
+                <div class="transform-stage">
+                    <span class="transform-icon">🐺</span>
+                    <div class="transform-label">Eagle</div>
+                    <small>Visionary</small>
+                </div>
+                <div class="transform-arrow">→</div>
+                <div class="transform-stage">
+                    <span class="phoenix-symbol"></span>
+                    <div class="transform-label">Phoenix</div>
+                    <small>Transcendent</small>
+                </div>
+            </div>
+            <p class="text-center" style="color: #666; font-size: 0.95rem; margin-top: 1rem;">
+                Scorpio's three evolutionary stages: from instinctual survival to visionary insight to transcendent rebirth
+            </p>
+        </div>
+    </section>
+
+    <!-- Transformation Quote -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="transformation-quote">
+                "The deepest transformations occur in darkness. What you bury, you become. What you resurrect, you master."
+            </div>
+        </div>
+    </section>
+
+    <!-- Mystery Box -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="mystery-box">
+                <h3 class="mb-sm" style="color: #4a002d;">The Scorpio Mystery</h3>
+                <p style="color: #666; line-height: 1.7;">
+                    Scorpio understands that not all truths are meant to be spoken, not all depths are meant to be shared, and that true power often resides in what remains unspoken. They guard their vulnerabilities not out of fear, but out of sacred respect for the transformative process.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depth Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="depth-note">
+                Scorpio's intensity is not aggression it's the complete commitment to truth, the refusal of superficiality, and the courage to face the darkness that makes rebirth possible.
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="personality-section">
+                <h2 class="text-center mb-md">The Scorpio Essence</h2>
+                <p class="text-center mb-lg" style="font-size: 1.15rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto 3rem;">
+                    Scorpio represents the alchemy of transformation the process of death and rebirth, the power of regeneration, and the mystery of what lies beneath the surface. Ruled by Pluto, they navigate the underworld of psyche and emotion, emerging with wisdom that can only be earned in darkness.
+                </p>
+                
+                <div class="traits-grid">
+                    <div class="trait-item">
+                        <div class="trait-icon">🦂</div>
+                        <div class="trait-content">
+                            <h4>Psychological Depth</h4>
+                            <p>Scorpio perceives what others miss the hidden motives, the unspoken truths, the emotional undercurrents that shape reality.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🦂</div>
+                        <div class="trait-content">
+                            <h4>Magnetic Presence</h4>
+                            <p>They possess an undeniable magnetism an intensity of presence that draws others in while maintaining an air of mystery.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🦂</div>
+                        <div class="trait-content">
+                            <h4>Transformative Resilience</h4>
+                            <p>Scorpio doesn't just survive crises they use them as fuel for profound personal transformation and rebirth.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🦂</div>
+                        <div class="trait-content">
+                            <h4>Passionate Commitment</h4>
+                            <p>They invest with complete intensity whether in love, work, or purpose, there is no halfway with Scorpio.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🦂</div>
+                        <div class="trait-content">
+                            <h4>Intuitive Perception</h4>
+                            <p>Their intuition operates like radar, detecting falsehood, sensing vulnerability, and navigating emotional landscapes with precision.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🦂</div>
+                        <div class="trait-content">
+                            <h4>Regenerative Power</h4>
+                            <p>Like the phoenix, Scorpio masters the art of rising from ashes transforming pain into wisdom, loss into strength.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pluto/Mars Rulership Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="pluto-note">
+                <h3 class="mb-sm">Ruled by Pluto (Traditional: Mars)</h3>
+                <p style="color: #666; line-height: 1.7;">
+                    Pluto governs transformation, regeneration, and the underworld. Mars governs passion, will, and assertion. Together, they create Scorpio's unique alchemy: the drive to penetrate surface reality, the courage to face psychological depths, and the power to transform through what is discovered. While Mars provides the penetrating force, Pluto provides the regenerative aftermath.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Shop Scorpio Products -->
+    <section class="section products-section">
+        <div class="container">
+            <h2 class="mb-md">Shop the Scorpio Collection</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 3rem;">
+                Pieces designed for intensity, transformation, and magnetic presence
+            </p>
+            
+            <div class="products-preview" id="scorpioProducts">
+                <!-- Products will be loaded here dynamically -->
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <a href="../shop.html?zodiac=Scorpio" class="btn btn-primary">View All Scorpio Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Zodiac</h4>
+                    <ul class="footer-links">
+                        <li><a href="aries.html">♈ Aries</a></li>
+                        <li><a href="taurus.html">♉ Taurus</a></li>
+                        <li><a href="gemini.html">♊ Gemini</a></li>
+                        <li><a href="cancer.html">♋ Cancer</a></li>
+                        <li><a href="leo.html">♌ Leo</a></li>
+                        <li><a href="virgo.html">♍ Virgo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>More Signs</h4>
+                    <ul class="footer-links">
+                        <li><a href="libra.html">♎ Libra</a></li>
+                        <li><a href="scorpio.html">♏ Scorpio</a></li>
+                        <li><a href="sagittarius.html">♐ Sagittarius</a></li>
+                        <li><a href="capricorn.html">♑ Capricorn</a></li>
+                        <li><a href="aquarius.html">♒ Aquarius</a></li>
+                        <li><a href="pisces.html">♓ Pisces</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="../oracle.html">The Oracle</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="../checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/search.js"></script>
+    
+    <script>
+        // Load Scorpio products
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('scorpioProducts');
+            
+            try {
+                // Fetch products from JSON file
+                const response = await fetch('../data/products.json');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                
+                const products = await response.json();
+                
+                // Filter products for Scorpio
+                const scorpioProducts = products.filter(p => p.zodiac_sign === 'Scorpio').slice(0, 3);
+                
+                if (scorpioProducts.length === 0) {
+                    // Fallback to sample products if none found
+                    scorpioProducts.push(
+                        {
+                            sku: 'A-HOOD-SCORPIO',
+                            title: 'Scorpio Zodiac Hoodie',
+                            category: 'Men',
+                            zodiac_sign: 'Scorpio',
+                            price: 110.00,
+                            image_front: 'A-HOOD-SCORPIO-image.webp',
+                            description: 'Intense hoodie featuring the Scorpio symbol in deep maroon and gold'
+                        },
+                        {
+                            sku: 'A-TEE-SCORPIO',
+                            title: 'Scorpio Essential Tee',
+                            category: 'Women',
+                            zodiac_sign: 'Scorpio',
+                            price: 65.00,
+                            image_front: 'A-TEE-SCORPIO-image.webp',
+                            description: 'Scorpion design with transformative phoenix elements'
+                        },
+                        {
+                            sku: 'H-ALTAR-CLOTH-SCORPIO',
+                            title: 'Scorpio Altar Cloth',
+                            category: 'Home & Altar',
+                            zodiac_sign: 'Scorpio',
+                            price: 50.00,
+                            image_front: 'H-ALTAR-CLOTH-SCORPIO-image.webp',
+                            description: 'Deep ceremonial cloth featuring scorpion and phoenix transformation symbolism'
+                        }
+                    );
+                }
+                
+                container.innerHTML = scorpioProducts.map(product => `
+                    <div class="product-card zodiac-specific fade-in">
+                        <div class="product-image">
+                            <img src="../assets/products/${product.image_front}" 
+                                 alt="${product.title}"
+                                 loading="lazy"
+                                 style="opacity: 1; transition: opacity 0.3s ease;"
+                                 onerror="this.src='https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=500&fit=crop'">
+                            ${product.compare_at_price > 0 ? '<span class="product-badge">Sale</span>' : ''}
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-title">${product.title}</h3>
+                            <div class="product-price">
+                                <span class="price-current">${window.LyrionUtils?.formatPrice ? window.LyrionUtils.formatPrice(product.price) : '£' + parseFloat(product.price).toFixed(2)}</span>
+                            </div>
+                            <p class="product-description" style="font-size: 0.9rem; line-height: 1.5; color: #666; margin: 0.5rem 0 1rem;">${product.description}</p>
+                            <a href="../product.html?sku=${product.sku}" class="btn btn-primary btn-full">View Details</a>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add intense entrance animation
+                setTimeout(() => {
+                    document.querySelectorAll('.product-card.zodiac-specific').forEach((card, index) => {
+                        card.style.animationDelay = `${index * 0.1}s`;
+                        card.classList.add('fade-in');
+                    });
+                }, 100);
+                
+            } catch (error) {
+                console.error('Error loading Scorpio products:', error);
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                        <p style="color: #666; margin-bottom: 1rem;">Products catalog is being prepared.</p>
+                        <a href="../shop.html?zodiac=Scorpio" class="btn btn-primary">Browse Shop Instead</a>
+                    </div>
+                `;
+            }
+            
+            // Add fire flicker effect to phoenix symbols
+            const phoenixSymbols = document.querySelectorAll('.phoenix-symbol');
+            phoenixSymbols.forEach(symbol => {
+                // Already animated via CSS
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+# LYRĪON Order Broker - Cloudflare Worker Configuration
+
+name = "lyrion-order-broker"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Account details hello@lyrion.co.uk
+# account_id = 2a37012110a26a3d781be24fd7e5ccc3
+
+# Worker settings
+workers_dev = true
+
+# Route configuration (update with your domain)
+# routes = [
+#   { pattern = "lyrion.co.uk/api/*", zone_name = "lyrion.co.uk" }
+# ]
+
+# Environment variables (secrets)
+# Set these using: wrangler secret put VARIABLE_NAME
+# DO NOT PUT ACTUAL SECRETS IN THIS FILE
+
+[vars]
+# Public variables (non-sensitive)
+BASE_URL = "https://lyrion.co.uk"
+ROUTING_JSON_URL = "https://raw.githubusercontent.com/YOUR_USERNAME/lyrion-co-uk/main/data/routing.json"
+
+# Note: Secrets must be set using wrangler CLI:
+# wrangler secret put STRIPE_SECRET_KEY
+# wrangler secret put STRIPE_WEBHOOK_SECRET
+# wrangler secret put PRINTFUL_API_KEY
+# wrangler secret put GELATO_API_KEY
+# wrangler secret put PRINTIFY_API_KEY
+# wrangler secret put PRINTIFY_SHOP_ID
+# wrangler secret put INKTHREADABLE_API_KEY
+# wrangler secret put ORDER_NOTIFICATION_EMAIL
+
+# Example of setting secrets:
+# Run these commands in your terminal after deploying:
+#
+# wrangler secret put STRIPE_SECRET_KEY
+# (get from stripe website)
+#
+# wrangler secret put PRINTFUL_API_KEY
+# (get from printful)
+#
+# wrangler secret put GELATO_API_KEY
+# (get from wrangler)
+#
+# wrangler secret put ORDER_NOTIFICATION_EMAIL
+# (paste: hello@lyrion.co.uk)
+#
+# wrangler secret put STRIPE_WEBHOOK_SECRET
+# (get this from Stripe dashboard after creating webhook)
+#
+# wrangler secret put PRINTIFY_API_KEY
+# (get from Printify dashboard)
+#
+# wrangler secret put PRINTIFY_SHOP_ID
+# (get from Printify dashboard)
+#
+# wrangler secret put INKTHREADABLE_API_KEY
+# (get from Inkthreadable)

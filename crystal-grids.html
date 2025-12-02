@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cosmic Alignment: How to Create Crystal Grids to Amplify Your Personal Style and Energy with LYRĪON">
+    <title>Cosmic Alignment: Crystal Grids for Style & Energy Amplification | LYRĪON</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Article Hero */
+        .article-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.85) 0%, rgba(15, 13, 11, 0.7) 100%);
+            color: var(--color-cream);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(196, 164, 73, 0.15) 0%, transparent 70%),
+                        radial-gradient(circle at 70% 70%, rgba(196, 164, 73, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .article-hero-image {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+        
+        .article-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-accent);
+            font-size: 0.95rem;
+        }
+        
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #333;
+        }
+        
+        .article-body h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .article-body h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--color-ink);
+        }
+        
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-body blockquote {
+            border-left: 4px solid var(--color-gold-primary);
+            padding: 2rem;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), transparent);
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--color-ink);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .article-body img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .article-body li {
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Floating Action Bar */
+        .article-actions {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .article-actions.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .action-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+        }
+        
+        .action-btn:hover {
+            background: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Author Section */
+        .author-section {
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-gold-primary);
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Related Articles */
+        .related-articles {
+            margin-top: 6rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(196, 164, 73, 0.2);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .related-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-medium);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .related-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+            text-decoration: none;
+        }
+        
+        .related-image {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .related-card:hover .related-image img {
+            transform: scale(1.05);
+        }
+        
+        .related-content {
+            padding: 1.5rem;
+        }
+        
+        /* Table of Contents */
+        .toc-container {
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .toc-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-link {
+            color: #666;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--color-gold-primary);
+            background: rgba(196, 164, 73, 0.05);
+            padding-left: 1rem;
+        }
+        
+        /* Reading Progress */
+        .reading-progress {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(196, 164, 73, 0.1);
+            z-index: 1000;
+        }
+        
+        .reading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-gold-accent), var(--color-gold-primary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Back Button */
+        .back-to-codex {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-primary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: gap var(--transition-medium);
+            text-decoration: none;
+        }
+        
+        .back-to-codex:hover {
+            gap: 0.75rem;
+        }
+        
+        /* Tip Box */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), rgba(196, 164, 73, 0.02));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-left: 4px solid var(--color-gold-primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .tip-box h4 {
+            color: var(--color-gold-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Crystal Grid Elements */
+        .crystal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .crystal-item {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+            text-align: center;
+        }
+        
+        .crystal-item:hover {
+            border-color: var(--color-gold-primary);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-3px);
+        }
+        
+        .crystal-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Crystal Properties */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .property-card {
+            background: rgba(196, 164, 73, 0.03);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .property-card:hover {
+            border-color: var(--color-gold-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .property-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Zodiac Crystal Guide */
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .zodiac-item {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.02), rgba(196, 164, 73, 0.01));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .zodiac-item:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-3px);
+        }
+        
+        .zodiac-sign {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-gold-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Grid Layouts */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .layout-diagram {
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            background: rgba(196, 164, 73, 0.03);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            text-align: center;
+        }
+        
+        .layout-diagram h4 {
+            margin-bottom: 1rem;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Crystal Care */
+        .care-steps {
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(196, 164, 73, 0.05);
+        }
+        
+        .step-number {
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+            background: var(--color-gold-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+        
+        /* Fashion Integration */
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .integration-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(196, 164, 73, 0.03);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .integration-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 4rem 1rem 2rem;
+            }
+            
+            .article-hero-image {
+                height: 300px;
+            }
+            
+            .article-content {
+                padding: 2rem 1rem;
+            }
+            
+            .article-body h2 {
+                font-size: 1.7rem;
+            }
+            
+            .article-body h3 {
+                font-size: 1.3rem;
+            }
+            
+            .article-actions {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            .action-btn {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .author-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-container {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .crystal-grid, .properties-grid, .integration-grid, .zodiac-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .layout-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .step-item {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Reading Progress -->
+    <div class="reading-progress">
+        <div class="reading-progress-bar" id="readingProgress"></div>
+    </div>
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="container">
+            <div class="article-hero-image">
+                <img src="https://images.unsplash.com/photo-1543858741-3ffc35c3b7d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=500&q=80" alt="Beautiful crystal grid arrangement with candles and sacred geometry" loading="lazy" id="heroImage">
+            </div>
+            
+            <div class="container-narrow">
+                <a href="codex.html" class="back-to-codex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                    Back to The Codex
+                </a>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                        </svg>
+                        <span id="articleAuthor">LYRĪON Crystal Alchemist</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+                        </svg>
+                        <span id="articleDate">April 18, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                        </svg>
+                        <span id="articleReadTime">11 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+                            <path d="M5 0h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        <span id="articleCategory">Rituals & Energy</span>
+                    </div>
+                </div>
+                
+                <h1 id="articleTitle" style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--color-cream);">
+                    Cosmic Alignment: Crystal Grids for Style & Energy Amplification
+                </h1>
+                
+                <p id="articleExcerpt" style="font-size: 1.3rem; line-height: 1.7; color: var(--color-cream); max-width: 800px;">
+                    Discover how to harness sacred geometry and crystal energy to amplify your personal style, enhance your LYRĪON pieces, and create powerful energetic alignment in your life and wardrobe.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="section">
+        <div class="container">
+            <div class="article-content">
+                <div class="grid" style="grid-template-columns: 1fr 300px; gap: 3rem;">
+                    <!-- Main Content -->
+                    <div class="article-body" id="articleBody">
+                        <h2 id="section-intro">Sacred Geometry Meets Personal Style</h2>
+                        <p>Crystal grids represent the ancient practice of arranging stones in sacred geometric patterns to amplify energy, manifest intentions, and create harmony. At LYRĪON, we believe that just as crystals can be arranged to create powerful energetic fields, so too can your wardrobe be curated to amplify your personal energy and style intentions.</p>
+                        
+                        <blockquote>
+                            "Crystal grids are living altars—geometric conversations between Earth's wisdom and human intention. Your wardrobe, when curated with consciousness, becomes a similar energetic grid for your personal expression."
+                        </blockquote>
+                        
+                        <h2 id="section-basics">Crystal Grid Fundamentals</h2>
+                        
+                        <div class="crystal-grid">
+                            <div class="crystal-item">
+                                <span class="crystal-icon">🔮</span>
+                                <h4>Sacred Geometry</h4>
+                                <p>The foundation of all grids. Circles represent unity, triangles manifest change, squares create stability, and spirals connect to cosmic energy.</p>
+                            </div>
+                            <div class="crystal-item">
+                                <span class="crystal-icon">⚡</span>
+                                <h4>Energy Amplification</h4>
+                                <p>Crystals in geometric patterns create synergistic energy fields 10-100x more powerful than individual stones working alone.</p>
+                            </div>
+                            <div class="crystal-item">
+                                <span class="crystal-icon">🧭</span>
+                                <h4>Directional Energy</h4>
+                                <p>Grids can be aligned with cardinal directions, zodiac placements, or personal energy flows for targeted manifestation.</p>
+                            </div>
+                            <div class="crystal-item">
+                                <span class="crystal-icon">🌀</span>
+                                <h4>Vortex Creation</h4>
+                                <p>Well-constructed grids generate energetic vortices that continually circulate and amplify your intentions.</p>
+                            </div>
+                        </div>
+                        
+                        <img src="https://images.pexels.com/photos/1029894/pexels-photo-1029894.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Crystal grid with sacred geometry and candles" loading="lazy">
+                        
+                        <h2 id="section-crystals">Essential Crystals for Style & Energy Grids</h2>
+                        <p>Each crystal carries unique vibrations that can enhance different aspects of your personal style and energy. Here are our LYRĪON-recommended crystals for fashion and personal empowerment grids:</p>
+                        
+                        <div class="properties-grid">
+                            <div class="property-card">
+                                <span class="property-icon">💎</span>
+                                <h4>Clear Quartz</h4>
+                                <p><strong>Style Energy:</strong> Clarity, amplification, versatility<br>
+                                <strong>Grid Purpose:</strong> Amplifies all other crystals, brings clarity to style choices<br>
+                                <strong>LYRĪON Pairing:</strong> Perfect with versatile capsule pieces</p>
+                            </div>
+                            <div class="property-card">
+                                <span class="property-icon">🌹</span>
+                                <h4>Rose Quartz</h4>
+                                <p><strong>Style Energy:</strong> Self-love, softness, romantic expression<br>
+                                <strong>Grid Purpose:</strong> Enhances self-confidence in style choices<br>
+                                <strong>LYRĪON Pairing:</strong> Beautiful with silk and satin pieces</p>
+                            </div>
+                            <div class="property-card">
+                                <span class="property-icon">🛡️</span>
+                                <h4>Black Tourmaline</h4>
+                                <p><strong>Style Energy:</strong> Protection, grounding, bold statements<br>
+                                <strong>Grid Purpose:</strong> Shields from negative energy, grounds style choices<br>
+                                <strong>LYRĪON Pairing:</strong> Excellent with structured pieces and outerwear</p>
+                            </div>
+                            <div class="property-card">
+                                <span class="property-icon">💰</span>
+                                <h4>Citrine</h4>
+                                <p><strong>Style Energy:</strong> Abundance, joy, radiance<br>
+                                <strong>Grid Purpose:</strong> Attracts opportunities, enhances personal magnetism<br>
+                                <strong>LYRĪON Pairing:</strong> Perfect with gold-accented pieces and statement items</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <h4><span>✨</span> Crystal Tip</h4>
+                            <p>Before using crystals in grids, cleanse them under running water, with sage smoke, or by placing them in moonlight. This clears any previous energy and prepares them for your specific intentions.</p>
+                        </div>
+                        
+                        <h2 id="section-zodiac">Zodiac-Aligned Crystal Grids</h2>
+                        
+                        <div class="zodiac-grid">
+                            <div class="zodiac-item">
+                                <div class="zodiac-sign">♈ Aries - Fire Crystal Grid</div>
+                                <p><strong>Primary Crystals:</strong> Carnelian, Red Jasper, Bloodstone<br>
+                                <strong>Grid Shape:</strong> Triangle (Fire element)<br>
+                                <strong>Purpose:</strong> Courage in style experimentation, bold expression<br>
+                                <strong>LYRĪON Style:</strong> Statement pieces, bold colors, power dressing</p>
+                            </div>
+                            
+                            <div class="zodiac-item">
+                                <div class="zodiac-sign">♉ Taurus - Earth Crystal Grid</div>
+                                <p><strong>Primary Crystals:</strong> Emerald, Malachite, Moss Agate<br>
+                                <strong>Grid Shape:</strong> Square (Earth element)<br>
+                                <strong>Purpose:</strong> Grounding in style choices, appreciating quality<br>
+                                <strong>LYRĪON Style:</strong> Luxurious fabrics, timeless pieces, tactile textures</p>
+                            </div>
+                            
+                            <div class="zodiac-item">
+                                <div class="zodiac-sign">♊ Gemini - Air Crystal Grid</div>
+                                <p><strong>Primary Crystals:</strong> Aquamarine, Blue Lace Agate, Citrine<br>
+                                <strong>Grid Shape:</strong> Hexagon (Air element)<br>
+                                <strong>Purpose:</strong> Versatility in style, communication through fashion<br>
+                                <strong>LYRĪON Style:</strong> Layered looks, convertible pieces, mix-and-match</p>
+                            </div>
+                            
+                            <div class="zodiac-item">
+                                <div class="zodiac-sign">♋ Cancer - Water Crystal Grid</div>
+                                <p><strong>Primary Crystals:</strong> Moonstone, Pearl, Selenite<br>
+                                <strong>Grid Shape:</strong> Circle (Water element)<br>
+                                <strong>Purpose:</strong> Emotional expression through style, intuitive dressing<br>
+                                <strong>LYRĪON Style:</strong> Flowing silhouettes, sentimental pieces, comfort-focused</p>
+                            </div>
+                        </div>
+                        
+                        <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" alt="Crystal grid arranged in a sacred geometric pattern" loading="lazy">
+                        
+                        <h2 id="section-layouts">Powerful Grid Layouts for Style Manifestation</h2>
+                        
+                        <div class="layout-grid">
+                            <div class="layout-diagram">
+                                <h4>The Style Clarity Grid</h4>
+                                <p><strong>Shape:</strong> Flower of Life pattern<br>
+                                <strong>Crystals:</strong> Clear Quartz (center), Amethyst, Sodalite<br>
+                                <strong>Purpose:</strong> Clarify personal style identity<br>
+                                <strong>Placement:</strong> Near wardrobe or dressing area</p>
+                            </div>
+                            
+                            <div class="layout-diagram">
+                                <h4>The Confidence Amplifier Grid</h4>
+                                <p><strong>Shape:</strong> Star tetrahedron (Mer-Ka-Ba)<br>
+                                <strong>Crystals:</strong> Tiger's Eye, Citrine, Sunstone<br>
+                                <strong>Purpose:</strong> Boost confidence in style choices<br>
+                                <strong>Placement:</strong> Bedroom or meditation space</p>
+                            </div>
+                            
+                            <div class="layout-diagram">
+                                <h4>The Abundance Attractor Grid</h4>
+                                <p><strong>Shape:</strong> Sacred spiral<br>
+                                <strong>Crystals:</strong> Pyrite, Green Aventurine, Citrine<br>
+                                <strong>Purpose:</strong> Attract opportunities and resources<br>
+                                <strong>Placement:</strong> Entryway or office space</p>
+                            </div>
+                            
+                            <div class="layout-diagram">
+                                <h4>The Protection & Grounding Grid</h4>
+                                <p><strong>Shape:</strong> Shield pattern<br>
+                                <strong>Crystals:</strong> Black Tourmaline, Smoky Quartz, Hematite<br>
+                                <strong>Purpose:</strong> Protect energy while maintaining style<br>
+                                <strong>Placement:</strong> Near front door or workspace</p>
+                            </div>
+                        </div>
+                        
+                        <blockquote>
+                            "Your crystal grid is a conversation with the universe. Each stone placement is a word, each geometric line a sentence, and the complete grid a prayer made manifest."
+                        </blockquote>
+                        
+                        <h2 id="section-wardrobe">Integrating Crystal Energy with Your Wardrobe</h2>
+                        
+                        <div class="integration-grid">
+                            <div class="integration-item">
+                                <span class="integration-icon">👚</span>
+                                <h4>Crystal-Infused Storage</h4>
+                                <p>Place selenite or clear quartz in your wardrobe to maintain energetic clarity in your pieces. Amethyst helps preserve fabric integrity.</p>
+                            </div>
+                            <div class="integration-item">
+                                <span class="integration-icon">🧿</span>
+                                <h4>Crystal Jewelry Layering</h4>
+                                <p>Layer LYRĪON pieces with crystal jewelry that complements their energy. Rose quartz with silk, citrine with gold accents.</p>
+                            </div>
+                            <div class="integration-item">
+                                <span class="integration-icon">🌀</span>
+                                <h4>Energetic Dressing Ritual</h4>
+                                <p>Before choosing outfits, hold a crystal that matches your day's intention. Let its energy guide your style choices.</p>
+                            </div>
+                            <div class="integration-item">
+                                <span class="integration-icon">⚡</span>
+                                <h4>Seasonal Grid Transitions</h4>
+                                <p>Change your crystal grids with seasonal wardrobe rotations. Spring grids for renewal, winter grids for introspection.</p>
+                            </div>
+                        </div>
+                        
+                        <h2 id="section-creation">Step-by-Step: Creating Your First Crystal Grid</h2>
+                        
+                        <div class="care-steps">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-details">
+                                    <h4>Set Your Intention</h4>
+                                    <p>What do you want to manifest through your style? Confidence? Creativity? Professional opportunities? Write it clearly on paper or hold it firmly in mind.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-details">
+                                    <h4>Choose Your Crystals</h4>
+                                    <p>Select 5-7 crystals that align with your intention. Include: 1 center stone (master crystal), 2-4 supporting stones, and 1-2 boundary/grounding stones.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-details">
+                                    <h4>Select Sacred Geometry</h4>
+                                    <p>Choose a geometric pattern that matches your intention: Circle for completion, triangle for manifestation, square for stability, spiral for transformation.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">4</div>
+                                <div class="step-details">
+                                    <h4>Cleanse & Prepare Space</h4>
+                                    <p>Cleanse crystals and your space with sage, palo santo, or sound. Create a clean, intentional space for your grid.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">5</div>
+                                <div class="step-details">
+                                    <h4>Place Center Stone First</h4>
+                                    <p>Place your master crystal in the center while stating your intention aloud. This crystal directs energy for the entire grid.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">6</div>
+                                <div class="step-details">
+                                    <h4>Build Outward in Pattern</h4>
+                                    <p>Place supporting stones in your chosen geometric pattern, moving from center outward. Touch each to the center stone to create energetic connection.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">7</div>
+                                <div class="step-details">
+                                    <h4>Activate the Grid</h4>
+                                    <p>Use a wand crystal, your finger, or visualization to connect all stones with energy lines. Imagine golden light flowing through the pattern.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">8</div>
+                                <div class="step-details">
+                                    <h4>Regular Maintenance</h4>
+                                    <p>Re-state intentions daily. Cleanse grid weekly under moonlight. Adjust stones as intentions evolve or manifest.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <img src="https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Hands arranging crystals in a geometric pattern" loading="lazy">
+                        
+                        <h2 id="section-fashion">Crystal Grids for Specific Fashion Goals</h2>
+                        
+                        <h3>Career Advancement Grid</h3>
+                        <ul>
+                            <li><strong>Primary Crystals:</strong> Pyrite, Citrine, Tiger's Eye</li>
+                            <li><strong>Grid Pattern:</strong> Upward-pointing triangle within a circle</li>
+                            <li><strong>Placement:</strong> Home office or near work wardrobe</li>
+                            <li><strong>Style Focus:</strong> Power pieces, professional attire, confidence-boosting items</li>
+                        </ul>
+                        
+                        <h3>Creative Expression Grid</h3>
+                        <ul>
+                            <li><strong>Primary Crystals:</strong> Carnelian, Lapis Lazuli, Amethyst</li>
+                            <li><strong>Grid Pattern:</strong> Spiral or mandala pattern</li>
+                            <li><strong>Placement:</strong> Creative studio or dressing area</li>
+                            <li><strong>Style Focus:</strong> Artistic pieces, color experimentation, unique combinations</li>
+                        </ul>
+                        
+                        <h3>Social Connection Grid</h3>
+                        <ul>
+                            <li><strong>Primary Crystals:</strong> Rose Quartz, Green Aventurine, Moonstone</li>
+                            <li><strong>Grid Pattern:</strong> Flower of Life or interconnected circles</li>
+                            <li><strong>Placement:</strong> Living room or social spaces</li>
+                            <li><strong>Style Focus:</strong> Conversation-starting pieces, comfortable elegance, approachable style</li>
+                        </ul>
+                        
+                        <h3>Self-Love & Confidence Grid</h3>
+                        <ul>
+                            <li><strong>Primary Crystals:</strong> Rose Quartz, Rhodonite, Sunstone</li>
+                            <li><strong>Grid Pattern:</strong> Heart shape or embracing circles</li>
+                            <li><strong>Placement:</strong> Bedroom or personal sanctuary</li>
+                            <li><strong>Style Focus:</strong> Pieces that make you feel authentically you, regardless of trends</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h4><span>🌟</span> Cosmic Insight</h4>
+                            <p>Align your crystal grid activation with moon phases: New moon for new style beginnings, full moon for amplifying current style energy, waning moon for releasing style blocks.</p>
+                        </div>
+                        
+                        <h2 id="section-maintenance">Crystal Grid Maintenance & Care</h2>
+                        
+                        <h3>Daily Practice</h3>
+                        <ul>
+                            <li>Spend 1-2 minutes with your grid each morning</li>
+                            <li>Re-state your intentions while touching the center stone</li>
+                            <li>Visualize golden energy flowing through the pattern</li>
+                            <li>Note any intuitive insights about your style or energy</li>
+                        </ul>
+                        
+                        <h3>Weekly Cleansing</h3>
+                        <ul>
+                            <li>Gently dust crystals (use soft brush)</li>
+                            <li>Smudge with sage or palo santo smoke</li>
+                            <li>Place in moonlight overnight (avoid direct sun for colored crystals)</li>
+                            <li>Re-activate the grid with fresh intention</li>
+                        </ul>
+                        
+                        <h3>Monthly Reset</h3>
+                        <ul>
+                            <li>Completely disassemble the grid</li>
+                            <li>Cleanse each crystal individually</li>
+                            <li>Re-evaluate your current intentions</li>
+                            <li>Rebuild with any new crystals or adjusted patterns</li>
+                        </ul>
+                        
+                        <h3>Seasonal Evolution</h3>
+                        <ul>
+                            <li>Align grid changes with solstices and equinoxes</li>
+                            <li>Adjust crystals to match seasonal energy shifts</li>
+                            <li>Connect grid evolution with wardrobe transitions</li>
+                            <li>Journal about style and energy changes each season</li>
+                        </ul>
+                        
+                        <img src="https://images.unsplash.com/photo-1553909489-cd47e0907980?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" alt="Crystals being cleansed in moonlight" loading="lazy">
+                        
+                        <h2 id="section-troubleshooting">Common Grid Challenges & Solutions</h2>
+                        
+                        <h3>Low Energy Flow</h3>
+                        <p><strong>Symptoms:</strong> Grid feels "flat," intentions stall, crystals look dull<br>
+                        <strong>Solutions:</strong> Complete cleansing, re-activate with stronger intention, add an amplifier crystal like Clear Quartz, check geometric alignment</p>
+                        
+                        <h3>Overwhelming Energy</h3>
+                        <p><strong>Symptoms:</strong> Space feels "charged," restless energy, difficulty sleeping near grid<br>
+                        <strong>Solutions:</strong> Add grounding stones (Black Tourmaline, Smoky Quartz), simplify the pattern, reduce number of crystals, move grid further from sleeping area</p>
+                        
+                        <h3>Conflicting Intentions</h3>
+                        <p><strong>Symptoms:</strong> Mixed results, confusion about style direction, grid feels "muddy"<br>
+                        <strong>Solutions:</strong> Clarify single primary intention, use only crystals aligned with that intention, rebuild grid with focused purpose</p>
+                        
+                        <h3>Physical Crystal Issues</h3>
+                        <p><strong>Symptoms:</strong> Cracks appearing, stones falling over, discoloration<br>
+                        <strong>Solutions:</strong> Thank and retire damaged crystals (bury in earth), replace with new stones, check for environmental factors (sun exposure, humidity)</p>
+                        
+                        <h2 id="section-advanced">Advanced Techniques: Layered Grids & Time-Based Activation</h2>
+                        
+                        <h3>Layered Grid System</h3>
+                        <p>Create multiple grids for different aspects of your life, all aligned to a central master grid:</p>
+                        <ul>
+                            <li><strong>Master Grid:</strong> Overall life purpose and direction</li>
+                            <li><strong>Style Grid:</strong> Personal expression and confidence</li>
+                            <li><strong>Career Grid:</strong> Professional goals and opportunities</li>
+                            <li><strong>Relationship Grid:</strong> Social connections and harmony</li>
+                            <li><strong>Health Grid:</strong> Vitality and wellness</li>
+                        </ul>
+                        
+                        <h3>Time-Based Activation</h3>
+                        <p>Program your grid to activate during specific times:</p>
+                        <ul>
+                            <li><strong>Astrological Timing:</strong> Activate during your sun sign season</li>
+                            <li><strong>Lunar Cycle:</strong> New moon beginnings, full moon amplification</li>
+                            <li><strong>Daily Rhythms:</strong> Morning activation for daytime energy, evening for introspection</li>
+                            <li><strong>Seasonal Shifts:</strong> Align with solstices, equinoxes, and cross-quarter days</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h4><span>💫</span> Pro Gridding Tip</h4>
+                            <p>Keep a crystal grid journal. Document your layouts, intentions, crystals used, and results. Over time, you'll discover which combinations work best for your unique energy and style goals.</p>
+                        </div>
+                        
+                        <h2 id="section-integration">Integrating Crystal Wisdom with LYRĪON Style Philosophy</h2>
+                        
+                        <h3>Crystal Consciousness in Daily Dressing</h3>
+                        <p>Just as crystals carry specific energies, so do your clothing choices. Begin viewing your wardrobe as a crystal grid for your body—each piece contributing to your overall energetic signature.</p>
+                        
+                        <h3>Intention-Based Wardrobe Curation</h3>
+                        <p>Apply crystal grid principles to your closet organization: place "master pieces" (versatile staples) in the center, surround with supporting items, and use color coordination as your geometric pattern.</p>
+                        
+                        <h3>Energetic Layering</h3>
+                        <p>Layer clothing as you would layer crystals in a grid: foundation pieces (grounding), mid-layers (balancing), and statement pieces (amplifying). Each layer contributes to the whole energetic outfit.</p>
+                        
+                        <h3>Seasonal Grid Resets for Your Wardrobe</h3>
+                        <p>Treat seasonal wardrobe transitions as grid resets: cleanse storage spaces (sage or sound), re-evaluate style intentions for the coming season, and curate with fresh energy and purpose.</p>
+                        
+                        <blockquote>
+                            "Your crystal grid and your curated wardrobe are both sacred geometries of self-expression. One amplifies energy, the other projects it. Together, they create a complete system of intentional being."
+                        </blockquote>
+                        
+                        <h2 id="section-conclusion">Your Living Grid: An Evolving Practice</h2>
+                        <p>Crystal gridding, like personal style, is not a destination but a journey of discovery. Your grids will evolve as you do, reflecting your changing intentions, style evolution, and personal growth.</p>
+                        
+                        <p>Remember that the most powerful grids come from authentic connection, not perfection. A simple grid created with heartfelt intention is more powerful than a complex one created mechanically.</p>
+                        
+                        <p>As you continue your journey with crystal grids and conscious style, may you discover the unique energetic signature that is authentically yours. May your grids amplify your intentions, and may your style express your soul's truth.</p>
+                        
+                        <p>For personalized crystal recommendations or style guidance aligned with your birth chart, visit our Oracle page or contact our crystal alchemy team at crystals@lyrion.com.</p>
+                    </div>
+                    
+                    <!-- Table of Contents -->
+                    <div class="toc-container">
+                        <div class="toc-title">In This Guide</div>
+                        <ul class="toc-list">
+                            <li class="toc-item"><a href="#section-intro" class="toc-link active">Sacred Geometry & Style</a></li>
+                            <li class="toc-item"><a href="#section-basics" class="toc-link">Grid Fundamentals</a></li>
+                            <li class="toc-item"><a href="#section-crystals" class="toc-link">Essential Crystals</a></li>
+                            <li class="toc-item"><a href="#section-zodiac" class="toc-link">Zodiac-Aligned Grids</a></li>
+                            <li class="toc-item"><a href="#section-layouts" class="toc-link">Powerful Layouts</a></li>
+                            <li class="toc-item"><a href="#section-wardrobe" class="toc-link">Wardrobe Integration</a></li>
+                            <li class="toc-item"><a href="#section-creation" class="toc-link">Creating Your First Grid</a></li>
+                            <li class="toc-item"><a href="#section-fashion" class="toc-link">Fashion Goal Grids</a></li>
+                            <li class="toc-item"><a href="#section-maintenance" class="toc-link">Grid Maintenance</a></li>
+                            <li class="toc-item"><a href="#section-troubleshooting" class="toc-link">Troubleshooting</a></li>
+                            <li class="toc-item"><a href="#section-advanced" class="toc-link">Advanced Techniques</a></li>
+                            <li class="toc-item"><a href="#section-integration" class="toc-link">LYRĪON Integration</a></li>
+                            <li class="toc-item"><a href="#section-conclusion" class="toc-link">Conclusion</a></li>
+                        </ul>
+                        
+                        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(196, 164, 73, 0.1);">
+                            <div style="font-size: 0.9rem; color: #999; margin-bottom: 0.5rem;">Save this guide</div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('twitter')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('facebook')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('pinterest')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="copyLink()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="author-section">
+                <div class="author-info">
+                    <div class="author-avatar">
+                        <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop&crop=face" alt="LYRĪON Crystal Alchemist">
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-ink);">
+                            Written by LYRĪON Crystal Alchemist
+                        </h3>
+                        <p style="color: #666; margin-bottom: 1rem; line-height: 1.6;">
+                            Our crystal alchemy team blends ancient geological wisdom with modern style consciousness. With over 15 years of experience in crystal energy work and fashion therapy, we bridge the gap between Earth's treasures and personal expression.
+                        </p>
+                        <a href="contact.html" class="read-more" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-gold-primary); font-weight: 600; text-decoration: none;">
+                            Book a crystal styling session
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="section">
+        <div class="container">
+            <div class="related-articles">
+                <h2 style="font-family: var(--font-serif); font-size: 2rem; text-align: center; margin-bottom: 1rem; color: var(--color-ink);">
+                    Continue Reading
+                </h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Explore more cosmic guides from The Codex
+                </p>
+                
+                <div class="related-grid">
+                    <!-- Related Article 1 -->
+                    <a href="moon-rituals.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.unsplash.com/photo-1532978379173-523e6a4a115e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80" alt="Moon Rituals">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">RITUALS</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Lunar Style: Dressing with Moon Cycles
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">February 28, 2025</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 2 -->
+                    <a href="zodiac-style.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.pexels.com/photos/1532968961962-8a0cb3a2d4f5.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Zodiac Style">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">STYLE GUIDE</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Dressing Your Sign: Zodiac Style
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">January 15, 2025</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 3 -->
+                    <a href="sacred-altar.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.pexels.com/photos/1029894/pexels-photo-1029894.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Sacred Altar">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">RITUALS</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Creating a Sacred Altar
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">February 8, 2025</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="codex.html" class="btn btn-primary">View All Articles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="article-actions" id="articleActions">
+        <button class="action-btn" id="scrollToTop" aria-label="Scroll to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708 .708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="toggleDarkMode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="textSizeBtn" aria-label="Adjust text size">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.21 10.637c1.33 0 1.33.665 1.33 1.33v.665c0 .664-1.33.665-1.33.665h-.418v2.004h.836c.442 0 .836.224.836.556 0 .333-.394.557-.836.557H5.791c-.442 0-.836-.224-.836-.557 0-.332.394-.556.836-.556h.836v-2.004h-.418c-1.33 0-1.33-.664-1.33-.665v-.665c0-.665 1.33-1.33 1.33-1.33h5.962zM6.749 5.5v.05h3.999v-.05c0-1.14-.564-1.15-.564-1.15h-2.871s-.565.01-.565 1.15zM7.96 1.074h.99l.598.15s.01.17.01.45v2.797h-.01v2.709h-1.187V4.475h-.01V1.674c0-.28.01-.45.01-.45l.599-.15z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="codex.html">The Codex</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="care-guide.html">Care Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs, articles...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+    
+    <script>
+        // Enhanced Article Reading Features
+        document.addEventListener('DOMContentLoaded', () => {
+            const articleBody = document.getElementById('articleBody');
+            const readingProgress = document.getElementById('readingProgress');
+            const articleActions = document.getElementById('articleActions');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const textSizeBtn = document.getElementById('textSizeBtn');
+            const darkModeBtn = document.getElementById('toggleDarkMode');
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            const relatedCards = document.querySelectorAll('.related-card');
+            
+            let currentTextSize = 1;
+            let isDarkMode = false;
+            
+            // Reading Progress
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrolled = (scrollTop / (documentHeight - windowHeight)) * 100;
+                
+                readingProgress.style.width = scrolled + '%';
+                
+                // Show/hide action buttons
+                if (scrollTop > 300) {
+                    articleActions.classList.add('visible');
+                } else {
+                    articleActions.classList.remove('visible');
+                }
+                
+                // Update active TOC link
+                const sections = document.querySelectorAll('h2, h3');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (scrollTop >= sectionTop) {
+                        currentSection = '#' + section.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // TOC Smooth Scroll
+            tocLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Text Size Adjustment
+            textSizeBtn.addEventListener('click', () => {
+                currentTextSize += 0.1;
+                if (currentTextSize > 1.4) currentTextSize = 0.9;
+                
+                articleBody.style.fontSize = `${currentTextSize}rem`;
+                articleBody.style.lineHeight = `${1.7 + (currentTextSize - 1) * 0.2}`;
+                
+                // Show size indicator
+                const sizes = ['Small', 'Normal', 'Large', 'Extra Large'];
+                const sizeIndex = Math.min(Math.floor((currentTextSize - 0.9) / 0.1), 3);
+                
+                showToast(`Text size: ${sizes[sizeIndex]}`);
+            });
+            
+            // Dark Mode Toggle
+            darkModeBtn.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+                
+                if (isDarkMode) {
+                    document.body.style.backgroundColor = '#1a1a1a';
+                    document.body.style.color = '#e6e6e6';
+                    articleBody.style.color = '#e6e6e6';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '#ffffff';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = 'rgba(196, 164, 73, 0.1)';
+                    });
+                    showToast('Dark mode activated');
+                } else {
+                    document.body.style.backgroundColor = '';
+                    document.body.style.color = '';
+                    articleBody.style.color = '';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = '';
+                    });
+                    showToast('Light mode activated');
+                }
+            });
+            
+            // Scroll to Top
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Related card smooth transitions
+            relatedCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = card.getAttribute('href');
+                    
+                    // Show loading
+                    document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                });
+            });
+            
+            // Share functions
+            window.shareArticle = (platform) => {
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.getElementById('articleTitle').textContent);
+                let shareUrl = '';
+                
+                switch(platform) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                        break;
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                        break;
+                    case 'pinterest':
+                        shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${title}`;
+                        break;
+                }
+                
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            };
+            
+            window.copyLink = () => {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('Link copied to clipboard!');
+                });
+            };
+            
+            // Toast notification function
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.textContent = message;
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = 'var(--color-gold-primary)';
+                toast.style.color = 'var(--color-white)';
+                toast.style.padding = '1rem 2rem';
+                toast.style.borderRadius = 'var(--radius-md)';
+                toast.style.zIndex = '9999';
+                toast.style.boxShadow = 'var(--shadow-lg)';
+                toast.style.fontWeight = '600';
+                toast.style.transition = 'all 0.3s ease';
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(-50%) translateY(20px)';
+                    setTimeout(() => document.body.removeChild(toast), 300);
+                }, 2000);
+            }
+            
+            // Add back button functionality
+            document.querySelector('.back-to-codex').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    window.location.href = 'codex.html';
+                }, 300);
+            });
+            
+            // Crystal grid interactive elements
+            const crystalItems = document.querySelectorAll('.crystal-item, .property-card, .zodiac-item');
+            crystalItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

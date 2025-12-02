@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aquarius - Innovative. Independent. Humanitarian. Discover LYRĪON's Aquarius zodiac collection and Uranus-inspired revolution.">
+    <title>Aquarius | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        .zodiac-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.88) 0%, rgba(10, 30, 50, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=1600&h=600&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.4&fit=crop') center/cover;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-cream);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .zodiac-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 150, 255, 0.25) 0%, transparent 70%),
+                        radial-gradient(circle at 70% 70%, rgba(100, 200, 255, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .zodiac-symbol-large {
+            font-size: 8rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+            line-height: 1;
+            text-shadow: 0 4px 20px rgba(0, 150, 255, 0.4);
+            animation: waterFlow 5s ease-in-out infinite;
+        }
+        
+        @keyframes waterFlow {
+            0%, 100% { 
+                transform: translateY(0);
+                text-shadow: 0 4px 20px rgba(0, 150, 255, 0.4);
+            }
+            25% { 
+                transform: translateY(-2px);
+                text-shadow: 0 6px 25px rgba(0, 150, 255, 0.6), 0 0 15px rgba(100, 200, 255, 0.3);
+            }
+            75% { 
+                transform: translateY(2px);
+                text-shadow: 0 6px 25px rgba(0, 150, 255, 0.6), 0 0 15px rgba(100, 200, 255, 0.3);
+            }
+        }
+        
+        .zodiac-name {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--color-cream);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            font-weight: 400;
+        }
+        
+        .zodiac-dates {
+            font-size: 1.3rem;
+            color: #4FC3F7;
+            margin-bottom: 2rem;
+            font-style: italic;
+            letter-spacing: 0.1em;
+        }
+        
+        .zodiac-essence {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-cream);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+        }
+        
+        .zodiac-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .detail-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 2px solid var(--color-cream-dark);
+            transition: all var(--transition-medium);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0097A7, #4FC3F7);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .detail-card:hover {
+            border-color: #0097A7;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 150, 255, 0.15);
+        }
+        
+        .detail-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-value {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: #0097A7;
+            font-weight: 500;
+        }
+        
+        .personality-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f4ff 100%);
+            padding: 4rem 2rem;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .personality-section::before {
+            content: '♒';
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            font-size: 15rem;
+            color: rgba(0, 150, 255, 0.07);
+            pointer-events: none;
+            transform: rotate(15deg);
+        }
+        
+        .personality-section::after {
+            content: '🌊';
+            position: absolute;
+            bottom: -40px;
+            left: 20px;
+            font-size: 10rem;
+            color: rgba(0, 150, 255, 0.05);
+            pointer-events: none;
+            transform: rotate(-15deg);
+        }
+        
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .trait-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(0, 150, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .trait-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.03), rgba(100, 200, 255, 0.01));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .trait-item:hover {
+            transform: translateY(-3px);
+            border-color: #0097A7;
+            box-shadow: 0 8px 20px rgba(0, 150, 255, 0.1);
+        }
+        
+        .trait-item:hover::before {
+            opacity: 1;
+        }
+        
+        .trait-icon {
+            font-size: 1.5rem;
+            color: #0097A7;
+            min-width: 30px;
+            margin-top: 0.25rem;
+        }
+        
+        .trait-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-ink);
+            font-weight: 600;
+        }
+        
+        .trait-content p {
+            color: #666;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .air-element-feature {
+            background: linear-gradient(135deg, #e8f4fd 0%, #dcedff 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+            border: 1px solid rgba(0, 150, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .air-element-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 150, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(100, 200, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .element-icon {
+            font-size: 3rem;
+            color: #0097A7;
+            margin-bottom: 1rem;
+        }
+        
+        .uranus-note {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 3rem 0;
+            border-left: 4px solid #0097A7;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .water-bearer-symbolism {
+            background: linear-gradient(135deg, rgba(240, 249, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            margin: 3rem 0;
+            text-align: center;
+            border: 2px solid rgba(0, 150, 255, 0.2);
+            position: relative;
+        }
+        
+        .water-bearer-symbolism::before {
+            content: '🏺';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10rem;
+            color: rgba(0, 150, 255, 0.05);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .water-bearer-symbolism > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .products-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(180deg, var(--color-white) 0%, #fafafc 100%);
+        }
+        
+        .products-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .water-icon {
+            font-size: 2rem;
+            color: #0097A7;
+            margin: 0 0.5rem;
+            vertical-align: middle;
+            animation: waterPour 3s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes waterPour {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(3px); }
+        }
+        
+        @media (max-width: 768px) {
+            .zodiac-hero {
+                min-height: 400px;
+                padding: 2rem 1rem;
+            }
+            
+            .zodiac-symbol-large {
+                font-size: 6rem;
+            }
+            
+            .zodiac-details-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .detail-card {
+                padding: 1.5rem;
+            }
+            
+            .traits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-preview {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .air-element-feature {
+                padding: 2rem 1.5rem;
+            }
+            
+            .personality-section::before {
+                font-size: 10rem;
+                top: -20px;
+                right: 10px;
+            }
+            
+            .personality-section::after {
+                font-size: 7rem;
+                bottom: -30px;
+                left: 10px;
+            }
+            
+            .water-bearer-symbolism::before {
+                font-size: 6rem;
+            }
+            
+            .innovation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .product-card.zodiac-specific {
+            border: 1px solid rgba(0, 150, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card.zodiac-specific::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 150, 255, 0.02), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card.zodiac-specific:hover {
+            border-color: #0097A7;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 150, 255, 0.12);
+        }
+        
+        .product-card.zodiac-specific:hover::after {
+            opacity: 1;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 150, 255, 0.3), transparent);
+            margin: 3rem 0;
+        }
+        
+        .circuit-pattern {
+            display: inline-block;
+            position: relative;
+            margin: 0 0.5rem;
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+        }
+        
+        .circuit-pattern::before {
+            content: '⚡';
+            font-size: 2rem;
+            animation: circuitFlash 2s ease-in-out infinite;
+        }
+        
+        @keyframes circuitFlash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .fixed-modality {
+            background: var(--color-cream);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            margin: 2rem 0;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            border: 1px solid rgba(0, 150, 255, 0.1);
+        }
+        
+        .innovation-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-top: 2px solid rgba(0, 150, 255, 0.2);
+            border-bottom: 2px solid rgba(0, 150, 255, 0.2);
+            font-family: var(--font-serif);
+        }
+        
+        .humanitarian-note {
+            background: linear-gradient(135deg, rgba(240, 249, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #666;
+            border: 1px dashed rgba(0, 150, 255, 0.2);
+        }
+        
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .innovation-point {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 150, 255, 0.05);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .innovation-point:hover {
+            background: rgba(0, 150, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .innovation-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .future-box {
+            background: linear-gradient(135deg, #e8f4fd, #dcedff);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #0097A7;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .future-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                repeating-linear-gradient(45deg, 
+                    transparent, 
+                    transparent 10px, 
+                    rgba(0, 150, 255, 0.03) 10px, 
+                    rgba(0, 150, 255, 0.03) 20px);
+            pointer-events: none;
+        }
+        
+        .independent-note {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 150, 255, 0.1);
+        }
+        
+        .network-visual {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .network-node {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 150, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .network-node:hover {
+            background: rgba(0, 150, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .network-node::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            border: 1px dashed rgba(0, 150, 255, 0.2);
+            border-radius: 50%;
+            animation: pulseRing 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseRing {
+            0% { 
+                opacity: 1;
+                width: 60px;
+                height: 60px;
+            }
+            100% { 
+                opacity: 0;
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        .revolution-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .revolution-timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0097A7, transparent);
+            z-index: 0;
+        }
+        
+        .revolution-point {
+            text-align: center;
+            padding: 1rem;
+            background: var(--color-white);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(0, 150, 255, 0.1);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .revolution-point:hover {
+            transform: translateY(-5px);
+            border-color: #0097A7;
+            box-shadow: 0 5px 15px rgba(0, 150, 255, 0.1);
+        }
+        
+        .revolution-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .collective-vision {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .vision-element {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 150, 255, 0.05);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .vision-element:hover {
+            background: rgba(0, 150, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .vision-symbol {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="../index.html" class="logo">
+                <img src="./logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../shop.html">Shop</a></li>
+                <li><a href="../oracle.html">The Oracle</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Zodiac Hero -->
+    <section class="zodiac-hero">
+        <div class="container-narrow">
+            <div class="zodiac-symbol-large">♒</div>
+            <h1 class="zodiac-name">Aquarius</h1>
+            <p class="zodiac-dates">January 20 - February 18</p>
+            <p class="zodiac-essence">Innovative. Independent. Humanitarian.</p>
+        </div>
+    </section>
+
+    <!-- Zodiac Details -->
+    <section class="section">
+        <div class="container">
+            <div class="zodiac-details-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Element</div>
+                    <div class="detail-value">Air</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Ruling Planet</div>
+                    <div class="detail-value">Uranus/Saturn</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Modality</div>
+                    <div class="detail-value">Fixed</div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-label">Symbol</div>
+                    <div class="detail-value">The Water Bearer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Air Element Feature -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="air-element-feature">
+                <div class="element-icon">💨</div>
+                <h2 class="text-center mb-sm">The Air Element</h2>
+                <p class="text-center" style="font-size: 1.15rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto;">
+                    As an Air sign, Aquarius embodies intellectual freedom, innovative thinking, and collective consciousness. Like electricity through a circuit, they connect ideas across distances, illuminate new possibilities, and distribute knowledge for the benefit of all.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Water Bearer Symbolism -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="water-bearer-symbolism">
+                <h3 class="mb-sm">The <span class="water-icon">🏺</span> Water Bearer's Wisdom <span class="water-icon">🏺</span></h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #666; max-width: 700px; margin: 0 auto;">
+                    The Water Bearer represents not water, but the flow of knowledge pouring innovative ideas into the collective consciousness, sharing breakthroughs for humanity's advancement, and understanding that true progress requires distributing wisdom freely.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fixed Modality Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="fixed-modality">
+                <p style="margin: 0; font-size: 1.1rem;">
+                    As a <strong>Fixed</strong> sign, Aquarius possesses <strong>unwavering commitment to ideals</strong> once convinced of a better future, they work with determined focus to make it reality, resisting conformity and maintaining revolutionary vision.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network Visualization -->
+    <section class="section-sm">
+        <div class="container">
+            <h3 class="text-center mb-sm">The Aquarius Network</h3>
+            <div class="network-visual">
+                <div class="network-node">💡</div>
+                <div class="network-node">🌐</div>
+                <div class="network-node">⚡</div>
+                <div class="network-node">🤝</div>
+                <div class="network-node">🚀</div>
+            </div>
+            <p class="text-center" style="color: #666; font-size: 0.95rem; margin-top: 1rem;">
+                Aquarius connects ideas, people, and possibilities in revolutionary networks
+            </p>
+        </div>
+    </section>
+
+    <!-- Innovation Grid -->
+    <section class="section-sm">
+        <div class="container">
+            <h3 class="text-center mb-sm">Aquarius Innovation</h3>
+            <div class="innovation-grid">
+                <div class="innovation-point">
+                    <span class="innovation-icon">💡</span>
+                    <div>Vision</div>
+                    <small>Future thinking</small>
+                </div>
+                <div class="innovation-point">
+                    <span class="innovation-icon">⚙️</span>
+                    <div>Technology</div>
+                    <small>Progress tools</small>
+                </div>
+                <div class="innovation-point">
+                    <span class="innovation-icon">🌍</span>
+                    <div>Humanity</div>
+                    <small>Collective good</small>
+                </div>
+                <div class="innovation-point">
+                    <span class="innovation-icon">🌀</span>
+                    <div>Revolution</div>
+                    <small>System change</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revolution Timeline -->
+    <section class="section-sm">
+        <div class="container">
+            <h3 class="text-center mb-sm">The Revolutionary Path</h3>
+            <div class="revolution-timeline">
+                <div class="revolution-point">
+                    <span class="revolution-icon">👁️</span>
+                    <div>Vision</div>
+                    <small>See what's possible</small>
+                </div>
+                <div class="revolution-point">
+                    <span class="revolution-icon">💭</span>
+                    <div>Ideation</div>
+                    <small>Imagine solutions</small>
+                </div>
+                <div class="revolution-point">
+                    <span class="revolution-icon">🔄</span>
+                    <div>Innovation</div>
+                    <small>Create new ways</small>
+                </div>
+                <div class="revolution-point">
+                    <span class="revolution-icon">🌐</span>
+                    <div>Distribution</div>
+                    <small>Share with all</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Quote -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="innovation-quote">
+                "The future doesn't arrive it's built. And the best builders are those who can see not just what is, but what could be, and who work to make the vision real for everyone."
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Box -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="future-box">
+                <h3 class="mb-sm" style="color: #0097A7;">The Aquarius Future</h3>
+                <p style="color: #666; line-height: 1.7;">
+                    Aquarius lives in the future that hasn't happened yet they see possibilities where others see problems, envision systems where others see chaos, and understand that true progress benefits everyone, not just the privileged. Their independence isn't about isolation, but about maintaining the perspective needed to see beyond current limitations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Independent Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="independent-note">
+                <h4 class="mb-sm" style="color: #0097A7;">Uranus's Gift</h4>
+                <p style="color: #666; line-height: 1.7; margin: 0;">
+                    Aquarius's famous independence isn't rebellion for its own sake it's the necessary distance to see what needs changing, the freedom to think differently, and the courage to stand for ideas that haven't yet found mainstream acceptance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Humanitarian Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="humanitarian-note">
+                Aquarius's aloofness isn't coldness it's the perspective of someone who cares about humanity as a whole, who thinks in terms of systems rather than individuals, and who works for progress that lifts everyone.
+            </div>
+        </div>
+    </section>
+
+    <!-- Collective Vision -->
+    <section class="section-sm">
+        <div class="container">
+            <h3 class="text-center mb-sm">The Collective Vision</h3>
+            <div class="collective-vision">
+                <div class="vision-element">
+                    <span class="vision-symbol">🤝</span>
+                    <div>Community</div>
+                    <small>Shared progress</small>
+                </div>
+                <div class="vision-element">
+                    <span class="vision-symbol">⚖️</span>
+                    <div>Equality</div>
+                    <small>Fair systems</small>
+                </div>
+                <div class="vision-element">
+                    <span class="vision-symbol">📚</span>
+                    <div>Knowledge</div>
+                    <small>Free access</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="personality-section">
+                <h2 class="text-center mb-md">The Aquarius Essence</h2>
+                <p class="text-center mb-lg" style="font-size: 1.15rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto 3rem;">
+                    Aquarius represents the visionary architect of tomorrow the innovator who sees beyond current limitations, the humanitarian who works for collective progress, and the revolutionary who understands that true change begins in the mind. Ruled by Uranus, they bring sudden insights and revolutionary ideas; tempered by Saturn, they build structures to make those ideas real.
+                </p>
+                
+                <div class="traits-grid">
+                    <div class="trait-item">
+                        <div class="trait-icon">🏺</div>
+                        <div class="trait-content">
+                            <h4>Visionary Thinking</h4>
+                            <p>Aquarius sees possibilities decades ahead of their time they understand emerging trends, technological potential, and social evolution before others recognize them.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🏺</div>
+                        <div class="trait-content">
+                            <h4>Intellectual Independence</h4>
+                            <p>They think for themselves, question inherited assumptions, and maintain the mental freedom needed for genuine innovation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🏺</div>
+                        <div class="trait-content">
+                            <h4>Humanitarian Focus</h4>
+                            <p>Aquarius cares about humanity as a whole they work for systems that benefit everyone, not just individuals or privileged groups.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🏺</div>
+                        <div class="trait-content">
+                            <h4>Innovative Problem-Solving</h4>
+                            <p>They don't just fix problems they reimagine systems, creating entirely new approaches that make old problems obsolete.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🏺</div>
+                        <div class="trait-content">
+                            <h4>Progressive Values</h4>
+                            <p>They champion equality, freedom, and progress not as abstract concepts, but as practical goals to build toward.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item">
+                        <div class="trait-icon">🏺</div>
+                        <div class="trait-content">
+                            <h4>Network Intelligence</h4>
+                            <p>Aquarius understands connections how ideas spread, how systems interact, and how progress happens through distributed networks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uranus/Saturn Rulership Note -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="uranus-note">
+                <h3 class="mb-sm">Ruled by Uranus (Traditional: Saturn)</h3>
+                <p style="color: #666; line-height: 1.7;">
+                    Uranus governs revolution, innovation, and sudden insight. Saturn governs structure, discipline, and tradition. Together, they create Aquarius's unique genius: the ability to receive lightning bolt innovations (Uranus) and build enduring structures to implement them (Saturn). This makes Aquarius both the visionary who sees the future and the architect who builds it.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Shop Aquarius Products -->
+    <section class="section products-section">
+        <div class="container">
+            <h2 class="mb-md">Shop the Aquarius Collection</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 3rem;">
+                Pieces designed for innovation, independence, and humanitarian vision
+            </p>
+            
+            <div class="products-preview" id="aquariusProducts">
+                <!-- Products will be loaded here dynamically -->
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="product-card zodiac-specific">
+                    <div class="product-image">
+                        <div class="skeleton skeleton-image"></div>
+                    </div>
+                    <div class="product-info">
+                        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <a href="../shop.html?zodiac=Aquarius" class="btn btn-primary">View All Aquarius Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Zodiac</h4>
+                    <ul class="footer-links">
+                        <li><a href="aries.html">♈ Aries</a></li>
+                        <li><a href="taurus.html">♉ Taurus</a></li>
+                        <li><a href="gemini.html">♊ Gemini</a></li>
+                        <li><a href="cancer.html">♋ Cancer</a></li>
+                        <li><a href="leo.html">♌ Leo</a></li>
+                        <li><a href="virgo.html">♍ Virgo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>More Signs</h4>
+                    <ul class="footer-links">
+                        <li><a href="libra.html">♎ Libra</a></li>
+                        <li><a href="scorpio.html">♏ Scorpio</a></li>
+                        <li><a href="sagittarius.html">♐ Sagittarius</a></li>
+                        <li><a href="capricorn.html">♑ Capricorn</a></li>
+                        <li><a href="aquarius.html">♒ Aquarius</a></li>
+                        <li><a href="pisces.html">♓ Pisces</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="../oracle.html">The Oracle</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="../checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/search.js"></script>
+    
+    <script>
+        // Load Aquarius products
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('aquariusProducts');
+            
+            try {
+                // Fetch products from JSON file
+                const response = await fetch('../data/products.json');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                
+                const products = await response.json();
+                
+                // Filter products for Aquarius
+                const aquariusProducts = products.filter(p => p.zodiac_sign === 'Aquarius').slice(0, 3);
+                
+                if (aquariusProducts.length === 0) {
+                    // Fallback to sample products if none found
+                    aquariusProducts.push(
+                        {
+                            sku: 'A-HOOD-AQUARIUS',
+                            title: 'Aquarius Zodiac Hoodie',
+                            category: 'Men',
+                            zodiac_sign: 'Aquarius',
+                            price: 110.00,
+                            image_front: 'A-HOOD-AQUARIUS-image.webp',
+                            description: 'Innovative hoodie featuring the Water Bearer in electric blue and gold'
+                        },
+                        {
+                            sku: 'A-TEE-AQUARIUS',
+                            title: 'Aquarius Essential Tee',
+                            category: 'Women',
+                            zodiac_sign: 'Aquarius',
+                            price: 65.00,
+                            image_front: 'A-TEE-AQUARIUS-image.webp',
+                            description: 'Water flow design with circuit-like innovative patterns'
+                        },
+                        {
+                            sku: 'H-ALTAR-CLOTH-AQUARIUS',
+                            title: 'Aquarius Altar Cloth',
+                            category: 'Home & Altar',
+                            zodiac_sign: 'Aquarius',
+                            price: 50.00,
+                            image_front: 'H-ALTAR-CLOTH-AQUARIUS-image.webp',
+                            description: 'Futuristic ceremonial cloth featuring water patterns and network connections'
+                        }
+                    );
+                }
+                
+                container.innerHTML = aquariusProducts.map(product => `
+                    <div class="product-card zodiac-specific fade-in">
+                        <div class="product-image">
+                            <img src="../assets/products/${product.image_front}" 
+                                 alt="${product.title}"
+                                 loading="lazy"
+                                 style="opacity: 1; transition: opacity 0.3s ease;"
+                                 onerror="this.src='https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=400&h=500&fit=crop'">
+                            ${product.compare_at_price > 0 ? '<span class="product-badge">Sale</span>' : ''}
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-title">${product.title}</h3>
+                            <div class="product-price">
+                                <span class="price-current">${window.LyrionUtils?.formatPrice ? window.LyrionUtils.formatPrice(product.price) : '£' + parseFloat(product.price).toFixed(2)}</span>
+                            </div>
+                            <p class="product-description" style="font-size: 0.9rem; line-height: 1.5; color: #666; margin: 0.5rem 0 1rem;">${product.description}</p>
+                            <a href="../product.html?sku=${product.sku}" class="btn btn-primary btn-full">View Details</a>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add futuristic entrance animation
+                setTimeout(() => {
+                    document.querySelectorAll('.product-card.zodiac-specific').forEach((card, index) => {
+                        card.style.animationDelay = `${index * 0.08}s`;
+                        card.classList.add('fade-in');
+                    });
+                }, 100);
+                
+            } catch (error) {
+                console.error('Error loading Aquarius products:', error);
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                        <p style="color: #666; margin-bottom: 1rem;">Products catalog is being prepared.</p>
+                        <a href="../shop.html?zodiac=Aquarius" class="btn btn-primary">Browse Shop Instead</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure checkout | LYRĪON Celestial Couture">
+    <title>Checkout | LYRĪON</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            margin: 2rem 0;
+        }
+        
+        .checkout-form-section {
+            max-width: 600px;
+        }
+        
+        .checkout-summary-section {
+            background: var(--color-cream-dark);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .form-section-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .card-element-container {
+            padding: 1rem;
+            background: var(--color-white);
+            border: 2px solid #ddd;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            transition: border-color var(--transition-medium);
+        }
+        
+        .card-element-container.focused {
+            border-color: var(--color-gold-primary);
+            box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.1);
+        }
+        
+        #card-element {
+            padding: 0.5rem 0;
+        }
+        
+        #card-errors {
+            color: var(--color-error);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .order-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .order-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            background: var(--color-white);
+        }
+        
+        .order-totals {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #ddd;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        
+        .total-row.grand-total {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-gold-primary);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ddd;
+        }
+        
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: rgba(184, 134, 11, 0.1);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            color: var(--color-gold-primary);
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 968px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .checkout-summary-section {
+                position: relative;
+                top: 0;
+                order: -1;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Minimal Navigation for Checkout -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <div style="display: flex; align-items: center; gap: 1rem; color: #666; font-size: 0.9rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--color-gold-primary);">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span>Secure Checkout</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Checkout -->
+    <section class="section-sm">
+        <div class="container">
+            <h1 class="text-center mb-lg">Complete Your Order</h1>
+            
+            <!-- Error Container -->
+            <div id="checkout-errors"></div>
+            
+            <div class="checkout-container">
+                <!-- Checkout Form -->
+                <div class="checkout-form-section">
+                    <form id="checkoutForm">
+                        <!-- Contact Information -->
+                        <div class="mb-lg">
+                            <h2 class="form-section-title">Contact Information</h2>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
+                            </div>
+                        </div>
+                        
+                        <!-- Shipping Address -->
+                        <div class="mb-lg">
+                            <h2 class="form-section-title">Shipping Address</h2>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" class="form-input" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="address1">Address Line 1 *</label>
+                                <input type="text" id="address1" name="address1" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="address2">Address Line 2 (Optional)</label>
+                                <input type="text" id="address2" name="address2" class="form-input">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="city">City *</label>
+                                    <input type="text" id="city" name="city" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="postcode">Postcode *</label>
+                                    <input type="text" id="postcode" name="postcode" class="form-input" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="country">Country *</label>
+                                <select id="country" name="country" class="form-select" required>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="IT">Italy</option>
+                                    <option value="ES">Spain</option>
+                                    <option value="NL">Netherlands</option>
+                                    <option value="BE">Belgium</option>
+                                    <option value="IE">Ireland</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Information -->
+                        <div class="mb-lg">
+                            <h2 class="form-section-title">Payment Information</h2>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Card Details *</label>
+                                <div class="card-element-container" id="cardElementContainer">
+                                    <div id="card-element"></div>
+                                </div>
+                                <div id="card-errors"></div>
+                            </div>
+                            
+                            <div class="secure-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                                <span>Secured by Stripe. Your payment information is encrypted.</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" id="submitPayment" class="btn btn-primary btn-full" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                            Complete Purchase
+                        </button>
+                        
+                        <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                            By completing this purchase, you agree to our <a href="#" style="color: var(--color-gold-primary);">Terms of Service</a>
+                        </p>
+                    </form>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="checkout-summary-section">
+                    <h2 class="form-section-title">Order Summary</h2>
+                    
+                    <div id="orderSummary">
+                        <!-- Order items will be loaded here -->
+                        <div class="order-item">
+                            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=200&h=200&fit=crop" 
+                                 alt="Product" 
+                                 class="order-item-image">
+                            <div style="flex: 1;">
+                                <h4 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Loading...</h4>
+                                <p style="margin: 0; font-size: 0.9rem; color: #666;">Qty: 1</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <p style="margin: 0; font-weight: 600; color: var(--color-gold-primary);">£0.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-totals">
+                        <div class="total-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">£0.00</span>
+                        </div>
+                        
+                        <div class="total-row">
+                            <span>Shipping</span>
+                            <span id="shipping">Calculating...</span>
+                        </div>
+                        
+                        <div class="total-row">
+                            <span>VAT (20%)</span>
+                            <span id="tax">£0.00</span>
+                        </div>
+                        
+                        <div class="total-row grand-total">
+                            <span>Total</span>
+                            <span id="total">£0.00</span>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 1.5rem; text-align: center;">
+                        Free shipping on orders over £75
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <div class="footer-bottom" style="padding: 2rem 0; text-align: center; border-top: 1px solid rgba(250, 248, 245, 0.1);">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/checkout.js"></script>
+    
+    <script>
+        // Focus effect for card element
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardContainer = document.getElementById('cardElementContainer');
+            
+            if (cardContainer) {
+                // Add focus class when Stripe element is focused
+                // This will be handled by Stripe Elements event listeners in checkout.js
+                setTimeout(() => {
+                    const stripeInput = cardContainer.querySelector('iframe');
+                    if (stripeInput) {
+                        stripeInput.addEventListener('focus', () => {
+                            cardContainer.classList.add('focused');
+                        });
+                        stripeInput.addEventListener('blur', () => {
+                            cardContainer.classList.remove('focused');
+                        });
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

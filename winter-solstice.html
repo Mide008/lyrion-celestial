@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winter Solstice: The Cosmic Return of Light - Rituals, traditions, and spiritual practices for the longest night.">
+    <title>Winter Solstice: The Cosmic Return of Light | The Codex | LYRĪON</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Article Hero */
+        .article-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.85) 0%, rgba(15, 13, 11, 0.7) 100%);
+            color: var(--color-cream);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(196, 164, 73, 0.15) 0%, transparent 70%),
+                        radial-gradient(circle at 70% 70%, rgba(196, 164, 73, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .article-hero-image {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+        
+        .article-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-accent);
+            font-size: 0.95rem;
+        }
+        
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #333;
+        }
+        
+        .article-body h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .article-body h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--color-ink);
+        }
+        
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-body blockquote {
+            border-left: 4px solid var(--color-gold-primary);
+            padding: 2rem;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), transparent);
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--color-ink);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .article-body img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .article-body li {
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Floating Action Bar */
+        .article-actions {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .article-actions.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .action-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+        }
+        
+        .action-btn:hover {
+            background: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Author Section */
+        .author-section {
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            margin: 4rem 0;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-gold-primary);
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Related Articles */
+        .related-articles {
+            margin-top: 6rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(196, 164, 73, 0.2);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .related-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-medium);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .related-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+            text-decoration: none;
+        }
+        
+        .related-image {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+        
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .related-card:hover .related-image img {
+            transform: scale(1.05);
+        }
+        
+        .related-content {
+            padding: 1.5rem;
+        }
+        
+        /* Table of Contents */
+        .toc-container {
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .toc-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--color-ink);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-link {
+            color: #666;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--color-gold-primary);
+            background: rgba(196, 164, 73, 0.05);
+            padding-left: 1rem;
+        }
+        
+        /* Reading Progress */
+        .reading-progress {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(196, 164, 73, 0.1);
+            z-index: 1000;
+        }
+        
+        .reading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-gold-accent), var(--color-gold-primary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Back Button */
+        .back-to-codex {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold-primary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: gap var(--transition-medium);
+            text-decoration: none;
+        }
+        
+        .back-to-codex:hover {
+            gap: 0.75rem;
+        }
+        
+        /* Tip Box */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), rgba(196, 164, 73, 0.02));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-left: 4px solid var(--color-gold-primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .tip-box h4 {
+            color: var(--color-gold-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Solstice Elements */
+        .solstice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .solstice-item {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .solstice-item:hover {
+            border-color: var(--color-gold-primary);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-3px);
+        }
+        
+        .solstice-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Tradition Cards */
+        .tradition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .tradition-card {
+            background: rgba(196, 164, 73, 0.03);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .tradition-card:hover {
+            border-color: var(--color-gold-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .tradition-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Zodiac Solstice Section */
+        .zodiac-solstice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .zodiac-solstice {
+            background: rgba(196, 164, 73, 0.03);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .zodiac-solstice:hover {
+            border-color: var(--color-gold-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .zodiac-symbol {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        /* Ritual Steps */
+        .ritual-steps {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.02), rgba(196, 164, 73, 0.01));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .ritual-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(196, 164, 73, 0.05);
+        }
+        
+        .ritual-number {
+            flex: 0 0 40px;
+            height: 40px;
+            background: var(--color-gold-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .ritual-content {
+            flex: 1;
+        }
+        
+        /* Light/Dark Balance */
+        .balance-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.03), rgba(196, 164, 73, 0.01));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .dark-side, .light-side {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .balance-bar {
+            width: 80%;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 1rem auto;
+            overflow: hidden;
+        }
+        
+        .balance-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #333, var(--color-gold-primary));
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 4rem 1rem 2rem;
+            }
+            
+            .article-hero-image {
+                height: 300px;
+            }
+            
+            .article-content {
+                padding: 2rem 1rem;
+            }
+            
+            .article-body h2 {
+                font-size: 1.7rem;
+            }
+            
+            .article-body h3 {
+                font-size: 1.3rem;
+            }
+            
+            .article-actions {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            .action-btn {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .author-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-container {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .solstice-grid, .tradition-grid, .zodiac-solstice-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .balance-display {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .ritual-step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .ritual-number {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Reading Progress -->
+    <div class="reading-progress">
+        <div class="reading-progress-bar" id="readingProgress"></div>
+    </div>
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="container">
+            <div class="article-hero-image">
+                <img src="https://images.pexels.com/photos/1787235/pexels-photo-1787235.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop" alt="Winter solstice sunrise over snowy landscape" loading="lazy" id="heroImage">
+            </div>
+            
+            <div class="container-narrow">
+                <a href="codex.html" class="back-to-codex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                    Back to The Codex
+                </a>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                        </svg>
+                        <span id="articleAuthor">LYRĪON Seasonal Wisdom</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+                        </svg>
+                        <span id="articleDate">December 21, 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                        </svg>
+                        <span id="articleReadTime">7 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+                            <path d="M5 0h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        <span id="articleCategory">Seasonal Wisdom</span>
+                    </div>
+                </div>
+                
+                <h1 id="articleTitle" style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--color-cream);">
+                    Winter Solstice: The Cosmic Return of Light
+                </h1>
+                
+                <p id="articleExcerpt" style="font-size: 1.3rem; line-height: 1.7; color: var(--color-cream); max-width: 800px;">
+                    On the longest night of the year, ancient wisdom teaches us to honor darkness while welcoming the rebirth of light. Discover solstice rituals, astrological significance, and traditions for this sacred turning point.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="section">
+        <div class="container">
+            <div class="article-content">
+                <div class="grid" style="grid-template-columns: 1fr 300px; gap: 3rem;">
+                    <!-- Main Content -->
+                    <div class="article-body" id="articleBody">
+                        <h2 id="section-intro">What is the Winter Solstice?</h2>
+                        <p>The Winter Solstice, occurring around December 21st in the Northern Hemisphere, marks the astronomical moment when the North Pole is tilted farthest from the sun. This creates the shortest day and longest night of the year—a cosmic pause before the sun begins its gradual return.</p>
+                        
+                        <blockquote>
+                            "In the depth of winter, I finally learned that within me there lay an invincible summer." — Albert Camus
+                        </blockquote>
+                        
+                        <h2 id="section-astronomy">Astronomical Significance</h2>
+                        
+                        <div class="solstice-grid">
+                            <div class="solstice-item">
+                                <span class="solstice-icon">🌎</span>
+                                <h4>Axial Tilt</h4>
+                                <p>Earth's 23.5-degree tilt reaches its maximum angle away from the sun, creating extreme seasonal contrasts between hemispheres.</p>
+                            </div>
+                            <div class="solstice-item">
+                                <span class="solstice-icon">☀️</span>
+                                <h4>Solar Standstill</h4>
+                                <p>"Solstice" comes from Latin "solstitium"—"sol" (sun) and "sistere" (to stand still). The sun appears to pause in its journey south.</p>
+                            </div>
+                            <div class="solstice-item">
+                                <span class="solstice-icon">♑</span>
+                                <h4>Capricorn Season</h4>
+                                <p>The sun enters Capricorn at the solstice, blending earthly pragmatism with celestial aspiration during this threshold moment.</p>
+                            </div>
+                        </div>
+                        
+                        <img src="https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Stonehenge at winter solstice sunrise" loading="lazy">
+                        
+                        <h2 id="section-traditions">Ancient Traditions & Global Celebrations</h2>
+                        <p>For millennia, cultures worldwide have honored this celestial turning point:</p>
+                        
+                        <div class="tradition-grid">
+                            <div class="tradition-card">
+                                <span class="tradition-icon">🕯️</span>
+                                <h4>Yule (Norse)</h4>
+                                <p>Twelve-day festival honoring the rebirth of the sun god. Traditions include burning the Yule log, feasting, and decorating with evergreens.</p>
+                            </div>
+                            <div class="tradition-card">
+                                <span class="tradition-icon">🪵</span>
+                                <h4>Dongzhi (Chinese)</h4>
+                                <p>"Winter's extreme" celebration focused on family reunion and eating tangyuan (rice balls) symbolizing unity and completeness.</p>
+                            </div>
+                            <div class="tradition-card">
+                                <span class="tradition-icon">✨</span>
+                                <h4>Inti Raymi (Inca)</h4>
+                                <p>"Sun festival" honoring Inti, the sun god, with offerings, fasting, and rituals to ensure the sun's return and agricultural abundance.</p>
+                            </div>
+                            <div class="tradition-card">
+                                <span class="tradition-icon">🕎</span>
+                                <h4>Saturnalia (Roman)</h4>
+                                <p>Week-long festival of role reversal, gift-giving, and candle lighting to honor Saturn during the darkest time of year.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <h4><span>💡</span> Pro Tip</h4>
+                            <p>The solstice is exact at a specific minute. Check astronomical charts for your location's precise moment to time rituals accordingly.</p>
+                        </div>
+                        
+                        <h2 id="section-symbolism">Symbolism of Light & Dark</h2>
+                        
+                        <div class="balance-display">
+                            <div class="dark-side">
+                                <h4>Darkness</h4>
+                                <p><strong>Gifts:</strong> Rest, introspection, dreaming, germination<br>
+                                <strong>Shadow:</strong> Fear, stagnation, isolation<br>
+                                <strong>Element:</strong> Earth, Water</p>
+                            </div>
+                            
+                            <div class="balance-bar">
+                                <div class="balance-fill" id="balanceFill" style="width: 50%"></div>
+                            </div>
+                            
+                            <div class="light-side">
+                                <h4>Light</h4>
+                                <p><strong>Gifts:</strong> Action, clarity, growth, manifestation<br>
+                                <strong>Shadow:</strong> Burnout, superficiality, forcing<br>
+                                <strong>Element:</strong> Fire, Air</p>
+                            </div>
+                        </div>
+                        
+                        <blockquote>
+                            "Darkness is not the absence of light but the womb where light is conceived. The solstice teaches us to honor both."
+                        </blockquote>
+                        
+                        <h2 id="section-rituals">Solstice Rituals for Modern Times</h2>
+                        
+                        <div class="ritual-steps">
+                            <div class="ritual-step">
+                                <div class="ritual-number">1</div>
+                                <div class="ritual-content">
+                                    <h4>Sunrise/Sunset Observation</h4>
+                                    <p><strong>Timing:</strong> Exact solstice sunrise or sunset<br>
+                                    <strong>Practice:</strong> Witness the sun's extreme position. In Northern Hemisphere, sunrise is farthest southeast, sunset farthest southwest. Offer gratitude for the sun's constancy.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="ritual-step">
+                                <div class="ritual-number">2</div>
+                                <div class="ritual-content">
+                                    <h4>Candle Lighting Ceremony</h4>
+                                    <p><strong>Materials:</strong> 12 candles (for 12 hours of light to come), matches<br>
+                                    <strong>Practice:</strong> Light one candle at dusk. Each hour (or whenever you notice), light another. Speak intentions for what you wish to illuminate in the coming year.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="ritual-step">
+                                <div class="ritual-number">3</div>
+                                <div class="ritual-content">
+                                    <h4>Darkness Meditation</h4>
+                                    <p><strong>Timing:</strong> Longest night<br>
+                                    <strong>Practice:</strong> Sit in complete darkness for 20 minutes. Welcome what arises without judgment. Journal insights about what wants to germinate in your inner darkness.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="ritual-step">
+                                <div class="ritual-number">4</div>
+                                <div class="ritual-content">
+                                    <h4>Evergreen Blessing</h4>
+                                    <p><strong>Materials:</strong> Evergreen boughs (pine, fir, cedar), red ribbon<br>
+                                    <strong>Practice:</strong> Create a wreath or arrangement. As you place each piece, name something in your life that remains vibrant through winter (relationships, values, dreams).</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <img src="https://images.pexels.com/photos/1757363/pexels-photo-1757363.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Candles and evergreen arrangements for solstice" loading="lazy">
+                        
+                        <h2 id="section-zodiac">Zodiac Significance: Capricorn Season</h2>
+                        <p>The sun enters Capricorn at the solstice, creating powerful astrological themes:</p>
+                        
+                        <div class="zodiac-solstice-grid">
+                            <div class="zodiac-solstice">
+                                <span class="zodiac-symbol">♑</span>
+                                <h4>Capricorn Energy</h4>
+                                <p><strong>Theme:</strong> Ambition meets reflection<br>
+                                <strong>Challenge:</strong> Balancing achievement with rest<br>
+                                <strong>Opportunity:</strong> Setting structured intentions</p>
+                            </div>
+                            <div class="zodiac-solstice">
+                                <span class="zodiac-symbol">🌙</span>
+                                <h4>Saturn's Influence</h4>
+                                <p><strong>Planet:</strong> Saturn (Capricorn's ruler)<br>
+                                <strong>Energy:</strong> Structure, discipline, time<br>
+                                <strong>Lesson:</strong> What foundations need strengthening?</p>
+                            </div>
+                            <div class="zodiac-solstice">
+                                <span class="zodiac-symbol">⚖️</span>
+                                <h4>Cardinal Quality</h4>
+                                <p><strong>Mode:</strong> Cardinal (initiating)<br>
+                                <strong>Expression:</strong> Beginning of winter season<br>
+                                <strong>Action:</strong> Strategic planning for new cycles</p>
+                            </div>
+                        </div>
+                        
+                        <h3>Solstice Intentions by Sun Sign</h3>
+                        <ul>
+                            <li><strong>Fire Signs (Aries, Leo, Sag):</strong> What inner fire needs tending during this quiet time?</li>
+                            <li><strong>Earth Signs (Taurus, Virgo, Cap):</strong> What practical foundations need your attention?</li>
+                            <li><strong>Air Signs (Gemini, Libra, Aqua):</strong> What ideas want to incubate in darkness?</li>
+                            <li><strong>Water Signs (Cancer, Scorpio, Pisces):</strong> What emotional depths need honoring?</li>
+                        </ul>
+                        
+                        <div class="tip-box">
+                            <h4><span>🌟</span> Cosmic Insight</h4>
+                            <p>Check where 0° Capricorn falls in your birth chart. This house reveals where you're called to plant seeds of structure and ambition during this solstice cycle.</p>
+                        </div>
+                        
+                        <h2 id="section-altar">Creating a Solstice Altar</h2>
+                        
+                        <h3>Essential Elements</h3>
+                        <ul>
+                            <li><strong>Evergreens:</strong> Pine, fir, cedar—symbolizing eternal life</li>
+                            <li><strong>Sun Symbols:</strong> Gold items, sun-shaped objects, citrine crystals</li>
+                            <li><strong>Dark/Light Balance:</strong> Black and white candles, yin-yang symbol</li>
+                            <li><strong>Winter Elements:</strong> Pinecones, bare branches, holly berries</li>
+                            <li><strong>Personal Items:</strong> Things representing what you're releasing and welcoming</li>
+                        </ul>
+                        
+                        <h3>Altar Arrangement</h3>
+                        <p>Create a circular arrangement representing the cyclical nature of seasons. Place dark items in the north (representing winter), light items in the south (representing returning sun). Include a center candle to light at the exact solstice moment.</p>
+                        
+                        <img src="https://images.pexels.com/photos/1893557/pexels-photo-1893557.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Winter solstice altar with candles and natural elements" loading="lazy">
+                        
+                        <h2 id="section-feasting">Solstice Feasting & Nourishment</h2>
+                        
+                        <h3>Traditional Foods</h3>
+                        <ul>
+                            <li><strong>Root Vegetables:</strong> Carrots, potatoes, beets—foods that grow downward, connecting to earth's energy</li>
+                            <li><strong>Preserved Foods:</strong> Jams, pickles, dried fruits—honoring summer's abundance stored for winter</li>
+                            <li><strong>Round Foods:</strong> Oranges, apples, round breads—symbolizing the sun and cyclical nature</li>
+                            <li><strong>Spiced Drinks:</strong> Mulled wine, spiced cider, herbal teas—warming spices to ignite inner fire</li>
+                        </ul>
+                        
+                        <h3>Simple Solstice Feast</h3>
+                        <p>Create a meal honoring both darkness and light: a dark bread (rye or pumpernickel) with golden butter, root vegetable soup garnished with bright herbs, roasted apples with spices, and spiced tea with honey.</p>
+                        
+                        <blockquote>
+                            "Eating with seasonal awareness is a form of communion with the Earth. Winter foods teach us about preservation, patience, and the sweetness that comes from waiting."
+                        </blockquote>
+                        
+                        <h2 id="section-reflection">Solstice Reflection & Journaling</h2>
+                        
+                        <h3>Journal Prompts for the Longest Night</h3>
+                        <ul>
+                            <li>"What has completed its cycle in my life this year?"</li>
+                            <li>"What seeds of intention want to germinate in my inner darkness?"</li>
+                            <li>"Where do I need to bring more light in the coming months?"</li>
+                            <li>"What wisdom have I gathered during this year's 'winter' phases?"</li>
+                            <li>"How can I honor both rest and preparation during this season?"</li>
+                        </ul>
+                        
+                        <h3>Release & Welcome Ceremony</h3>
+                        <p>Write what you're releasing on dark paper (fears, old patterns, completed projects). Write what you're welcoming on gold or white paper (hopes, new beginnings, light). Safely burn the release paper. Keep the welcome paper on your altar until spring equinox.</p>
+                        
+                        <h2 id="section-family">Family & Community Traditions</h2>
+                        
+                        <h3>Child-Friendly Activities</h3>
+                        <ul>
+                            <li><strong>Sun Craft:</strong> Create sun catchers or sun-shaped decorations</li>
+                            <li><strong>Story Time:</strong> Read myths about sun gods/goddesses from different cultures</li>
+                            <li><strong>Nature Walk:</strong> Collect evergreen boughs, pinecones, and bare branches</li>
+                            <li><strong>Candle Making:</strong> Create simple beeswax candles to light during solstice night</li>
+                        </ul>
+                        
+                        <h3>Community Connection</h3>
+                        <p>Host a potluck where everyone brings a dish made with preserved or winter foods. Share stories of what you're releasing and welcoming. Create a communal art piece with everyone contributing a sun symbol.</p>
+                        
+                        <img src="https://images.pexels.com/photos/1045519/pexels-photo-1045519.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Family gathered around fireplace during winter" loading="lazy">
+                        
+                        <h2 id="section-conclusion">The Solstice Pause</h2>
+                        <p>The Winter Solstice is nature's ultimate pause button. In a world that values constant motion and productivity, this celestial event invites us to stop, breathe, and honor the necessary rhythms of rest and darkness.</p>
+                        
+                        <p>As you move through this solstice season, remember: the light returns not because we force it, but because it's the natural order of things. Your own inner light follows the same cosmic timing—sometimes bright and expansive, sometimes quiet and inward. Both phases are essential to your wholeness.</p>
+                        
+                        <p>This year, may you find peace in the darkness, hope in the returning light, and wisdom in the balance between them.</p>
+                        
+                        <blockquote>
+                            "The Winter Solstice reminds us: even at our darkest point, the turning has already begun. The light you seek is returning. The warmth you long for is being reborn. Trust the cycle."
+                        </blockquote>
+                        
+                        <p>Blessed Solstice. May the returning light illuminate your path and warm your spirit.</p>
+                    </div>
+                    
+                    <!-- Table of Contents -->
+                    <div class="toc-container">
+                        <div class="toc-title">In This Article</div>
+                        <ul class="toc-list">
+                            <li class="toc-item"><a href="#section-intro" class="toc-link active">What is Winter Solstice?</a></li>
+                            <li class="toc-item"><a href="#section-astronomy" class="toc-link">Astronomical Significance</a></li>
+                            <li class="toc-item"><a href="#section-traditions" class="toc-link">Ancient Traditions</a></li>
+                            <li class="toc-item"><a href="#section-symbolism" class="toc-link">Light & Dark Symbolism</a></li>
+                            <li class="toc-item"><a href="#section-rituals" class="toc-link">Solstice Rituals</a></li>
+                            <li class="toc-item"><a href="#section-zodiac" class="toc-link">Zodiac Significance</a></li>
+                            <li class="toc-item"><a href="#section-altar" class="toc-link">Creating an Altar</a></li>
+                            <li class="toc-item"><a href="#section-feasting" class="toc-link">Solstice Feasting</a></li>
+                            <li class="toc-item"><a href="#section-reflection" class="toc-link">Reflection & Journaling</a></li>
+                            <li class="toc-item"><a href="#section-family" class="toc-link">Family Traditions</a></li>
+                            <li class="toc-item"><a href="#section-conclusion" class="toc-link">Conclusion</a></li>
+                        </ul>
+                        
+                        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(196, 164, 73, 0.1);">
+                            <div style="font-size: 0.9rem; color: #999; margin-bottom: 0.5rem;">Share this article</div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('twitter')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('facebook')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="shareArticle('pinterest')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" style="width: 40px; height: 40px;" onclick="copyLink()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="author-section">
+                <div class="author-info">
+                    <div class="author-avatar">
+                        <img src="https://images.pexels.com/photos/3760851/pexels-photo-3760851.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop&crop=face" alt="LYRĪON Seasonal Guide">
+                    </div>
+                    <div>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-ink);">
+                            Written by LYRĪON Seasonal Wisdom
+                        </h3>
+                        <p style="color: #666; margin-bottom: 1rem; line-height: 1.6;">
+                            Our seasonal guides blend astronomical knowledge with ancient traditions to help you honor Earth's natural cycles. We believe that aligning with seasonal rhythms brings deeper connection and meaning to modern life.
+                        </p>
+                        <a href="about.html" class="read-more" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-gold-primary); font-weight: 600; text-decoration: none;">
+                            Explore seasonal practices
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="section">
+        <div class="container">
+            <div class="related-articles">
+                <h2 style="font-family: var(--font-serif); font-size: 2rem; text-align: center; margin-bottom: 1rem; color: var(--color-ink);">
+                    Continue Reading
+                </h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Explore more seasonal and cosmic wisdom from The Codex
+                </p>
+                
+                <div class="related-grid">
+                    <!-- Related Article 1 -->
+                    <a href="lunar-phases.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.pexels.com/photos/1496372/pexels-photo-1496372.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Lunar Phases">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">LUNAR WISDOM</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Working With Lunar Phases
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">December 28, 2024</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 2 -->
+                    <a href="sacred-altar.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.pexels.com/photos/1029894/pexels-photo-1029894.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Sacred Altar">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">RITUALS</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                Creating a Sacred Altar
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">February 8, 2025</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Related Article 3 -->
+                    <a href="capsule-wardrobe.html" class="related-card">
+                        <div class="related-image">
+                            <img src="https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Capsule Wardrobe">
+                        </div>
+                        <div class="related-content">
+                            <div style="font-size: 0.85rem; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.5rem;">STYLE GUIDE</div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem; line-height: 1.3;">
+                                The Cosmic Capsule Wardrobe
+                            </h3>
+                            <div style="font-size: 0.9rem; color: #999;">December 20, 2024</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="codex.html" class="btn btn-primary">View All Articles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="article-actions" id="articleActions">
+        <button class="action-btn" id="scrollToTop" aria-label="Scroll to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708 .708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="toggleDarkMode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+            </svg>
+        </button>
+        <button class="action-btn" id="textSizeBtn" aria-label="Adjust text size">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.21 10.637c1.33 0 1.33.665 1.33 1.33v.665c0 .664-1.33.665-1.33.665h-.418v2.004h.836c.442 0 .836.224.836.556 0 .333-.394.557-.836.557H5.791c-.442 0-.836-.224-.836-.557 0-.332.394-.556.836-.556h.836v-2.004h-.418c-1.33 0-1.33-.664-1.33-.665v-.665c0-.665 1.33-1.33 1.33-1.33h5.962zM6.749 5.5v.05h3.999v-.05c0-1.14-.564-1.15-.564-1.15h-2.871s-.565.01-.565 1.15zM7.96 1.074h.99l.598.15s.01.17.01.45v2.797h-.01v2.709h-1.187V4.475h-.01V1.674c0-.28.01-.45.01-.45l.599-.15z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="codex.html">The Codex</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+        <div class="container-narrow" style="margin-top: 5rem;">
+            <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs, articles...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+    
+    <script>
+        // Enhanced Article Reading Features
+        document.addEventListener('DOMContentLoaded', () => {
+            const articleBody = document.getElementById('articleBody');
+            const readingProgress = document.getElementById('readingProgress');
+            const articleActions = document.getElementById('articleActions');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const textSizeBtn = document.getElementById('textSizeBtn');
+            const darkModeBtn = document.getElementById('toggleDarkMode');
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            const relatedCards = document.querySelectorAll('.related-card');
+            const balanceFill = document.getElementById('balanceFill');
+            
+            let currentTextSize = 1;
+            let isDarkMode = false;
+            
+            // Animate balance bar
+            setTimeout(() => {
+                balanceFill.style.width = '50%';
+            }, 500);
+            
+            // Reading Progress
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrolled = (scrollTop / (documentHeight - windowHeight)) * 100;
+                
+                readingProgress.style.width = scrolled + '%';
+                
+                // Show/hide action buttons
+                if (scrollTop > 300) {
+                    articleActions.classList.add('visible');
+                } else {
+                    articleActions.classList.remove('visible');
+                }
+                
+                // Update active TOC link
+                const sections = document.querySelectorAll('h2, h3');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (scrollTop >= sectionTop) {
+                        currentSection = '#' + section.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // TOC Smooth Scroll
+            tocLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Text Size Adjustment
+            textSizeBtn.addEventListener('click', () => {
+                currentTextSize += 0.1;
+                if (currentTextSize > 1.4) currentTextSize = 0.9;
+                
+                articleBody.style.fontSize = `${currentTextSize}rem`;
+                articleBody.style.lineHeight = `${1.7 + (currentTextSize - 1) * 0.2}`;
+                
+                // Show size indicator
+                const sizes = ['Small', 'Normal', 'Large', 'Extra Large'];
+                const sizeIndex = Math.min(Math.floor((currentTextSize - 0.9) / 0.1), 3);
+                
+                showToast(`Text size: ${sizes[sizeIndex]}`);
+            });
+            
+            // Dark Mode Toggle
+            darkModeBtn.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+                
+                if (isDarkMode) {
+                    document.body.style.backgroundColor = '#1a1a1a';
+                    document.body.style.color = '#e6e6e6';
+                    articleBody.style.color = '#e6e6e6';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '#ffffff';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = 'rgba(196, 164, 73, 0.1)';
+                    });
+                    showToast('Dark mode activated');
+                } else {
+                    document.body.style.backgroundColor = '';
+                    document.body.style.color = '';
+                    articleBody.style.color = '';
+                    document.querySelectorAll('.article-body h2, .article-body h3').forEach(el => {
+                        el.style.color = '';
+                    });
+                    document.querySelectorAll('.article-body blockquote').forEach(el => {
+                        el.style.background = '';
+                    });
+                    showToast('Light mode activated');
+                }
+            });
+            
+            // Scroll to Top
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Related card smooth transitions
+            relatedCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = card.getAttribute('href');
+                    
+                    // Show loading
+                    document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                });
+            });
+            
+            // Share functions
+            window.shareArticle = (platform) => {
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.getElementById('articleTitle').textContent);
+                let shareUrl = '';
+                
+                switch(platform) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                        break;
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                        break;
+                    case 'pinterest':
+                        shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${title}`;
+                        break;
+                }
+                
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            };
+            
+            window.copyLink = () => {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('Link copied to clipboard!');
+                });
+            };
+            
+            // Toast notification function
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.textContent = message;
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = 'var(--color-gold-primary)';
+                toast.style.color = 'var(--color-white)';
+                toast.style.padding = '1rem 2rem';
+                toast.style.borderRadius = 'var(--radius-md)';
+                toast.style.zIndex = '9999';
+                toast.style.boxShadow = 'var(--shadow-lg)';
+                toast.style.fontWeight = '600';
+                toast.style.transition = 'all 0.3s ease';
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(-50%) translateY(20px)';
+                    setTimeout(() => document.body.removeChild(toast), 300);
+                }, 2000);
+            }
+            
+            // Add back button functionality
+            document.querySelector('.back-to-codex').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('loadingOverlay')?.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    window.location.href = 'codex.html';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
