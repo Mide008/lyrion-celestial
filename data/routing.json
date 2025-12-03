@@ -1,5 +1,5 @@
 [
-  {"sku": "A-HOOD-ARIES", "pod_provider": "printful", "pod_sku": "PRF-HOOD-001"},
+  {"sku": "A-HOOD-ARIES", "pod_provider": "manual", "pod_sku": "PRF-HOOD-001"},
   {"sku": "A-HOOD-TAURUS", "pod_provider": "printful", "pod_sku": "PRF-HOOD-002"},
   {"sku": "A-HOOD-GEMINI", "pod_provider": "printful", "pod_sku": "PRF-HOOD-003"},
   {"sku": "A-HOOD-CANCER", "pod_provider": "printful", "pod_sku": "PRF-HOOD-004"},

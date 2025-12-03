@@ -10,7 +10,7 @@
     "image_front": "A-HOOD-ARIES-image.webp",
     "image_back": "",
     "image_side": "",
-    "pod_provider": "printful",
+    "pod_provider": "manual",
     "pod_sku": "PRF-HOOD-001",
     "tags": ["zodiac", "apparel", "hoodie", "fire"],
     "variants": ["S", "M", "L", "XL", "XXL"]
