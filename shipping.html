@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LYRĪON Shipping & Returns - Celestial delivery and cosmic returns for your celestial couture.">
+    <title>Shipping & Returns | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Shipping Hero */
+        .shipping-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.92) 0%, rgba(15, 13, 11, 0.88) 100%), 
+                        radial-gradient(circle at 20% 30%, rgba(196, 164, 73, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(196, 164, 73, 0.1) 0%, transparent 50%);
+            color: var(--color-cream);
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .shipping-hero::before {
+            content: '🚀';
+            position: absolute;
+            bottom: -50px;
+            right: 10%;
+            font-size: 12rem;
+            opacity: 0.03;
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+        
+        .shipping-hero::after {
+            content: '📦';
+            position: absolute;
+            top: 20%;
+            left: 8%;
+            font-size: 8rem;
+            opacity: 0.03;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+        
+        .delivery-constellation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: 
+                radial-gradient(circle at 30% 40%, rgba(196, 164, 73, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 70% 60%, rgba(196, 164, 73, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 50% 80%, rgba(196, 164, 73, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 90% 20%, rgba(196, 164, 73, 0.05) 1px, transparent 1px);
+            background-size: 120px 120px;
+            pointer-events: none;
+        }
+        
+        /* Shipping Content */
+        .shipping-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: var(--color-white);
+        }
+        
+        /* Policy Grid Layout */
+        .policy-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (max-width: 992px) {
+            .policy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Policy Sections */
+        .policy-section {
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            position: relative;
+            transition: all var(--transition-medium);
+        }
+        
+        .policy-section:hover {
+            border-color: rgba(196, 164, 73, 0.25);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .policy-section h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--color-ink);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .policy-section h2::before {
+            font-size: 1.5rem;
+        }
+        
+        .policy-section h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--color-ink);
+            margin: 2rem 0 1rem;
+            padding-left: 0.5rem;
+            position: relative;
+        }
+        
+        .policy-section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 4px;
+            height: 4px;
+            background: var(--color-gold-primary);
+            border-radius: 50%;
+        }
+        
+        .policy-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+        
+        .policy-section ul, .policy-section ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+            color: #555;
+        }
+        
+        .policy-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .policy-section li::before {
+            content: '•';
+            color: var(--color-gold-primary);
+            font-weight: bold;
+            position: absolute;
+            left: -1rem;
+        }
+        
+        /* Shipping Methods */
+        .shipping-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .method-card {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            transition: all var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .method-card:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .method-card.popular {
+            border: 2px solid var(--color-gold-primary);
+            position: relative;
+        }
+        
+        .method-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-gold-primary);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        .method-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-ink);
+            margin: 0.5rem 0;
+        }
+        
+        /* Delivery Timeline */
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-gold-primary), var(--color-gold-accent), transparent);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.3rem;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--color-gold-primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--color-gold-primary);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--color-gold-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Returns Process */
+        .returns-process {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), rgba(196, 164, 73, 0.02));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .process-steps {
+            counter-reset: step-counter;
+        }
+        
+        .process-step {
+            display: flex;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(196, 164, 73, 0.1);
+            counter-increment: step-counter;
+        }
+        
+        .process-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .step-number {
+            flex: 0 0 60px;
+            width: 60px;
+            height: 60px;
+            background: var(--color-gold-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            position: relative;
+        }
+        
+        .step-number::before {
+            content: counter(step-counter);
+        }
+        
+        /* International Shipping */
+        .international-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .country-card {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .country-card:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-3px);
+        }
+        
+        .country-flag {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .country-name {
+            font-weight: 600;
+            color: var(--color-ink);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Cost Calculator */
+        .cost-calculator {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.02), rgba(15, 13, 11, 0.01));
+            border: 1px solid rgba(196, 164, 73, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .calculator-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .form-group select,
+        .form-group input {
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(196, 164, 73, 0.2);
+            border-radius: var(--radius-md);
+            background: white;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+        
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-gold-primary);
+            box-shadow: 0 0 0 3px rgba(196, 164, 73, 0.1);
+        }
+        
+        .calculator-result {
+            background: var(--color-gold-primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .calculator-result.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Policy Sidebar */
+        .policy-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+        }
+        
+        .sidebar-card {
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .sidebar-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--color-ink);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .quick-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .quick-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .quick-links a {
+            color: #666;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            display: block;
+            transition: all var(--transition-fast);
+            font-size: 0.95rem;
+        }
+        
+        .quick-links a:hover {
+            color: var(--color-gold-primary);
+            background: rgba(196, 164, 73, 0.05);
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .status-badge.success {
+            background: rgba(76, 175, 80, 0.1);
+            color: #2e7d32;
+        }
+        
+        .status-badge.warning {
+            background: rgba(255, 152, 0, 0.1);
+            color: #ef6c00;
+        }
+        
+        .status-badge.info {
+            background: rgba(33, 150, 243, 0.1);
+            color: #1565c0;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 4rem 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .faq-question:hover {
+            background: rgba(196, 164, 73, 0.02);
+        }
+        
+        .faq-question h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-ink);
+            margin: 0;
+        }
+        
+        .faq-icon {
+            color: var(--color-gold-primary);
+            transition: transform var(--transition-fast);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all var(--transition-medium);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Important Notice */
+        .important-notice {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.1), rgba(196, 164, 73, 0.05));
+            border: 2px solid var(--color-gold-primary);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .notice-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .notice-icon {
+            font-size: 2rem;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Tracking Section */
+        .tracking-section {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.02), rgba(15, 13, 11, 0.01));
+            border: 1px dashed rgba(196, 164, 73, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .tracking-input {
+            display: flex;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+        
+        .tracking-input input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid rgba(196, 164, 73, 0.2);
+            border-right: none;
+            border-radius: var(--radius-md) 0 0 var(--radius-md);
+            font-size: 1rem;
+        }
+        
+        .tracking-input button {
+            padding: 1rem 2rem;
+            background: var(--color-gold-primary);
+            color: white;
+            border: none;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+        
+        .tracking-input button:hover {
+            background: var(--color-gold-dark);
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .shipping-hero {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            .shipping-content {
+                padding: 2rem 1rem;
+            }
+            
+            .policy-section {
+                padding: 1.5rem;
+            }
+            
+            .shipping-methods,
+            .international-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-step {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .calculator-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .tracking-input {
+                flex-direction: column;
+            }
+            
+            .tracking-input input {
+                border-right: 1px solid rgba(196, 164, 73, 0.2);
+                border-radius: var(--radius-md) var(--radius-md) 0 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .tracking-input button {
+                border-radius: 0 0 var(--radius-md) var(--radius-md);
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .policy-sidebar,
+            .tracking-section,
+            .calculator-result {
+                display: none;
+            }
+            
+            .policy-section {
+                break-inside: avoid;
+                border: 1px solid #ddd;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Shipping Hero -->
+    <section class="shipping-hero">
+        <div class="delivery-constellation"></div>
+        <div class="container">
+            <h1 style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--color-cream);">
+                Shipping & Returns
+            </h1>
+            <p style="font-size: 1.3rem; line-height: 1.7; color: var(--color-cream); max-width: 800px; margin: 0 auto 2rem;">
+                Celestial delivery and cosmic returns for your celestial couture.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 0.75rem 1.5rem; border-radius: var(--radius-md);">
+                    <div style="font-size: 0.9rem; opacity: 0.8;">UK Delivery</div>
+                    <div style="font-size: 1.1rem; font-weight: 600;">2-3 Business Days</div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 0.75rem 1.5rem; border-radius: var(--radius-md);">
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Free Returns</div>
+                    <div style="font-size: 1.1rem; font-weight: 600;">30 Days Policy</div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 0.75rem 1.5rem; border-radius: var(--radius-md);">
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Global Shipping</div>
+                    <div style="font-size: 1.1rem; font-weight: 600;">100+ Countries</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Notice -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="important-notice">
+                <div class="notice-header">
+                    <span class="notice-icon">📦</span>
+                    <div>
+                        <h2 style="color: var(--color-ink); margin: 0 0 0.25rem;">Holiday Shipping Notice</h2>
+                        <p style="color: #666; margin: 0; font-size: 0.95rem;">December 15 - January 5: Allow extra 3-5 days for delivery</p>
+                    </div>
+                </div>
+                <p style="color: #555; margin-bottom: 1rem;">
+                    During peak seasons, we recommend ordering early to ensure delivery before important dates. All orders placed after December 20 may not arrive before Christmas.
+                </p>
+                <div class="status-badge info">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                    </svg>
+                    Last Christmas Delivery: Order by December 15, 2pm GMT
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="policy-grid">
+                
+                <!-- Main Content Column -->
+                <div class="policy-main">
+                    
+                    <!-- Shipping Overview -->
+                    <div class="policy-section">
+                        <h2 style="color: var(--color-gold-primary);">
+                            <span>🚀</span> Cosmic Delivery Overview
+                        </h2>
+                        <p>At LYRĪON, we ensure your celestial couture arrives with the same care and magic that goes into creating it. All orders are carefully packed in our signature cosmic packaging and dispatched from our London studio.</p>
+                        
+                        <div class="shipping-methods">
+                            <div class="method-card">
+                                <span class="method-icon">📮</span>
+                                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Standard Delivery</h3>
+                                <div class="method-price">£4.95</div>
+                                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">3-5 business days</p>
+                                <div style="font-size: 0.85rem; color: #2e7d32; font-weight: 600;">Free on orders over £75</div>
+                            </div>
+                            
+                            <div class="method-card popular">
+                                <span class="method-icon">⚡</span>
+                                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Express Delivery</h3>
+                                <div class="method-price">£9.95</div>
+                                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">1-2 business days</p>
+                                <div style="font-size: 0.85rem; color: #2e7d32; font-weight: 600;">Order by 2pm for same-day dispatch</div>
+                            </div>
+                            
+                            <div class="method-card">
+                                <span class="method-icon">👑</span>
+                                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Next Day Premium</h3>
+                                <div class="method-price">£14.95</div>
+                                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Next business day</p>
+                                <div style="font-size: 0.85rem; color: #2e7d32; font-weight: 600;">Guaranteed delivery before 1pm</div>
+                            </div>
+                        </div>
+                        
+                        <h3>Processing Time</h3>
+                        <p>All orders are processed within 1-2 business days (Monday-Friday, excluding holidays). Once your order is shipped, you will receive a tracking number via email.</p>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                                    </svg>
+                                    Day 1: Order Placed
+                                </div>
+                                <p>Your order is received and entered into our cosmic system.</p>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-date">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                                    </svg>
+                                    Day 2: Processing & Quality Check
+                                </div>
+                                <p>Each piece is inspected, energetically cleansed, and carefully packed in our cosmic packaging.</p>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-date">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                                    </svg>
+                                    Day 3: Dispatch & Tracking
+                                </div>
+                                <p>Your order is dispatched with our celestial carriers and tracking information is sent to you.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- International Shipping -->
+                    <div class="policy-section">
+                        <h2 style="color: var(--color-gold-primary);">
+                            <span>🌍</span> Global Celestial Delivery
+                        </h2>
+                        <p>We ship our cosmic creations worldwide. International shipping times and costs vary by destination.</p>
+                        
+                        <div class="international-grid">
+                            <div class="country-card">
+                                <span class="country-flag">🇪🇺</span>
+                                <div class="country-name">European Union</div>
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">£9.95 • 5-7 business days</div>
+                                <div style="font-size: 0.85rem; color: #2e7d32;">VAT included at checkout</div>
+                            </div>
+                            
+                            <div class="country-card">
+                                <span class="country-flag">🇺🇸</span>
+                                <div class="country-name">United States</div>
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">£12.95 • 7-10 business days</div>
+                                <div style="font-size: 0.85rem; color: #ff6b6b;">Duties may apply</div>
+                            </div>
+                            
+                            <div class="country-card">
+                                <span class="country-flag">🇨🇦</span>
+                                <div class="country-name">Canada</div>
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">£14.95 • 8-12 business days</div>
+                                <div style="font-size: 0.85rem; color: #ff6b6b;">Duties may apply</div>
+                            </div>
+                            
+                            <div class="country-card">
+                                <span class="country-flag">🇦🇺</span>
+                                <div class="country-name">Australia</div>
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">£16.95 • 10-14 business days</div>
+                                <div style="font-size: 0.85rem; color: #ff6b6b;">Duties may apply</div>
+                            </div>
+                        </div>
+                        
+                        <h3>Customs & Duties</h3>
+                        <p>For international orders, you are responsible for any customs duties, taxes, or fees that may be charged by your country's customs office. These fees are not included in the purchase price or shipping cost.</p>
+                        
+                        <div class="important-notice" style="margin: 2rem 0; background: rgba(196, 164, 73, 0.05);">
+                            <h3 style="color: var(--color-gold-primary); margin-top: 0;">Important International Information</h3>
+                            <ul>
+                                <li>International delivery times are estimates only</li>
+                                <li>Some countries may have import restrictions</li>
+                                <li>All international shipments include tracking</li>
+                                <li>Contact your local customs office for specific fee information</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Returns Policy -->
+                    <div class="policy-section">
+                        <h2 style="color: var(--color-gold-primary);">
+                            <span>✨</span> Cosmic Returns & Exchanges
+                        </h2>
+                        <p>We want you to love your LYRĪON pieces. If you're not completely satisfied, you may return eligible items within 30 days of delivery for a refund or exchange.</p>
+                        
+                        <div class="returns-process">
+                            <h3 style="color: var(--color-ink); margin-top: 0;">The Returns Process</h3>
+                            <div class="process-steps">
+                                <div class="process-step">
+                                    <div class="step-number"></div>
+                                    <div>
+                                        <h4 style="margin-top: 0; color: var(--color-ink);">Initiate Your Return</h4>
+                                        <p style="color: #555; margin-bottom: 0.5rem;">Log into your account or use our returns portal with your order number and email address.</p>
+                                        <div class="status-badge info">Available within 30 days of delivery</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <div class="step-number"></div>
+                                    <div>
+                                        <h4 style="margin-top: 0; color: var(--color-ink);">Pack Your Items</h4>
+                                        <p style="color: #555; margin-bottom: 0.5rem;">Include all original packaging, tags, and documentation. Use the provided return label.</p>
+                                        <div class="status-badge warning">Items must be unworn and in original condition</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <div class="step-number"></div>
+                                    <div>
+                                        <h4 style="margin-top: 0; color: var(--color-ink);">Ship Your Return</h4>
+                                        <p style="color: #555; margin-bottom: 0.5rem;">Drop off at any post office or schedule a pickup. Keep your tracking number for reference.</p>
+                                        <div class="status-badge info">Free returns for UK customers</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <div class="step-number"></div>
+                                    <div>
+                                        <h4 style="margin-top: 0; color: var(--color-ink);">Receive Your Refund</h4>
+                                        <p style="color: #555; margin-bottom: 0.5rem;">Once received and inspected, refunds are processed within 5-10 business days to your original payment method.</p>
+                                        <div class="status-badge success">Exchanges processed within 3-5 business days</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3>Return Conditions</h3>
+                        <p>To be eligible for a return, your item must be:</p>
+                        <ul>
+                            <li>In the same condition you received it</li>
+                            <li>Unworn, unwashed, and undamaged</li>
+                            <li>In the original packaging with all tags attached</li>
+                            <li>Accompanied by the receipt or proof of purchase</li>
+                        </ul>
+                        
+                        <h3>Non-Returnable Items</h3>
+                        <p>Certain items cannot be returned for hygiene or custom nature reasons:</p>
+                        <ul>
+                            <li>Earrings (for hygiene reasons)</li>
+                            <li>Custom or personalized items</li>
+                            <li>Final sale items (clearly marked at purchase)</li>
+                            <li>Gift cards</li>
+                            <li>Items purchased from third-party retailers</li>
+                        </ul>
+                        
+                        <h3>Refund Timeline</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">Day 1-3</div>
+                                <p>Return received at our London studio and inspection begins</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">Day 4-5</div>
+                                <p>Quality check completed and refund approved</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">Day 6-10</div>
+                                <p>Refund processed to your original payment method</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cost Calculator -->
+                    <div class="policy-section">
+                        <h2 style="color: var(--color-gold-primary);">
+                            <span>🧮</span> Shipping Cost Calculator
+                        </h2>
+                        
+                        <div class="cost-calculator">
+                            <p>Estimate shipping costs for your order based on destination and delivery speed.</p>
+                            
+                            <div class="calculator-form">
+                                <div class="form-group">
+                                    <label for="country">Destination Country</label>
+                                    <select id="country" onchange="calculateShipping()">
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="EU">European Union</option>
+                                        <option value="US">United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="OTHER">Other International</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="method">Delivery Method</label>
+                                    <select id="method" onchange="calculateShipping()">
+                                        <option value="standard">Standard (3-5 days)</option>
+                                        <option value="express">Express (1-2 days)</option>
+                                        <option value="premium">Next Day Premium</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="orderValue">Order Value (£)</label>
+                                    <input type="number" id="orderValue" min="0" value="50" oninput="calculateShipping()">
+                                </div>
+                            </div>
+                            
+                            <div class="calculator-result" id="calculatorResult">
+                                <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">Estimated Shipping Cost</div>
+                                <div style="font-size: 2rem; font-weight: 700;" id="shippingCost">£4.95</div>
+                                <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;" id="shippingDetails">Standard delivery to United Kingdom • 3-5 business days</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Section -->
+                    <div class="policy-section">
+                        <h2 style="color: var(--color-gold-primary);">
+                            <span>❓</span> Frequently Asked Questions
+                        </h2>
+                        
+                        <div class="faq-section">
+                            <div class="faq-item" onclick="toggleFAQ(this)">
+                                <div class="faq-question">
+                                    <h4>How long does shipping take?</h4>
+                                    <span class="faq-icon">▼</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>UK orders typically arrive within 2-3 business days for express shipping and 3-5 business days for standard shipping. International shipping times vary by destination, typically 5-14 business days. You'll receive tracking information once your order ships.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item" onclick="toggleFAQ(this)">
+                                <div class="faq-question">
+                                    <h4>Can I track my order?</h4>
+                                    <span class="faq-icon">▼</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Yes! All orders include tracking. You'll receive a tracking number via email once your order ships. You can also track your order by logging into your account on our website.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item" onclick="toggleFAQ(this)">
+                                <div class="faq-question">
+                                    <h4>What is your return policy?</h4>
+                                    <span class="faq-icon">▼</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>We offer a 30-day return policy for most items. Items must be unworn, unwashed, and in original condition with all tags attached. Some items like earrings and custom pieces are final sale. UK returns are free, international customers pay return shipping.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item" onclick="toggleFAQ(this)">
+                                <div class="faq-question">
+                                    <h4>Do you ship internationally?</h4>
+                                    <span class="faq-icon">▼</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Yes, we ship to over 100 countries worldwide. Shipping costs and delivery times vary by destination. International customers are responsible for any customs duties, taxes, or import fees that may apply in their country.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item" onclick="toggleFAQ(this)">
+                                <div class="faq-question">
+                                    <h4>What if my order is damaged or incorrect?</h4>
+                                    <span class="faq-icon">▼</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>We're sorry to hear that! Please contact our customer service within 7 days of delivery at <a href="mailto:support@lyrion.com" style="color: var(--color-gold-primary);">support@lyrion.com</a> with photos of the damaged or incorrect item and your order number. We'll arrange a replacement or refund immediately.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item" onclick="toggleFAQ(this)">
+                                <div class="faq-question">
+                                    <h4>Can I change or cancel my order?</h4>
+                                    <span class="faq-icon">▼</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>You can change or cancel your order within 1 hour of placing it by contacting us at <a href="mailto:support@lyrion.com" style="color: var(--color-gold-primary);">support@lyrion.com</a>. After 1 hour, your order enters processing and cannot be changed or canceled.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tracking Section -->
+                    <div class="tracking-section">
+                        <span class="method-icon" style="font-size: 3rem;">📡</span>
+                        <h2 style="color: var(--color-ink); margin: 1rem 0;">Track Your Cosmic Delivery</h2>
+                        <p style="color: #666; max-width: 600px; margin: 0 auto 1rem;">Enter your tracking number to follow your celestial couture's journey</p>
+                        
+                        <div class="tracking-input">
+                            <input type="text" id="trackingNumber" placeholder="Enter tracking number (e.g., LYR123456789GB)">
+                            <button onclick="trackOrder()">Track Order</button>
+                        </div>
+                        
+                        <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">
+                            Don't have your tracking number? Check your email or <a href="contact.html" style="color: var(--color-gold-primary);">contact us</a>.
+                        </p>
+                    </div>
+                    
+                </div>
+                
+                <!-- Sidebar Column -->
+                <div class="policy-sidebar">
+                    
+                    <!-- Quick Links -->
+                    <div class="sidebar-card">
+                        <h3>Quick Links</h3>
+                        <ul class="quick-links">
+                            <li><a href="#shipping-overview">Shipping Overview</a></li>
+                            <li><a href="#international">International Shipping</a></li>
+                            <li><a href="#returns">Returns & Exchanges</a></li>
+                            <li><a href="#calculator">Shipping Calculator</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#tracking">Track Your Order</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Current Status -->
+                    <div class="sidebar-card">
+                        <h3>Current Shipping Status</h3>
+                        <div class="status-badge success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                            </svg>
+                            Normal Operations
+                        </div>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;">All orders are processing and shipping normally with standard delivery times.</p>
+                    </div>
+                    
+                    <!-- Contact Help -->
+                    <div class="sidebar-card">
+                        <h3>Need Help?</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">Our cosmic customer service team is here to assist you.</p>
+                        <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center; margin-bottom: 1rem;">
+                            Contact Support
+                        </a>
+                        <a href="mailto:shipping@lyrion.com" style="color: var(--color-gold-primary); font-weight: 600; font-size: 0.9rem; display: block; text-align: center;">
+                            shipping@lyrion.com
+                        </a>
+                    </div>
+                    
+                    <!-- Return Label -->
+                    <div class="sidebar-card">
+                        <h3>Start a Return</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">Initiate your return quickly and easily.</p>
+                        <button class="btn" style="width: 100%; text-align: center; background: rgba(196, 164, 73, 0.1); color: var(--color-gold-primary); border: none;" onclick="startReturn()">
+                            Begin Return Process
+                        </button>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="shipping.html" class="active">Shipping & Returns</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="size-guide.html">Size Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="shipping.html">Shipping & Returns</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://instagram.com/lyrion" target="_blank">Instagram</a></li>
+                        <li><a href="https://pinterest.com/lyrion" target="_blank">Pinterest</a></li>
+                        <li><a href="blog.html">The Codex</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved. | <a href="shipping.html" style="color: var(--color-gold-primary);">Shipping & Returns</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    
+    <script>
+        // Shipping & Returns Page Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize calculator
+            calculateShipping();
+            
+            // Smooth scroll for quick links
+            document.querySelectorAll('.quick-links a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Initialize all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item.classList.contains('active')) {
+                    item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px';
+                }
+            });
+            
+            // Auto-open first FAQ
+            if (document.querySelector('.faq-item')) {
+                document.querySelector('.faq-item').classList.add('active');
+                document.querySelector('.faq-item .faq-answer').style.maxHeight = 
+                    document.querySelector('.faq-item .faq-answer').scrollHeight + 'px';
+            }
+        });
+        
+        // Toggle FAQ item
+        window.toggleFAQ = (element) => {
+            const answer = element.querySelector('.faq-answer');
+            const isActive = element.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').style.maxHeight = null;
+                }
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                element.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                element.classList.remove('active');
+                answer.style.maxHeight = null;
+            }
+        };
+        
+        // Shipping Cost Calculator
+        window.calculateShipping = () => {
+            const country = document.getElementById('country').value;
+            const method = document.getElementById('method').value;
+            const orderValue = parseFloat(document.getElementById('orderValue').value) || 0;
+            
+            // Base prices
+            let basePrice = 0;
+            let shippingTime = '';
+            let countryName = '';
+            
+            // Set country-specific pricing
+            switch(country) {
+                case 'UK':
+                    basePrice = 4.95;
+                    shippingTime = '3-5 business days';
+                    countryName = 'United Kingdom';
+                    break;
+                case 'EU':
+                    basePrice = 9.95;
+                    shippingTime = '5-7 business days';
+                    countryName = 'European Union';
+                    break;
+                case 'US':
+                    basePrice = 12.95;
+                    shippingTime = '7-10 business days';
+                    countryName = 'United States';
+                    break;
+                case 'CA':
+                    basePrice = 14.95;
+                    shippingTime = '8-12 business days';
+                    countryName = 'Canada';
+                    break;
+                case 'AU':
+                    basePrice = 16.95;
+                    shippingTime = '10-14 business days';
+                    countryName = 'Australia';
+                    break;
+                case 'OTHER':
+                    basePrice = 19.95;
+                    shippingTime = '10-15 business days';
+                    countryName = 'International';
+                    break;
+            }
+            
+            // Adjust for shipping method
+            switch(method) {
+                case 'express':
+                    basePrice += 5;
+                    shippingTime = shippingTime.replace(/\d+-\d+/, '1-2');
+                    break;
+                case 'premium':
+                    basePrice += 10;
+                    shippingTime = 'Next business day';
+                    break;
+            }
+            
+            // Check for free shipping threshold (UK only)
+            if (country === 'UK' && orderValue >= 75) {
+                basePrice = 0;
+            }
+            
+            // Update result display
+            const resultElement = document.getElementById('calculatorResult');
+            const costElement = document.getElementById('shippingCost');
+            const detailsElement = document.getElementById('shippingDetails');
+            
+            costElement.textContent = basePrice === 0 ? 'FREE' : `£${basePrice.toFixed(2)}`;
+            
+            let methodText = '';
+            switch(method) {
+                case 'standard':
+                    methodText = 'Standard delivery';
+                    break;
+                case 'express':
+                    methodText = 'Express delivery';
+                    break;
+                case 'premium':
+                    methodText = 'Next Day Premium';
+                    break;
+            }
+            
+            detailsElement.textContent = `${methodText} to ${countryName} • ${shippingTime}`;
+            
+            // Show result with animation
+            resultElement.classList.add('show');
+        };
+        
+        // Track Order Function
+        window.trackOrder = () => {
+            const trackingNumber = document.getElementById('trackingNumber').value.trim();
+            
+            if (!trackingNumber) {
+                alert('Please enter a tracking number');
+                return;
+            }
+            
+            // In a real implementation, this would call an API
+            // For demo purposes, show a mock result
+            const mockStatuses = [
+                { status: '📦 Order Processed', date: 'Today, 9:30 AM', location: 'London, UK' },
+                { status: '🚚 In Transit', date: 'Today, 2:15 PM', location: 'Heathrow Distribution Center' },
+                { status: '📬 Out for Delivery', date: 'Tomorrow, 8:00 AM', location: 'Local Delivery Depot' },
+                { status: '✅ Delivered', date: 'Tomorrow, 1:30 PM', location: 'Your Address' }
+            ];
+            
+            // Show tracking modal
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            modal.style.zIndex = '9999';
+            
+            modal.innerHTML = `
+                <div style="background: white; border-radius: var(--radius-lg); padding: 2rem; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h2 style="margin: 0; color: var(--color-ink);">Tracking Information</h2>
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #999;">&times;</button>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(196, 164, 73, 0.05); border-radius: var(--radius-md);">
+                        <div style="font-size: 0.9rem; color: #666;">Tracking Number</div>
+                        <div style="font-family: monospace; font-size: 1.1rem; font-weight: 600; color: var(--color-gold-primary);">${trackingNumber}</div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="color: var(--color-gold-primary);">📦</span>
+                            <span style="font-weight: 600;">Estimated Delivery: Tomorrow, 1:30 PM</span>
+                        </div>
+                        
+                        <div class="timeline" style="margin: 0;">
+                            ${mockStatuses.map((status, index) => `
+                                <div class="timeline-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem;">
+                                    <div class="timeline-date" style="margin-bottom: 0.25rem;">${status.date}</div>
+                                    <div style="font-weight: 600; margin-bottom: 0.25rem;">${status.status}</div>
+                                    <div style="font-size: 0.9rem; color: #666;">${status.location}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <button onclick="this.parentElement.parentElement.parentElement.remove()" style="width: 100%; padding: 1rem; background: var(--color-gold-primary); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">
+                        Close Tracking
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        };
+        
+        // Start Return Process
+        window.startReturn = () => {
+            // In a real implementation, this would redirect to a returns portal
+            // For demo, show a modal
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            modal.style.zIndex = '9999';
+            
+            modal.innerHTML = `
+                <div style="background: white; border-radius: var(--radius-lg); padding: 2rem; max-width: 500px; width: 90%;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <span style="font-size: 3rem; display: block; margin-bottom: 1rem; color: var(--color-gold-primary);">✨</span>
+                        <h2 style="margin: 0 0 0.5rem; color: var(--color-ink);">Start Your Return</h2>
+                        <p style="color: #666; margin: 0;">You'll need your order number and email address to begin.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555;">Order Number</label>
+                        <input type="text" style="width: 100%; padding: 0.75rem; border: 1px solid rgba(196, 164, 73, 0.2); border-radius: var(--radius-md); margin-bottom: 1rem;">
+                        
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555;">Email Address</label>
+                        <input type="email" style="width: 100%; padding: 0.75rem; border: 1px solid rgba(196, 164, 73, 0.2); border-radius: var(--radius-md);">
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" style="flex: 1; padding: 1rem; background: rgba(196, 164, 73, 0.1); color: var(--color-gold-primary); border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">
+                            Cancel
+                        </button>
+                        <button onclick="window.location.href='returns-portal.html'" style="flex: 1; padding: 1rem; background: var(--color-gold-primary); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">
+                            Continue to Returns
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        };
+        
+        // Animate shipping methods on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideIn 0.6s ease forwards';
+                    entry.target.style.opacity = '0';
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                    }, 100);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe shipping method cards
+        document.querySelectorAll('.method-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

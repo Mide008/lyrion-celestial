@@ -453,3 +453,23 @@ window.OracleAPI = {
     selectTier,
     ORACLE_TIERS
 };
+
+// ==========================================
+// QUICK TIER SELECTION WITH MODAL
+// ==========================================
+function setupQuickTierSelection() {
+    document.querySelectorAll('[data-tier]').forEach(card => {
+        card.addEventListener('click', function() {
+            const tierId = this.getAttribute('data-tier');
+            window.OracleAPI.selectTier(tierId);
+        });
+    });
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('oracleForm')) {
+        initOracle();
+    }
+    setupQuickTierSelection();
+});

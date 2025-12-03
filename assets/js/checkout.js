@@ -6,8 +6,8 @@
 // ==========================================
 // CONFIGURATION
 // ==========================================
-const STRIPE_PUBLIC_KEY = 'pk_live_51ST0Yr6kwOhs68PfqGUKmqq7hcbKsY60SCK1WLr5vkJLyAqurpFVgZx5oJEPZmXMN3gS6fI8YzLsF4hWQh0qjPHt00tIvM8E5V'; // Replace with your actual publishable key
-const WORKER_URL = 'https://lyrion-order-broker.workers.dev'; // Replace with your Cloudflare Worker URL
+const STRIPE_PUBLIC_KEY = 'pk_live_51SUJRkEdr82NVcSeGDkHpcpmUdS7OZzESMQ5JZESZsc9YY74FoTtk2p9LFKYafg4VmjvsXOVO0IHsi2fSyh81xA600RctJAeto'; // Replace with your actual publishable key
+const WORKER_URL = 'https://lyrion-order-broker.hello-2a3.workers.dev'; // Replace with your Cloudflare Worker URL
 
 // ==========================================
 // STRIPE INSTANCE

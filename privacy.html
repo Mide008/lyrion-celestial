@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LYRĪON Privacy Policy - How we protect your cosmic data and celestial information.">
+    <title>Privacy Policy | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Privacy Hero */
+        .privacy-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.9) 0%, rgba(15, 13, 11, 0.8) 100%), 
+                        radial-gradient(circle at 70% 30%, rgba(196, 164, 73, 0.15) 0%, transparent 50%);
+            color: var(--color-cream);
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .privacy-hero::after {
+            content: '🔮';
+            position: absolute;
+            bottom: -50px;
+            right: 10%;
+            font-size: 12rem;
+            opacity: 0.03;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+        
+        .privacy-hero::before {
+            content: '⭐';
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            font-size: 8rem;
+            opacity: 0.03;
+            transform: rotate(-10deg);
+            pointer-events: none;
+        }
+        
+        /* Privacy Content */
+        .privacy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: var(--color-white);
+        }
+        
+        .privacy-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            transition: all var(--transition-medium);
+        }
+        
+        .privacy-section:hover {
+            border-color: rgba(196, 164, 73, 0.2);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .privacy-section h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--color-ink);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+            position: relative;
+        }
+        
+        .privacy-section h2::before {
+            content: '✦';
+            position: absolute;
+            left: -2rem;
+            color: var(--color-gold-primary);
+            font-size: 1.2rem;
+        }
+        
+        .privacy-section h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--color-ink);
+            margin: 2rem 0 1rem;
+        }
+        
+        .privacy-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+        
+        .privacy-section ul, .privacy-section ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+            color: #555;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+        
+        /* Data Collection Cards */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .data-card {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .data-card:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .data-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Security Badge */
+        .security-badge {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.1), rgba(196, 164, 73, 0.05));
+            border: 1px solid rgba(196, 164, 73, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .security-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(196, 164, 73, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .security-icon {
+            font-size: 3rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        /* Cookie Settings */
+        .cookie-settings {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.02), rgba(15, 13, 11, 0.01));
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .cookie-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            transition: all var(--transition-fast);
+        }
+        
+        .cookie-option:hover {
+            border-color: var(--color-gold-primary);
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: var(--color-gold-primary);
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+        
+        /* Policy Updates */
+        .updates-timeline {
+            position: relative;
+            margin: 3rem 0;
+            padding-left: 2rem;
+        }
+        
+        .updates-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-gold-primary), transparent);
+        }
+        
+        .update-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .update-item:last-child {
+            border-bottom: none;
+        }
+        
+        .update-item::before {
+            content: '';
+            position: absolute;
+            left: -2.3rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-gold-primary);
+        }
+        
+        /* Contact Cards */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .contact-card {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            transition: all var(--transition-medium);
+        }
+        
+        .contact-card:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Print Button */
+        .print-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), transparent);
+            border-radius: var(--radius-lg);
+            border: 1px dashed rgba(196, 164, 73, 0.2);
+        }
+        
+        /* Navigation Helper */
+        .policy-nav {
+            position: sticky;
+            top: 100px;
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            z-index: 10;
+        }
+        
+        .policy-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .policy-nav a {
+            color: #666;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .policy-nav a:hover {
+            color: var(--color-gold-primary);
+            background: rgba(196, 164, 73, 0.05);
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .privacy-hero {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            .privacy-content {
+                padding: 2rem 1rem;
+            }
+            
+            .privacy-section {
+                padding: 1.5rem;
+            }
+            
+            .data-grid, .contact-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .policy-nav {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .policy-nav ul {
+                flex-direction: column;
+            }
+            
+            .cookie-option {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .cookie-option > div:first-child {
+                width: 100%;
+            }
+        }
+        
+        @media print {
+            .policy-nav,
+            .print-section,
+            .cookie-settings,
+            .security-badge {
+                display: none;
+            }
+            
+            .privacy-section {
+                break-inside: avoid;
+                border: 1px solid #ddd;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Privacy Hero -->
+    <section class="privacy-hero">
+        <div class="container">
+            <h1 style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--color-cream);">
+                Privacy Policy
+            </h1>
+            <p style="font-size: 1.3rem; line-height: 1.7; color: var(--color-cream); max-width: 800px; margin: 0 auto 2rem;">
+                Protecting your cosmic data with celestial-level security and transparency.
+            </p>
+            <div style="font-size: 1rem; color: rgba(255, 255, 255, 0.8);">
+                Last Updated: October 28, 2025 • Version 3.1
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Navigation -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="policy-nav">
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#data-collection">Data Collection</a></li>
+                    <li><a href="#data-use">How We Use Data</a></li>
+                    <li><a href="#data-protection">Protection</a></li>
+                    <li><a href="#cookies">Cookies</a></li>
+                    <li><a href="#rights">Your Rights</a></li>
+                    <li><a href="#children">Children's Privacy</a></li>
+                    <li><a href="#changes">Policy Changes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <section class="section">
+        <div class="container">
+            <div class="privacy-content">
+                
+                <!-- Overview Section -->
+                <div class="privacy-section" id="overview">
+                    <h2>Celestial Commitment to Your Privacy</h2>
+                    <p>At LYRĪON, we believe that privacy is a fundamental right, not a privilege. Just as the stars maintain their cosmic dance with perfect harmony, we maintain the highest standards of data protection for our celestial community.</p>
+                    
+                    <p>This Privacy Policy explains how LYRĪON Celestial Couture ("we," "us," or "our") collects, uses, shares, and protects your personal information when you visit our website, make purchases, interact with The Oracle, or participate in our cosmic community.</p>
+                    
+                    <p>By using our services, you entrust us with your information, and we take that responsibility seriously. We're committed to being transparent about our data practices and giving you control over your personal information.</p>
+                    
+                    <div class="security-badge">
+                        <span class="security-icon">🛡️</span>
+                        <h3 style="color: var(--color-gold-primary); margin-bottom: 0.5rem;">Our Security Promise</h3>
+                        <p style="color: #666; margin-bottom: 0;">We implement industry-standard security measures including encryption, secure servers, and regular security audits to protect your cosmic data.</p>
+                    </div>
+                </div>
+                
+                <!-- Data Collection Section -->
+                <div class="privacy-section" id="data-collection">
+                    <h2>Information We Collect</h2>
+                    <p>To provide our celestial services and enhance your cosmic experience, we collect several types of information:</p>
+                    
+                    <div class="data-grid">
+                        <div class="data-card">
+                            <span class="data-icon">👤</span>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Personal Information</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Name, email, birth date (for zodiac insights), shipping address, and payment details.</p>
+                        </div>
+                        
+                        <div class="data-card">
+                            <span class="data-icon">🌌</span>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Cosmic Preferences</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Zodiac sign, moon phase preferences, style choices, and ritual interests.</p>
+                        </div>
+                        
+                        <div class="data-card">
+                            <span class="data-icon">💻</span>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Technical Data</h3>
+                            <p style="font-size: 0.9rem; color: #666;">IP address, browser type, device information, and website interaction data.</p>
+                        </div>
+                        
+                        <div class="data-card">
+                            <span class="data-icon">💬</span>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Communication Data</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Customer service interactions, feedback, and community participation.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>How We Collect Information</h3>
+                    <ul>
+                        <li><strong>Directly from you:</strong> When you make a purchase, create an account, use The Oracle, or contact us</li>
+                        <li><strong>Automatically:</strong> Through cookies and similar technologies when you browse our website</li>
+                        <li><strong>From third parties:</strong> Such as payment processors and shipping providers (with your consent)</li>
+                        <li><strong>Community interactions:</strong> When you participate in moon circles or style challenges</li>
+                    </ul>
+                </div>
+                
+                <!-- Data Use Section -->
+                <div class="privacy-section" id="data-use">
+                    <h2>How We Use Your Information</h2>
+                    <p>We use your information to create magical experiences and provide exceptional service:</p>
+                    
+                    <h3>Core Purposes</h3>
+                    <ul>
+                        <li><strong>Order Fulfillment:</strong> Process purchases, arrange shipping, and handle returns</li>
+                        <li><strong>Personalized Experience:</strong> Create zodiac-specific recommendations and moon phase insights</li>
+                        <li><strong>Customer Service:</strong> Respond to inquiries and provide support</li>
+                        <li><strong>Improvement:</strong> Enhance our website, products, and services based on usage patterns</li>
+                        <li><strong>Communication:</strong> Send order updates, cosmic insights, and relevant offers (with your consent)</li>
+                        <li><strong>Security:</strong> Protect against fraud and unauthorized access</li>
+                    </ul>
+                    
+                    <h3>Legal Bases for Processing (GDPR)</h3>
+                    <p>For our customers in the European Union, we process your personal data under the following legal bases:</p>
+                    <ul>
+                        <li><strong>Contract:</strong> To fulfill our agreement when you make a purchase</li>
+                        <li><strong>Consent:</strong> When you opt-in for newsletters or special features</li>
+                        <li><strong>Legitimate Interests:</strong> To improve our services and prevent fraud</li>
+                        <li><strong>Legal Obligation:</strong> To comply with applicable laws and regulations</li>
+                    </ul>
+                </div>
+                
+                <!-- Data Protection Section -->
+                <div class="privacy-section" id="data-protection">
+                    <h2>How We Protect Your Information</h2>
+                    
+                    <div class="security-badge">
+                        <span class="security-icon">🔒</span>
+                        <h3 style="color: var(--color-gold-primary); margin-bottom: 1rem;">Multi-Layer Security Approach</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                            <div>
+                                <h4 style="color: #666; font-size: 0.9rem; margin-bottom: 0.25rem;">Encryption</h4>
+                                <p style="color: #666; font-size: 0.85rem; margin: 0;">SSL/TLS encryption for all data transfers</p>
+                            </div>
+                            <div>
+                                <h4 style="color: #666; font-size: 0.9rem; margin-bottom: 0.25rem;">Secure Storage</h4>
+                                <p style="color: #666; font-size: 0.85rem; margin: 0;">Protected servers with limited access</p>
+                            </div>
+                            <div>
+                                <h4 style="color: #666; font-size: 0.9rem; margin-bottom: 0.25rem;">Regular Audits</h4>
+                                <p style="color: #666; font-size: 0.85rem; margin: 0;">Quarterly security assessments</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Data Retention</h3>
+                    <p>We retain your personal information only as long as necessary to fulfill the purposes outlined in this policy, unless a longer retention period is required or permitted by law:</p>
+                    <ul>
+                        <li><strong>Order Information:</strong> 7 years for tax and legal compliance</li>
+                        <li><strong>Account Information:</strong> While your account is active + 2 years</li>
+                        <li><strong>Marketing Data:</strong> Until you unsubscribe or request deletion</li>
+                        <li><strong>Cosmic Preferences:</strong> Until you update or delete them</li>
+                    </ul>
+                    
+                    <h3>Third-Party Sharing</h3>
+                    <p>We only share your information with trusted third parties who help us operate our business, and only to the extent necessary:</p>
+                    <ul>
+                        <li><strong>Payment Processors:</strong> Stripe, PayPal (encrypted payment data only)</li>
+                        <li><strong>Shipping Partners:</strong> Royal Mail, DHL, FedEx (address and contact details only)</li>
+                        <li><strong>Service Providers:</strong> Email marketing, analytics, hosting services (with strict data protection agreements)</li>
+                        <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
+                    </ul>
+                    <p>We never sell your personal information to third parties.</p>
+                </div>
+                
+                <!-- Cookies Section -->
+                <div class="privacy-section" id="cookies">
+                    <h2>Cookies & Tracking Technologies</h2>
+                    <p>Like stars in the night sky, cookies help us navigate and enhance your cosmic journey on our website.</p>
+                    
+                    <div class="cookie-settings">
+                        <h3>Cookie Preferences</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Adjust your cookie settings below:</p>
+                        
+                        <div class="cookie-option">
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Essential Cookies</h4>
+                                <p style="color: #666; font-size: 0.9rem; margin: 0;">Required for basic site functionality. Cannot be disabled.</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="cookie-option">
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Analytics Cookies</h4>
+                                <p style="color: #666; font-size: 0.9rem; margin: 0;">Help us understand how visitors interact with our site.</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="analyticsCookies" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="cookie-option">
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Personalization Cookies</h4>
+                                <p style="color: #666; font-size: 0.9rem; margin: 0;">Remember your zodiac sign and style preferences.</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="personalizationCookies" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="cookie-option">
+                            <div>
+                                <h4 style="margin-bottom: 0.25rem;">Marketing Cookies</h4>
+                                <p style="color: #666; font-size: 0.9rem; margin: 0;">Used for targeted advertising and social media features.</p>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="marketingCookies">
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="margin-top: 1.5rem;" onclick="saveCookiePreferences()">Save Preferences</button>
+                    </div>
+                    
+                    <h3>Managing Cookies</h3>
+                    <p>You can control cookies through your browser settings. However, disabling certain cookies may affect your experience on our site:</p>
+                    <ul>
+                        <li><strong>Browser Controls:</strong> Most browsers allow you to block or delete cookies</li>
+                        <li><strong>Opt-Out Tools:</strong> Digital Advertising Alliance and Network Advertising Initiative provide opt-out mechanisms</li>
+                        <li><strong>Do Not Track:</strong> We respect "Do Not Track" signals, where supported</li>
+                    </ul>
+                </div>
+                
+                <!-- Your Rights Section -->
+                <div class="privacy-section" id="rights">
+                    <h2>Your Cosmic Data Rights</h2>
+                    <p>You have the following rights regarding your personal information:</p>
+                    
+                    <div class="data-grid">
+                        <div class="data-card">
+                            <span class="data-icon">👁️</span>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Right to Access</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Request a copy of your personal data we hold.</p>
+                        </div>
+                        
+                        <div class="data-card">
+                            <span class="data-icon">✏️</span>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Right to Correction</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Update inaccurate or incomplete information.</p>
+                        </div>
+                        
+                        <div class="data-card">
+                            <span class="data-icon">🗑️</span>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Right to Deletion</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Request deletion of your personal data.</p>
+                        </div>
+                        
+                        <div class="data-card">
+                            <span class="data-icon">⏸️</span>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Right to Restrict</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Limit how we use your data in certain circumstances.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Exercising Your Rights</h3>
+                    <p>To exercise any of these rights, please contact us using the information in the <a href="#contact" style="color: var(--color-gold-primary);">Contact section</a>. We will respond to your request within 30 days.</p>
+                    
+                    <p><strong>Verification:</strong> For security purposes, we may need to verify your identity before processing certain requests.</p>
+                    
+                    <p><strong>No Discrimination:</strong> We will not discriminate against you for exercising your privacy rights.</p>
+                </div>
+                
+                <!-- Children's Privacy -->
+                <div class="privacy-section" id="children">
+                    <h2>Children's Privacy</h2>
+                    <p>Our services are not directed to individuals under the age of 16. We do not knowingly collect personal information from children under 16.</p>
+                    
+                    <h3>Our Stance</h3>
+                    <ul>
+                        <li>We do not target children with our marketing</li>
+                        <li>We do not knowingly collect data from children under 16</li>
+                        <li>If we learn we have collected personal information from a child under 16, we will delete it promptly</li>
+                        <li>Parents or guardians can contact us to review or delete their child's information</li>
+                    </ul>
+                    
+                    <p><strong>Parental Consent Required:</strong> For our "Moon Girls" and "Star Boys" collections, we require parental consent for any purchases or interactions by individuals under 16.</p>
+                </div>
+                
+                <!-- Policy Changes -->
+                <div class="privacy-section" id="changes">
+                    <h2>Policy Updates & Changes</h2>
+                    <p>As our cosmic journey evolves, so may our privacy practices. We will update this policy as needed to reflect changes in our services or legal requirements.</p>
+                    
+                    <div class="updates-timeline">
+                        <div class="update-item">
+                            <h3 style="color: var(--color-gold-primary);">Version 3.1 • November 25, 2025</h3>
+                            <ul>
+                                <li>Added detailed cookie preferences controls</li>
+                                <li>Enhanced data retention policy clarification</li>
+                                <li>Updated third-party service provider information</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="update-item">
+                            <h3 style="color: var(--color-gold-primary);">Version 3.0 • November 15, 2025</h3>
+                            <ul>
+                                <li>Implemented GDPR compliance enhancements</li>
+                                <li>Added data processing legal bases</li>
+                                <li>Expanded data subject rights section</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="update-item">
+                            <h3 style="color: var(--color-gold-primary);">Version 2.5 • November 3, 2025</h3>
+                            <ul>
+                                <li>Added California Consumer Privacy Act (CCPA) disclosures</li>
+                                <li>Enhanced security measures description</li>
+                                <li>Updated contact methods for privacy inquiries</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3>How We Notify You of Changes</h3>
+                    <ul>
+                        <li>We will post the updated policy on this page with a new "Last Updated" date</li>
+                        <li>For significant changes, we may notify you by email or through website announcements</li>
+                        <li>We encourage you to review this policy periodically</li>
+                        <li>Continued use of our services after changes constitutes acceptance</li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Section -->
+                <!-- <div class="privacy-section" id="contact">
+                    <h2>Contact Our Cosmic Guardians</h2>
+                    <p>If you have questions, concerns, or requests regarding this Privacy Policy or your personal information, our privacy team is here to help.</p>
+                    
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <span class="data-icon">📧</span>
+                            <h3 style="margin-bottom: 0.5rem;">Email</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">For general privacy inquiries</p>
+                            <a href="mailto:privacy@lyrion.com" style="color: var(--color-gold-primary); font-weight: 600;">privacy@lyrion.com</a>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <span class="data-icon">📋</span>
+                            <h3 style="margin-bottom: 0.5rem;">Data Requests</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">To exercise your data rights</p>
+                            <a href="mailto:datarequests@lyrion.com" style="color: var(--color-gold-primary); font-weight: 600;">datarequests@lyrion.com</a>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <span class="data-icon">📍</span>
+                            <h3 style="margin-bottom: 0.5rem;">Postal Address</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">For written correspondence</p>
+                            <p style="color: var(--color-gold-primary); font-weight: 600; margin: 0;">LYRĪON Privacy Office<br>Cosmic House, Stellar Lane<br>London, WC2N 5DU<br>United Kingdom</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Data Protection Officer</h3>
+                    <p>Our Data Protection Officer oversees our privacy program and ensures compliance with data protection laws:</p>
+                    <p><strong>Email:</strong> dpo@lyrion.com<br>
+                    <strong>Response Time:</strong> We aim to respond to all privacy inquiries within 7 business days.</p>
+                    
+                    <h3>Regulatory Authorities</h3>
+                    <p>If you have concerns about how we handle your data, you have the right to lodge a complaint with the Information Commissioner's Office (ICO):</p>
+                    <p><strong>ICO Website:</strong> <a href="https://ico.org.uk" style="color: var(--color-gold-primary);">https://ico.org.uk</a><br>
+                    <strong>ICO Helpline:</strong> 0303 123 1113</p>
+                </div> -->
+                
+                <!-- Print Section -->
+                <div class="print-section">
+                    <h3 style="color: var(--color-gold-primary); margin-bottom: 1rem;">Save or Print This Policy</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Keep a copy of our privacy policy for your records</p>
+                    <button class="btn btn-secondary" onclick="window.print()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.5rem;">
+                            <path d="M13 0H3a2 2 0 0 0-2 2v4h2V2h10v12H3v-2H1v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                            <path d="M1 9h4v1H1V9zm10-4H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1zm0 4H5V6h6v3z"/>
+                        </svg>
+                        Print This Policy
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="oracle.html">The Oracle</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="codex.html">The Codex</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="shipping.html">Shipping & Returns</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved. | <a href="privacy.html" style="color: var(--color-gold-primary);">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    
+    <script>
+        // Privacy Page Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cookie Preferences
+            const analyticsCookies = document.getElementById('analyticsCookies');
+            const personalizationCookies = document.getElementById('personalizationCookies');
+            const marketingCookies = document.getElementById('marketingCookies');
+            
+            // Load saved preferences
+            const savedPrefs = JSON.parse(localStorage.getItem('lyrionCookiePrefs') || '{}');
+            analyticsCookies.checked = savedPrefs.analytics !== false;
+            personalizationCookies.checked = savedPrefs.personalization !== false;
+            marketingCookies.checked = savedPrefs.marketing || false;
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update active nav link on scroll
+            const sections = document.querySelectorAll('.privacy-section');
+            const navLinks = document.querySelectorAll('.policy-nav a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if(scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Print functionality
+            window.printPolicy = () => {
+                window.print();
+            };
+        });
+        
+        // Save cookie preferences
+        window.saveCookiePreferences = () => {
+            const preferences = {
+                analytics: document.getElementById('analyticsCookies').checked,
+                personalization: document.getElementById('personalizationCookies').checked,
+                marketing: document.getElementById('marketingCookies').checked,
+                saved: new Date().toISOString()
+            };
+            
+            localStorage.setItem('lyrionCookiePrefs', JSON.stringify(preferences));
+            
+            // Show confirmation
+            const toast = document.createElement('div');
+            toast.textContent = 'Cookie preferences saved!';
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.backgroundColor = 'var(--color-gold-primary)';
+            toast.style.color = 'var(--color-white)';
+            toast.style.padding = '1rem 2rem';
+            toast.style.borderRadius = 'var(--radius-md)';
+            toast.style.zIndex = '9999';
+            toast.style.boxShadow = 'var(--shadow-lg)';
+            toast.style.fontWeight = '600';
+            toast.style.transition = 'all 0.3s ease';
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(20px)';
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 2000);
+        };
+    </script>
+</body>
+</html>

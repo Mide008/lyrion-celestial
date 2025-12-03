@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed | LYRĪON Oracle</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .success-container {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .success-details {
+            background: var(--color-cream-dark);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem auto;
+            max-width: 500px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (copy from other pages) -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+        </nav>
+    </div>
+
+    <!-- Success Content -->
+    <div class="success-container">
+        <div>
+            <div class="success-icon">✦</div>
+            <h1 style="font-family: var(--font-serif); margin-bottom: 1rem;">
+                Your Reading is Confirmed
+            </h1>
+            
+            <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto 2rem;">
+                Thank you for consulting the Oracle. Your personalized reading will be delivered to your email within 48-72 hours.
+            </p>
+            
+            <div class="success-details">
+                <h3 style="margin-bottom: 1rem; color: var(--color-gold-primary);">What's Next?</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                        <span style="color: var(--color-gold-primary);">✓</span>
+                        <span>Email confirmation sent immediately</span>
+                    </li>
+                    <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                        <span style="color: var(--color-gold-primary);">✓</span>
+                        <span>Reading prepared by our celestial readers</span>
+                    </li>
+                    <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                        <span style="color: var(--color-gold-primary);">✓</span>
+                        <span>Delivered as PDF within 48-72 hours</span>
+                    </li>
+                    <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                        <span style="color: var(--color-gold-primary);">✓</span>
+                        <span>Lifetime access to your reading</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <a href="index.html" class="btn btn-primary" style="margin-right: 1rem;">
+                    Return Home
+                </a>
+                <a href="oracle.html" class="btn btn-outline">
+                    Order Another Reading
+                </a>
+            </div>
+            
+            <p style="margin-top: 2rem; color: #999; font-size: 0.9rem;">
+                Questions? Contact us at <a href="mailto:hello@lyrion.co.uk" style="color: var(--color-gold-primary);">hello@lyrion.co.uk</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer (copy from other pages) -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LYRĪON Terms of Service - Guidelines for our cosmic community and celestial couture services.">
+    <title>Terms of Service | LYRĪON Celestial Couture</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        /* Terms Hero */
+        .terms-hero {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.92) 0%, rgba(15, 13, 11, 0.85) 100%), 
+                        radial-gradient(circle at 30% 20%, rgba(196, 164, 73, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(196, 164, 73, 0.1) 0%, transparent 40%);
+            color: var(--color-cream);
+            padding: 8rem 2rem 5rem;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .terms-hero::after {
+            content: '⚖️';
+            position: absolute;
+            bottom: -60px;
+            left: 10%;
+            font-size: 12rem;
+            opacity: 0.03;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+        
+        .terms-hero::before {
+            content: '✨';
+            position: absolute;
+            top: 30%;
+            right: 8%;
+            font-size: 8rem;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        
+        .hero-constellation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: 
+                radial-gradient(circle at 20% 40%, rgba(196, 164, 73, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 60% 70%, rgba(196, 164, 73, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 85% 25%, rgba(196, 164, 73, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+            pointer-events: none;
+        }
+        
+        /* Terms Content */
+        .terms-content {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: var(--color-white);
+        }
+        
+        .terms-section {
+            margin-bottom: 4rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--color-cream) 0%, #f8f7f4 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            position: relative;
+            transition: all var(--transition-medium);
+        }
+        
+        .terms-section:hover {
+            border-color: rgba(196, 164, 73, 0.25);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .terms-section::before {
+            content: '§';
+            position: absolute;
+            top: 2rem;
+            left: -1rem;
+            color: var(--color-gold-primary);
+            font-size: 2.5rem;
+            font-family: var(--font-serif);
+            opacity: 0.3;
+        }
+        
+        .terms-section h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--color-ink);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-gold-accent);
+        }
+        
+        .terms-section h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--color-ink);
+            margin: 2rem 0 1rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .terms-section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 6px;
+            height: 6px;
+            background: var(--color-gold-primary);
+            border-radius: 50%;
+        }
+        
+        .terms-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+        
+        .terms-section ul, .terms-section ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+            color: #555;
+        }
+        
+        .terms-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .terms-section li::before {
+            content: '•';
+            color: var(--color-gold-primary);
+            font-weight: bold;
+            position: absolute;
+            left: -1rem;
+        }
+        
+        /* Important Notice */
+        .important-notice {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.1), rgba(196, 164, 73, 0.05));
+            border: 2px solid var(--color-gold-primary);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .important-notice::before {
+            content: '⚠️';
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            font-size: 2rem;
+            opacity: 0.2;
+        }
+        
+        .notice-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .notice-icon {
+            font-size: 2rem;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Agreement Steps */
+        .agreement-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .agreement-step {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all var(--transition-medium);
+        }
+        
+        .agreement-step:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--color-gold-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+            font-family: var(--font-serif);
+        }
+        
+        /* Policy Grid */
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .policy-card {
+            background: white;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .policy-card:hover {
+            border-color: var(--color-gold-primary);
+            transform: translateY(-3px);
+        }
+        
+        .policy-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-gold-primary);
+        }
+        
+        /* Legal Definitions */
+        .definitions-list {
+            background: rgba(196, 164, 73, 0.03);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+        
+        .definition-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(196, 164, 73, 0.05);
+        }
+        
+        .definition-item:last-child {
+            border-bottom: none;
+        }
+        
+        .term {
+            color: var(--color-gold-primary);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Prohibited Activities */
+        .prohibited-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .prohibited-item {
+            background: rgba(196, 164, 73, 0.03);
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .prohibited-icon {
+            color: #ff6b6b;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        /* Jurisdiction Info */
+        .jurisdiction-card {
+            background: linear-gradient(135deg, rgba(15, 13, 11, 0.02), rgba(15, 13, 11, 0.01));
+            border: 1px solid rgba(196, 164, 73, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .jurisdiction-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-gold-primary), var(--color-gold-accent));
+        }
+        
+        .flag-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        /* Acceptance Process */
+        .acceptance-process {
+            background: linear-gradient(135deg, rgba(196, 164, 73, 0.05), transparent);
+            border: 1px dashed rgba(196, 164, 73, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(196, 164, 73, 0.1);
+        }
+        
+        .process-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .process-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-gold-primary);
+            color: white;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+        
+        /* Terms Navigation */
+        .terms-nav {
+            position: sticky;
+            top: 100px;
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(196, 164, 73, 0.1);
+            z-index: 10;
+        }
+        
+        .terms-nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .nav-toggle {
+            background: none;
+            border: none;
+            color: var(--color-gold-primary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .nav-content {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        .nav-content::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .nav-content::-webkit-scrollbar-track {
+            background: rgba(196, 164, 73, 0.05);
+            border-radius: 2px;
+        }
+        
+        .nav-content::-webkit-scrollbar-thumb {
+            background: var(--color-gold-primary);
+            border-radius: 2px;
+        }
+        
+        .terms-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .terms-nav li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .terms-nav a {
+            color: #666;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            display: block;
+            transition: all var(--transition-fast);
+            font-size: 0.9rem;
+        }
+        
+        .terms-nav a:hover, .terms-nav a.active {
+            color: var(--color-gold-primary);
+            background: rgba(196, 164, 73, 0.05);
+        }
+        
+        .nav-subsection {
+            padding-left: 1.5rem;
+            font-size: 0.85rem;
+        }
+        
+        /* Agreement Box */
+        .agreement-box {
+            background: white;
+            border: 2px solid var(--color-gold-primary);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .agreement-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 65%, rgba(196, 164, 73, 0.03) 65%, rgba(196, 164, 73, 0.03) 70%, transparent 70%),
+                        linear-gradient(-45deg, transparent 65%, rgba(196, 164, 73, 0.03) 65%, rgba(196, 164, 73, 0.03) 70%, transparent 70%);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .terms-hero {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            .terms-content {
+                padding: 2rem 1rem;
+            }
+            
+            .terms-section {
+                padding: 1.5rem;
+            }
+            
+            .terms-section::before {
+                display: none;
+            }
+            
+            .agreement-steps,
+            .policy-grid,
+            .prohibited-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .terms-nav {
+                position: static;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .process-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .agreement-box {
+                padding: 2rem 1rem;
+            }
+        }
+        
+        @media print {
+            .terms-nav,
+            .agreement-box,
+            .important-notice {
+                display: none;
+            }
+            
+            .terms-section {
+                break-inside: avoid;
+                border: 1px solid #ddd;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Terms Hero -->
+    <section class="terms-hero">
+        <div class="hero-constellation"></div>
+        <div class="container">
+            <h1 style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--color-cream);">
+                Terms of Service
+            </h1>
+            <p style="font-size: 1.3rem; line-height: 1.7; color: var(--color-cream); max-width: 800px; margin: 0 auto 2rem;">
+                Guidelines for our cosmic community and celestial couture services.
+            </p>
+            <div style="font-size: 1rem; color: rgba(255, 255, 255, 0.8); background: rgba(0, 0, 0, 0.2); padding: 0.5rem 1rem; border-radius: var(--radius-md); display: inline-block;">
+                Effective Date: February 28, 2025
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Notice -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="important-notice">
+                <div class="notice-header">
+                    <span class="notice-icon">⚠️</span>
+                    <h2 style="color: var(--color-ink); margin: 0;">Important Legal Notice</h2>
+                </div>
+                <p style="font-size: 1.1rem; color: #555; margin-bottom: 1rem;">
+                    These Terms of Service constitute a legally binding agreement between you and LYRĪON Celestial Couture. By accessing our website, making purchases, or using our services, you acknowledge that you have read, understood, and agree to be bound by these terms.
+                </p>
+                <p style="color: #666;">
+                    If you do not agree with any part of these terms, please do not use our services.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Navigation -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="terms-nav" id="termsNav">
+                <div class="terms-nav-header">
+                    <h3 style="font-family: var(--font-serif); color: var(--color-ink); margin: 0;">Table of Contents</h3>
+                    <button class="nav-toggle" id="navToggle">−</button>
+                </div>
+                <div class="nav-content" id="navContent">
+                    <ul>
+                        <li><a href="#acceptance" class="active">1. Acceptance of Terms</a></li>
+                        <li><a href="#eligibility">2. Eligibility</a></li>
+                        <li><a href="#account">3. Account Registration</a></li>
+                        <li><a href="#purchases">4. Purchases & Payments</a></li>
+                        <li><a href="#intellectual">5. Intellectual Property</a></li>
+                        <li><a href="#user-content">6. User Content</a></li>
+                        <li><a href="#prohibited">7. Prohibited Conduct</a></li>
+                        <li><a href="#third-party">8. Third-Party Links</a></li>
+                        <li><a href="#termination">9. Termination</a></li>
+                        <li><a href="#disclaimers">10. Disclaimers</a></li>
+                        <li><a href="#limitation">11. Limitation of Liability</a></li>
+                        <li><a href="#indemnification">12. Indemnification</a></li>
+                        <li><a href="#governing">13. Governing Law</a></li>
+                        <li><a href="#changes">14. Changes to Terms</a></li>
+                        <li><a href="#contact">15. Contact Information</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="section">
+        <div class="container">
+            <div class="terms-content">
+                
+                <!-- Acceptance of Terms -->
+                <div class="terms-section" id="acceptance">
+                    <h2>1. Acceptance of Terms</h2>
+                    
+                    <div class="agreement-steps">
+                        <div class="agreement-step">
+                            <div class="step-number">1</div>
+                            <h3 style="font-size: 1.2rem;">Access</h3>
+                            <p style="font-size: 0.9rem; color: #666;">By accessing LYRĪON's website, mobile applications, or services</p>
+                        </div>
+                        <div class="agreement-step">
+                            <div class="step-number">2</div>
+                            <h3 style="font-size: 1.2rem;">Purchase</h3>
+                            <p style="font-size: 0.9rem; color: #666;">By making any purchase from our celestial collections</p>
+                        </div>
+                        <div class="agreement-step">
+                            <div class="step-number">3</div>
+                            <h3 style="font-size: 1.2rem;">Interaction</h3>
+                            <p style="font-size: 0.9rem; color: #666;">By using The Oracle or participating in our community</p>
+                        </div>
+                    </div>
+                    
+                    <p>Welcome to LYRĪON Celestial Couture. These Terms of Service ("Terms") govern your access to and use of our website, mobile applications, products, and services (collectively, the "Services").</p>
+                    
+                    <h3>Agreement Formation</h3>
+                    <p>By accessing or using our Services, you agree to be bound by these Terms. If you disagree with any part of the Terms, you may not access or use our Services.</p>
+                    
+                    <h3>Supplemental Terms</h3>
+                    <p>Certain Services may be subject to additional terms, conditions, or policies that are specifically identified when you access those Services. All such supplemental terms are incorporated by reference into these Terms.</p>
+                    
+                    <div class="acceptance-process">
+                        <div class="process-step">
+                            <div class="process-icon">📄</div>
+                            <div>
+                                <h3 style="margin-top: 0;">Written Agreement</h3>
+                                <p>These Terms constitute the entire agreement between you and LYRĪON regarding the Services and supersede any prior agreements.</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="process-icon">👁️</div>
+                            <div>
+                                <h3 style="margin-top: 0;">Review Period</h3>
+                                <p>We recommend reviewing these Terms periodically as they may be updated. Your continued use constitutes acceptance of any changes.</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="process-icon">✅</div>
+                            <div>
+                                <h3 style="margin-top: 0;">Electronic Acceptance</h3>
+                                <p>Your electronic acceptance of these Terms has the same legal effect as a written signature.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Eligibility -->
+                <div class="terms-section" id="eligibility">
+                    <h2>2. Eligibility Requirements</h2>
+                    
+                    <h3>Age Requirement</h3>
+                    <p>You must be at least 16 years old to use our Services. By using our Services, you represent and warrant that you are at least 16 years old.</p>
+                    
+                    <h3>Parental Consent</h3>
+                    <p>If you are under 18, you may only use our Services with the consent and supervision of a parent or legal guardian who agrees to be bound by these Terms.</p>
+                    
+                    <div class="policy-grid">
+                        <div class="policy-card">
+                            <span class="policy-icon">👤</span>
+                            <h3 style="font-size: 1.2rem;">Individual Use</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Services are for individual, non-commercial use unless otherwise authorized.</p>
+                        </div>
+                        <div class="policy-card">
+                            <span class="policy-icon">🌍</span>
+                            <h3 style="font-size: 1.2rem;">Geographic Restrictions</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Some Services may not be available in all locations.</p>
+                        </div>
+                        <div class="policy-card">
+                            <span class="policy-icon">⚖️</span>
+                            <h3 style="font-size: 1.2rem;">Legal Capacity</h3>
+                            <p style="font-size: 0.9rem; color: #666;">You must have the legal capacity to enter into binding contracts.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Prohibited Jurisdictions</h3>
+                    <p>We reserve the right to limit or deny Services to users from certain jurisdictions at our sole discretion, in compliance with applicable laws and regulations.</p>
+                </div>
+                
+                <!-- Account Registration -->
+                <div class="terms-section" id="account">
+                    <h2>3. Account Registration & Security</h2>
+                    
+                    <h3>Account Creation</h3>
+                    <p>To access certain features of our Services, you may need to create an account. You agree to:</p>
+                    <ul>
+                        <li>Provide accurate, current, and complete information during registration</li>
+                        <li>Maintain and promptly update your account information</li>
+                        <li>Maintain the security of your password and accept all risks of unauthorized access</li>
+                        <li>Notify us immediately of any unauthorized use of your account</li>
+                        <li>Take responsibility for all activities that occur under your account</li>
+                    </ul>
+                    
+                    <h3>Account Termination</h3>
+                    <p>We reserve the right to suspend or terminate your account if any information provided during registration or thereafter proves to be inaccurate, false, or misleading.</p>
+                    
+                    <h3>Multiple Accounts</h3>
+                    <p>Creation of multiple accounts for fraudulent or abusive purposes is strictly prohibited and may result in termination of all associated accounts.</p>
+                </div>
+                
+                <!-- Purchases & Payments -->
+                <div class="terms-section" id="purchases">
+                    <h2>4. Purchases, Payments & Orders</h2>
+                    
+                    <h3>Product Information</h3>
+                    <p>We strive to display accurate product information, including descriptions, pricing, and availability. However, we cannot guarantee that all information is completely accurate, current, or error-free.</p>
+                    
+                    <h3>Pricing</h3>
+                    <ul>
+                        <li>All prices are in British Pounds (£) unless otherwise stated</li>
+                        <li>Prices are subject to change without notice</li>
+                        <li>We reserve the right to correct pricing errors at any time</li>
+                        <li>Additional charges may apply for shipping, taxes, and customs duties</li>
+                    </ul>
+                    
+                    <h3>Order Acceptance</h3>
+                    <p>All orders are subject to acceptance and availability. We reserve the right to refuse or cancel any order for any reason, including but not limited to:</p>
+                    <ul>
+                        <li>Product unavailability</li>
+                        <li>Errors in product or pricing information</li>
+                        <li>Suspected fraudulent activity</li>
+                        <li>Violation of these Terms</li>
+                    </ul>
+                    
+                    <h3>Payment Methods</h3>
+                    <p>We accept various payment methods as displayed during checkout. By providing payment information, you represent that you are authorized to use the payment method.</p>
+                    
+                    <h3>Sales Tax & Duties</h3>
+                    <p>You are responsible for any sales tax, VAT, customs duties, or other taxes associated with your order, as applicable by your jurisdiction.</p>
+                </div>
+                
+                <!-- Intellectual Property -->
+                <div class="terms-section" id="intellectual">
+                    <h2>5. Intellectual Property Rights</h2>
+                    
+                    <div class="important-notice" style="margin: 2rem 0; background: rgba(196, 164, 73, 0.05);">
+                        <h3 style="color: var(--color-gold-primary); margin-top: 0;">Our Cosmic Creations Are Protected</h3>
+                        <p>All LYRĪON designs, patterns, and concepts are original works protected by intellectual property laws.</p>
+                    </div>
+                    
+                    <h3>Ownership</h3>
+                    <p>All content, features, and functionality available through our Services, including but not limited to:</p>
+                    <ul>
+                        <li>Text, graphics, logos, icons, images</li>
+                        <li>Audio clips, video clips, digital downloads</li>
+                        <li>Data compilations, software</li>
+                        <li>Trademarks, service marks, trade dress</li>
+                    </ul>
+                    <p>are owned by or licensed to LYRĪON and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
+                    
+                    <h3>Limited License</h3>
+                    <p>We grant you a limited, non-exclusive, non-transferable, and revocable license to access and use our Services for personal, non-commercial purposes in accordance with these Terms.</p>
+                    
+                    <h3>Restrictions</h3>
+                    <p>You may not:</p>
+                    <div class="prohibited-grid">
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">🚫</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Copy, modify, or create derivative works of our content</p>
+                            </div>
+                        </div>
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">🚫</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Use our trademarks without written permission</p>
+                            </div>
+                        </div>
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">🚫</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Reverse engineer or attempt to extract source code</p>
+                            </div>
+                        </div>
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">🚫</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Remove any copyright or proprietary notices</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>User-Generated Content</h3>
+                    <p>When you submit content to our Services, you grant us a worldwide, perpetual, royalty-free license to use, reproduce, modify, and display that content in connection with our Services.</p>
+                </div>
+                
+                <!-- User Content -->
+                <div class="terms-section" id="user-content">
+                    <h2>6. User Content & Submissions</h2>
+                    
+                    <h3>Definition</h3>
+                    <p>"User Content" refers to any content you submit, post, upload, or otherwise make available through our Services, including but not limited to:</p>
+                    <ul>
+                        <li>Reviews and ratings</li>
+                        <li>Comments and forum posts</li>
+                        <li>Photos and videos</li>
+                        <li>Style submissions and moon circle contributions</li>
+                    </ul>
+                    
+                    <h3>Your Responsibility</h3>
+                    <p>You are solely responsible for your User Content and the consequences of posting it. You represent and warrant that:</p>
+                    <ul>
+                        <li>You own or have necessary rights to the User Content</li>
+                        <li>The User Content does not violate any third-party rights</li>
+                        <li>The User Content complies with these Terms and all applicable laws</li>
+                    </ul>
+                    
+                    <h3>Content Standards</h3>
+                    <p>User Content must not:</p>
+                    <ul>
+                        <li>Be unlawful, defamatory, or obscene</li>
+                        <li>Infringe any intellectual property rights</li>
+                        <li>Contain viruses or malicious code</li>
+                        <li>Impersonate any person or entity</li>
+                        <li>Contain unauthorized advertising or promotional materials</li>
+                    </ul>
+                    
+                    <h3>Our Rights</h3>
+                    <p>We reserve the right to:</p>
+                    <ul>
+                        <li>Monitor and review User Content</li>
+                        <li>Remove or refuse to post any User Content</li>
+                        <li>Terminate your access for violations</li>
+                        <li>Cooperate with legal authorities regarding User Content</li>
+                    </ul>
+                </div>
+                
+                <!-- Prohibited Conduct -->
+                <div class="terms-section" id="prohibited">
+                    <h2>7. Prohibited Conduct</h2>
+                    
+                    <p>When using our Services, you agree not to engage in any of the following prohibited activities:</p>
+                    
+                    <div class="prohibited-grid">
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">🔐</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Attempt to gain unauthorized access to our systems</p>
+                            </div>
+                        </div>
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">🔄</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Interfere with or disrupt the Services</p>
+                            </div>
+                        </div>
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">🤖</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Use automated systems to access the Services</p>
+                            </div>
+                        </div>
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">📉</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Engage in price manipulation or scalping</p>
+                            </div>
+                        </div>
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">💳</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Use fraudulent payment methods</p>
+                            </div>
+                        </div>
+                        <div class="prohibited-item">
+                            <span class="prohibited-icon">📞</span>
+                            <div>
+                                <p style="margin: 0; font-size: 0.9rem;">Harass or threaten other users</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Commercial Use Restrictions</h3>
+                    <p>Unless expressly authorized, you may not:</p>
+                    <ul>
+                        <li>Resell or commercially exploit our products or Services</li>
+                        <li>Use our Services for any commercial solicitation</li>
+                        <li>Collect user information for commercial purposes</li>
+                        <li>Use our trademarks or branding without permission</li>
+                    </ul>
+                    
+                    <h3>Consequences of Violations</h3>
+                    <p>Violation of these conduct rules may result in:</p>
+                    <ul>
+                        <li>Immediate termination of your account</li>
+                        <li>Cancellation of pending orders</li>
+                        <li>Legal action for damages</li>
+                        <li>Reporting to appropriate authorities</li>
+                    </ul>
+                </div>
+                
+                <!-- Third-Party Links -->
+                <div class="terms-section" id="third-party">
+                    <h2>8. Third-Party Links & Services</h2>
+                    
+                    <h3>External Links</h3>
+                    <p>Our Services may contain links to third-party websites or services that are not owned or controlled by LYRĪON. We have no control over, and assume no responsibility for:</p>
+                    <ul>
+                        <li>The content, privacy policies, or practices of any third-party sites</li>
+                        <li>The availability or accuracy of third-party services</li>
+                        <li>Any damage or loss caused by third-party sites</li>
+                    </ul>
+                    
+                    <h3>Third-Party Services</h3>
+                    <p>We may use third-party services to facilitate our Services, including:</p>
+                    
+                    <div class="policy-grid">
+                        <div class="policy-card">
+                            <span class="policy-icon">💳</span>
+                            <h3 style="font-size: 1.2rem;">Payment Processing</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Stripe, PayPal, and other secure payment gateways</p>
+                        </div>
+                        <div class="policy-card">
+                            <span class="policy-icon">🚚</span>
+                            <h3 style="font-size: 1.2rem;">Shipping Providers</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Royal Mail, DHL, FedEx, and other carriers</p>
+                        </div>
+                        <div class="policy-card">
+                            <span class="policy-icon">📧</span>
+                            <h3 style="font-size: 1.2rem;">Communication Tools</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Email marketing and customer service platforms</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Your Responsibilities</h3>
+                    <p>When accessing third-party services through our platform, you are responsible for:</p>
+                    <ul>
+                        <li>Reviewing and accepting their terms and policies</li>
+                        <li>Understanding their data practices</li>
+                        <li>Managing your interactions with them</li>
+                    </ul>
+                    
+                    <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party sites or services that you visit.</p>
+                </div>
+                
+                <!-- Termination -->
+                <div class="terms-section" id="termination">
+                    <h2>9. Termination & Account Cancellation</h2>
+                    
+                    <h3>Your Rights</h3>
+                    <p>You may terminate your account at any time by contacting our customer service or through your account settings. Upon termination:</p>
+                    <ul>
+                        <li>Your right to use the Services will immediately cease</li>
+                        <li>You must cease all use of the Services</li>
+                        <li>Outstanding balances become immediately due</li>
+                        <li>Certain provisions will survive termination</li>
+                    </ul>
+                    
+                    <h3>Our Rights</h3>
+                    <p>We may suspend or terminate your access to the Services immediately, without prior notice or liability, for any reason, including but not limited to:</p>
+                    <ul>
+                        <li>Breach of these Terms</li>
+                        <li>Suspected fraudulent activity</li>
+                        <li>Requests by law enforcement</li>
+                        <li>Technical or security issues</li>
+                        <li>Extended periods of inactivity</li>
+                    </ul>
+                    
+                    <h3>Effect of Termination</h3>
+                    <p>Upon termination:</p>
+                    <ul>
+                        <li>All licenses and rights granted to you will terminate</li>
+                        <li>You must delete all obtained materials</li>
+                        <li>We may delete your account information</li>
+                        <li>Certain obligations will continue</li>
+                    </ul>
+                    
+                    <h3>Survival</h3>
+                    <p>The following provisions will survive termination: Intellectual Property, Disclaimer of Warranties, Limitation of Liability, Indemnification, and Governing Law.</p>
+                </div>
+                
+                <!-- Disclaimers -->
+                <div class="terms-section" id="disclaimers">
+                    <h2>10. Disclaimers & Warranties</h2>
+                    
+                    <div class="important-notice">
+                        <h3 style="color: var(--color-ink); margin-top: 0;">Important Legal Disclaimers</h3>
+                        <p>Please read this section carefully as it limits our liability and outlines important disclaimers.</p>
+                    </div>
+                    
+                    <h3>Service "As Is"</h3>
+                    <p>Our Services are provided on an "AS IS" and "AS AVAILABLE" basis. We disclaim all warranties of any kind, whether express or implied, including but not limited to:</p>
+                    <ul>
+                        <li>Merchantability</li>
+                        <li>Fitness for a particular purpose</li>
+                        <li>Non-infringement</li>
+                        <li>Course of dealing or usage of trade</li>
+                    </ul>
+                    
+                    <h3>Astrological & Oracle Services</h3>
+                    <p>Our Oracle services and astrological content are for entertainment and personal growth purposes only. They are not:</p>
+                    <ul>
+                        <li>Professional medical, legal, or financial advice</li>
+                        <li>Guarantees of future outcomes</li>
+                        <li>Substitutes for professional consultation</li>
+                        <li>Scientifically validated predictions</li>
+                    </ul>
+                    
+                    <h3>Product Information</h3>
+                    <p>While we strive for accuracy, we do not warrant that:</p>
+                    <ul>
+                        <li>Product descriptions are entirely accurate</li>
+                        <li>Colors will match exactly on all devices</li>
+                        <li>Products will be available at all times</li>
+                        <li>Website content is error-free</li>
+                    </ul>
+                    
+                    <h3>Technical Availability</h3>
+                    <p>We do not guarantee that:</p>
+                    <ul>
+                        <li>The Services will be uninterrupted or error-free</li>
+                        <li>Defects will be corrected</li>
+                        <li>The Services are free of viruses or harmful components</li>
+                        <li>The Services meet your specific requirements</li>
+                    </ul>
+                </div>
+                
+                <!-- Limitation of Liability -->
+                <div class="terms-section" id="limitation">
+                    <h2>11. Limitation of Liability</h2>
+                    
+                    <div class="important-notice" style="border-color: #ff6b6b;">
+                        <h3 style="color: #ff6b6b; margin-top: 0;">Limitation Notice</h3>
+                        <p>This section limits our liability to you. Please review it carefully.</p>
+                    </div>
+                    
+                    <h3>Scope of Liability</h3>
+                    <p>To the maximum extent permitted by applicable law, LYRĪON and its affiliates shall not be liable for:</p>
+                    <ul>
+                        <li>Any indirect, incidental, special, consequential, or punitive damages</li>
+                        <li>Loss of profits, revenue, data, or use</li>
+                        <li>Personal injury or property damage</li>
+                        <li>Errors or omissions in content</li>
+                        <li>Unauthorized access to our servers</li>
+                        <li>Interruption or cessation of services</li>
+                    </ul>
+                    
+                    <h3>Maximum Liability</h3>
+                    <p>In no event shall our total liability to you for all claims exceed the greater of:</p>
+                    <ul>
+                        <li>£100 (One hundred British Pounds)</li>
+                        <li>The amount you have paid to us in the last 6 months</li>
+                    </ul>
+                    
+                    <h3>Jurisdictional Limitations</h3>
+                    <p>Some jurisdictions do not allow the exclusion or limitation of liability for consequential or incidental damages, so the above limitations may not apply to you.</p>
+                    
+                    <h3>Basis of the Bargain</h3>
+                    <p>The limitations in this section are fundamental elements of the basis of the agreement between you and LYRĪON. We would not provide the Services without these limitations.</p>
+                </div>
+                
+                <!-- Indemnification -->
+                <div class="terms-section" id="indemnification">
+                    <h2>12. Indemnification</h2>
+                    
+                    <p>You agree to defend, indemnify, and hold harmless LYRĪON, its affiliates, officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses, including without limitation reasonable legal fees, arising out of or in any way connected with:</p>
+                    
+                    <div class="definitions-list">
+                        <div class="definition-item">
+                            <div class="term">Your Use of Services</div>
+                            <p style="margin: 0; font-size: 0.9rem;">Any use or misuse of our Services in violation of these Terms</p>
+                        </div>
+                        <div class="definition-item">
+                            <div class="term">Your Content</div>
+                            <p style="margin: 0; font-size: 0.9rem;">Any User Content you submit or transmit through the Services</p>
+                        </div>
+                        <div class="definition-item">
+                            <div class="term">Violation of Rights</div>
+                            <p style="margin: 0; font-size: 0.9rem;">Any violation of third-party rights, including intellectual property rights</p>
+                        </div>
+                        <div class="definition-item">
+                            <div class="term">Breach of Terms</div>
+                            <p style="margin: 0; font-size: 0.9rem;">Any breach of your representations, warranties, or obligations under these Terms</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Cooperation</h3>
+                    <p>We reserve the right to assume the exclusive defense and control of any matter subject to indemnification by you. You agree to cooperate with our defense of such claims and not to settle any claim without our prior written consent.</p>
+                    
+                    <h3>Continuing Obligation</h3>
+                    <p>Your indemnification obligations will survive the termination of these Terms and your use of the Services.</p>
+                </div>
+                
+                <!-- Governing Law -->
+                <div class="terms-section" id="governing">
+                    <h2>13. Governing Law & Dispute Resolution</h2>
+                    
+                    <div class="jurisdiction-card">
+                        <span class="flag-icon">🇬🇧</span>
+                        <h3 style="color: var(--color-ink); margin-bottom: 1rem;">Jurisdiction & Venue</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">These Terms shall be governed by and construed in accordance with the laws of England and Wales, without regard to its conflict of law provisions.</p>
+                        <div style="background: white; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid rgba(196, 164, 73, 0.1);">
+                            <p style="margin: 0; font-weight: 600; color: var(--color-gold-primary);">Exclusive Jurisdiction</p>
+                            <p style="margin: 0; font-size: 0.9rem; color: #666;">The courts of London, England shall have exclusive jurisdiction over any disputes arising from these Terms.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Dispute Resolution Process</h3>
+                    <p>Before initiating formal proceedings, we encourage you to contact us to attempt to resolve the dispute informally. If we cannot resolve the dispute within 60 days, either party may initiate formal proceedings.</p>
+                    
+                    <h3>Class Action Waiver</h3>
+                    <p>You agree that any dispute resolution proceedings will be conducted only on an individual basis and not in a class, consolidated, or representative action.</p>
+                    
+                    <h3>Time Limitation</h3>
+                    <p>Any cause of action arising out of or related to the Services must commence within one year after the cause of action accrues. Otherwise, such cause of action is permanently barred.</p>
+                    
+                    <h3>International Users</h3>
+                    <p>If you access our Services from outside the United Kingdom, you are responsible for compliance with local laws. We make no representation that our Services are appropriate or available for use in other locations.</p>
+                </div>
+                
+                <!-- Changes to Terms -->
+                <div class="terms-section" id="changes">
+                    <h2>14. Changes to These Terms</h2>
+                    
+                    <h3>Our Right to Modify</h3>
+                    <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect.</p>
+                    
+                    <h3>What Constitutes a Material Change</h3>
+                    <p>What constitutes a material change will be determined at our sole discretion, but generally includes changes that:</p>
+                    <ul>
+                        <li>Substantially affect your rights or obligations</li>
+                        <li>Introduce significant new fees or charges</li>
+                        <li>Modify dispute resolution provisions</li>
+                        <li>Change governing law or jurisdiction</li>
+                    </ul>
+                    
+                    <h3>Notification Methods</h3>
+                    <p>We may notify you of changes by:</p>
+                    <ul>
+                        <li>Posting the new Terms on this page</li>
+                        <li>Sending an email to the address associated with your account</li>
+                        <li>Displaying a prominent notice on our website</li>
+                        <li>Through other reasonable communication channels</li>
+                    </ul>
+                    
+                    <h3>Your Acceptance of Changes</h3>
+                    <p>By continuing to access or use our Services after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you must stop using the Services.</p>
+                    
+                    <h3>Review Responsibility</h3>
+                    <p>It is your responsibility to review these Terms periodically for changes. The date at the top of this page indicates when these Terms were last updated.</p>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="terms-section" id="contact">
+                    <h2>15. Contact Information & Notices</h2>
+                    
+                    <div class="policy-grid">
+                        <div class="policy-card">
+                            <span class="policy-icon">📧</span>
+                            <h3 style="font-size: 1.2rem;">General Inquiries</h3>
+                            <p style="font-size: 0.9rem; color: #666;">For questions about these Terms</p>
+                            <a href="mailto:legal@lyrion.com" style="color: var(--color-gold-primary); font-weight: 600; font-size: 0.9rem;">legal@lyrion.com</a>
+                        </div>
+                        <div class="policy-card">
+                            <span class="policy-icon">📍</span>
+                            <h3 style="font-size: 1.2rem;">Legal Address</h3>
+                            <p style="font-size: 0.9rem; color: #666;">For formal legal notices</p>
+                            <p style="color: var(--color-gold-primary); font-weight: 600; font-size: 0.9rem; margin: 0;">LYRĪON Legal Department<br>Cosmic House, Stellar Lane<br>London, WC2N 5DU</p>
+                        </div>
+                        <div class="policy-card">
+                            <span class="policy-icon">📞</span>
+                            <h3 style="font-size: 1.2rem;">Customer Service</h3>
+                            <p style="font-size: 0.9rem; color: #666;">For account and order issues</p>
+                            <a href="mailto:support@lyrion.com" style="color: var(--color-gold-primary); font-weight: 600; font-size: 0.9rem;">support@lyrion.com</a>
+                        </div>
+                    </div>
+                    
+                    <h3>Electronic Notices</h3>
+                    <p>You consent to receive all communications, agreements, and notices electronically, including by email or through the Services. You agree that all terms, agreements, notices, disclosures, and other communications we provide electronically satisfy any legal requirement that such communications be in writing.</p>
+                    
+                    <h3>Language of Communications</h3>
+                    <p>All communications and notices must be in English. We are not responsible for translations or interpretations.</p>
+                    
+                    <h3>Response Times</h3>
+                    <p>We aim to respond to all legal inquiries within 10 business days. For urgent matters, please indicate "URGENT" in your subject line.</p>
+                </div>
+                
+                <!-- Final Agreement Box -->
+                <div class="agreement-box">
+                    <span class="notice-icon" style="font-size: 3rem; margin-bottom: 1rem;">🤝</span>
+                    <h2 style="color: var(--color-ink); margin-bottom: 1rem;">Agreement Acknowledgment</h2>
+                    <p style="font-size: 1.1rem; color: #555; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        By using our Services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn btn-primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.5rem;">
+                                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708 .708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                            </svg>
+                            Back to Top
+                        </button>
+                        <button class="btn btn-secondary" onclick="window.print()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 0.5rem;">
+                                <path d="M13 0H3a2 2 0 0 0-2 2v4h2V2h10v12H3v-2H1v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                                <path d="M1 9h4v1H1V9zm10-4H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1zm0 4H5V6h6v3z"/>
+                            </svg>
+                            Print Terms
+                        </button>
+                        <a href="privacy.html" class="btn" style="background: rgba(196, 164, 73, 0.1); color: var(--color-gold-primary);">
+                            View Privacy Policy
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men">Men's Collection</a></li>
+                        <li><a href="shop.html?category=Women">Women's Collection</a></li>
+                        <li><a href="shop.html?category=Moon Girls">Moon Girls</a></li>
+                        <li><a href="shop.html?category=Star Boys">Star Boys</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="active">Terms of Service</a></li>
+                        <li><a href="shipping.html">Shipping & Returns</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="shipping.html">Shipping & Returns</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved. | <a href="terms.html" style="color: var(--color-gold-primary);">Terms of Service</a> | <a href="privacy.html" style="color: var(--color-gold-primary);">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart & Search -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="cart-close" id="cartClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-value" id="cartTotal">£0.00</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-full">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    
+    <script>
+        // Terms of Service Page Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navigation Toggle
+            const navToggle = document.getElementById('navToggle');
+            const navContent = document.getElementById('navContent');
+            const termsNav = document.getElementById('termsNav');
+            
+            navToggle.addEventListener('click', () => {
+                const isCollapsed = navContent.style.maxHeight === '0px' || !navContent.style.maxHeight;
+                
+                if (isCollapsed) {
+                    navContent.style.maxHeight = navContent.scrollHeight + 'px';
+                    navToggle.textContent = '−';
+                    termsNav.style.position = 'sticky';
+                } else {
+                    navContent.style.maxHeight = '0';
+                    navToggle.textContent = '+';
+                    termsNav.style.position = 'static';
+                }
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 120,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.terms-nav a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Update active nav link on scroll
+            const sections = document.querySelectorAll('.terms-section');
+            const navLinks = document.querySelectorAll('.terms-nav a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if(scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Agreement acknowledgment animation
+            const agreementBox = document.querySelector('.agreement-box');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        agreementBox.style.animation = 'pulse 2s ease';
+                        setTimeout(() => {
+                            agreementBox.style.animation = '';
+                        }, 2000);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(agreementBox);
+            
+            // Print functionality
+            window.printTerms = () => {
+                window.print();
+            };
+            
+            // Add CSS animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.02); }
+                    100% { transform: scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Initialize nav height
+            navContent.style.maxHeight = navContent.scrollHeight + 'px';
+        });
+        
+        // Show acceptance toast
+        window.showAcceptanceToast = () => {
+            const toast = document.createElement('div');
+            toast.textContent = '✓ Terms acknowledged';
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.right = '20px';
+            toast.style.backgroundColor = 'var(--color-gold-primary)';
+            toast.style.color = 'var(--color-white)';
+            toast.style.padding = '1rem 1.5rem';
+            toast.style.borderRadius = 'var(--radius-md)';
+            toast.style.zIndex = '9999';
+            toast.style.boxShadow = 'var(--shadow-lg)';
+            toast.style.fontWeight = '600';
+            toast.style.transition = 'all 0.3s ease';
+            toast.style.transform = 'translateX(100px)';
+            toast.style.opacity = '0';
+            
+            document.body.appendChild(toast);
+            
+            // Animate in
+            setTimeout(() => {
+                toast.style.transform = 'translateX(0)';
+                toast.style.opacity = '1';
+            }, 10);
+            
+            // Animate out
+            setTimeout(() => {
+                toast.style.transform = 'translateX(100px)';
+                toast.style.opacity = '0';
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        };
+        
+        // Auto-show toast when reaching agreement section
+        let toastShown = false;
+        window.addEventListener('scroll', () => {
+            const agreementBox = document.querySelector('.agreement-box');
+            if (agreementBox && !toastShown) {
+                const rect = agreementBox.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    showAcceptanceToast();
+                    toastShown = true;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
