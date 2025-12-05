@@ -4,10 +4,20 @@
  */
 
 // ==========================================
-// CONFIGURATION
+// CONFIGURATION (from global config)
 // ==========================================
-const STRIPE_PUBLIC_KEY = 'pk_live_51SUJRkEdr82NVcSeGDkHpcpmUdS7OZzESMQ5JZESZsc9YY74FoTtk2p9LFKYafg4VmjvsXOVO0IHsi2fSyh81xA600RctJAeto'; // Replace with your actual publishable key
-const WORKER_URL = 'https://lyrion-order-broker.hello-2a3.workers.dev'; // Replace with your Cloudflare Worker URL
+const getConfig = () => {
+    if (window.LYRION_CONFIG) {
+        return window.LYRION_CONFIG;
+    }
+    
+    // Fallback if config.js not loaded
+    console.warn('⚠️ LYRION_CONFIG not found, using fallback');
+    return {
+        STRIPE_PUBLIC_KEY: 'pk_live_51ST0Yr6kwOhs68PfwI2N6I6rKXBx8TKEvkPdwfR7sLpKQiAiQ09QPLpy1XalDPf9Zrs3SL5DkWxKKQjdZq1JoLoP00QdElzZjF',
+        WORKER_URL: 'https://lyrion-order-broker.hello-2a3.workers.dev'
+    };
+};
 
 // ==========================================
 // STRIPE INSTANCE
@@ -42,15 +52,18 @@ let checkoutData = {
 // ==========================================
 async function initCheckout() {
     try {
+        const config = getConfig();
+        
         // Load Stripe
         if (typeof Stripe === 'undefined') {
             throw new Error('Stripe.js not loaded');
         }
         
-        stripe = Stripe(STRIPE_PUBLIC_KEY);
+        stripe = Stripe(config.STRIPE_PUBLIC_KEY);
+        console.log('✅ Stripe initialized with key:', config.STRIPE_PUBLIC_KEY.substring(0, 20) + '...');
         
         // Get cart from localStorage
-        checkoutData.cart = window.CartAPI.getCart();
+        checkoutData.cart = window.CartAPI ? window.CartAPI.getCart() : getCartFromStorage();
         
         // Check if cart is empty
         if (!checkoutData.cart || checkoutData.cart.items.length === 0) {
@@ -73,6 +86,17 @@ async function initCheckout() {
     } catch (error) {
         console.error('Error initializing checkout:', error);
         showError('Unable to initialize checkout. Please refresh the page.');
+    }
+}
+
+// Helper function if CartAPI is not available
+function getCartFromStorage() {
+    try {
+        const cartData = localStorage.getItem('lyrion_cart');
+        return cartData ? JSON.parse(cartData) : null;
+    } catch (e) {
+        console.error('Error reading cart from storage:', e);
+        return null;
     }
 }
 
@@ -112,11 +136,24 @@ function setupStripeElements() {
     // Handle real-time validation errors
     cardElement.on('change', (event) => {
         const displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
+        if (displayError) {
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
         }
+    });
+    
+    // Add focus class to container
+    cardElement.on('focus', () => {
+        const container = document.getElementById('cardElementContainer');
+        if (container) container.classList.add('focused');
+    });
+    
+    cardElement.on('blur', () => {
+        const container = document.getElementById('cardElementContainer');
+        if (container) container.classList.remove('focused');
     });
 }
 
@@ -134,10 +171,10 @@ function setupFormListeners() {
     const emailInput = document.getElementById('email');
     if (emailInput) {
         emailInput.addEventListener('blur', () => {
-            if (!window.LyrionUtils.validateEmail(emailInput.value)) {
-                window.LyrionUtils.showFormError(emailInput, 'Please enter a valid email address');
+            if (!validateEmail(emailInput.value)) {
+                showFieldError(emailInput, 'Please enter a valid email address');
             } else {
-                window.LyrionUtils.clearFormError(emailInput);
+                clearFieldError(emailInput);
             }
         });
     }
@@ -149,6 +186,7 @@ function setupFormListeners() {
 async function handleCheckoutSubmit(e) {
     e.preventDefault();
     
+    const config = getConfig();
     const submitBtn = document.getElementById('submitPayment');
     const form = e.target;
     
@@ -167,36 +205,54 @@ async function handleCheckoutSubmit(e) {
         // Collect customer data
         collectCustomerData(form);
         
-        // Create payment intent via Cloudflare Worker
-        const paymentIntent = await createPaymentIntent();
+        // Create Stripe Checkout Session via Cloudflare Worker
+        const response = await fetch(`${config.WORKER_URL}/create-payment-intent`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                amount: checkoutData.total,
+                currency: 'gbp',
+                cart: checkoutData.cart,
+                customer: checkoutData.customer
+            })
+        });
         
-        // Confirm card payment
-        const { error, paymentIntent: confirmedPayment } = await stripe.confirmCardPayment(
-            paymentIntent.client_secret,
-            {
-                payment_method: {
-                    card: cardElement,
-                    billing_details: {
-                        name: checkoutData.customer.name,
-                        email: checkoutData.customer.email,
-                        address: {
-                            line1: checkoutData.customer.address.line1,
-                            line2: checkoutData.customer.address.line2,
-                            city: checkoutData.customer.address.city,
-                            postal_code: checkoutData.customer.address.postal_code,
-                            country: checkoutData.customer.address.country
-                        }
-                    }
-                }
-            }
-        );
-        
-        if (error) {
-            throw new Error(error.message);
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to create checkout session');
         }
         
-        // Payment successful
-        handlePaymentSuccess(confirmedPayment);
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.error || 'Checkout failed');
+        }
+        
+        // Store order for success page
+        localStorage.setItem('last_order', JSON.stringify({
+            sessionId: data.sessionId,
+            amount: checkoutData.total,
+            customer: checkoutData.customer,
+            items: checkoutData.cart.items,
+            timestamp: Date.now()
+        }));
+        
+        // Redirect to Stripe Checkout
+        if (data.sessionId && stripe) {
+            const { error } = await stripe.redirectToCheckout({
+                sessionId: data.sessionId
+            });
+            
+            if (error) {
+                throw new Error(error.message);
+            }
+        } else if (data.url) {
+            window.location.href = data.url;
+        } else {
+            throw new Error('No checkout URL received');
+        }
         
     } catch (error) {
         console.error('Checkout error:', error);
@@ -219,21 +275,48 @@ function validateCheckoutForm(form) {
     
     requiredFields.forEach(field => {
         if (!field.value.trim()) {
-            window.LyrionUtils.showFormError(field, 'This field is required');
+            showFieldError(field, 'This field is required');
             isValid = false;
         } else {
-            window.LyrionUtils.clearFormError(field);
+            clearFieldError(field);
         }
     });
     
     // Validate email
     const emailInput = document.getElementById('email');
-    if (emailInput && !window.LyrionUtils.validateEmail(emailInput.value)) {
-        window.LyrionUtils.showFormError(emailInput, 'Please enter a valid email address');
+    if (emailInput && !validateEmail(emailInput.value)) {
+        showFieldError(emailInput, 'Please enter a valid email address');
         isValid = false;
     }
     
     return isValid;
+}
+
+function showFieldError(field, message) {
+    clearFieldError(field);
+    
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-error';
+    errorDiv.textContent = message;
+    errorDiv.style.color = '#D32F2F';
+    errorDiv.style.fontSize = '0.85rem';
+    errorDiv.style.marginTop = '0.25rem';
+    
+    field.parentNode.appendChild(errorDiv);
+    field.style.borderColor = '#D32F2F';
+}
+
+function clearFieldError(field) {
+    const existingError = field.parentNode.querySelector('.form-error');
+    if (existingError) {
+        existingError.remove();
+    }
+    field.style.borderColor = '';
+}
+
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
 // ==========================================
@@ -247,52 +330,6 @@ function collectCustomerData(form) {
     checkoutData.customer.address.city = form.city.value.trim();
     checkoutData.customer.address.postal_code = form.postcode.value.trim();
     checkoutData.customer.address.country = form.country.value;
-}
-
-// ==========================================
-// CREATE PAYMENT INTENT
-// ==========================================
-async function createPaymentIntent() {
-    const response = await fetch(`${WORKER_URL}/create-payment-intent`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            amount: Math.round(checkoutData.total * 100), // Convert to cents
-            currency: 'gbp',
-            cart: checkoutData.cart,
-            customer: checkoutData.customer
-        })
-    });
-    
-    if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to create payment intent');
-    }
-    
-    return await response.json();
-}
-
-// ==========================================
-// HANDLE PAYMENT SUCCESS
-// ==========================================
-function handlePaymentSuccess(paymentIntent) {
-    // Clear cart
-    window.CartAPI.clearCart();
-    
-    // Store order details for confirmation page
-    window.LyrionUtils.Storage.set('last_order', {
-        id: paymentIntent.id,
-        amount: paymentIntent.amount / 100,
-        currency: paymentIntent.currency,
-        customer: checkoutData.customer,
-        items: checkoutData.cart.items,
-        timestamp: Date.now()
-    });
-    
-    // Redirect to success page
-    window.location.href = 'checkout-success.html';
 }
 
 // ==========================================
@@ -325,22 +362,26 @@ function updateTotalsDisplay() {
     const totalElement = document.getElementById('total');
     
     if (subtotalElement) {
-        subtotalElement.textContent = window.LyrionUtils.formatPrice(checkoutData.cart.total);
+        subtotalElement.textContent = formatPrice(checkoutData.cart.total);
     }
     
     if (shippingElement) {
         shippingElement.textContent = checkoutData.shipping === 0 
             ? 'FREE' 
-            : window.LyrionUtils.formatPrice(checkoutData.shipping);
+            : formatPrice(checkoutData.shipping);
     }
     
     if (taxElement) {
-        taxElement.textContent = window.LyrionUtils.formatPrice(checkoutData.tax);
+        taxElement.textContent = formatPrice(checkoutData.tax);
     }
     
     if (totalElement) {
-        totalElement.textContent = window.LyrionUtils.formatPrice(checkoutData.total);
+        totalElement.textContent = formatPrice(checkoutData.total);
     }
+}
+
+function formatPrice(price) {
+    return `£${parseFloat(price).toFixed(2)}`;
 }
 
 // ==========================================
@@ -352,19 +393,19 @@ function renderOrderSummary() {
     if (!orderSummary || !checkoutData.cart) return;
     
     orderSummary.innerHTML = checkoutData.cart.items.map(item => `
-        <div style="display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #eee;">
-            <img src="assets/products/${item.image}" 
+        <div class="order-item">
+            <img src="assets/products/${item.image || 'placeholder.png'}" 
                  alt="${item.title}"
-                 style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;"
+                 class="order-item-image"
                  onerror="this.src='assets/img/placeholder.png'">
             <div style="flex: 1;">
                 <h4 style="margin: 0 0 0.25rem 0; font-size: 1rem;">${item.title}</h4>
-                ${item.variant ? `<p style="margin: 0; font-size: 0.9rem; color: #666;">Size: ${item.variant}</p>` : ''}
+                ${item.variant ? `<p style="margin: 0; font-size: 0.9rem; color: #666;">${item.variant}</p>` : ''}
                 <p style="margin: 0.25rem 0 0 0; font-size: 0.9rem; color: #666;">Qty: ${item.quantity}</p>
             </div>
             <div style="text-align: right;">
                 <p style="margin: 0; font-weight: 600; color: var(--color-gold-primary);">
-                    ${window.LyrionUtils.formatPrice(item.price * item.quantity)}
+                    ${formatPrice(item.price * item.quantity)}
                 </p>
             </div>
         </div>
@@ -392,8 +433,6 @@ function showEmptyCartMessage() {
 // SHOW ERROR MESSAGE
 // ==========================================
 function showError(message) {
-    window.LyrionUtils.showToast(message, 'error');
-    
     const errorContainer = document.getElementById('checkout-errors');
     if (errorContainer) {
         errorContainer.innerHTML = `
@@ -403,39 +442,6 @@ function showError(message) {
         `;
         
         errorContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-}
-
-// ==========================================
-// APPLY DISCOUNT CODE
-// ==========================================
-async function applyDiscountCode(code) {
-    try {
-        const response = await fetch(`${WORKER_URL}/validate-discount`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                code: code.toUpperCase(),
-                cart: checkoutData.cart
-            })
-        });
-        
-        if (!response.ok) {
-            throw new Error('Invalid discount code');
-        }
-        
-        const discount = await response.json();
-        
-        // Apply discount
-        checkoutData.discount = discount;
-        calculateTotals();
-        
-        window.LyrionUtils.showToast('Discount applied successfully!', 'success');
-        
-    } catch (error) {
-        window.LyrionUtils.showToast(error.message, 'error');
     }
 }
 
@@ -455,11 +461,3 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(script);
     }
 });
-
-// ==========================================
-// EXPOSE FUNCTIONS GLOBALLY
-// ==========================================
-window.CheckoutAPI = {
-    applyDiscountCode,
-    calculateTotals
-};

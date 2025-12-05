@@ -3,44 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmed | LYRĪON Oracle</title>
+    <meta name="description" content="Oracle reading confirmed | LYRĪON">
+    <title>Reading Confirmed | LYRĪON Oracle</title>
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="stylesheet" href="assets/css/style.css">
+    
     <style>
         .success-container {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
             text-align: center;
+            padding: 4rem 2rem;
         }
         
         .success-icon {
-            font-size: 4rem;
-            color: var(--color-gold-primary);
-            margin-bottom: 2rem;
-            animation: pulse 2s infinite;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--color-gold-primary) 0%, var(--color-gold-hover) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: successPulse 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 10px 40px rgba(184, 134, 11, 0.3);
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        @keyframes successPulse {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
         
-        .success-details {
+        .success-icon svg {
+            width: 70px;
+            height: 70px;
+            color: var(--color-white);
+        }
+        
+        .oracle-details-card {
             background: var(--color-cream-dark);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: var(--radius-lg);
-            margin: 2rem auto;
-            max-width: 500px;
+            margin: 3rem 0;
             text-align: left;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            color: var(--color-ink);
+            text-align: right;
+            max-width: 60%;
+        }
+        
+        .timeline-card {
+            background: var(--color-white);
+            border: 2px solid var(--color-gold-accent);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .timeline-card h3 {
+            font-family: var(--font-serif);
+            color: var(--color-gold-primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            text-align: left;
+        }
+        
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-gold-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--color-gold-primary);
+            font-weight: 700;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--color-ink);
+        }
+        
+        .timeline-desc {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .detail-row {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .detail-value {
+                text-align: left;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation (copy from other pages) -->
-    <div class="nav-wrapper" id="mainNav">
+    
+    <!-- Minimal Navigation -->
+    <div class="nav-wrapper">
         <nav>
             <a href="index.html" class="logo">
                 <img src="./assets/img/logo-circle.png" alt="LYRĪON">
@@ -49,62 +159,171 @@
         </nav>
     </div>
 
-    <!-- Success Content -->
-    <div class="success-container">
-        <div>
-            <div class="success-icon">✦</div>
-            <h1 style="font-family: var(--font-serif); margin-bottom: 1rem;">
-                Your Reading is Confirmed
-            </h1>
-            
-            <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto 2rem;">
-                Thank you for consulting the Oracle. Your personalized reading will be delivered to your email within 48-72 hours.
-            </p>
-            
-            <div class="success-details">
-                <h3 style="margin-bottom: 1rem; color: var(--color-gold-primary);">What's Next?</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                        <span style="color: var(--color-gold-primary);">✓</span>
-                        <span>Email confirmation sent immediately</span>
-                    </li>
-                    <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                        <span style="color: var(--color-gold-primary);">✓</span>
-                        <span>Reading prepared by our celestial readers</span>
-                    </li>
-                    <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                        <span style="color: var(--color-gold-primary);">✓</span>
-                        <span>Delivered as PDF within 48-72 hours</span>
-                    </li>
-                    <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
-                        <span style="color: var(--color-gold-primary);">✓</span>
-                        <span>Lifetime access to your reading</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div style="margin-top: 2rem;">
-                <a href="index.html" class="btn btn-primary" style="margin-right: 1rem;">
-                    Return Home
-                </a>
-                <a href="oracle.html" class="btn btn-outline">
-                    Order Another Reading
-                </a>
-            </div>
-            
-            <p style="margin-top: 2rem; color: #999; font-size: 0.9rem;">
-                Questions? Contact us at <a href="mailto:hello@lyrion.co.uk" style="color: var(--color-gold-primary);">hello@lyrion.co.uk</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- Footer (copy from other pages) -->
-    <footer>
+    <!-- Success Message -->
+    <section class="section">
         <div class="container">
+            <div class="success-container">
+                
+                <!-- Success Icon -->
+                <div class="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                
+                <h1 style="font-family: var(--font-serif); margin-bottom: 1rem; font-size: 2.5rem;">
+                    Your Reading is On Its Way
+                </h1>
+                
+                <p style="font-size: 1.2rem; color: #666; line-height: 1.7; margin-bottom: 2rem;">
+                    Thank you for consulting the Oracle. Your personalized reading has been confirmed and our celestial readers are preparing your cosmic insights.
+                </p>
+                
+                <!-- Order Details -->
+                <div class="oracle-details-card" id="oracleDetails">
+                    <h2 style="font-family: var(--font-serif); margin-bottom: 1.5rem; text-align: center; color: var(--color-gold-primary);">
+                        Reading Details
+                    </h2>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Order Number</span>
+                        <span class="detail-value" id="orderNumber">Loading...</span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Reading Type</span>
+                        <span class="detail-value" id="readingType">Loading...</span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Delivery Email</span>
+                        <span class="detail-value" id="customerEmail">Loading...</span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Expected Delivery</span>
+                        <span class="detail-value" id="deliveryTime">Loading...</span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Amount Paid</span>
+                        <span class="detail-value" style="color: var(--color-gold-primary); font-size: 1.3rem;" id="amountPaid">£0.00</span>
+                    </div>
+                </div>
+                
+                <!-- What Happens Next -->
+                <div class="timeline-card">
+                    <h3>What Happens Next</h3>
+                    
+                    <div class="timeline-step">
+                        <div class="timeline-icon">1</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Confirmation Email (Now)</div>
+                            <div class="timeline-desc">You'll receive a confirmation email at the address provided within 5 minutes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="timeline-icon">2</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Reading Preparation (24-48 hours)</div>
+                            <div class="timeline-desc">Our celestial readers will craft your personalized cosmic insights</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="timeline-icon">3</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Delivery (Within <span id="deliveryTimeText">48 hours</span>)</div>
+                            <div class="timeline-desc">Your reading will be delivered as a beautifully formatted PDF via email</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Info -->
+                <div style="background: var(--color-cream-dark); padding: 1.5rem; border-radius: var(--radius-md); margin: 2rem 0;">
+                    <p style="color: #666; font-size: 0.95rem; line-height: 1.7; margin: 0;">
+                        <strong>Need help?</strong> Contact us at 
+                        <a href="mailto:hello@lyrion.co.uk" style="color: var(--color-gold-primary); text-decoration: none;">
+                            hello@lyrion.co.uk
+                        </a>
+                        <br>
+                        Please include your order number in any correspondence.
+                    </p>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem;">
+                    <a href="index.html" class="btn btn-primary">Return Home</a>
+                    <a href="oracle.html" class="btn btn-secondary">Book Another Reading</a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2025 LYRĪON Celestial Couture. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Load order details from URL parameter
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sessionId = urlParams.get('session_id');
+            
+            console.log('Session ID:', sessionId);
+            
+            if (!sessionId) {
+                // No session ID - show generic success message
+                showGenericSuccess();
+                return;
+            }
+            
+            // In production, you would fetch session details from your backend
+            // For now, we'll show a success message with the session ID
+            
+            // Generate a readable order number from session ID
+            const orderNumber = '#' + sessionId.substring(sessionId.length - 8).toUpperCase();
+            
+            // Update UI
+            document.getElementById('orderNumber').textContent = orderNumber;
+            document.getElementById('readingType').textContent = 'Oracle Reading';
+            document.getElementById('customerEmail').textContent = 'Check your email';
+            document.getElementById('deliveryTime').textContent = 'Within 48-72 hours';
+            document.getElementById('amountPaid').textContent = 'Confirmed';
+            document.getElementById('deliveryTimeText').textContent = '48-72 hours';
+        });
+        
+        function showGenericSuccess() {
+            document.getElementById('orderNumber').textContent = 'Confirmed';
+            document.getElementById('readingType').textContent = 'Oracle Reading';
+            document.getElementById('customerEmail').textContent = 'Check your email';
+            document.getElementById('deliveryTime').textContent = 'Within 48-72 hours';
+            document.getElementById('amountPaid').textContent = 'Confirmed';
+            document.getElementById('deliveryTimeText').textContent = '48-72 hours';
+        }
+    </script>
 </body>
 </html>

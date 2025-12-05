@@ -8,8 +8,9 @@
     
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
     
     <style>
         .oracle-hero {
@@ -28,13 +29,6 @@
             color: var(--color-gold-primary);
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
-        }
-        
-        .oracle-hero p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--color-cream);
         }
         
         .tier-cards {
@@ -61,10 +55,9 @@
             box-shadow: var(--shadow-lg);
         }
         
-        .tier-card.active {
+        .tier-card.selected {
             border-color: var(--color-gold-primary);
             background: rgba(184, 134, 11, 0.05);
-            border-width: 3px;
         }
         
         .tier-badge {
@@ -79,7 +72,6 @@
             font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
         
         .tier-name {
@@ -94,12 +86,6 @@
             font-weight: 700;
             color: var(--color-gold-primary);
             margin-bottom: 1rem;
-        }
-        
-        .tier-description {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
         }
         
         .tier-features {
@@ -123,35 +109,116 @@
             color: var(--color-gold-primary);
         }
         
-        .oracle-form-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--color-cream-dark);
-            padding: 3rem;
-            border-radius: var(--radius-md);
+        /* Payment Modal */
+        .payment-modal {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(15, 13, 11, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 4000;
+            padding: 2rem;
+            overflow-y: auto;
         }
         
-        .oracle-form-container.visible {
+        .payment-modal.active {
             display: block;
         }
         
-        .char-counter {
-            text-align: right;
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: 0.5rem;
+        .payment-modal-content {
+            max-width: 500px;
+            margin: 2rem auto;
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-ink);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+            transition: background var(--transition-fast);
+        }
+        
+        .close-modal:hover {
+            background: var(--color-cream-dark);
         }
         
         .selected-tier-display {
-            background: var(--color-white);
-            border: 2px solid var(--color-gold-primary);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.5rem;
+            background: var(--color-cream-dark);
+            border-radius: var(--radius-md);
+            margin-bottom: 2rem;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .form-error {
+            color: #D32F2F;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #D32F2F;
+        }
+        
+        .form-group.error .form-error {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .payment-modal-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .tier-cards {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -166,11 +233,13 @@
             </a>
             
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
-                <li><a href="oracle.html" class="active">The Oracle</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="codex.html">Codex</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <!-- <li><a href="codex.html">Codex</a></li> -->
+
             </ul>
             
             <div class="nav-icons">
@@ -214,23 +283,23 @@
             
             <div class="tier-cards">
                 <!-- Essence Reading -->
-                <div class="tier-card" data-tier="essence">
+                <div class="tier-card" data-tier="essence" data-price="25">
                     <div class="tier-name">Essence Reading</div>
                     <div class="tier-price">£25</div>
                     <p class="tier-description">
                         A focused insight into your current cosmic alignment
                     </p>
                     <ul class="tier-features">
-                        <li>300 words of personalized insights</li>
+                        <li>300+ words of personalized insights</li>
                         <li>Current cosmic influences</li>
                         <li>Delivered within 48 hours</li>
                         <li>PDF format</li>
                     </ul>
-                    <button class="btn btn-outline btn-full">Select Essence</button>
+                    <button class="btn btn-outline btn-full tier-select-btn">Select Essence</button>
                 </div>
                 
                 <!-- Detailed Reading -->
-                <div class="tier-card" data-tier="detailed">
+                <div class="tier-card" data-tier="detailed" data-price="55">
                     <div class="tier-badge">Popular</div>
                     <div class="tier-name">Detailed Reading</div>
                     <div class="tier-price">£55</div>
@@ -238,17 +307,17 @@
                         Deep exploration of your birth chart and current transits
                     </p>
                     <ul class="tier-features">
-                        <li>800 words of in-depth analysis</li>
+                        <li>800+ words of in-depth analysis</li>
                         <li>Birth chart interpretation</li>
                         <li>Current transit analysis</li>
                         <li>Delivered within 48 hours</li>
                         <li>PDF format with charts</li>
                     </ul>
-                    <button class="btn btn-primary btn-full">Select Detailed</button>
+                    <button class="btn btn-primary btn-full tier-select-btn">Select Detailed</button>
                 </div>
                 
                 <!-- Premium Reading -->
-                <div class="tier-card" data-tier="premium">
+                <div class="tier-card" data-tier="premium" data-price="125">
                     <div class="tier-name">Premium Reading</div>
                     <div class="tier-price">£125</div>
                     <p class="tier-description">
@@ -262,109 +331,76 @@
                         <li>Delivered within 72 hours</li>
                         <li>Premium PDF with custom artwork</li>
                     </ul>
-                    <button class="btn btn-outline btn-full">Select Premium</button>
+                    <button class="btn btn-outline btn-full tier-select-btn">Select Premium</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Oracle Form (Hidden until tier selected) -->
-    <section class="section" id="oracleFormSection">
-        <div class="container">
-            <div class="oracle-form-container" id="oracleFormContainer">
-                <h2 class="text-center mb-lg" style="font-family: var(--font-serif);">Your Cosmic Inquiry</h2>
-                
-                <!-- Selected Tier Display -->
-                <div class="selected-tier-display">
-                    <div>
-                        <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.25rem;">Selected Reading</div>
-                        <div style="font-size: 1.3rem; font-weight: 600;" id="selectedTierName">Essence Reading</div>
-                    </div>
-                    <div style="font-size: 2rem; font-weight: 700; color: var(--color-gold-primary);" id="selectedPrice">£25</div>
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            
+            <h2 style="font-family: var(--font-serif); margin-bottom: 1rem;" id="modalTierName">Essence Reading</h2>
+            <p style="color: #666; margin-bottom: 2rem;" id="modalTierDescription">A focused insight into your current cosmic alignment</p>
+            
+            <div class="selected-tier-display">
+                <div>
+                    <div style="font-size: 0.9rem; color: #666;">Selected Reading</div>
+                    <div style="font-size: 1.3rem; font-weight: 600;" id="modalSelectedTier">Essence Reading</div>
+                </div>
+                <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-gold-primary);" id="modalPrice">£25</div>
+            </div>
+            
+            <div id="modalErrors" style="color: #D32F2F; margin-bottom: 1rem; text-align: center; display: none; padding: 1rem; background: #FFEBEE; border-radius: 4px;"></div>
+            
+            <form id="oraclePaymentForm">
+                <div class="form-group">
+                    <label class="form-label" for="customerName">Your Name *</label>
+                    <input type="text" id="customerName" class="form-input" required>
+                    <div class="form-error">Please enter your name</div>
                 </div>
                 
-                <!-- Error Container -->
-                <div id="oracle-errors"></div>
+                <div class="form-group">
+                    <label class="form-label" for="customerEmail">Your Email *</label>
+                    <input type="email" id="customerEmail" class="form-input" required>
+                    <div class="form-error">Please enter a valid email address</div>
+                    <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                        Your reading will be delivered here
+                    </div>
+                </div>
                 
-                <form id="oracleForm">
-                    <!-- Personal Information -->
-                    <div class="form-group">
-                        <label class="form-label" for="oracleName">Full Name *</label>
-                        <input type="text" id="oracleName" name="oracleName" class="form-input" required>
+                <div class="form-group">
+                    <label class="form-label" for="birthDate">Birth Date (Optional)</label>
+                    <input type="date" id="birthDate" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="birthCity">Birth City (Optional)</label>
+                    <input type="text" id="birthCity" class="form-input" placeholder="e.g., London, UK">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="customerQuestion">Your Question (Optional)</label>
+                    <textarea id="customerQuestion" class="form-textarea" rows="3" placeholder="What would you like guidance on? (Max 500 characters)"></textarea>
+                    <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                        Optional - helps personalize your reading
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="oracleEmail">Email Address *</label>
-                        <input type="email" id="oracleEmail" name="oracleEmail" class="form-input" required>
-                        <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
-                            Your reading will be delivered to this email
-                        </div>
-                    </div>
-                    
-                    <!-- Birth Chart Information (Optional) -->
-                    <div style="background: var(--color-white); padding: 1.5rem; border-radius: var(--radius-md); margin: 2rem 0;">
-                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Birth Chart Information (Optional)</h3>
-                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">
-                            Providing your birth details allows for deeper, more personalized insights
-                        </p>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="birthdate">Birth Date</label>
-                            <input type="date" id="birthdate" name="birthdate" class="form-input">
-                        </div>
-                        
-                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                            <div class="form-group">
-                                <label class="form-label" for="birthtime">Birth Time</label>
-                                <input type="time" id="birthtime" name="birthtime" class="form-input">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="birthplace">Birth Place</label>
-                                <input type="text" id="birthplace" name="birthplace" class="form-input" placeholder="City, Country">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Your Question -->
-                    <div class="form-group">
-                        <label class="form-label" for="oracleQuestion">Your Question or Focus Area *</label>
-                        <textarea id="oracleQuestion" name="oracleQuestion" class="form-textarea" required maxlength="500" placeholder="What aspect of your life would you like cosmic guidance on? (e.g., career, relationships, personal growth)"></textarea>
-                        <div class="char-counter" id="charCounter">0 / 500 characters</div>
-                    </div>
-                    
-                    <!-- Payment Section -->
-                    <div style="background: var(--color-white); padding: 1.5rem; border-radius: var(--radius-md); margin: 2rem 0;">
-                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Payment Information</h3>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Card Details *</label>
-                            <div style="padding: 1rem; background: var(--color-cream); border: 2px solid #ddd; border-radius: var(--radius-sm);">
-                                <div id="oracle-card-element"></div>
-                            </div>
-                            <div id="oracle-card-errors" style="color: var(--color-error); font-size: 0.9rem; margin-top: 0.5rem;"></div>
-                        </div>
-                        
-                        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem; background: rgba(184, 134, 11, 0.1); border-radius: var(--radius-sm); font-size: 0.9rem; color: var(--color-gold-primary); margin-top: 1rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                            </svg>
-                            <span>Secured by Stripe</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Submit Button -->
-                    <button type="submit" id="submitOracle" class="btn btn-primary btn-full" style="font-size: 1.1rem; padding: 1rem 2rem;">
-                        Submit & Pay
-                    </button>
-                    
-                    <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
-                        By submitting, you agree to our <a href="#" style="color: var(--color-gold-primary);">Terms of Service</a>
+                </div>
+                
+                <button type="submit" id="checkoutButton" class="btn btn-primary btn-full" style="padding: 1rem;">
+                    <span id="buttonText">Pay with Card</span>
+                </button>
+                
+                <div style="text-align: center; margin-top: 1rem;">
+                    <p style="font-size: 0.9rem; color: #666;">
+                        Secured by Stripe • Delivery within 48-72 hours
                     </p>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -397,8 +433,6 @@
                 <div class="footer-section">
                     <h4>Support</h4>
                     <ul class="footer-links">
-                        <li><a href="shipping.html">Shipping & Returns</a></li>
-                        <li><a href="#">Care Instructions</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
@@ -411,12 +445,12 @@
         </div>
     </footer>
 
-    <!-- Cart Drawer -->
+    <!-- Cart & Search (same structure as other pages) -->
     <div class="cart-overlay" id="cartOverlay"></div>
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
             <h3 class="cart-title">Your Cart</h3>
-            <button class="cart-close" id="cartClose" aria-label="Close cart">
+            <button class="cart-close" id="cartClose">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -432,237 +466,217 @@
         </div>
     </div>
 
-    <!-- Search Overlay -->
-    <div class="search-overlay" id="searchOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 3000; padding: 2rem;">
+    <div class="search-overlay" id="searchOverlay" style="display: none;">
         <div class="container-narrow" style="margin-top: 5rem;">
             <button id="searchClose" style="position: absolute; top: 2rem; right: 2rem; color: var(--color-cream); font-size: 2rem; background: none; border: none; cursor: pointer;">&times;</button>
             <div class="search-container">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs..." style="border-color: var(--color-gold-accent);">
-                <span class="search-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </span>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search products, zodiac signs...">
             </div>
             <div class="search-results" id="searchResults"></div>
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/search.js"></script>
-    <script src="assets/js/oracle.js"></script>
-
-    <!-- Payment Modal (Hidden until tier selected) -->
-<div id="paymentModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 13, 11, 0.95); backdrop-filter: blur(8px); z-index: 4000; padding: 2rem; overflow-y: auto;">
-    <div style="max-width: 500px; margin: 2rem auto; background: var(--color-white); border-radius: var(--radius-lg); padding: 3rem;">
-        <button id="closePaymentModal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-ink);">&times;</button>
+    
+    <script>
+    // Oracle Payment Handler
+    (function() {
+        // Configuration
+        const STRIPE_PUBLIC_KEY = 'pk_live_51SUJRkEdr82NVcSeGDkHpcpmUdS7OZzESMQ5JZESZsc9YY74FoTtk2p9LFKYafg4VmjvsXOVO0IHsi2fSyh81xA600RctJAeto';
+        const WORKER_URL = 'https://lyrion-order-broker.hello-2a3.workers.dev';
         
-        <h2 style="font-family: var(--font-serif); margin-bottom: 1rem;" id="modalTierName">Essence Reading</h2>
-        <p style="color: #666; margin-bottom: 2rem;" id="modalTierDescription">A focused insight into your current cosmic alignment</p>
+        // DOM Elements
+        const modal = document.getElementById('paymentModal');
+        const closeBtn = document.getElementById('closeModal');
+        const form = document.getElementById('oraclePaymentForm');
+        const errorDiv = document.getElementById('modalErrors');
+        const tierCards = document.querySelectorAll('.tier-card');
+        const selectButtons = document.querySelectorAll('.tier-select-btn');
         
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: var(--color-cream-dark); border-radius: var(--radius-md); margin-bottom: 2rem;">
-            <div>
-                <div style="font-size: 0.9rem; color: #666;">Selected Tier</div>
-                <div style="font-size: 1.3rem; font-weight: 600;" id="modalSelectedTier">Essence Reading</div>
-            </div>
-            <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-gold-primary);" id="modalPrice">£25</div>
-        </div>
-        
-        <form id="quickOracleForm">
-            <div class="form-group">
-                <label class="form-label" for="quickName">Your Name *</label>
-                <input type="text" id="quickName" name="quickName" class="form-input" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label" for="quickEmail">Your Email *</label>
-                <input type="email" id="quickEmail" name="quickEmail" class="form-input" required>
-                <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
-                    Your reading will be delivered here
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label" for="quickQuestion">Your Focus (Optional)</label>
-                <textarea id="quickQuestion" name="quickQuestion" class="form-textarea" rows="3" placeholder="What would you like guidance on?"></textarea>
-            </div>
-            
-            <div style="margin: 2rem 0;">
-                <button type="button" id="stripeCheckoutBtn" class="btn btn-primary btn-full" style="padding: 1rem;">
-                    <span style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                        Pay with Card - <span id="modalCheckoutPrice">£25</span>
-                    </span>
-                </button>
-                
-                <div style="text-align: center; margin-top: 1rem;">
-                    <p style="font-size: 0.9rem; color: #666;">
-                        Secured by Stripe • Delivery within 48-72 hours
-                    </p>
-                </div>
-            </div>
-        </form>
-        
-        <div id="modalErrors" style="color: var(--color-error); margin-top: 1rem; text-align: center;"></div>
-    </div>
-</div>
-
-<script>
-    // Initialize Oracle Tier Selection
-    document.addEventListener('DOMContentLoaded', function() {
-        const tierCards = document.querySelectorAll('[data-tier]');
-        const paymentModal = document.getElementById('paymentModal');
-        const closeModalBtn = document.getElementById('closePaymentModal');
-        const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
-        const quickOracleForm = document.getElementById('quickOracleForm');
-        
-        // Oracle tiers data
-        const oracleTiers = {
-            essence: {
-                name: 'Essence Reading',
-                price: 25,
-                description: 'A focused insight into your current cosmic alignment',
-                wordCount: '300 words'
+        // Tier data
+        const tiers = {
+            essence: { 
+                name: 'Essence Reading', 
+                desc: 'A focused insight into your current cosmic alignment',
+                tier: 'essence',
+                tierName: 'Essence Reading',
+                wordCount: '300+ words'
             },
-            detailed: {
-                name: 'Detailed Reading',
-                price: 55,
-                description: 'Deep exploration of your birth chart and current transits',
-                wordCount: '800 words'
+            detailed: { 
+                name: 'Detailed Reading', 
+                desc: 'Deep exploration of your birth chart and current transits',
+                tier: 'detailed',
+                tierName: 'Detailed Reading',
+                wordCount: '800+ words'
             },
-            premium: {
-                name: 'Premium Reading',
-                price: 125,
-                description: 'Comprehensive analysis with personalized ritual guidance',
+            premium: { 
+                name: 'Premium Reading', 
+                desc: 'Comprehensive analysis with personalized ritual guidance',
+                tier: 'premium',
+                tierName: 'Premium Reading',
                 wordCount: '1,500+ words'
             }
         };
         
+        // State
         let selectedTier = null;
+        let selectedPrice = 0;
         
-        // Tier card click handler
+        // Initialize Stripe
+        let stripe = null;
+        try {
+            stripe = Stripe(STRIPE_PUBLIC_KEY);
+        } catch (error) {
+            console.error('Failed to initialize Stripe:', error);
+        }
+        
+        // Tier selection handlers
         tierCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const tierId = this.getAttribute('data-tier');
-                selectTier(tierId);
+            card.addEventListener('click', function(e) {
+                // Don't trigger if clicking the button
+                if (e.target.classList.contains('tier-select-btn') || 
+                    e.target.closest('.tier-select-btn')) {
+                    return;
+                }
+                selectTier(this.dataset.tier);
             });
         });
         
-        function selectTier(tierId) {
-            selectedTier = oracleTiers[tierId];
-            
-            if (!selectedTier) return;
-            
-            // Update UI - highlight selected card
-            tierCards.forEach(card => {
-                if (card.getAttribute('data-tier') === tierId) {
-                    card.classList.add('active');
-                    card.style.borderColor = 'var(--color-gold-primary)';
-                    card.style.background = 'rgba(184, 134, 11, 0.05)';
-                } else {
-                    card.classList.remove('active');
-                    card.style.borderColor = '';
-                    card.style.background = '';
-                }
+        selectButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const card = this.closest('.tier-card');
+                selectTier(card.dataset.tier);
             });
+        });
+        
+        // Function to select tier
+        function selectTier(tierId) {
+            selectedTier = tierId;
+            selectedPrice = parseFloat(document.querySelector(`[data-tier="${tierId}"]`).dataset.price);
+            
+            // Update UI - remove selected class from all cards
+            tierCards.forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selected class to chosen card
+            const selectedCard = document.querySelector(`[data-tier="${tierId}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('selected');
+            }
             
             // Update modal content
-            document.getElementById('modalTierName').textContent = selectedTier.name;
-            document.getElementById('modalTierDescription').textContent = selectedTier.description;
-            document.getElementById('modalSelectedTier').textContent = selectedTier.name;
-            document.getElementById('modalPrice').textContent = '£' + selectedTier.price;
-            document.getElementById('modalCheckoutPrice').textContent = '£' + selectedTier.price;
+            if (tiers[selectedTier]) {
+                document.getElementById('modalTierName').textContent = tiers[selectedTier].name;
+                document.getElementById('modalTierDescription').textContent = tiers[selectedTier].desc;
+                document.getElementById('modalSelectedTier').textContent = tiers[selectedTier].name;
+                document.getElementById('modalPrice').textContent = '£' + selectedPrice.toFixed(2);
+            }
             
-            // Show payment modal
-            paymentModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            
-            // Scroll to top of modal
-            paymentModal.scrollTop = 0;
+            // Show modal
+            openModal();
         }
         
-        // Close modal handlers
-        closeModalBtn.addEventListener('click', closeModal);
-        paymentModal.addEventListener('click', function(e) {
-            if (e.target === paymentModal) {
-                closeModal();
+        // Modal functions
+        function openModal() {
+            if (!selectedTier) {
+                showError('Please select a reading tier first');
+                return;
             }
-        });
-        
-        // Escape key to close
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && paymentModal.style.display === 'block') {
-                closeModal();
-            }
-        });
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('customerName').focus();
+        }
         
         function closeModal() {
-            paymentModal.style.display = 'none';
+            modal.classList.remove('active');
             document.body.style.overflow = '';
-            selectedTier = null;
-            
-            // Reset tier selection
-            tierCards.forEach(card => {
-                card.classList.remove('active');
-                card.style.borderColor = '';
-                card.style.background = '';
-            });
+            form.reset();
+            errorDiv.style.display = 'none';
+            clearFormErrors();
         }
         
-        // Stripe checkout handler
-        stripeCheckoutBtn.addEventListener('click', async function() {
-            const nameInput = document.getElementById('quickName');
-            const emailInput = document.getElementById('quickEmail');
-            const questionInput = document.getElementById('quickQuestion');
-            const errorContainer = document.getElementById('modalErrors');
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        // Form validation and submission
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            // Validate inputs
-            if (!nameInput.value.trim()) {
-                errorContainer.textContent = 'Please enter your name';
-                nameInput.focus();
+            // Clear previous errors
+            errorDiv.style.display = 'none';
+            clearFormErrors();
+            
+            // Validate form
+            const name = document.getElementById('customerName').value.trim();
+            const email = document.getElementById('customerEmail').value.trim();
+            const question = document.getElementById('customerQuestion').value.trim();
+            const birthDate = document.getElementById('birthDate').value;
+            const birthCity = document.getElementById('birthCity').value.trim();
+            
+            let isValid = true;
+            
+            // Validate name
+            if (!name) {
+                showFormError('customerName', 'Please enter your name');
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!email) {
+                showFormError('customerEmail', 'Please enter your email address');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                showFormError('customerEmail', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate question length (if provided)
+            if (question.length > 500) {
+                showFormError('customerQuestion', 'Question must be 500 characters or less');
+                isValid = false;
+            }
+            
+            if (!isValid) {
                 return;
             }
             
-            if (!emailInput.value.trim()) {
-                errorContainer.textContent = 'Please enter your email';
-                emailInput.focus();
-                return;
-            }
-            
-            if (!isValidEmail(emailInput.value)) {
-                errorContainer.textContent = 'Please enter a valid email address';
-                emailInput.focus();
-                return;
-            }
-            
-            if (!selectedTier) {
-                errorContainer.textContent = 'Please select a reading tier';
-                return;
-            }
-            
-            // Prepare order data
-            const orderData = {
-                name: nameInput.value.trim(),
-                email: emailInput.value.trim(),
-                question: questionInput.value.trim(),
-                tier: selectedTier.name,
-                price: selectedTier.price,
-                wordCount: selectedTier.wordCount,
-                type: 'oracle-reading'
-            };
+            // Disable button and show loading
+            const button = document.getElementById('checkoutButton');
+            const buttonText = document.getElementById('buttonText');
+            button.disabled = true;
+            buttonText.innerHTML = '<span class="spinner"></span> Creating checkout...';
             
             try {
-                // Show loading state
-                stripeCheckoutBtn.disabled = true;
-                stripeCheckoutBtn.innerHTML = '<span>Processing...</span>';
-                errorContainer.textContent = '';
+                // Prepare order data
+                const orderData = {
+                    name: name,
+                    email: email,
+                    question: question || 'No specific question provided',
+                    birthDate: birthDate || '',
+                    birthCity: birthCity || '',
+                    tier: selectedTier,
+                    tierName: tiers[selectedTier].name,
+                    price: selectedPrice,
+                    wordCount: tiers[selectedTier].wordCount || '300+ words'
+                };
                 
-                // Call your Cloudflare Worker to create Stripe session
-                const response = await fetch('https://lyrion-order-broker.hello-2a3.workers.dev/create-oracle-session', {
+                console.log('Creating checkout session with:', orderData);
+                
+                // Create Stripe Checkout Session via Cloudflare Worker
+                const response = await fetch(`${WORKER_URL}/create-oracle-session`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -670,51 +684,159 @@
                     body: JSON.stringify(orderData)
                 });
                 
+                console.log('Worker response status:', response.status);
+                
                 if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.message || 'Failed to create checkout session');
+                    let errorMessage = 'Failed to create checkout session';
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.error || JSON.stringify(errorData);
+                    } catch (parseError) {
+                        const errorText = await response.text();
+                        errorMessage = `Status ${response.status}: ${errorText}`;
+                    }
+                    throw new Error(errorMessage);
                 }
                 
-                const { sessionId } = await response.json();
+                const result = await response.json();
+                console.log('Checkout session created:', result);
+                
+                if (!result.success) {
+                    throw new Error(result.error || 'Checkout session creation failed');
+                }
+                
+                // Store order data for success page
+                localStorage.setItem('oracle_order', JSON.stringify({
+                    tier: orderData.tierName,
+                    price: orderData.price,
+                    customer: {
+                        name: orderData.name,
+                        email: orderData.email
+                    },
+                    question: orderData.question,
+                    timestamp: Date.now(),
+                    delivery: '48-72 hours'
+                }));
                 
                 // Redirect to Stripe Checkout
-                const stripe = Stripe('pk_live_51ST0Yr6kwOhs68PfqGUKmqq7hcbKsY60SCK1WLr5vkJLyAqurpFVgZx5oJEPZmXMN3gS6fI8YzLsF4hWQh0qjPHt00tIvM8E5V');
-                const { error } = await stripe.redirectToCheckout({ sessionId });
-                
-                if (error) {
-                    throw new Error(error.message);
+                if (result.sessionId && stripe) {
+                    const { error } = await stripe.redirectToCheckout({ 
+                        sessionId: result.sessionId 
+                    });
+                    
+                    if (error) {
+                        throw new Error(error.message);
+                    }
+                } else if (result.url) {
+                    // If worker returns direct URL, redirect to it
+                    window.location.href = result.url;
+                } else {
+                    throw new Error('No checkout URL received');
                 }
                 
             } catch (error) {
                 console.error('Checkout error:', error);
-                errorContainer.textContent = error.message || 'Checkout failed. Please try again.';
+                showError(error.message || 'Payment failed. Please try again.');
                 
-                // Reset button
-                stripeCheckoutBtn.disabled = false;
-                stripeCheckoutBtn.innerHTML = `<span style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                    Pay with Card - £${selectedTier.price}
-                </span>`;
+                // Re-enable button
+                button.disabled = false;
+                buttonText.textContent = 'Pay with Card';
             }
         });
         
-        // Email validation helper
-        function isValidEmail(email) {
+        // Helper functions
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        function showFormError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            if (formGroup) {
+                formGroup.classList.add('error');
+                const errorElement = formGroup.querySelector('.form-error');
+                if (errorElement) {
+                    errorElement.textContent = message;
+                    errorElement.style.display = 'block';
+                }
+            }
+        }
+        
+        function clearFormErrors() {
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+                const errorElement = group.querySelector('.form-error');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            });
+        }
+        
+        function validateEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
         
-        // Load Stripe.js if not already loaded
-        if (!window.Stripe) {
-            const script = document.createElement('script');
-            script.src = 'https://js.stripe.com/v3/';
-            script.async = true;
-            document.head.appendChild(script);
+        // Real-time form validation
+        const nameInput = document.getElementById('customerName');
+        const emailInput = document.getElementById('customerEmail');
+        const questionInput = document.getElementById('customerQuestion');
+        
+        nameInput.addEventListener('blur', () => {
+            if (!nameInput.value.trim()) {
+                showFormError('customerName', 'Please enter your name');
+            } else {
+                clearFieldError('customerName');
+            }
+        });
+        
+        emailInput.addEventListener('blur', () => {
+            if (!emailInput.value.trim()) {
+                showFormError('customerEmail', 'Please enter your email address');
+            } else if (!validateEmail(emailInput.value)) {
+                showFormError('customerEmail', 'Please enter a valid email address');
+            } else {
+                clearFieldError('customerEmail');
+            }
+        });
+        
+        questionInput.addEventListener('input', () => {
+            if (questionInput.value.length > 500) {
+                showFormError('customerQuestion', 'Question must be 500 characters or less');
+            } else {
+                clearFieldError('customerQuestion');
+            }
+        });
+        
+        function clearFieldError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            if (formGroup) {
+                formGroup.classList.remove('error');
+                const errorElement = formGroup.querySelector('.form-error');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            }
         }
-    });
-</script>
-
+        
+        // Auto-select tier from URL parameter
+        function handleUrlParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tier = urlParams.get('tier');
+            if (tier && tiers[tier]) {
+                selectTier(tier);
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            handleUrlParameters();
+        });
+        
+    })();
+    </script>
 </body>
 </html>
