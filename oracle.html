@@ -480,11 +480,12 @@
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/search.js"></script>
     
+    <!-- Oracle Payment Handler - CORRECTED VERSION -->
     <script>
-    // Oracle Payment Handler
+    // Oracle Payment Handler - FIXED VERSION
     (function() {
-        // Configuration
-        const STRIPE_PUBLIC_KEY = 'pk_live_51SUJRkEdr82NVcSeGDkHpcpmUdS7OZzESMQ5JZESZsc9YY74FoTtk2p9LFKYafg4VmjvsXOVO0IHsi2fSyh81xA600RctJAeto';
+        // Configuration - USING CORRECT STRIPE KEY
+        const STRIPE_PUBLIC_KEY = 'pk_live_51ST0Yr6kwOhs68PfwI2N6I6rKXBx8TKEvkPdwfR7sLpKQiAiQ09QPLpy1XalDPf9Zrs3SL5DkWxKKQjdZq1JoLoP00QdElzZjF';
         const WORKER_URL = 'https://lyrion-order-broker.hello-2a3.workers.dev';
         
         // DOM Elements
@@ -523,11 +524,12 @@
         // State
         let selectedTier = null;
         let selectedPrice = 0;
+        let stripe = null;
         
         // Initialize Stripe
-        let stripe = null;
         try {
             stripe = Stripe(STRIPE_PUBLIC_KEY);
+            console.log('✅ Stripe initialized with correct key');
         } catch (error) {
             console.error('Failed to initialize Stripe:', error);
         }
@@ -611,7 +613,7 @@
             }
         });
         
-        // Form validation and submission
+        // Form validation and submission - FIXED REDIRECT LOGIC
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -718,7 +720,7 @@
                     delivery: '48-72 hours'
                 }));
                 
-                // Redirect to Stripe Checkout
+                // FIXED: Only use stripe.redirectToCheckout(), never use result.url
                 if (result.sessionId && stripe) {
                     const { error } = await stripe.redirectToCheckout({ 
                         sessionId: result.sessionId 
@@ -727,11 +729,8 @@
                     if (error) {
                         throw new Error(error.message);
                     }
-                } else if (result.url) {
-                    // If worker returns direct URL, redirect to it
-                    window.location.href = result.url;
                 } else {
-                    throw new Error('No checkout URL received');
+                    throw new Error('No checkout session ID received');
                 }
                 
             } catch (error) {

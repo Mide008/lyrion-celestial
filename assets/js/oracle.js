@@ -1,12 +1,13 @@
 /**
- * LYRĪON - The Oracle
+ * LYRĪON - The Oracle - FIXED VERSION
  * Paid astrology readings with Stripe Checkout integration
+ * Corrected Stripe key and redirect logic
  */
 
 // ==========================================
-// CONFIGURATION
+// CONFIGURATION - CORRECTED KEYS
 // ==========================================
-const STRIPE_PUBLIC_KEY = 'pk_live_51ST0Yr6kwOhs68PfqGUKmqq7hcbKsY60SCK1WLr5vkJLyAqurpFVgZx5oJEPZmXMN3gS6fI8YzLsF4hWQh0qjPHt00tIvM8E5V';
+const STRIPE_PUBLIC_KEY = 'pk_live_51ST0Yr6kwOhs68PfwI2N6I6rKXBx8TKEvkPdwfR7sLpKQiAiQ09QPLpy1XalDPf9Zrs3SL5DkWxKKQjdZq1JoLoP00QdElzZjF';
 const WORKER_URL = 'https://lyrion-order-broker.hello-2a3.workers.dev';
 
 // ==========================================
@@ -49,13 +50,14 @@ let stripe = null;
 // INITIALIZE ORACLE
 // ==========================================
 function initOracle() {
-    console.log('🔮 Initializing Oracle...');
+    console.log('🔮 Initializing Oracle with correct Stripe key...');
+    console.log('Stripe Key:', STRIPE_PUBLIC_KEY.substring(0, 20) + '...');
     console.log('Worker URL:', WORKER_URL);
     
     // Initialize Stripe
     if (typeof Stripe !== 'undefined') {
         stripe = Stripe(STRIPE_PUBLIC_KEY);
-        console.log('✅ Stripe initialized');
+        console.log('✅ Stripe initialized with correct key');
     } else {
         console.error('❌ Stripe.js not loaded');
         showError('Payment system failed to load. Please refresh the page.');
@@ -189,7 +191,7 @@ function closeModal() {
 }
 
 // ==========================================
-// HANDLE FORM SUBMIT
+// HANDLE FORM SUBMIT - FIXED REDIRECT LOGIC
 // ==========================================
 async function handleFormSubmit(e) {
     e.preventDefault();
@@ -262,21 +264,17 @@ async function handleFormSubmit(e) {
         });
         
         console.log('Response status:', response.status);
-        console.log('Response headers:', Object.fromEntries(response.headers.entries()));
-        
-        // Get response text first
-        const responseText = await response.text();
-        console.log('Response text:', responseText);
         
         if (!response.ok) {
             let errorMessage = 'Failed to create checkout session';
             
             try {
-                const errorData = JSON.parse(responseText);
+                const errorData = await response.json();
                 errorMessage = errorData.error || errorMessage;
                 console.error('Error data:', errorData);
             } catch (e) {
-                errorMessage = responseText || errorMessage;
+                const errorText = await response.text();
+                errorMessage = errorText || errorMessage;
                 console.error('Could not parse error response');
             }
             
@@ -284,23 +282,36 @@ async function handleFormSubmit(e) {
         }
         
         // Parse successful response
-        let data;
-        try {
-            data = JSON.parse(responseText);
-        } catch (e) {
-            console.error('Could not parse success response');
-            throw new Error('Invalid response from server');
+        const result = await response.json();
+        console.log('✅ Checkout session response:', result);
+        
+        if (!result.success) {
+            throw new Error(result.error || 'Checkout session creation failed');
         }
         
-        console.log('✅ Checkout session created:', data.sessionId);
-        console.log('Checkout URL:', data.url);
+        if (!result.sessionId) {
+            throw new Error('No session ID received from server');
+        }
         
-        // Redirect to Stripe Checkout
-        if (data.sessionId && stripe) {
-            console.log('🔄 Redirecting to Stripe Checkout...');
+        console.log('✅ Checkout session created:', result.sessionId);
+        
+        // Store order for success page
+        localStorage.setItem('oracle_order', JSON.stringify({
+            tier: selectedTier.name,
+            price: selectedTier.price,
+            customer: { name, email },
+            question: question || 'No specific question',
+            timestamp: Date.now(),
+            delivery: selectedTier.delivery,
+            sessionId: result.sessionId
+        }));
+        
+        // FIXED: Only use stripe.redirectToCheckout(), NEVER use result.url
+        if (result.sessionId && stripe) {
+            console.log('🔄 Redirecting to Stripe Checkout with session ID...');
             
             const { error } = await stripe.redirectToCheckout({
-                sessionId: data.sessionId
+                sessionId: result.sessionId
             });
             
             if (error) {

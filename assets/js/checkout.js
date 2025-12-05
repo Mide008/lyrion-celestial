@@ -1,6 +1,7 @@
 /**
- * LYRĪON - Checkout
+ * LYRĪON - Checkout - FIXED VERSION
  * Stripe payment integration and order processing
+ * Corrected Stripe keys
  */
 
 // ==========================================
@@ -11,7 +12,7 @@ const getConfig = () => {
         return window.LYRION_CONFIG;
     }
     
-    // Fallback if config.js not loaded
+    // Fallback if config.js not loaded - USING CORRECT STRIPE KEY
     console.warn('⚠️ LYRION_CONFIG not found, using fallback');
     return {
         STRIPE_PUBLIC_KEY: 'pk_live_51ST0Yr6kwOhs68PfwI2N6I6rKXBx8TKEvkPdwfR7sLpKQiAiQ09QPLpy1XalDPf9Zrs3SL5DkWxKKQjdZq1JoLoP00QdElzZjF',
@@ -53,6 +54,7 @@ let checkoutData = {
 async function initCheckout() {
     try {
         const config = getConfig();
+        console.log('🔧 Checkout config loaded with correct Stripe key');
         
         // Load Stripe
         if (typeof Stripe === 'undefined') {
@@ -181,7 +183,7 @@ function setupFormListeners() {
 }
 
 // ==========================================
-// HANDLE CHECKOUT SUBMIT
+// HANDLE CHECKOUT SUBMIT - FIXED REDIRECT LOGIC
 // ==========================================
 async function handleCheckoutSubmit(e) {
     e.preventDefault();
@@ -212,7 +214,7 @@ async function handleCheckoutSubmit(e) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                amount: checkoutData.total,
+                amount: Math.round(checkoutData.total * 100), // Convert to cents
                 currency: 'gbp',
                 cart: checkoutData.cart,
                 customer: checkoutData.customer
@@ -230,6 +232,10 @@ async function handleCheckoutSubmit(e) {
             throw new Error(data.error || 'Checkout failed');
         }
         
+        if (!data.sessionId) {
+            throw new Error('No session ID received from server');
+        }
+        
         // Store order for success page
         localStorage.setItem('last_order', JSON.stringify({
             sessionId: data.sessionId,
@@ -239,7 +245,7 @@ async function handleCheckoutSubmit(e) {
             timestamp: Date.now()
         }));
         
-        // Redirect to Stripe Checkout
+        // FIXED: Only use stripe.redirectToCheckout(), NEVER use data.url
         if (data.sessionId && stripe) {
             const { error } = await stripe.redirectToCheckout({
                 sessionId: data.sessionId
@@ -248,10 +254,8 @@ async function handleCheckoutSubmit(e) {
             if (error) {
                 throw new Error(error.message);
             }
-        } else if (data.url) {
-            window.location.href = data.url;
         } else {
-            throw new Error('No checkout URL received');
+            throw new Error('No checkout session ID received');
         }
         
     } catch (error) {
