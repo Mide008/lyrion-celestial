@@ -288,42 +288,66 @@
     </footer>
 
     <script>
-        // Load order details from URL parameter
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const sessionId = urlParams.get('session_id');
-            
-            console.log('Session ID:', sessionId);
-            
-            if (!sessionId) {
-                // No session ID - show generic success message
-                showGenericSuccess();
-                return;
-            }
-            
-            // In production, you would fetch session details from your backend
-            // For now, we'll show a success message with the session ID
-            
-            // Generate a readable order number from session ID
-            const orderNumber = '#' + sessionId.substring(sessionId.length - 8).toUpperCase();
-            
-            // Update UI
-            document.getElementById('orderNumber').textContent = orderNumber;
-            document.getElementById('readingType').textContent = 'Oracle Reading';
-            document.getElementById('customerEmail').textContent = 'Check your email';
-            document.getElementById('deliveryTime').textContent = 'Within 48-72 hours';
-            document.getElementById('amountPaid').textContent = 'Confirmed';
-            document.getElementById('deliveryTimeText').textContent = '48-72 hours';
-        });
+    // Load order details from URL parameter
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
         
-        function showGenericSuccess() {
-            document.getElementById('orderNumber').textContent = 'Confirmed';
-            document.getElementById('readingType').textContent = 'Oracle Reading';
-            document.getElementById('customerEmail').textContent = 'Check your email';
-            document.getElementById('deliveryTime').textContent = 'Within 48-72 hours';
-            document.getElementById('amountPaid').textContent = 'Confirmed';
-            document.getElementById('deliveryTimeText').textContent = '48-72 hours';
+        console.log('Oracle Success - Session ID:', sessionId);
+        
+        // Try to get order data from localStorage
+        const orderData = JSON.parse(localStorage.getItem('oracle_order') || '{}');
+        
+        if (sessionId) {
+            // We have a session ID - order was successful
+            displayOrderConfirmation(sessionId, orderData);
+            
+            // Clear the localStorage after showing
+            setTimeout(() => {
+                localStorage.removeItem('oracle_order');
+            }, 5000);
+        } else {
+            // No session ID - show generic message
+            showGenericSuccess();
         }
-    </script>
+    });
+    
+    function displayOrderConfirmation(sessionId, orderData) {
+        const orderNumber = '#' + sessionId.substring(sessionId.length - 8).toUpperCase();
+        
+        // Update UI with real data
+        document.getElementById('orderNumber').textContent = orderNumber;
+        document.getElementById('readingType').textContent = orderData.tier || 'Oracle Reading';
+        document.getElementById('customerEmail').textContent = orderData.customer?.email || 'Check your email';
+        
+        // Calculate delivery time
+        let deliveryHours = '48-72';
+        let deliveryTime = 'Within 48-72 hours';
+        
+        if (orderData.tier === 'premium') {
+            deliveryHours = '72';
+            deliveryTime = 'Within 72 hours';
+        }
+        
+        document.getElementById('deliveryTime').textContent = deliveryTime;
+        document.getElementById('deliveryTimeText').textContent = deliveryHours + ' hours';
+        document.getElementById('amountPaid').textContent = orderData.price ? `£${orderData.price.toFixed(2)}` : 'Confirmed';
+        
+        // Add order ID to success message
+        const successMessage = document.querySelector('p[style*="font-size: 1.2rem"]');
+        if (successMessage) {
+            successMessage.innerHTML += `<br><small>Order Reference: ${orderNumber}</small>`;
+        }
+    }
+    
+    function showGenericSuccess() {
+        document.getElementById('orderNumber').textContent = 'Confirmed';
+        document.getElementById('readingType').textContent = 'Oracle Reading';
+        document.getElementById('customerEmail').textContent = 'Check your email';
+        document.getElementById('deliveryTime').textContent = 'Within 48-72 hours';
+        document.getElementById('amountPaid').textContent = 'Confirmed';
+        document.getElementById('deliveryTimeText').textContent = '48-72 hours';
+    }
+</script>
 </body>
 </html>

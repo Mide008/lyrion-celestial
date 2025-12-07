@@ -13,7 +13,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-001",
     "tags": ["zodiac", "apparel", "hoodie", "fire"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "manual"
   },
   {
     "sku": "A-HOOD-TAURUS",
@@ -29,7 +30,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-002",
     "tags": ["zodiac", "apparel", "hoodie", "earth"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-GEMINI",
@@ -45,7 +47,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-003",
     "tags": ["zodiac", "apparel", "hoodie", "air"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-CANCER",
@@ -61,7 +64,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-004",
     "tags": ["zodiac", "apparel", "hoodie", "water"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-LEO",
@@ -77,7 +81,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-005",
     "tags": ["zodiac", "apparel", "hoodie", "fire"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-VIRGO",
@@ -93,7 +98,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-006",
     "tags": ["zodiac", "apparel", "hoodie", "earth"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-LIBRA",
@@ -109,7 +115,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-007",
     "tags": ["zodiac", "apparel", "hoodie", "air"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-SCORPIO",
@@ -125,7 +132,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-008",
     "tags": ["zodiac", "apparel", "hoodie", "water"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-SAGITTARIUS",
@@ -141,7 +149,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-009",
     "tags": ["zodiac", "apparel", "hoodie", "fire"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-CAPRICORN",
@@ -157,7 +166,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-010",
     "tags": ["zodiac", "apparel", "hoodie", "earth"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-AQUARIUS",
@@ -173,7 +183,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-011",
     "tags": ["zodiac", "apparel", "hoodie", "air"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-PISCES",
@@ -189,7 +200,8 @@
     "pod_provider": "printful",
     "pod_sku": "PRF-HOOD-012",
     "tags": ["zodiac", "apparel", "hoodie", "water"],
-    "variants": ["S", "M", "L", "XL", "XXL"]
+    "variants": ["S", "M", "L", "XL", "XXL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-TEE-ARIES",
@@ -205,7 +217,8 @@
     "pod_provider": "gelato",
     "pod_sku": "GLT-TEE-001",
     "tags": ["zodiac", "apparel", "tee", "fire"],
-    "variants": ["XS", "S", "M", "L", "XL"]
+    "variants": ["XS", "S", "M", "L", "XL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-TEE-TAURUS",
@@ -221,7 +234,8 @@
     "pod_provider": "gelato",
     "pod_sku": "GLT-TEE-002",
     "tags": ["zodiac", "apparel", "tee", "earth"],
-    "variants": ["XS", "S", "M", "L", "XL"]
+    "variants": ["XS", "S", "M", "L", "XL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-TEE-GEMINI",
@@ -237,6 +251,7 @@
     "pod_provider": "gelato",
     "pod_sku": "GLT-TEE-003",
     "tags": ["zodiac", "apparel", "tee", "air"],
-    "variants": ["XS", "S", "M", "L", "XL"]
+    "variants": ["XS", "S", "M", "L", "XL"],
+    "fulfillment_type": "pod"
   }
 ]

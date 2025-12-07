@@ -15,9 +15,9 @@ const getConfig = () => {
     // Fallback if config.js not loaded - USING CORRECT STRIPE KEY
     console.warn('⚠️ LYRION_CONFIG not found, using fallback');
     return {
-        STRIPE_PUBLIC_KEY: 'pk_live_51ST0Yr6kwOhs68PfwI2N6I6rKXBx8TKEvkPdwfR7sLpKQiAiQ09QPLpy1XalDPf9Zrs3SL5DkWxKKQjdZq1JoLoP00QdElzZjF',
-        WORKER_URL: 'https://lyrion-order-broker.hello-2a3.workers.dev'
-    };
+    STRIPE_PUBLIC_KEY: 'pk_live_51ST0Yr6kwOhs68PfwI2N6I6rKXBx8TKEvkPdwfR7sLpKQiAiQ09QPLpy1XalDPf9Zrs3SL5DkWxKKQjdZq1JoLoP00QdElzZjF',
+    WORKER_URL: 'https://lyrion-order-broker.hello-2a3.workers.dev'
+};
 };
 
 // ==========================================

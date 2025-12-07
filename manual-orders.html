@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manual Orders - LYRĪON Studio</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f8f7f4; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { color: #c4a449; border-bottom: 2px solid #c4a449; padding-bottom: 10px; }
+        .order-card { background: white; border-radius: 8px; padding: 20px; margin: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .order-header { display: flex; justify-content: space-between; align-items: center; }
+        .order-id { font-weight: bold; color: #c4a449; }
+        .order-date { color: #666; }
+        .customer-info { margin: 15px 0; padding: 15px; background: #f8f7f4; border-radius: 4px; }
+        .items-list { margin: 15px 0; }
+        .item-row { display: flex; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .item-sku { font-weight: bold; width: 150px; }
+        .item-title { flex: 1; }
+        .item-qty { width: 80px; text-align: center; }
+        .item-size { width: 100px; }
+        .status-badge { 
+            padding: 5px 10px; 
+            border-radius: 20px; 
+            font-size: 12px; 
+            font-weight: bold; 
+            text-transform: uppercase;
+        }
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-in-progress { background: #d1ecf1; color: #0c5460; }
+        .status-ready { background: #d4edda; color: #155724; }
+        .status-shipped { background: #cce5ff; color: #004085; }
+        .actions { margin-top: 20px; }
+        .btn { 
+            padding: 8px 16px; 
+            margin-right: 10px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold;
+        }
+        .btn-start { background: #c4a449; color: white; }
+        .btn-complete { background: #28a745; color: white; }
+        .btn-ship { background: #17a2b8; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 LYRĪON Studio - Manual Orders</h1>
+        <p>Orders that need to be made in your studio</p>
+        
+        <div id="orders-container">
+            <!-- Orders will be loaded here -->
+            <p>Loading manual orders...</p>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 20px; background: white; border-radius: 8px;">
+            <h3>📋 Manual Fulfillment Items</h3>
+            <ul>
+                <li><strong>A-HOOD-ARIES</strong> - Aries Zodiac Hoodie (made in studio)</li>
+                <li><strong>H-CANDLE-HOLDERS-ZODIAC</strong> - Zodiac Candle Holders (made in studio)</li>
+            </ul>
+            <p><em>Check your email for "MANUAL FULFILLMENT REQUIRED" alerts.</em></p>
+        </div>
+    </div>
+
+    <script>
+        // This is a simple manual orders page
+        // In production, this would connect to your database
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSampleOrders();
+        });
+        
+        function loadSampleOrders() {
+            const container = document.getElementById('orders-container');
+            
+            // Sample data - in production, this would come from an API
+            const sampleOrders = [
+                {
+                    id: 'ORD-001',
+                    date: '2024-01-15',
+                    customer: {
+                        name: 'John Smith',
+                        email: 'john@example.com',
+                        address: '123 Main St, London, UK'
+                    },
+                    items: [
+                        { sku: 'A-HOOD-ARIES', title: 'Aries Zodiac Hoodie', quantity: 1, size: 'L' }
+                    ],
+                    status: 'pending',
+                    amount: '£1.00'
+                }
+            ];
+            
+            if (sampleOrders.length === 0) {
+                container.innerHTML = '<div class="order-card"><p>No manual orders pending.</p></div>';
+                return;
+            }
+            
+            container.innerHTML = sampleOrders.map(order => `
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <span class="order-id">Order #${order.id}</span>
+                            <span class="order-date"> - ${order.date}</span>
+                        </div>
+                        <span class="status-badge status-${order.status.replace(' ', '-')}">
+                            ${order.status.toUpperCase()}
+                        </span>
+                    </div>
+                    
+                    <div class="customer-info">
+                        <p><strong>Customer:</strong> ${order.customer.name}</p>
+                        <p><strong>Email:</strong> ${order.customer.email}</p>
+                        <p><strong>Shipping:</strong> ${order.customer.address}</p>
+                        <p><strong>Total:</strong> ${order.amount}</p>
+                    </div>
+                    
+                    <div class="items-list">
+                        <h4>Items to Produce:</h4>
+                        ${order.items.map(item => `
+                            <div class="item-row">
+                                <span class="item-sku">${item.sku}</span>
+                                <span class="item-title">${item.title}</span>
+                                <span class="item-size">Size: ${item.size}</span>
+                                <span class="item-qty">Qty: ${item.quantity}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="actions">
+                        <button class="btn btn-start" onclick="updateStatus('${order.id}', 'in-progress')">
+                            Start Production
+                        </button>
+                        <button class="btn btn-complete" onclick="updateStatus('${order.id}', 'ready')">
+                            Mark Complete
+                        </button>
+                        <button class="btn btn-ship" onclick="updateStatus('${order.id}', 'shipped')">
+                            Mark Shipped
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function updateStatus(orderId, status) {
+            alert(`Order ${orderId} status updated to: ${status}`);
+            // In production, this would call your API
+            loadSampleOrders(); // Reload to show updated status
+        }
+    </script>
+</body>
+</html>
