@@ -1,20 +1,20 @@
 [
   {
-    "sku": "A-HOOD-ARIES",
-    "title": "Aries Zodiac Hoodie",
+    "sku": "Capricorn Unisex Sweatshirt",
+    "title": "Capricorn Zodiac Shirt",
     "category": "Men",
-    "zodiac_sign": "Aries",
+    "zodiac_sign": "Capricorn",
     "price": 1.00,
     "compare_at_price": 0,
-    "description": "A premium black hoodie featuring an elegant Aries zodiac emblem with subtle gold accents.",
-    "image_front": "A-HOOD-ARIES-image.webp",
+    "description": "A premium white shirt featuring an elegant Capricorn zodiac emblem with subtle beautiful accents.",
+    "image_front": "A-SHIRT-CAPRICORN-image.webp",
     "image_back": "",
     "image_side": "",
     "pod_provider": "printful",
-    "pod_sku": "PRF-HOOD-001",
-    "tags": ["zodiac", "apparel", "hoodie", "fire"],
-    "variants": ["S", "M", "L", "XL", "XXL"],
-    "fulfillment_type": "manual"
+    "pod_sku": "PRF-SHIRT-001",
+    "tags": ["zodiac", "apparel", "shirt", "capricorn", "earth", "fire"],
+    "variants": ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    "fulfillment_type": "pod"
   },
   {
     "sku": "A-HOOD-TAURUS",

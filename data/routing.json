@@ -1,4 +1,26 @@
 [
+  {
+  "sku": "Capricorn Unisex Sweatshirt",                    
+  "pod_provider": "printful",                
+  "pod_sku": "PRF-SHT-001",                 
+  "fulfillment_type": "pod",                 
+  "sync_product_id": 408191318,              
+  "variant_map": {                           
+    "2XS": 5112874003,
+    "XS": 5112874004,
+    "S": 5112874005,
+    "M": 5112874006,
+    "L": 5112874007,
+    "XL": 5112874008,
+    "2XL": 5112874009,
+    "3XL": 5112874010,
+    "4XL": 5112874011,
+    "5XL": 5112874012,
+    "6XL": 5112874013
+  }
+},
+  
+  
   {"sku": "A-HOOD-ARIES", "pod_provider": "manual", "pod_sku": "PRF-HOOD-001", "fulfillment_type": "manual"},
   {"sku": "A-HOOD-TAURUS", "pod_provider": "printful", "pod_sku": "PRF-HOOD-002", "fulfillment_type": "pod"},
   {"sku": "A-HOOD-GEMINI", "pod_provider": "printful", "pod_sku": "PRF-HOOD-003", "fulfillment_type": "pod"},

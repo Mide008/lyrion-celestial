@@ -203,7 +203,8 @@
         }
         
         .form-group.error input,
-        .form-group.error textarea {
+        .form-group.error textarea,
+        .form-group.error select {
             border-color: #D32F2F;
         }
         
@@ -372,18 +373,33 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="birthDate">Birth Date (Optional)</label>
-                    <input type="date" id="birthDate" class="form-input">
+                    <label class="form-label" for="birthDate">Birth Date *</label>
+                    <input type="date" id="birthDate" class="form-input" required>
+                    <div class="form-error">Please enter your birth date</div>
+                    <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                        Required for accurate birth chart calculation
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="birthTime">Birth Time (Optional)</label>
+                    <input type="time" id="birthTime" class="form-input">
+                    <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                        If known - improves chart accuracy
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label" for="birthCity">Birth City (Optional)</label>
                     <input type="text" id="birthCity" class="form-input" placeholder="e.g., London, UK">
+                    <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                        For accurate geographic coordinates
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label" for="customerQuestion">Your Question (Optional)</label>
-                    <textarea id="customerQuestion" class="form-textarea" rows="3" placeholder="What would you like guidance on? (Max 500 characters)"></textarea>
+                    <textarea id="customerQuestion" class="form-textarea" rows="3" placeholder="Any special inquest, meditation or inquisition on your behalf? (Max 500 characters)"></textarea>
                     <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
                         Optional - helps personalize your reading
                     </div>
@@ -480,9 +496,9 @@
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/search.js"></script>
     
-    <!-- Oracle Payment Handler - CORRECTED VERSION -->
+    <!-- Oracle Payment Handler - FIXED WITH BIRTH DATE REQUIRED -->
     <script>
-    // Oracle Payment Handler - FIXED VERSION
+    // Oracle Payment Handler - FIXED VERSION WITH BIRTH DATE REQUIRED
     (function() {
         // Configuration - USING CORRECT STRIPE KEY
         const STRIPE_PUBLIC_KEY = 'pk_live_51ST0Yr6kwOhs68PfwI2N6I6rKXBx8TKEvkPdwfR7sLpKQiAiQ09QPLpy1XalDPf9Zrs3SL5DkWxKKQjdZq1JoLoP00QdElzZjF';
@@ -626,6 +642,7 @@
             const email = document.getElementById('customerEmail').value.trim();
             const question = document.getElementById('customerQuestion').value.trim();
             const birthDate = document.getElementById('birthDate').value;
+            const birthTime = document.getElementById('birthTime').value;
             const birthCity = document.getElementById('birthCity').value.trim();
             
             let isValid = true;
@@ -643,6 +660,20 @@
             } else if (!validateEmail(email)) {
                 showFormError('customerEmail', 'Please enter a valid email address');
                 isValid = false;
+            }
+            
+            // Validate birth date - NOW REQUIRED
+            if (!birthDate) {
+                showFormError('birthDate', 'Please enter your birth date');
+                isValid = false;
+            } else {
+                // Validate date is not in the future
+                const today = new Date();
+                const selectedDate = new Date(birthDate);
+                if (selectedDate > today) {
+                    showFormError('birthDate', 'Birth date cannot be in the future');
+                    isValid = false;
+                }
             }
             
             // Validate question length (if provided)
@@ -667,7 +698,8 @@
                     name: name,
                     email: email,
                     question: question || 'No specific question provided',
-                    birthDate: birthDate || '',
+                    birthDate: birthDate,
+                    birthTime: birthTime || '',
                     birthCity: birthCity || '',
                     tier: selectedTier,
                     tierName: tiers[selectedTier].name,
@@ -716,6 +748,7 @@
                         email: orderData.email
                     },
                     question: orderData.question,
+                    birthDate: orderData.birthDate,
                     timestamp: Date.now(),
                     delivery: '48-72 hours'
                 }));
@@ -781,6 +814,7 @@
         // Real-time form validation
         const nameInput = document.getElementById('customerName');
         const emailInput = document.getElementById('customerEmail');
+        const birthDateInput = document.getElementById('birthDate');
         const questionInput = document.getElementById('customerQuestion');
         
         nameInput.addEventListener('blur', () => {
@@ -798,6 +832,20 @@
                 showFormError('customerEmail', 'Please enter a valid email address');
             } else {
                 clearFieldError('customerEmail');
+            }
+        });
+        
+        birthDateInput.addEventListener('blur', () => {
+            if (!birthDateInput.value) {
+                showFormError('birthDate', 'Please enter your birth date');
+            } else {
+                const today = new Date();
+                const selectedDate = new Date(birthDateInput.value);
+                if (selectedDate > today) {
+                    showFormError('birthDate', 'Birth date cannot be in the future');
+                } else {
+                    clearFieldError('birthDate');
+                }
             }
         });
         
@@ -833,6 +881,16 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             handleUrlParameters();
+            
+            // Set max date for birth date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('birthDate').max = today;
+            
+            // Add label note for required fields
+            const birthDateLabel = document.querySelector('label[for="birthDate"]');
+            if (birthDateLabel) {
+                birthDateLabel.innerHTML = 'Birth Date * <span style="color: #666; font-size: 0.85rem;">(Required for accurate birth chart)</span>';
+            }
         });
         
     })();
