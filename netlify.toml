@@ -4,10 +4,11 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://lyrion-order-broker.workers.dev/:splat"
+  to = "https://lyrion-order-broker.hello-2a3.workers.dev/:splat"
   status = 200
   force = true
 
+# Main headers for all pages
 [[headers]]
   for = "/*"
   [headers.values]
@@ -15,12 +16,16 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # FIXED CSP - Allow Stripe and other necessary scripts
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.stripe.com https://lyrion-order-broker.hello-2a3.workers.dev; frame-src https://js.stripe.com https://hooks.stripe.com;"
 
+# Cache static assets
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Don't cache HTML
 [[headers]]
   for = "/*.html"
   [headers.values]

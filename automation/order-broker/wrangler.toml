@@ -7,6 +7,19 @@ compatibility_date = "2024-01-01"
 # Account details hello@lyrion.co.uk
 # account_id = 2a37012110a26a3d781be24fd7e5ccc3
 
+[vars]
+BASE_URL = "https://lyrion.co.uk"
+
+[env.dev]
+name = "lyrion-order-broker-dev"
+
+# For production
+[env.production]
+name = "lyrion-order-broker"
+routes = [
+  { pattern = "lyrion.co.uk/api/*", zone_name = "lyrion.co.uk" }
+]
+
 # Worker settings
 workers_dev = true
 
