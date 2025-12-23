@@ -230,7 +230,7 @@ export default {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            from: 'LYRĪON Contact <onboarding@resend.dev>',
+            from: 'LYRĪON Contact <hello@lyrion.co.uk>',
             to: ['hello@lyrion.co.uk'],
             reply_to: `${formData.name} <${formData.email}>`,
             subject: `LYRĪON Contact: ${formData.subject || 'General Inquiry'}`,
@@ -252,7 +252,7 @@ export default {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    from: 'LYRĪON <onboarding@resend.dev>',
+    from: 'LYRĪON Orders <onboarding@resend.dev>',
     to: [formData.email],  // ← This should be customer's email
     subject: `We've received your message!`,
     html: generateContactConfirmationEmail(formData),
@@ -298,7 +298,7 @@ export default {
       try {
         const { amount, cart, customer } = await request.json();
         
-        const stripeKey = env.STRIPE_SECRET_KEY_TEST || env.STRIPE_SECRET_KEY;
+        const stripeKey = env.STRIPE_SECRET_KEY_TEST;
         if (!stripeKey) {
           throw new Error('STRIPE_SECRET_KEY not set');
         }
@@ -400,7 +400,7 @@ export default {
           throw new Error('Missing required fields: name, email, or price');
         }
         
-        const stripeKey = env.STRIPE_SECRET_KEY_TEST || env.STRIPE_SECRET_KEY;
+        const stripeKey = env.STRIPE_SECRET_KEY_TEST;
         if (!stripeKey) {
           throw new Error('STRIPE_SECRET_KEY not configured');
         }
@@ -478,6 +478,101 @@ export default {
       }
     }
     
+    // ========== SEND ORDER CONFIRMATION (No webhook needed!) ==========
+    if (url.pathname === '/send-order-confirmation' && request.method === 'POST') {
+      console.log('📧 DIRECT EMAIL REQUEST - NO WEBHOOK NEEDED');
+      
+      try {
+        const { sessionId, orderType } = await request.json();
+        
+        if (!sessionId) {
+          throw new Error('No session ID provided');
+        }
+        
+        const stripeKey = env.STRIPE_SECRET_KEY_TEST;
+        
+        // Fetch session details from Stripe
+        console.log(`🔍 Fetching Stripe session: ${sessionId}`);
+        const sessionResponse = await fetch(`https://api.stripe.com/v1/checkout/sessions/${sessionId}`, {
+          headers: {
+            'Authorization': `Bearer ${stripeKey}`,
+            'Stripe-Version': '2023-10-16'
+          }
+        });
+        
+        if (!sessionResponse.ok) {
+          const errorText = await sessionResponse.text();
+          throw new Error(`Failed to fetch session from Stripe: ${errorText}`);
+        }
+        
+        const session = await sessionResponse.json();
+        console.log('✅ Stripe session fetched successfully');
+        
+        // Prepare order details
+        const orderDetails = {
+          sessionId: session.id,
+          customer: {
+            name: session.customer_details?.name || session.metadata?.customer_name || '',
+            email: session.customer_email || session.metadata?.customer_email || '',
+            address: session.customer_details?.address || {}
+          },
+          amount: session.amount_total / 100,
+          timestamp: new Date().toISOString(),
+          itemCount: session.metadata?.item_count || 1,
+          sku: session.metadata?.sku || '',
+          size: session.metadata?.size || ''
+        };
+        
+        const finalOrderType = orderType || session.metadata?.order_type || 'product';
+        
+        if (finalOrderType === 'oracle') {
+          orderDetails.orderData = {
+            tierName: session.metadata?.tier_name || 'Oracle Reading',
+            price: orderDetails.amount,
+            wordCount: session.metadata?.word_count || '',
+            question: session.metadata?.question || ''
+          };
+        }
+        
+        console.log(`📤 Sending ${finalOrderType} emails...`);
+        
+        // Send emails
+        await sendAdminNotification(env, orderDetails, finalOrderType);
+        console.log('✅ Admin email sent');
+        
+        if (orderDetails.customer.email) {
+          await sendCustomerReceipt(env, orderDetails, finalOrderType);
+          console.log('✅ Customer email sent');
+        }
+        
+        console.log('✅ All confirmation emails sent for:', sessionId);
+        
+        return new Response(JSON.stringify({ 
+          success: true,
+          message: 'Emails sent successfully'
+        }), {
+          status: 200,
+          headers: {
+            'Content-Type': 'application/json',
+            ...corsHeaders
+          }
+        });
+        
+      } catch (error) {
+        console.error('❌ Email sending error:', error);
+        return new Response(JSON.stringify({ 
+          success: false,
+          error: error.message
+        }), {
+          status: 500,
+          headers: { 
+            'Content-Type': 'application/json',
+            ...corsHeaders
+          }
+        });
+      }
+    }
+    
     // ========== DEFAULT ==========
     return new Response(JSON.stringify({
       message: 'LYRĪON Order Broker',
@@ -488,7 +583,8 @@ export default {
         stripe_webhook: 'POST /stripe-webhook',
         printful_webhook: 'POST /printful-webhook',
         manual_notification: 'POST /manual-order-notification',
-        health: 'GET /health'
+        health: 'GET /health',
+        send_order_confirmation: 'POST /send-order-confirmation'
       }
     }), {
       headers: {
@@ -703,7 +799,7 @@ async function sendManualFulfillmentAlert(env, order, routing) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'LYRĪON Studio <onboarding@resend.dev>',
+        from: 'LYRĪON Studio <hello@lyrion.co.uk>',
         to: ['hello@lyrion.co.uk'],
         subject: `🎨 MANUAL FULFILLMENT REQUIRED - Order ${order.stripeSessionId.substring(0, 8)}`,
         html: generateManualFulfillmentEmail(orderDetails, manualItems),
@@ -731,7 +827,7 @@ async function sendManualFulfillmentCheck(env, orderDetails) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'LYRĪON Studio <onboarding@resend.dev>',
+        from: 'LYRĪON Studio <hello@lyrion.co.uk>',
         to: ['hello@lyrion.co.uk'],
         subject: `🔍 CHECK FOR MANUAL ITEMS - Order ${orderDetails.sessionId.substring(0, 8)}`,
         html: generateManualCheckEmail(orderDetails),
@@ -775,7 +871,7 @@ async function sendAdminNotification(env, orderDetails, type) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'LYRĪON Orders <onboarding@resend.dev>',
+        from: 'LYRĪON Orders <hello@lyrion.co.uk>',
         to: ['hello@lyrion.co.uk'],
         subject: subject,
         html: html,
@@ -815,7 +911,7 @@ async function sendCustomerReceipt(env, orderDetails, type) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'LYRĪON <onboarding@resend.dev>',
+        from: 'LYRĪON Orders <onboarding@resend.dev>',
         to: [orderDetails.customer.email],
         subject: subject,
         html: html,

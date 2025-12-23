@@ -295,6 +295,11 @@
         
         console.log('Oracle Success - Session ID:', sessionId);
         
+        // ========== SEND CONFIRMATION EMAILS IMMEDIATELY ==========
+        if (sessionId) {
+            sendOracleConfirmationEmails(sessionId);
+        }
+        
         // Try to get order data from localStorage
         const orderData = JSON.parse(localStorage.getItem('oracle_order') || '{}');
         
@@ -311,6 +316,34 @@
             showGenericSuccess();
         }
     });
+    
+    // ========== SEND EMAILS DIRECTLY (NO WEBHOOK NEEDED!) ==========
+    async function sendOracleConfirmationEmails(sessionId) {
+        try {
+            console.log('📧 Sending oracle confirmation emails...');
+            
+            const response = await fetch('https://lyrion-order-broker.hello-2a3.workers.dev/send-order-confirmation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    sessionId: sessionId,
+                    orderType: 'oracle'
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                console.log('✅ Confirmation emails sent successfully!');
+            } else {
+                console.error('❌ Email sending failed:', result.error);
+            }
+        } catch (error) {
+            console.error('❌ Email error:', error);
+        }
+    }
     
     function displayOrderConfirmation(sessionId, orderData) {
         const orderNumber = '#' + sessionId.substring(sessionId.length - 8).toUpperCase();
