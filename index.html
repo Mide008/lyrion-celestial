@@ -42,7 +42,7 @@
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="oracle.html">The Oracle</a></li>
                 <li><a href="codex.html">Codex</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="compatibility.html">Compatibility</a></li>
             </ul>
             
             <div class="nav-icons">
@@ -328,6 +328,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="codex.html">Codex</a></li>
+                        <li><a href="compatibility.html">Compatibility</a></li>
                     </ul>
                 </div>
                 
@@ -522,51 +523,29 @@
             }
         });
         
-        // Load signature products with gallery
-        function loadSignatureProducts(products) {
-            const container = document.getElementById('signatureProducts');
-            
-            container.innerHTML = products.map(product => {
-                // Get all available images
-                const images = [
-                    product.image_front,
-                    product.image_back,
-                    product.image_side,
-                    product.image_detail
-                ].filter(Boolean);
-                
-                return `
-                    <div class="signature-card" data-sku="${product.sku}">
-                        <div class="signature-gallery">
-                            <div class="signature-main-image">
-                                <img src="assets/products/${images[0]}" 
-                                     alt="${product.title}"
-                                     onerror="this.src='assets/img/placeholder.png'">
-                            </div>
-                            ${images.length > 1 ? `
-                                <div class="signature-thumbnails">
-                                    ${images.map((img, index) => `
-                                        <button class="signature-thumb ${index === 0 ? 'active' : ''}" 
-                                                data-image="assets/products/${img}"
-                                                aria-label="View image ${index + 1}">
-                                            <img src="assets/products/${img}" alt="${product.title}">
-                                        </button>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                        </div>
-                        <div class="signature-info">
-                            <h3>${product.title}</h3>
-                            <p class="signature-price">£${parseFloat(product.price).toFixed(2)}</p>
-                            <a href="product.html?sku=${product.sku}" class="btn btn-outline btn-full">Explore</a>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            
-            // Setup gallery interactions
-            setupSignatureGalleries();
-        }
+       // Load signature products with gallery
+function loadSignatureProducts(products) {
+    const container = document.getElementById('signatureProducts');
+    
+    container.innerHTML = products.map(product => `
+        <div class="signature-card" data-sku="${product.sku}">
+            <div class="signature-gallery">
+                <div class="signature-main-image">
+                    <img src="assets/products/${product.image_front}" 
+                         alt="${product.title}"
+                         onerror="this.src='assets/img/placeholder.png'">
+                </div>
+            </div>
+            <div class="signature-info">
+                <h3>${product.title}</h3>
+                <p class="signature-price">£${parseFloat(product.price).toFixed(2)}</p>
+                <div style="margin-top: auto;">
+                    <a href="product.html?sku=${product.sku}" class="btn btn-outline btn-full">Explore</a>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
         
         // Setup signature product gallery interactions
         function setupSignatureGalleries() {

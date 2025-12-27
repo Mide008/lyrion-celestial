@@ -21,244 +21,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <style>
-        /* Product Detail Specific Styles */
-        .product-detail-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin: 2rem 0;
-        }
-        
-        .product-images-section {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-        
-        .main-product-image {
-            width: 100%;
-            aspect-ratio: 3/4;
-            background: var(--color-cream-dark);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-        
-        .main-product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            cursor: zoom-in;
-        }
-        
-        .main-product-image img:hover {
-            transform: scale(1.05);
-        }
-        
-        .product-thumbnails {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-        
-        .thumbnail {
-            aspect-ratio: 3/4;
-            background: var(--color-cream-dark);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: border-color var(--transition-medium);
-        }
-        
-        .thumbnail.active {
-            border-color: var(--color-gold-primary);
-        }
-        
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .product-info-section {
-            padding-top: 1rem;
-        }
-        
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-        
-        .breadcrumb a {
-            color: inherit;
-            transition: color var(--transition-medium);
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--color-gold-primary);
-        }
-        
-        .product-badges {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .badge {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border-radius: var(--radius-sm);
-        }
-        
-        .badge-sale {
-            background: var(--color-gold-primary);
-            color: var(--color-white);
-        }
-        
-        .badge-england {
-            background: var(--color-cream-dark);
-            color: var(--color-ink);
-            border: 1px solid #ddd;
-        }
-        
-        .product-title-main {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .product-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-        
-        .product-price-main {
-            display: flex;
-            align-items: baseline;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .price-main-current {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-gold-primary);
-        }
-        
-        .price-main-compare {
-            font-size: 1.5rem;
-            color: #999;
-            text-decoration: line-through;
-        }
-        
-        .product-description-main {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .size-selector {
-            margin-bottom: 2rem;
-        }
-        
-        .size-selector-label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.9rem;
-        }
-        
-        .size-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-        
-        .size-option {
-            min-width: 60px;
-            padding: 0.75rem 1.25rem;
-            background: var(--color-white);
-            border: 2px solid #ddd;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-medium);
-            text-align: center;
-        }
-        
-        .size-option:hover {
-            border-color: var(--color-gold-primary);
-        }
-        
-        .size-option.active {
-            background: var(--color-gold-primary);
-            color: var(--color-white);
-            border-color: var(--color-gold-primary);
-        }
-        
-        .product-meta {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--color-cream-dark);
-            border-radius: var(--radius-md);
-        }
-        
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-        
-        .meta-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #999;
-        }
-        
-        .meta-value {
-            font-size: 1rem;
-            color: var(--color-ink);
-            font-weight: 500;
-        }
-        
-        @media (max-width: 968px) {
-            .product-detail-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .product-images-section {
-                position: relative;
-                top: 0;
-            }
-            
-            .product-title-main {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     
@@ -275,9 +38,7 @@
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="oracle.html">The Oracle</a></li>
                 <li><a href="codex.html">Codex</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <!-- <li><a href="codex.html">Codex</a></li> -->
-
+                <li><a href="compatibility.html">Compatibility</a></li>
             </ul>
             
             <div class="nav-icons">
@@ -367,6 +128,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="codex.html">Codex</a></li>
+                        <li><a href="compatibility.html">Compatibility</a></li>
                     </ul>
                 </div>
                 
@@ -374,7 +136,7 @@
                     <h4>Support</h4>
                     <ul class="footer-links">
                         <li><a href="shipping.html">Shipping & Returns</a></li>
-                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="care-guide.html">Care Instructions</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
@@ -434,197 +196,421 @@
     <script src="assets/js/search.js"></script>
     
     <script>
-        // Product Detail Logic
-        let currentProduct = null;
-        let selectedVariant = null;
+    // Product Detail Logic
+    let currentProduct = null;
+    let selectedVariant = null;
+    let currentImageIndex = 0;
+    let productImages = [];
+    
+    // Load product on page load
+    document.addEventListener('DOMContentLoaded', async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sku = urlParams.get('sku');
         
-        // Load product on page load
-        document.addEventListener('DOMContentLoaded', async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const sku = urlParams.get('sku');
+        if (!sku) {
+            showError('No product specified');
+            return;
+        }
+        
+        try {
+            // Load products
+            const response = await fetch('data/products.json');
+            const products = await response.json();
             
-            if (!sku) {
-                showError('No product specified');
+            // Find product
+            currentProduct = products.find(p => p.sku === sku);
+            
+            if (!currentProduct) {
+                showError('Product not found');
                 return;
             }
             
-            try {
-                // Load products
-                const response = await fetch('data/products.json');
-                const products = await response.json();
+            // Render product
+            renderProduct(currentProduct);
+            updateBreadcrumb(currentProduct);
+            
+        } catch (error) {
+            console.error('Error loading product:', error);
+            showError('Unable to load product');
+        }
+    });
+    
+    // Render product with gallery
+    function renderProduct(product) {
+        const container = document.getElementById('productContainer');
+        
+        // Build image array from product data
+        productImages = [
+            product.image_front,
+            product.image_back,
+            product.image_side,
+            product.image_detail
+        ].filter(img => img && img.trim() !== ''); // Only include non-empty images
+        
+        // If no images, add a placeholder
+        if (productImages.length === 0) {
+            productImages = ['placeholder.png'];
+        }
+        
+        // Check if product has variant pricing
+        const hasVariantPricing = product.variants && Array.isArray(product.variants) && 
+                                 product.variants.length > 0 && typeof product.variants[0] === 'object';
+        
+        // Get initial price
+        let initialPrice = parseFloat(product.price);
+        let initialComparePrice = parseFloat(product.compare_at_price) || 0;
+        
+        if (hasVariantPricing && product.variants.length > 0) {
+            selectedVariant = product.variants[0];
+            initialPrice = parseFloat(selectedVariant.price);
+        } else if (product.variants && Array.isArray(product.variants)) {
+            // Old format: just array of sizes
+            selectedVariant = product.variants[0];
+        }
+        
+        // Build size selector
+        const hasSizes = product.variants && product.variants.length > 0;
+        
+        const sizeSelector = hasSizes ? `
+            <div class="size-selector">
+                <label class="size-selector-label">Select Size</label>
+                <div class="size-options" id="sizeOptions">
+                    ${hasVariantPricing ? 
+                        product.variants.map((variant, index) => `
+                            <button class="size-option ${index === 0 ? 'active' : ''}" 
+                                    data-size="${variant.size}" 
+                                    data-price="${variant.price}"
+                                    onclick="selectSize('${variant.size}', ${variant.price})">
+                                ${variant.size}
+                            </button>
+                        `).join('') 
+                        : 
+                        product.variants.map((size, index) => `
+                            <button class="size-option ${index === 0 ? 'active' : ''}" 
+                                    data-size="${size}"
+                                    onclick="selectSize('${size}', ${product.price})">
+                                ${size}
+                            </button>
+                        `).join('')
+                    }
+                </div>
+            </div>
+        ` : '';
+        
+        container.innerHTML = `
+            <div class="product-images-section">
+                <!-- Image Zoom Overlay -->
+                <div class="image-zoom-overlay" id="imageZoomOverlay">
+                    <img class="zoomed-image" id="zoomedImage" alt="${product.title}">
+                </div>
                 
-                // Find product
-                currentProduct = products.find(p => p.sku === sku);
+                <!-- Main Image with Navigation -->
+                <div class="main-product-image fade" id="mainImageContainer">
+                    <img id="mainImage" 
+                         src="assets/products/${productImages[0]}" 
+                         alt="${product.title}" 
+                         onerror="this.src='assets/img/placeholder.png'"
+                         onclick="openImageZoom()">
+                    
+                    ${productImages.length > 1 ? `
+                        <!-- Navigation Buttons -->
+                        <div class="gallery-nav-buttons">
+                            <button class="gallery-nav-button" onclick="changeImage(-1)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button class="gallery-nav-button" onclick="changeImage(1)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Image Count Badge -->
+                        <div class="image-count-badge">
+                            ${currentImageIndex + 1} / ${productImages.length}
+                        </div>
+                    ` : ''}
+                </div>
                 
-                if (!currentProduct) {
-                    showError('Product not found');
-                    return;
-                }
+                <!-- Thumbnails -->
+                <div class="product-thumbnails" id="thumbnailContainer">
+                    ${productImages.length > 1 ? 
+                        productImages.map((img, index) => `
+                            <div class="thumbnail ${index === 0 ? 'active' : ''}" 
+                                 data-index="${index}"
+                                 onclick="selectImage(${index})">
+                                <img src="assets/products/${img}" 
+                                     alt="${product.title} - View ${index + 1}"
+                                     onerror="this.src='assets/img/placeholder.png'">
+                            </div>
+                        `).join('') 
+                        : 
+                        '<div class="thumbnail active no-image" style="aspect-ratio: 1/1;">No additional images</div>'
+                    }
+                </div>
                 
-                // Render product
-                renderProduct(currentProduct);
-                updateBreadcrumb(currentProduct);
+                <!-- Gallery Indicators -->
+                ${productImages.length > 1 ? `
+                    <div class="gallery-indicators" id="galleryIndicators">
+                        ${productImages.map((_, index) => `
+                            <div class="gallery-indicator ${index === 0 ? 'active' : ''}" 
+                                 onclick="selectImage(${index})"></div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+            
+            <div class="product-info-section">
+                <div class="product-badges">
+                    ${product.compare_at_price > 0 ? '<span class="badge badge-sale">Sale</span>' : ''}
+                    ${product.category === 'Men' || product.category === 'Women' ? '<span class="badge badge-england">Made in England</span>' : ''}
+                </div>
                 
-            } catch (error) {
-                console.error('Error loading product:', error);
-                showError('Unable to load product');
+                <h1 class="product-title-main">${product.title}</h1>
+                <p class="product-subtitle">${product.category}${product.zodiac_sign && product.zodiac_sign !== 'None' ? ` • ${product.zodiac_sign}` : ''}</p>
+                
+                <div class="product-price-main" id="productPriceMain">
+                    <span class="price-main-current" id="currentPrice">£${initialPrice.toFixed(2)}</span>
+                    ${initialComparePrice > 0 ? `<span class="price-main-compare" id="comparePrice">£${initialComparePrice.toFixed(2)}</span>` : ''}
+                </div>
+                
+                <div class="product-description-main">
+                    ${product.description}
+                </div>
+                
+                ${sizeSelector}
+                
+                <button id="addToCartBtn" class="btn btn-primary btn-full mb-md" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    Add to Cart
+                </button>
+                
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value">${product.category}</span>
+                    </div>
+                    ${product.zodiac_sign && product.zodiac_sign !== 'None' ? `
+                        <div class="meta-item">
+                            <span class="meta-label">Zodiac</span>
+                            <span class="meta-value">${product.zodiac_sign}</span>
+                        </div>
+                    ` : ''}
+                    <div class="meta-item">
+                        <span class="meta-label">SKU</span>
+                        <span class="meta-value">${product.sku}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Delivery</span>
+                        <span class="meta-value">5-7 Business Days</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Setup interactions
+        setupProductInteractions();
+    }
+    
+    // Select size function - updates price and selected variant
+    window.selectSize = function(size, price) {
+        // Update selected variant
+        selectedVariant = size;
+        
+        // Update active state of size buttons
+        document.querySelectorAll('.size-option').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.size === size) {
+                btn.classList.add('active');
             }
         });
         
-        // Render product
-        function renderProduct(product) {
-            const container = document.getElementById('productContainer');
+        // Update price display
+        const currentPriceElement = document.getElementById('currentPrice');
+        const priceElement = document.getElementById('productPriceMain');
+        
+        if (currentPriceElement) {
+            currentPriceElement.textContent = `£${parseFloat(price).toFixed(2)}`;
             
-            // Build image gallery
-            const images = [
-                product.image_front,
-                product.image_back,
-                product.image_side
-            ].filter(Boolean);
-            
-            // Build size selector
-            const hasSizes = product.variants && product.variants.length > 0;
-            selectedVariant = hasSizes ? product.variants[0] : null;
-            
-            const sizeSelector = hasSizes ? `
-                <div class="size-selector">
-                    <label class="size-selector-label">Select Size</label>
-                    <div class="size-options">
-                        ${product.variants.map((size, index) => `
-                            <button class="size-option ${index === 0 ? 'active' : ''}" data-size="${size}">
-                                ${size}
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>
-            ` : '';
-            
-            container.innerHTML = `
-                <div class="product-images-section">
-                    <div class="main-product-image">
-                        <img id="mainImage" src="assets/products/${images[0]}" alt="${product.title}" onerror="this.src='assets/img/placeholder.png'">
-                    </div>
-                    <div class="product-thumbnails">
-                        ${images.map((img, index) => `
-                            <div class="thumbnail ${index === 0 ? 'active' : ''}" data-image="assets/products/${img}">
-                                <img src="assets/products/${img}" alt="${product.title}" onerror="this.src='assets/img/placeholder.png'">
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-                
-                <div class="product-info-section">
-                    <div class="product-badges">
-                        ${product.compare_at_price > 0 ? '<span class="badge badge-sale">Sale</span>' : ''}
-                        ${product.category === 'Men' || product.category === 'Women' ? '<span class="badge badge-england">Made in England</span>' : ''}
-                    </div>
-                    
-                    <h1 class="product-title-main">${product.title}</h1>
-                    <p class="product-subtitle">${product.category}${product.zodiac_sign && product.zodiac_sign !== 'None' ? ` • ${product.zodiac_sign}` : ''}</p>
-                    
-                    <div class="product-price-main">
-                        <span class="price-main-current">${window.LyrionUtils.formatPrice(product.price)}</span>
-                        ${product.compare_at_price > 0 ? `<span class="price-main-compare">${window.LyrionUtils.formatPrice(product.compare_at_price)}</span>` : ''}
-                    </div>
-                    
-                    <div class="product-description-main">
-                        ${product.description}
-                    </div>
-                    
-                    ${sizeSelector}
-                    
-                    <button id="addToCartBtn" class="btn btn-primary btn-full mb-md" style="font-size: 1.1rem; padding: 1rem 2rem;">
-                        Add to Cart
-                    </button>
-                    
-                    <div class="product-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Category</span>
-                            <span class="meta-value">${product.category}</span>
-                        </div>
-                        ${product.zodiac_sign && product.zodiac_sign !== 'None' ? `
-                            <div class="meta-item">
-                                <span class="meta-label">Zodiac</span>
-                                <span class="meta-value">${product.zodiac_sign}</span>
-                            </div>
-                        ` : ''}
-                        <div class="meta-item">
-                            <span class="meta-label">SKU</span>
-                            <span class="meta-value">${product.sku}</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Delivery</span>
-                            <span class="meta-value">5-7 Business Days</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            // Setup interactions
-            setupProductInteractions();
+            // Add price change animation
+            priceElement.classList.add('price-change');
+            setTimeout(() => {
+                priceElement.classList.remove('price-change');
+            }, 300);
         }
         
-        // Setup product interactions
-        function setupProductInteractions() {
-            // Thumbnail clicks
-            document.querySelectorAll('.thumbnail').forEach(thumb => {
-                thumb.addEventListener('click', () => {
-                    const imageSrc = thumb.getAttribute('data-image');
-                    const mainImage = document.getElementById('mainImage');
-                    
-                    if (mainImage) {
-                        mainImage.src = imageSrc;
-                    }
-                    
-                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                });
-            });
+        // Find variant data if product has variant pricing
+        if (currentProduct && currentProduct.variants && currentProduct.variants.length > 0) {
+            const variant = currentProduct.variants.find(v => 
+                typeof v === 'object' ? v.size === size : v === size
+            );
             
-            // Size selection
-            document.querySelectorAll('.size-option').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    selectedVariant = btn.getAttribute('data-size');
-                    
-                    document.querySelectorAll('.size-option').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                });
-            });
-            
-            // Add to cart
-            const addToCartBtn = document.getElementById('addToCartBtn');
-            if (addToCartBtn) {
-                addToCartBtn.addEventListener('click', () => {
-                    window.CartAPI.addToCart(currentProduct, selectedVariant);
-                });
+            // If variant has compare price, update that too
+            const comparePriceElement = document.getElementById('comparePrice');
+            if (comparePriceElement && variant && variant.compare_at_price) {
+                comparePriceElement.textContent = `£${parseFloat(variant.compare_at_price).toFixed(2)}`;
+            } else if (comparePriceElement && currentProduct.compare_at_price > 0) {
+                comparePriceElement.textContent = `£${parseFloat(currentProduct.compare_at_price).toFixed(2)}`;
             }
         }
+    };
+    
+    // Gallery Functions
+    window.selectImage = function(index) {
+        if (index < 0 || index >= productImages.length || index === currentImageIndex) return;
         
-        // Update breadcrumb
-        function updateBreadcrumb(product) {
-            const breadcrumb = document.getElementById('breadcrumb');
-            breadcrumb.innerHTML = `
-                <a href="index.html">Home</a>
-                <span>→</span>
-                <a href="shop.html">Shop</a>
-                <span>→</span>
-                <a href="shop.html?category=${product.category}">${product.category}</a>
-                <span>→</span>
-                <span>${product.title}</span>
-            `;
+        // Update main image
+        const mainImage = document.getElementById('mainImage');
+        const mainImageContainer = document.getElementById('mainImageContainer');
+        
+        // Add fade effect
+        mainImageContainer.classList.add('fade');
+        setTimeout(() => {
+            mainImage.src = `assets/products/${productImages[index]}`;
+            mainImageContainer.classList.remove('fade');
+        }, 150);
+        
+        // Update active thumbnail
+        document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+            thumb.classList.toggle('active', i === index);
+        });
+        
+        // Update active indicator
+        document.querySelectorAll('.gallery-indicator').forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+        
+        // Update image count badge
+        const badge = document.querySelector('.image-count-badge');
+        if (badge) {
+            badge.textContent = `${index + 1} / ${productImages.length}`;
         }
         
-        // Show error
-        function showError(message) {
-            const container = document.getElementById('productContainer');
-            container.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
-                    <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.3;">✦</div>
-                    <h2 style="margin-bottom: 1rem;">${message}</h2>
-                    <a href="shop.html" class="btn btn-primary">Back to Shop</a>
-                </div>
-            `;
+        currentImageIndex = index;
+    };
+    
+    window.changeImage = function(direction) {
+        let newIndex = currentImageIndex + direction;
+        
+        if (newIndex < 0) {
+            newIndex = productImages.length - 1;
+        } else if (newIndex >= productImages.length) {
+            newIndex = 0;
         }
-    </script>
+        
+        selectImage(newIndex);
+    };
+    
+    window.openImageZoom = function() {
+        if (productImages.length === 0) return;
+        
+        const overlay = document.getElementById('imageZoomOverlay');
+        const zoomedImage = document.getElementById('zoomedImage');
+        
+        zoomedImage.src = document.getElementById('mainImage').src;
+        overlay.classList.add('active');
+        
+        // Close on click
+        overlay.onclick = function(e) {
+            if (e.target === overlay || e.target.classList.contains('zoomed-image')) {
+                overlay.classList.remove('active');
+            }
+        };
+        
+        // Close on escape key
+        document.addEventListener('keydown', function closeOnEscape(e) {
+            if (e.key === 'Escape') {
+                overlay.classList.remove('active');
+                document.removeEventListener('keydown', closeOnEscape);
+            }
+        });
+    };
+    
+    // Setup product interactions
+    function setupProductInteractions() {
+        // Add to cart
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', () => {
+                if (window.CartAPI) {
+                    window.CartAPI.addToCart(currentProduct, selectedVariant);
+                } else {
+                    // Fallback cart function
+                    addToCartFallback();
+                }
+            });
+        }
+        
+        // Keyboard navigation for gallery
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeImage(1);
+            }
+        });
+    }
+    
+    // Fallback add to cart function
+    function addToCartFallback() {
+        let cart = JSON.parse(localStorage.getItem('lyrion_cart') || '[]');
+        
+        const cartItem = {
+            sku: currentProduct.sku,
+            title: currentProduct.title,
+            price: currentProduct.price,
+            image: currentProduct.image_front,
+            quantity: 1,
+            variant: selectedVariant
+        };
+        
+        cart.push(cartItem);
+        localStorage.setItem('lyrion_cart', JSON.stringify(cart));
+        
+        // Update cart badge
+        const badge = document.getElementById('cartBadge');
+        if (badge) {
+            badge.textContent = cart.length;
+        }
+        
+        // Show success message
+        alert(`${currentProduct.title} added to cart!`);
+        
+        // Optional: Open cart drawer
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartOverlay = document.getElementById('cartOverlay');
+        if (cartDrawer && cartOverlay) {
+            cartDrawer.classList.add('active');
+            cartOverlay.classList.add('active');
+        }
+    }
+    
+    // Update breadcrumb
+    function updateBreadcrumb(product) {
+        const breadcrumb = document.getElementById('breadcrumb');
+        breadcrumb.innerHTML = `
+            <a href="index.html">Home</a>
+            <span>→</span>
+            <a href="shop.html">Shop</a>
+            <span>→</span>
+            <a href="shop.html?category=${encodeURIComponent(product.category)}">${product.category}</a>
+            <span>→</span>
+            <span>${product.title}</span>
+        `;
+    }
+    
+    // Show error
+    function showError(message) {
+        const container = document.getElementById('productContainer');
+        container.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
+                <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.3;">✦</div>
+                <h2 style="margin-bottom: 1rem;">${message}</h2>
+                <a href="shop.html" class="btn btn-primary">Back to Shop</a>
+            </div>
+        `;
+    }
+</script>
 </body>
 </html>
