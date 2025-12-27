@@ -1338,21 +1338,24 @@ footer {
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  pointer-events: none; /* Add this */
 }
 
 .cosmic-modal.active {
   display: flex;
+  pointer-events: all; /* Add this */
 }
 
 .cosmic-modal-overlay {
-  position: absolute;
+  position: fixed; /* CHANGE: from absolute to fixed */
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh; /* ADD: Use 100vh not 100% */
   background: rgba(15, 13, 11, 0.95);
   backdrop-filter: blur(12px);
   animation: fadeIn 0.3s ease;
+  z-index: 1; /* ADD: Ensure overlay is behind content */
 }
 
 .cosmic-modal-content {
@@ -1365,6 +1368,30 @@ footer {
   overflow-y: auto;
   animation: slideUpFade 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 24px 64px rgba(184, 134, 11, 0.3);
+  z-index: 2; /* ADD: Ensure content is above overlay */
+}
+
+/* === MOBILE FIXES === */
+@media (max-width: 768px) {
+  .cosmic-modal {
+    height: 100%; /* Use 100% instead of 100vh on mobile */
+    padding: 0; /* Remove padding on mobile */
+    align-items: flex-start; /* Align to top on mobile */
+  }
+  
+  .cosmic-modal-content {
+    max-height: 100vh; /* Use vh here */
+    border-radius: 0; /* Remove border radius on mobile */
+    margin: 0; /* Remove margin */
+  }
+  
+  .cosmic-modal-overlay {
+    height: 100vh; /* Ensure full viewport coverage */
+  }
+  
+  .cosmic-step {
+    padding: 2rem 1.5rem; /* Reduce padding on mobile */
+  }
 }
 
 .cosmic-modal-close {

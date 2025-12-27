@@ -391,7 +391,7 @@
         </div>
     </div>
 
-    <!-- NEW: Cosmic Reading Orb (Floating) -->
+        <!-- NEW: Cosmic Reading Orb (Floating) -->
     <div id="cosmicOrb" class="cosmic-orb" title="Discover Your Cosmic Signature">
         <div class="orb-inner">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -399,6 +399,78 @@
                 <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
                 <circle cx="12" cy="12" r="3"/>
             </svg>
+        </div>
+    </div>
+
+    <!-- ADD THIS: COSMIC MODAL -->
+    <div id="cosmicModal" class="cosmic-modal">
+        <div class="cosmic-modal-overlay"></div>
+        <div class="cosmic-modal-content">
+            <button class="cosmic-modal-close" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <!-- Step 1: Birth Information -->
+            <div id="cosmicStep1" class="cosmic-step">
+                <div class="cosmic-header">
+                    <h2>Cosmic Reader</h2>
+                    <p class="cosmic-subtitle">Discover your celestial alignment</p>
+                </div>
+                
+                <form class="cosmic-form" id="cosmicForm">
+                    <div class="form-group">
+                        <label class="form-label" for="birthDate">Birth Date</label>
+                        <input type="date" id="birthDate" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="birthTime">Birth Time (Optional)</label>
+                        <input type="time" id="birthTime" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="birthCity">Birth City</label>
+                        <input type="text" id="birthCity" class="form-input" placeholder="e.g., London, UK" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary cosmic-submit-btn">
+                        Reveal My Cosmic Signature
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Step 2: Results -->
+            <div id="cosmicStep2" class="cosmic-step cosmic-step-hidden">
+                <div class="cosmic-results">
+                    <div class="cosmic-results-header">
+                        <div class="cosmic-sign-icon">♋</div>
+                        <h2>Your Cosmic Signature</h2>
+                        <p class="cosmic-element">Cancer · Water · Cardinal</p>
+                    </div>
+                    
+                    <div class="cosmic-reading-content">
+                        <div class="reading-section">
+                            <h3>Celestial Insights</h3>
+                            <p>Your cosmic alignment reveals deep emotional intuition and nurturing energy. The stars suggest a period of introspection and personal growth ahead.</p>
+                        </div>
+                        
+                        <div class="reading-section reading-deeper">
+                            <h3>Personal Guidance</h3>
+                            <p>Embrace your natural sensitivity as a strength. The current planetary transits favor creative expression and emotional healing.</p>
+                        </div>
+                        
+                        <div class="cosmic-cta">
+                            <p class="cosmic-cta-text">For a personalized, in-depth reading crafted by our celestial experts...</p>
+                            <div class="cosmic-actions">
+                                <a href="oracle.html" class="btn btn-primary">Explore The Oracle</a>
+                                <button class="btn btn-outline cosmic-modal-close">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
