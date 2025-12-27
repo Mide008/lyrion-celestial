@@ -21,8 +21,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="assets/css/style.css">
     
-    <style>
+    <!-- <style>
         /* Product Detail Specific Styles */
         .product-detail-container {
             display: grid;
@@ -258,7 +259,7 @@
                 font-size: 2rem;
             }
         }
-    </style>
+    </style> -->
 </head>
 <body>
     
@@ -434,197 +435,360 @@
     <script src="assets/js/search.js"></script>
     
     <script>
-        // Product Detail Logic
-        let currentProduct = null;
-        let selectedVariant = null;
+    // Product Detail Logic
+    let currentProduct = null;
+    let selectedVariant = null;
+    let currentImageIndex = 0;
+    let productImages = [];
+    
+    // Load product on page load
+    document.addEventListener('DOMContentLoaded', async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sku = urlParams.get('sku');
         
-        // Load product on page load
-        document.addEventListener('DOMContentLoaded', async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const sku = urlParams.get('sku');
+        if (!sku) {
+            showError('No product specified');
+            return;
+        }
+        
+        try {
+            // Load products
+            const response = await fetch('data/products.json');
+            const products = await response.json();
             
-            if (!sku) {
-                showError('No product specified');
+            // Find product
+            currentProduct = products.find(p => p.sku === sku);
+            
+            if (!currentProduct) {
+                showError('Product not found');
                 return;
             }
             
-            try {
-                // Load products
-                const response = await fetch('data/products.json');
-                const products = await response.json();
+            // Render product
+            renderProduct(currentProduct);
+            updateBreadcrumb(currentProduct);
+            
+        } catch (error) {
+            console.error('Error loading product:', error);
+            showError('Unable to load product');
+        }
+    });
+    
+    // Render product with gallery
+    function renderProduct(product) {
+        const container = document.getElementById('productContainer');
+        
+        // Build image array from product data
+        productImages = [
+            product.image_front,
+            product.image_back,
+            product.image_side,
+            product.image_detail
+        ].filter(img => img && img.trim() !== ''); // Only include non-empty images
+        
+        // If no images, add a placeholder
+        if (productImages.length === 0) {
+            productImages = ['placeholder.png'];
+        }
+        
+        // Build size selector
+        const hasSizes = product.variants && product.variants.length > 0;
+        selectedVariant = hasSizes ? product.variants[0] : null;
+        
+        const sizeSelector = hasSizes ? `
+            <div class="size-selector">
+                <label class="size-selector-label">Select Size</label>
+                <div class="size-options">
+                    ${product.variants.map((size, index) => `
+                        <button class="size-option ${index === 0 ? 'active' : ''}" data-size="${size}">
+                            ${size}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+        ` : '';
+        
+        container.innerHTML = `
+            <div class="product-images-section">
+                <!-- Image Zoom Overlay -->
+                <div class="image-zoom-overlay" id="imageZoomOverlay">
+                    <img class="zoomed-image" id="zoomedImage" alt="${product.title}">
+                </div>
                 
-                // Find product
-                currentProduct = products.find(p => p.sku === sku);
+                <!-- Main Image with Navigation -->
+                <div class="main-product-image fade" id="mainImageContainer">
+                    <img id="mainImage" 
+                         src="assets/products/${productImages[0]}" 
+                         alt="${product.title}" 
+                         onerror="this.src='assets/img/placeholder.png'"
+                         onclick="openImageZoom()">
+                    
+                    ${productImages.length > 1 ? `
+                        <!-- Navigation Buttons -->
+                        <div class="gallery-nav-buttons">
+                            <button class="gallery-nav-button" onclick="changeImage(-1)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button class="gallery-nav-button" onclick="changeImage(1)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Image Count Badge -->
+                        <div class="image-count-badge">
+                            ${currentImageIndex + 1} / ${productImages.length}
+                        </div>
+                    ` : ''}
+                </div>
                 
-                if (!currentProduct) {
-                    showError('Product not found');
-                    return;
-                }
+                <!-- Thumbnails -->
+                <div class="product-thumbnails" id="thumbnailContainer">
+                    ${productImages.length > 1 ? 
+                        productImages.map((img, index) => `
+                            <div class="thumbnail ${index === 0 ? 'active' : ''}" 
+                                 data-index="${index}"
+                                 onclick="selectImage(${index})">
+                                <img src="assets/products/${img}" 
+                                     alt="${product.title} - View ${index + 1}"
+                                     onerror="this.src='assets/img/placeholder.png'">
+                            </div>
+                        `).join('') 
+                        : 
+                        '<div class="thumbnail active no-image" style="aspect-ratio: 1/1;">No additional images</div>'
+                    }
+                </div>
                 
-                // Render product
-                renderProduct(currentProduct);
-                updateBreadcrumb(currentProduct);
+                <!-- Gallery Indicators -->
+                ${productImages.length > 1 ? `
+                    <div class="gallery-indicators" id="galleryIndicators">
+                        ${productImages.map((_, index) => `
+                            <div class="gallery-indicator ${index === 0 ? 'active' : ''}" 
+                                 onclick="selectImage(${index})"></div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+            
+            <div class="product-info-section">
+                <div class="product-badges">
+                    ${product.compare_at_price > 0 ? '<span class="badge badge-sale">Sale</span>' : ''}
+                    ${product.category === 'Men' || product.category === 'Women' ? '<span class="badge badge-england">Made in England</span>' : ''}
+                </div>
                 
-            } catch (error) {
-                console.error('Error loading product:', error);
-                showError('Unable to load product');
-            }
+                <h1 class="product-title-main">${product.title}</h1>
+                <p class="product-subtitle">${product.category}${product.zodiac_sign && product.zodiac_sign !== 'None' ? ` • ${product.zodiac_sign}` : ''}</p>
+                
+                <div class="product-price-main">
+                    <span class="price-main-current">£${parseFloat(product.price).toFixed(2)}</span>
+                    ${product.compare_at_price > 0 ? `<span class="price-main-compare">£${parseFloat(product.compare_at_price).toFixed(2)}</span>` : ''}
+                </div>
+                
+                <div class="product-description-main">
+                    ${product.description}
+                </div>
+                
+                ${sizeSelector}
+                
+                <button id="addToCartBtn" class="btn btn-primary btn-full mb-md" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    Add to Cart
+                </button>
+                
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value">${product.category}</span>
+                    </div>
+                    ${product.zodiac_sign && product.zodiac_sign !== 'None' ? `
+                        <div class="meta-item">
+                            <span class="meta-label">Zodiac</span>
+                            <span class="meta-value">${product.zodiac_sign}</span>
+                        </div>
+                    ` : ''}
+                    <div class="meta-item">
+                        <span class="meta-label">SKU</span>
+                        <span class="meta-value">${product.sku}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Delivery</span>
+                        <span class="meta-value">5-7 Business Days</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Setup interactions
+        setupProductInteractions();
+    }
+    
+    // Gallery Functions
+    window.selectImage = function(index) {
+        if (index < 0 || index >= productImages.length || index === currentImageIndex) return;
+        
+        // Update main image
+        const mainImage = document.getElementById('mainImage');
+        const mainImageContainer = document.getElementById('mainImageContainer');
+        
+        // Add fade effect
+        mainImageContainer.classList.add('fade');
+        setTimeout(() => {
+            mainImage.src = `assets/products/${productImages[index]}`;
+            mainImageContainer.classList.remove('fade');
+        }, 150);
+        
+        // Update active thumbnail
+        document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+            thumb.classList.toggle('active', i === index);
         });
         
-        // Render product
-        function renderProduct(product) {
-            const container = document.getElementById('productContainer');
-            
-            // Build image gallery
-            const images = [
-                product.image_front,
-                product.image_back,
-                product.image_side
-            ].filter(Boolean);
-            
-            // Build size selector
-            const hasSizes = product.variants && product.variants.length > 0;
-            selectedVariant = hasSizes ? product.variants[0] : null;
-            
-            const sizeSelector = hasSizes ? `
-                <div class="size-selector">
-                    <label class="size-selector-label">Select Size</label>
-                    <div class="size-options">
-                        ${product.variants.map((size, index) => `
-                            <button class="size-option ${index === 0 ? 'active' : ''}" data-size="${size}">
-                                ${size}
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>
-            ` : '';
-            
-            container.innerHTML = `
-                <div class="product-images-section">
-                    <div class="main-product-image">
-                        <img id="mainImage" src="assets/products/${images[0]}" alt="${product.title}" onerror="this.src='assets/img/placeholder.png'">
-                    </div>
-                    <div class="product-thumbnails">
-                        ${images.map((img, index) => `
-                            <div class="thumbnail ${index === 0 ? 'active' : ''}" data-image="assets/products/${img}">
-                                <img src="assets/products/${img}" alt="${product.title}" onerror="this.src='assets/img/placeholder.png'">
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-                
-                <div class="product-info-section">
-                    <div class="product-badges">
-                        ${product.compare_at_price > 0 ? '<span class="badge badge-sale">Sale</span>' : ''}
-                        ${product.category === 'Men' || product.category === 'Women' ? '<span class="badge badge-england">Made in England</span>' : ''}
-                    </div>
-                    
-                    <h1 class="product-title-main">${product.title}</h1>
-                    <p class="product-subtitle">${product.category}${product.zodiac_sign && product.zodiac_sign !== 'None' ? ` • ${product.zodiac_sign}` : ''}</p>
-                    
-                    <div class="product-price-main">
-                        <span class="price-main-current">${window.LyrionUtils.formatPrice(product.price)}</span>
-                        ${product.compare_at_price > 0 ? `<span class="price-main-compare">${window.LyrionUtils.formatPrice(product.compare_at_price)}</span>` : ''}
-                    </div>
-                    
-                    <div class="product-description-main">
-                        ${product.description}
-                    </div>
-                    
-                    ${sizeSelector}
-                    
-                    <button id="addToCartBtn" class="btn btn-primary btn-full mb-md" style="font-size: 1.1rem; padding: 1rem 2rem;">
-                        Add to Cart
-                    </button>
-                    
-                    <div class="product-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Category</span>
-                            <span class="meta-value">${product.category}</span>
-                        </div>
-                        ${product.zodiac_sign && product.zodiac_sign !== 'None' ? `
-                            <div class="meta-item">
-                                <span class="meta-label">Zodiac</span>
-                                <span class="meta-value">${product.zodiac_sign}</span>
-                            </div>
-                        ` : ''}
-                        <div class="meta-item">
-                            <span class="meta-label">SKU</span>
-                            <span class="meta-value">${product.sku}</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Delivery</span>
-                            <span class="meta-value">5-7 Business Days</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            // Setup interactions
-            setupProductInteractions();
+        // Update active indicator
+        document.querySelectorAll('.gallery-indicator').forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+        
+        // Update image count badge
+        const badge = document.querySelector('.image-count-badge');
+        if (badge) {
+            badge.textContent = `${index + 1} / ${productImages.length}`;
         }
         
-        // Setup product interactions
-        function setupProductInteractions() {
-            // Thumbnail clicks
-            document.querySelectorAll('.thumbnail').forEach(thumb => {
-                thumb.addEventListener('click', () => {
-                    const imageSrc = thumb.getAttribute('data-image');
-                    const mainImage = document.getElementById('mainImage');
-                    
-                    if (mainImage) {
-                        mainImage.src = imageSrc;
-                    }
-                    
-                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                });
-            });
-            
-            // Size selection
-            document.querySelectorAll('.size-option').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    selectedVariant = btn.getAttribute('data-size');
-                    
-                    document.querySelectorAll('.size-option').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                });
-            });
-            
-            // Add to cart
-            const addToCartBtn = document.getElementById('addToCartBtn');
-            if (addToCartBtn) {
-                addToCartBtn.addEventListener('click', () => {
-                    window.CartAPI.addToCart(currentProduct, selectedVariant);
-                });
+        currentImageIndex = index;
+    };
+    
+    window.changeImage = function(direction) {
+        let newIndex = currentImageIndex + direction;
+        
+        if (newIndex < 0) {
+            newIndex = productImages.length - 1;
+        } else if (newIndex >= productImages.length) {
+            newIndex = 0;
+        }
+        
+        selectImage(newIndex);
+    };
+    
+    window.openImageZoom = function() {
+        if (productImages.length === 0) return;
+        
+        const overlay = document.getElementById('imageZoomOverlay');
+        const zoomedImage = document.getElementById('zoomedImage');
+        
+        zoomedImage.src = document.getElementById('mainImage').src;
+        overlay.classList.add('active');
+        
+        // Close on click
+        overlay.onclick = function(e) {
+            if (e.target === overlay || e.target.classList.contains('zoomed-image')) {
+                overlay.classList.remove('active');
             }
+        };
+        
+        // Close on escape key
+        document.addEventListener('keydown', function closeOnEscape(e) {
+            if (e.key === 'Escape') {
+                overlay.classList.remove('active');
+                document.removeEventListener('keydown', closeOnEscape);
+            }
+        });
+    };
+    
+    // Setup product interactions
+    function setupProductInteractions() {
+        // Size selection
+        document.querySelectorAll('.size-option').forEach(btn => {
+            btn.addEventListener('click', () => {
+                selectedVariant = btn.getAttribute('data-size');
+                
+                document.querySelectorAll('.size-option').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+        
+        // Add to cart
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', () => {
+                if (window.CartAPI) {
+                    window.CartAPI.addToCart(currentProduct, selectedVariant);
+                } else {
+                    // Fallback cart function
+                    addToCartFallback();
+                }
+            });
         }
         
-        // Update breadcrumb
-        function updateBreadcrumb(product) {
-            const breadcrumb = document.getElementById('breadcrumb');
-            breadcrumb.innerHTML = `
-                <a href="index.html">Home</a>
-                <span>→</span>
-                <a href="shop.html">Shop</a>
-                <span>→</span>
-                <a href="shop.html?category=${product.category}">${product.category}</a>
-                <span>→</span>
-                <span>${product.title}</span>
-            `;
+        // Keyboard navigation for gallery
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeImage(1);
+            }
+        });
+    }
+    
+    // Fallback add to cart function
+    function addToCartFallback() {
+        let cart = JSON.parse(localStorage.getItem('lyrion_cart') || '[]');
+        
+        const cartItem = {
+            sku: currentProduct.sku,
+            title: currentProduct.title,
+            price: currentProduct.price,
+            image: currentProduct.image_front,
+            quantity: 1,
+            variant: selectedVariant
+        };
+        
+        cart.push(cartItem);
+        localStorage.setItem('lyrion_cart', JSON.stringify(cart));
+        
+        // Update cart badge
+        const badge = document.getElementById('cartBadge');
+        if (badge) {
+            badge.textContent = cart.length;
         }
         
-        // Show error
-        function showError(message) {
-            const container = document.getElementById('productContainer');
-            container.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
-                    <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.3;">✦</div>
-                    <h2 style="margin-bottom: 1rem;">${message}</h2>
-                    <a href="shop.html" class="btn btn-primary">Back to Shop</a>
-                </div>
-            `;
+        // Show success message
+        alert(`${currentProduct.title} added to cart!`);
+        
+        // Optional: Open cart drawer
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartOverlay = document.getElementById('cartOverlay');
+        if (cartDrawer && cartOverlay) {
+            cartDrawer.classList.add('active');
+            cartOverlay.classList.add('active');
         }
-    </script>
+    }
+    
+    // Update breadcrumb
+    function updateBreadcrumb(product) {
+        const breadcrumb = document.getElementById('breadcrumb');
+        breadcrumb.innerHTML = `
+            <a href="index.html">Home</a>
+            <span>→</span>
+            <a href="shop.html">Shop</a>
+            <span>→</span>
+            <a href="shop.html?category=${encodeURIComponent(product.category)}">${product.category}</a>
+            <span>→</span>
+            <span>${product.title}</span>
+        `;
+    }
+    
+    // Show error
+    function showError(message) {
+        const container = document.getElementById('productContainer');
+        container.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
+                <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.3;">✦</div>
+                <h2 style="margin-bottom: 1rem;">${message}</h2>
+                <a href="shop.html" class="btn btn-primary">Back to Shop</a>
+            </div>
+        `;
+    }
+</script>
 </body>
 </html>
