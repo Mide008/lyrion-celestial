@@ -143,7 +143,9 @@ function setupCosmicModalInteractions() {
     // Close buttons in results
     const closeButtons = modal.querySelectorAll('.cosmic-modal-close');
     closeButtons.forEach(btn => {
-        btn.addEventListener('click', closeCosmicModal);
+        if (btn !== closeBtn) {
+            btn.addEventListener('click', closeCosmicModal);
+        }
     });
 
     // Click overlay to close
@@ -170,7 +172,6 @@ function setupCosmicModalInteractions() {
 function openCosmicModal() {
     CosmicReader.modal.classList.add('active');
     document.body.classList.add('modal-open');
-    document.body.style.overflow = 'hidden';
     
     // Reset to step 1
     document.getElementById('cosmicStep1').classList.remove('cosmic-step-hidden');
@@ -191,7 +192,6 @@ function openCosmicModal() {
 function closeCosmicModal() {
     CosmicReader.modal.classList.remove('active');
     document.body.classList.remove('modal-open');
-    document.body.style.overflow = '';
     
     // Reset form
     const form = document.getElementById('cosmicForm');
@@ -414,6 +414,14 @@ function tryAnotherDate() {
     document.getElementById('cosmicStep2').classList.add('cosmic-step-hidden');
     document.getElementById('cosmicStep1').classList.remove('cosmic-step-hidden');
     document.getElementById('cosmicForm').reset();
+    
+    // Focus on date input
+    setTimeout(() => {
+        const dateInput = document.getElementById('birthDate');
+        if (dateInput) {
+            dateInput.focus();
+        }
+    }, 100);
 }
 
 // ==========================================
