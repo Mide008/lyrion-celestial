@@ -22,6 +22,14 @@ const ORACLE_TIERS = {
         wordCount: '300+ words',
         delivery: '48 hours'
     },
+    transit: {
+        id: 'transit',
+        name: 'Transit Forecast',
+        price: 45.00,
+        description: 'Current planetary transits affecting your chart',
+        wordCount: '600+ words',
+        delivery: '24 hours'
+    },
     detailed: {
         id: 'detailed',
         name: 'Detailed Reading',
@@ -30,6 +38,46 @@ const ORACLE_TIERS = {
         wordCount: '800+ words',
         delivery: '48 hours'
     },
+    chiron: {
+        id: 'chiron',
+        name: 'Chiron Wound Healing',
+        price: 55.00,
+        description: 'Explore your deepest wounds and path to healing',
+        wordCount: '750+ words',
+        delivery: '48 hours'
+    },
+    career: {
+        id: 'career',
+        name: 'Career & Purpose',
+        price: 65.00,
+        description: 'Discover your vocational calling and professional path',
+        wordCount: '900+ words',
+        delivery: '48 hours'
+    },
+    lifepath: {
+        id: 'lifepath',
+        name: 'Life Path Reading',
+        price: 75.00,
+        description: 'Understand your soul\'s journey and destiny',
+        wordCount: '1,000+ words',
+        delivery: '48 hours'
+    },
+    natal: {
+        id: 'natal',
+        name: 'Natal Chart Blueprint',
+        price: 85.00,
+        description: 'Complete analysis of your birth chart foundations',
+        wordCount: '1,200+ words',
+        delivery: '48 hours'
+    },
+    synastry: {
+        id: 'synastry',
+        name: 'Relationship Synastry',
+        price: 95.00,
+        description: 'Compatibility analysis between two birth charts',
+        wordCount: '1,400+ words',
+        delivery: '72 hours'
+    },
     premium: {
         id: 'premium',
         name: 'Premium Reading',
@@ -37,6 +85,14 @@ const ORACLE_TIERS = {
         description: 'Comprehensive analysis with personalized ritual guidance',
         wordCount: '1,500+ words',
         delivery: '72 hours'
+    },
+    blueprint: {
+        id: 'blueprint',
+        name: 'Full Cosmic Blueprint',
+        price: 185.00,
+        description: 'The ultimate guide to your cosmic design',
+        wordCount: '2,500+ words',
+        delivery: '96 hours'
     }
 };
 
@@ -81,7 +137,7 @@ function setupTierSelection() {
     console.log(`Found ${tierCards.length} tier cards`);
     
     tierCards.forEach(card => {
-        const button = card.querySelector('.btn');
+        const button = card.querySelector('.tier-select-btn');
         
         if (button) {
             button.addEventListener('click', (e) => {
@@ -118,7 +174,7 @@ function selectTier(tierId) {
     document.getElementById('modalTierName').textContent = selectedTier.name;
     document.getElementById('modalTierDescription').textContent = selectedTier.description;
     document.getElementById('modalSelectedTier').textContent = selectedTier.name;
-    document.getElementById('modalPrice').textContent = `£${selectedTier.price}`;
+    document.getElementById('modalPrice').textContent = `£${selectedTier.price.toFixed(2)}`;
     
     // Show modal
     openModal();
@@ -205,12 +261,15 @@ async function handleFormSubmit(e) {
     // Get form data
     const name = document.getElementById('customerName').value.trim();
     const email = document.getElementById('customerEmail').value.trim();
+    const birthDate = document.getElementById('birthDate').value;
+    const birthTime = document.getElementById('birthTime').value;
+    const birthCity = document.getElementById('birthCity').value.trim();
     const question = document.getElementById('customerQuestion').value.trim();
     
-    console.log('Form data:', { name, email, hasQuestion: !!question });
+    console.log('Form data:', { name, email, birthDate, hasQuestion: !!question });
     
     // Validate
-    if (!name || !email) {
+    if (!name || !email || !birthDate) {
         showError('Please fill in all required fields');
         return;
     }
@@ -242,13 +301,14 @@ async function handleFormSubmit(e) {
         const requestData = {
             name: name,
             email: email,
+            birthDate: birthDate,
+            birthTime: birthTime || '',
+            birthCity: birthCity || '',
             question: question || 'No specific question provided',
             tier: selectedTier.id,
             tierName: selectedTier.name,
             price: selectedTier.price,
-            wordCount: selectedTier.wordCount,
-            birthDate: '',
-            birthCity: ''
+            wordCount: selectedTier.wordCount
         };
         
         console.log('Request data:', requestData);
@@ -300,6 +360,9 @@ async function handleFormSubmit(e) {
             tier: selectedTier.name,
             price: selectedTier.price,
             customer: { name, email },
+            birthDate: birthDate,
+            birthTime: birthTime || 'Not provided',
+            birthCity: birthCity || 'Not provided',
             question: question || 'No specific question',
             timestamp: Date.now(),
             delivery: selectedTier.delivery,
@@ -334,7 +397,7 @@ async function handleFormSubmit(e) {
             button.disabled = false;
         }
         if (buttonText) {
-            buttonText.textContent = 'Continue to Payment';
+            buttonText.textContent = 'Pay with Card';
         }
     }
 }

@@ -1251,3 +1251,549 @@ footer {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* ================================
+   COSMIC READER & ORACLE STYLES - BRAND COLORS
+   ================================ */
+
+/* === COSMIC ORB (Floating Button) === */
+.cosmic-orb {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--color-gold-primary), var(--color-gold-accent));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 8px 32px rgba(184, 134, 11, 0.4);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cosmic-pulse 3s ease-in-out infinite;
+  color: var(--color-cream);
+}
+
+.cosmic-orb:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 12px 48px rgba(184, 134, 11, 0.6);
+  background: linear-gradient(135deg, var(--color-gold-accent), var(--color-gold-primary));
+}
+
+.orb-inner {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.orb-inner svg {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes cosmic-pulse {
+  0%, 100% { 
+    box-shadow: 0 8px 32px rgba(184, 134, 11, 0.4);
+  }
+  50% { 
+    box-shadow: 0 8px 48px rgba(184, 134, 11, 0.6), 0 0 0 12px rgba(184, 134, 11, 0.1);
+  }
+}
+
+/* Mobile position */
+@media (max-width: 768px) {
+  .cosmic-orb {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .orb-inner {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .orb-inner svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* === COSMIC MODAL === */
+.cosmic-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 5000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.cosmic-modal.active {
+  display: flex;
+}
+
+.cosmic-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 13, 11, 0.95);
+  backdrop-filter: blur(12px);
+  animation: fadeIn 0.3s ease;
+}
+
+.cosmic-modal-content {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow-y: auto;
+  animation: slideUpFade 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 24px 64px rgba(184, 134, 11, 0.3);
+}
+
+.cosmic-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-cream-dark);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  color: var(--color-ink);
+}
+
+.cosmic-modal-close:hover {
+  background: var(--color-gold-primary);
+  color: var(--color-white);
+  transform: rotate(90deg);
+}
+
+.cosmic-step {
+  padding: 3rem 2rem;
+}
+
+.cosmic-step-hidden {
+  display: none;
+}
+
+.cosmic-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.cosmic-header h2 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--color-gold-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cosmic-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  font-style: italic;
+}
+
+.cosmic-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cosmic-submit-btn {
+  margin-top: 1rem;
+  background: linear-gradient(135deg, var(--color-gold-primary), var(--color-gold-accent));
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: var(--color-white);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+}
+
+.cosmic-submit-btn:hover {
+  background: linear-gradient(135deg, var(--color-gold-accent), var(--color-gold-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(184, 134, 11, 0.3);
+}
+
+/* === COSMIC RESULTS === */
+.cosmic-results {
+  padding: 2rem;
+}
+
+.cosmic-results-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cosmic-sign-icon {
+  font-size: 5rem;
+  color: var(--color-gold-primary);
+  margin-bottom: 1rem;
+  animation: rotateIn 0.6s ease;
+}
+
+.cosmic-results-header h2 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--color-ink);
+  margin-bottom: 0.5rem;
+}
+
+.cosmic-element {
+  font-size: 1.1rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.cosmic-reading-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.reading-section {
+  background: var(--color-cream-dark);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-gold-primary);
+}
+
+.reading-section h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--color-gold-primary);
+  margin-bottom: 1rem;
+}
+
+.reading-section p {
+  line-height: 1.8;
+  color: var(--color-ink);
+}
+
+.reading-deeper {
+  background: linear-gradient(135deg, rgba(184, 134, 11, 0.05), rgba(196, 164, 73, 0.05));
+  border-left-color: var(--color-ink);
+}
+
+.reading-deeper h3 {
+  color: var(--color-ink);
+}
+
+.cosmic-cta {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--color-white);
+  border: 2px solid var(--color-gold-primary);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.cosmic-cta-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.cosmic-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cosmic-actions .btn {
+  min-width: 150px;
+}
+
+
+/* === ORACLE PAGE ENHANCEMENTS === */
+.oracle-hero {
+  background: linear-gradient(135deg, rgba(123, 44, 191, 0.95) 0%, rgba(90, 24, 154, 0.85) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.oracle-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: starfield 60s linear infinite;
+}
+
+@keyframes starfield {
+  from { transform: rotate(0deg) translate(-50%, -50%); }
+  to { transform: rotate(360deg) translate(-50%, -50%); }
+}
+
+.tier-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.tier-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.tier-card:hover::before {
+  left: 100%;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* === MOBILE RESPONSIVE === */
+@media (max-width: 768px) {
+  .cosmic-modal-content {
+    margin: 0;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  
+  .cosmic-step {
+    padding: 2rem 1.5rem;
+  }
+  
+  .cosmic-header h2 {
+    font-size: 2rem;
+  }
+  
+  .cosmic-sign-icon {
+    font-size: 4rem;
+  }
+  
+  .cosmic-results-header h2 {
+    font-size: 2rem;
+  }
+  
+  .reading-section {
+    padding: 1.5rem;
+  }
+  
+  .cosmic-actions {
+    flex-direction: column;
+  }
+  
+  .cosmic-actions .btn {
+    width: 100%;
+  }
+  
+  .tier-cards {
+    gap: 1.5rem;
+  }
+}
+
+/* === SIGNATURE PRODUCTS SECTION === */
+.signature-section {
+  background: linear-gradient(180deg, var(--color-white) 0%, var(--color-cream-dark) 100%);
+}
+
+.signature-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.signature-branding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.signature-logo {
+  height: 60px;
+  width: auto;
+  opacity: 0.9;
+}
+
+.signature-icon {
+  height: 40px;
+  width: auto;
+  opacity: 0.7;
+}
+
+.signature-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.signature-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s ease;
+}
+
+.signature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.signature-gallery {
+  position: relative;
+}
+
+.signature-main-image {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--color-cream-dark);
+}
+
+.signature-main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.signature-card:hover .signature-main-image img {
+  transform: scale(1.05);
+}
+
+.signature-thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--color-cream-dark);
+}
+
+.signature-thumb {
+  flex: 1;
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--color-white);
+}
+
+.signature-thumb:hover {
+  border-color: var(--color-gold-accent);
+}
+
+.signature-thumb.active {
+  border-color: var(--color-gold-primary);
+}
+
+.signature-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signature-info {
+  padding: 2rem;
+  text-align: center;
+}
+
+.signature-info h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-ink);
+}
+
+.signature-price {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-gold-primary);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .signature-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .signature-branding {
+    gap: 1rem;
+  }
+  
+  .signature-logo {
+    height: 50px;
+  }
+  
+  .signature-icon {
+    height: 35px;
+  }
+}

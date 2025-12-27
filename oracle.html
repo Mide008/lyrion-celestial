@@ -31,6 +31,27 @@
             margin-bottom: 1rem;
         }
         
+        .tier-section {
+            margin-bottom: 4rem;
+        }
+        
+        .tier-section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        
+        .tier-section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+        
         .tier-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -234,13 +255,11 @@
             </a>
             
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
-                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="oracle.html" class="active">The Oracle</a></li>
                 <li><a href="codex.html">Codex</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <!-- <li><a href="codex.html">Codex</a></li> -->
-
             </ul>
             
             <div class="nav-icons">
@@ -274,65 +293,206 @@
         </div>
     </section>
 
-    <!-- Tier Selection -->
+    <!-- Essential Readings -->
     <section class="section">
         <div class="container">
-            <h2 class="text-center mb-md">Choose Your Reading</h2>
-            <p class="text-center mb-lg" style="color: #666; font-size: 1.1rem; max-width: 700px; margin: 0 auto 3rem;">
-                Each reading is a unique exploration of your cosmic alignment, delivered within 48-72 hours
-            </p>
+            <div class="tier-section">
+                <h2 class="tier-section-title">Essential Readings</h2>
+                <p class="tier-section-subtitle">Perfect for those beginning their cosmic journey</p>
+                
+                <div class="tier-cards">
+                    <!-- Essence Reading -->
+                    <div class="tier-card" data-tier="essence">
+                        <div class="tier-name">Essence Reading</div>
+                        <div class="tier-price">£25</div>
+                        <p class="tier-description">
+                            A focused insight into your current cosmic alignment
+                        </p>
+                        <ul class="tier-features">
+                            <li>300+ words of personalized insights</li>
+                            <li>Current cosmic influences</li>
+                            <li>Delivered within 48 hours</li>
+                            <li>PDF format</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full tier-select-btn">Select Essence</button>
+                    </div>
+                    
+                    <!-- Transit Forecast -->
+                    <div class="tier-card" data-tier="transit">
+                        <div class="tier-name">Transit Forecast</div>
+                        <div class="tier-price">£45</div>
+                        <p class="tier-description">
+                            Current planetary transits affecting your chart
+                        </p>
+                        <ul class="tier-features">
+                            <li>600+ words analysis</li>
+                            <li>3-month cosmic weather forecast</li>
+                            <li>Timing for major decisions</li>
+                            <li>Delivered within 24 hours</li>
+                            <li>PDF with transit timeline</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full tier-select-btn">Select Transit</button>
+                    </div>
+                    
+                    <!-- Detailed Reading -->
+                    <div class="tier-card" data-tier="detailed">
+                        <div class="tier-badge">Popular</div>
+                        <div class="tier-name">Detailed Reading</div>
+                        <div class="tier-price">£55</div>
+                        <p class="tier-description">
+                            Deep exploration of your birth chart and current transits
+                        </p>
+                        <ul class="tier-features">
+                            <li>800+ words of in-depth analysis</li>
+                            <li>Birth chart interpretation</li>
+                            <li>Current transit analysis</li>
+                            <li>Delivered within 48 hours</li>
+                            <li>PDF format with charts</li>
+                        </ul>
+                        <button class="btn btn-primary btn-full tier-select-btn">Select Detailed</button>
+                    </div>
+                </div>
+            </div>
             
-            <div class="tier-cards">
-                <!-- Essence Reading -->
-                <div class="tier-card" data-tier="essence" data-price="25">
-                    <div class="tier-name">Essence Reading</div>
-                    <div class="tier-price">£25</div>
-                    <p class="tier-description">
-                        A focused insight into your current cosmic alignment
-                    </p>
-                    <ul class="tier-features">
-                        <li>300+ words of personalized insights</li>
-                        <li>Current cosmic influences</li>
-                        <li>Delivered within 48 hours</li>
-                        <li>PDF format</li>
-                    </ul>
-                    <button class="btn btn-outline btn-full tier-select-btn">Select Essence</button>
-                </div>
+            <!-- Specialized Readings -->
+            <div class="tier-section">
+                <h2 class="tier-section-title">Specialized Readings</h2>
+                <p class="tier-section-subtitle">Deep dives into specific areas of your cosmic blueprint</p>
                 
-                <!-- Detailed Reading -->
-                <div class="tier-card" data-tier="detailed" data-price="55">
-                    <div class="tier-badge">Popular</div>
-                    <div class="tier-name">Detailed Reading</div>
-                    <div class="tier-price">£55</div>
-                    <p class="tier-description">
-                        Deep exploration of your birth chart and current transits
-                    </p>
-                    <ul class="tier-features">
-                        <li>800+ words of in-depth analysis</li>
-                        <li>Birth chart interpretation</li>
-                        <li>Current transit analysis</li>
-                        <li>Delivered within 48 hours</li>
-                        <li>PDF format with charts</li>
-                    </ul>
-                    <button class="btn btn-primary btn-full tier-select-btn">Select Detailed</button>
+                <div class="tier-cards">
+                    <!-- Chiron Wound Healing -->
+                    <div class="tier-card" data-tier="chiron">
+                        <div class="tier-name">Chiron Wound Healing</div>
+                        <div class="tier-price">£55</div>
+                        <p class="tier-description">
+                            Explore your deepest wounds and path to healing
+                        </p>
+                        <ul class="tier-features">
+                            <li>750+ words focused analysis</li>
+                            <li>Chiron placement deep dive</li>
+                            <li>Core wounds identification</li>
+                            <li>Healing practices guidance</li>
+                            <li>Delivered within 48 hours</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full tier-select-btn">Select Chiron</button>
+                    </div>
+                    
+                    <!-- Career & Purpose -->
+                    <div class="tier-card" data-tier="career">
+                        <div class="tier-name">Career & Purpose</div>
+                        <div class="tier-price">£65</div>
+                        <p class="tier-description">
+                            Discover your vocational calling and professional path
+                        </p>
+                        <ul class="tier-features">
+                            <li>900+ words career analysis</li>
+                            <li>MC/IC axis interpretation</li>
+                            <li>10th house deep dive</li>
+                            <li>Vocational indicators</li>
+                            <li>Delivered within 48 hours</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full tier-select-btn">Select Career</button>
+                    </div>
+                    
+                    <!-- Life Path Reading -->
+                    <div class="tier-card" data-tier="lifepath">
+                        <div class="tier-name">Life Path Reading</div>
+                        <div class="tier-price">£75</div>
+                        <p class="tier-description">
+                            Understand your soul's journey and destiny
+                        </p>
+                        <ul class="tier-features">
+                            <li>1,000+ words path analysis</li>
+                            <li>North/South Node interpretation</li>
+                            <li>Soul mission clarity</li>
+                            <li>Destiny patterns revealed</li>
+                            <li>Delivered within 48 hours</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full tier-select-btn">Select Life Path</button>
+                    </div>
+                    
+                    <!-- Natal Chart Blueprint -->
+                    <div class="tier-card" data-tier="natal">
+                        <div class="tier-name">Natal Chart Blueprint</div>
+                        <div class="tier-price">£85</div>
+                        <p class="tier-description">
+                            Complete analysis of your birth chart foundations
+                        </p>
+                        <ul class="tier-features">
+                            <li>1,200+ words comprehensive</li>
+                            <li>All planetary positions</li>
+                            <li>Major aspects explained</li>
+                            <li>House placements detailed</li>
+                            <li>Delivered within 48 hours</li>
+                            <li>Detailed chart graphics</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full tier-select-btn">Select Natal</button>
+                    </div>
+                    
+                    <!-- Relationship Synastry -->
+                    <div class="tier-card" data-tier="synastry">
+                        <div class="tier-name">Relationship Synastry</div>
+                        <div class="tier-price">£95</div>
+                        <p class="tier-description">
+                            Compatibility analysis between two birth charts
+                        </p>
+                        <ul class="tier-features">
+                            <li>1,400+ words dual analysis</li>
+                            <li>Requires 2 birth charts</li>
+                            <li>Compatibility patterns</li>
+                            <li>Challenges & strengths</li>
+                            <li>Delivered within 72 hours</li>
+                            <li>Composite chart included</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full tier-select-btn">Select Synastry</button>
+                    </div>
                 </div>
+            </div>
+            
+            <!-- Premium Readings -->
+            <div class="tier-section">
+                <h2 class="tier-section-title">Premium Experiences</h2>
+                <p class="tier-section-subtitle">Comprehensive cosmic guidance for deep transformation</p>
                 
-                <!-- Premium Reading -->
-                <div class="tier-card" data-tier="premium" data-price="125">
-                    <div class="tier-name">Premium Reading</div>
-                    <div class="tier-price">£125</div>
-                    <p class="tier-description">
-                        Comprehensive analysis with personalized ritual guidance
-                    </p>
-                    <ul class="tier-features">
-                        <li>1,500+ words of comprehensive insights</li>
-                        <li>Full birth chart analysis</li>
-                        <li>Transit forecasting (3 months)</li>
-                        <li>Personalized ritual recommendations</li>
-                        <li>Delivered within 72 hours</li>
-                        <li>Premium PDF with custom artwork</li>
-                    </ul>
-                    <button class="btn btn-outline btn-full tier-select-btn">Select Premium</button>
+                <div class="tier-cards">
+                    <!-- Premium Reading -->
+                    <div class="tier-card" data-tier="premium">
+                        <div class="tier-name">Premium Reading</div>
+                        <div class="tier-price">£125</div>
+                        <p class="tier-description">
+                            Comprehensive analysis with personalized ritual guidance
+                        </p>
+                        <ul class="tier-features">
+                            <li>1,500+ words comprehensive insights</li>
+                            <li>Full birth chart analysis</li>
+                            <li>Transit forecasting (3 months)</li>
+                            <li>Personalized ritual recommendations</li>
+                            <li>Delivered within 72 hours</li>
+                            <li>Premium PDF with custom artwork</li>
+                        </ul>
+                        <button class="btn btn-primary btn-full tier-select-btn">Select Premium</button>
+                    </div>
+                    
+                    <!-- Full Cosmic Blueprint -->
+                    <div class="tier-card" data-tier="blueprint">
+                        <div class="tier-badge">Most Complete</div>
+                        <div class="tier-name">Full Cosmic Blueprint</div>
+                        <div class="tier-price">£185</div>
+                        <p class="tier-description">
+                            The ultimate guide to your cosmic design
+                        </p>
+                        <ul class="tier-features">
+                            <li>2,500+ words master analysis</li>
+                            <li>Complete natal chart breakdown</li>
+                            <li>Current transits (6 months)</li>
+                            <li>Life path & soul purpose</li>
+                            <li>Career & relationship insights</li>
+                            <li>Healing practices & rituals</li>
+                            <li>Delivered within 96 hours</li>
+                            <li>Luxury PDF with full charts</li>
+                        </ul>
+                        <button class="btn btn-primary btn-full tier-select-btn">Select Blueprint</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -343,15 +503,15 @@
         <div class="payment-modal-content">
             <button class="close-modal" id="closeModal">&times;</button>
             
-            <h2 style="font-family: var(--font-serif); margin-bottom: 1rem;" id="modalTierName">Essence Reading</h2>
-            <p style="color: #666; margin-bottom: 2rem;" id="modalTierDescription">A focused insight into your current cosmic alignment</p>
+            <h2 style="font-family: var(--font-serif); margin-bottom: 1rem;" id="modalTierName">Reading</h2>
+            <p style="color: #666; margin-bottom: 2rem;" id="modalTierDescription">Description</p>
             
             <div class="selected-tier-display">
                 <div>
                     <div style="font-size: 0.9rem; color: #666;">Selected Reading</div>
-                    <div style="font-size: 1.3rem; font-weight: 600;" id="modalSelectedTier">Essence Reading</div>
+                    <div style="font-size: 1.3rem; font-weight: 600;" id="modalSelectedTier">Reading</div>
                 </div>
-                <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-gold-primary);" id="modalPrice">£25</div>
+                <div style="font-size: 2.5rem; font-weight: 700; color: var(--color-gold-primary);" id="modalPrice">£0</div>
             </div>
             
             <div id="modalErrors" style="color: #D32F2F; margin-bottom: 1rem; text-align: center; display: none; padding: 1rem; background: #FFEBEE; border-radius: 4px;"></div>
@@ -399,7 +559,7 @@
                 
                 <div class="form-group">
                     <label class="form-label" for="customerQuestion">Your Question (Optional)</label>
-                    <textarea id="customerQuestion" class="form-textarea" rows="3" placeholder="Any special inquest, meditation or inquisition on your behalf? (Max 500 characters)"></textarea>
+                    <textarea id="customerQuestion" class="form-textarea" rows="3" placeholder="Any specific question or area of focus? (Max 500 characters)"></textarea>
                     <div class="form-hint" style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
                         Optional - helps personalize your reading
                     </div>
@@ -411,7 +571,7 @@
                 
                 <div style="text-align: center; margin-top: 1rem;">
                     <p style="font-size: 0.9rem; color: #666;">
-                        Secured by Stripe • Delivery within 48-72 hours
+                        Secured by Stripe • Delivery within specified timeframe
                     </p>
                 </div>
             </form>
@@ -461,7 +621,7 @@
         </div>
     </footer>
 
-    <!-- Cart & Search (same structure as other pages) -->
+    <!-- Cart & Search -->
     <div class="cart-overlay" id="cartOverlay"></div>
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
@@ -492,408 +652,21 @@
         </div>
     </div>
 
+    <div id="cosmicOrb" class="cosmic-orb" title="Discover Your Cosmic Signature">
+        <div class="orb-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                <circle cx="12" cy="12" r="3"/>
+            </svg>
+        </div>
+    </div>
+
+
     <script src="assets/js/main.js"></script>
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/search.js"></script>
-    
-    <!-- Oracle Payment Handler - FIXED WITH BIRTH DATE REQUIRED -->
-    <script>
-    // Oracle Payment Handler - FIXED VERSION WITH BIRTH DATE REQUIRED
-    (function() {
-        // Configuration - USING CORRECT STRIPE KEY
-        const STRIPE_PUBLIC_KEY = 'pk_test_51ST0Yr6kwOhs68PfSXjUplI8TAPdMwBDl5p30sKEQkJxZo41A9LQ9aNmmBZW8UYKJpMKL64RTkDzVUEIy29DzVcj00o4lmv3Ga';
-        const WORKER_URL = 'https://lyrion-order-broker.hello-2a3.workers.dev';
-        
-        // DOM Elements
-        const modal = document.getElementById('paymentModal');
-        const closeBtn = document.getElementById('closeModal');
-        const form = document.getElementById('oraclePaymentForm');
-        const errorDiv = document.getElementById('modalErrors');
-        const tierCards = document.querySelectorAll('.tier-card');
-        const selectButtons = document.querySelectorAll('.tier-select-btn');
-        
-        // Tier data
-        const tiers = {
-            essence: { 
-                name: 'Essence Reading', 
-                desc: 'A focused insight into your current cosmic alignment',
-                tier: 'essence',
-                tierName: 'Essence Reading',
-                wordCount: '300+ words'
-            },
-            detailed: { 
-                name: 'Detailed Reading', 
-                desc: 'Deep exploration of your birth chart and current transits',
-                tier: 'detailed',
-                tierName: 'Detailed Reading',
-                wordCount: '800+ words'
-            },
-            premium: { 
-                name: 'Premium Reading', 
-                desc: 'Comprehensive analysis with personalized ritual guidance',
-                tier: 'premium',
-                tierName: 'Premium Reading',
-                wordCount: '1,500+ words'
-            }
-        };
-        
-        // State
-        let selectedTier = null;
-        let selectedPrice = 0;
-        let stripe = null;
-        
-        // Initialize Stripe
-        try {
-            stripe = Stripe(STRIPE_PUBLIC_KEY);
-            console.log('✅ Stripe initialized with correct key');
-        } catch (error) {
-            console.error('Failed to initialize Stripe:', error);
-        }
-        
-        // Tier selection handlers
-        tierCards.forEach(card => {
-            card.addEventListener('click', function(e) {
-                // Don't trigger if clicking the button
-                if (e.target.classList.contains('tier-select-btn') || 
-                    e.target.closest('.tier-select-btn')) {
-                    return;
-                }
-                selectTier(this.dataset.tier);
-            });
-        });
-        
-        selectButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const card = this.closest('.tier-card');
-                selectTier(card.dataset.tier);
-            });
-        });
-        
-        // Function to select tier
-        function selectTier(tierId) {
-            selectedTier = tierId;
-            selectedPrice = parseFloat(document.querySelector(`[data-tier="${tierId}"]`).dataset.price);
-            
-            // Update UI - remove selected class from all cards
-            tierCards.forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            // Add selected class to chosen card
-            const selectedCard = document.querySelector(`[data-tier="${tierId}"]`);
-            if (selectedCard) {
-                selectedCard.classList.add('selected');
-            }
-            
-            // Update modal content
-            if (tiers[selectedTier]) {
-                document.getElementById('modalTierName').textContent = tiers[selectedTier].name;
-                document.getElementById('modalTierDescription').textContent = tiers[selectedTier].desc;
-                document.getElementById('modalSelectedTier').textContent = tiers[selectedTier].name;
-                document.getElementById('modalPrice').textContent = '£' + selectedPrice.toFixed(2);
-            }
-            
-            // Show modal
-            openModal();
-        }
-        
-        // Modal functions
-        function openModal() {
-            if (!selectedTier) {
-                showError('Please select a reading tier first');
-                return;
-            }
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            document.getElementById('customerName').focus();
-        }
-        
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            form.reset();
-            errorDiv.style.display = 'none';
-            clearFormErrors();
-        }
-        
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) closeModal();
-        });
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
-            }
-        });
-        
-        // Form validation and submission - FIXED REDIRECT LOGIC
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Clear previous errors
-            errorDiv.style.display = 'none';
-            clearFormErrors();
-            
-            // Validate form
-            const name = document.getElementById('customerName').value.trim();
-            const email = document.getElementById('customerEmail').value.trim();
-            const question = document.getElementById('customerQuestion').value.trim();
-            const birthDate = document.getElementById('birthDate').value;
-            const birthTime = document.getElementById('birthTime').value;
-            const birthCity = document.getElementById('birthCity').value.trim();
-            
-            let isValid = true;
-            
-            // Validate name
-            if (!name) {
-                showFormError('customerName', 'Please enter your name');
-                isValid = false;
-            }
-            
-            // Validate email
-            if (!email) {
-                showFormError('customerEmail', 'Please enter your email address');
-                isValid = false;
-            } else if (!validateEmail(email)) {
-                showFormError('customerEmail', 'Please enter a valid email address');
-                isValid = false;
-            }
-            
-            // Validate birth date - NOW REQUIRED
-            if (!birthDate) {
-                showFormError('birthDate', 'Please enter your birth date');
-                isValid = false;
-            } else {
-                // Validate date is not in the future
-                const today = new Date();
-                const selectedDate = new Date(birthDate);
-                if (selectedDate > today) {
-                    showFormError('birthDate', 'Birth date cannot be in the future');
-                    isValid = false;
-                }
-            }
-            
-            // Validate question length (if provided)
-            if (question.length > 500) {
-                showFormError('customerQuestion', 'Question must be 500 characters or less');
-                isValid = false;
-            }
-            
-            if (!isValid) {
-                return;
-            }
-            
-            // Disable button and show loading
-            const button = document.getElementById('checkoutButton');
-            const buttonText = document.getElementById('buttonText');
-            button.disabled = true;
-            buttonText.innerHTML = '<span class="spinner"></span> Creating checkout...';
-            
-            try {
-                // Prepare order data
-                const orderData = {
-                    name: name,
-                    email: email,
-                    question: question || 'No specific question provided',
-                    birthDate: birthDate,
-                    birthTime: birthTime || '',
-                    birthCity: birthCity || '',
-                    tier: selectedTier,
-                    tierName: tiers[selectedTier].name,
-                    price: selectedPrice,
-                    wordCount: tiers[selectedTier].wordCount || '300+ words'
-                };
-                
-                console.log('Creating checkout session with:', orderData);
-                
-                // Create Stripe Checkout Session via Cloudflare Worker
-                const response = await fetch(`${WORKER_URL}/create-oracle-session`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(orderData)
-                });
-                
-                console.log('Worker response status:', response.status);
-                
-                if (!response.ok) {
-                    let errorMessage = 'Failed to create checkout session';
-                    try {
-                        const errorData = await response.json();
-                        errorMessage = errorData.error || JSON.stringify(errorData);
-                    } catch (parseError) {
-                        const errorText = await response.text();
-                        errorMessage = `Status ${response.status}: ${errorText}`;
-                    }
-                    throw new Error(errorMessage);
-                }
-                
-                const result = await response.json();
-                console.log('Checkout session created:', result);
-                
-                if (!result.success) {
-                    throw new Error(result.error || 'Checkout session creation failed');
-                }
-                
-                // Store order data for success page
-                localStorage.setItem('oracle_order', JSON.stringify({
-                    tier: orderData.tierName,
-                    price: orderData.price,
-                    customer: {
-                        name: orderData.name,
-                        email: orderData.email
-                    },
-                    question: orderData.question,
-                    birthDate: orderData.birthDate,
-                    timestamp: Date.now(),
-                    delivery: '48-72 hours'
-                }));
-                
-                // FIXED: Only use stripe.redirectToCheckout(), never use result.url
-                if (result.sessionId && stripe) {
-                    const { error } = await stripe.redirectToCheckout({ 
-                        sessionId: result.sessionId 
-                    });
-                    
-                    if (error) {
-                        throw new Error(error.message);
-                    }
-                } else {
-                    throw new Error('No checkout session ID received');
-                }
-                
-            } catch (error) {
-                console.error('Checkout error:', error);
-                showError(error.message || 'Payment failed. Please try again.');
-                
-                // Re-enable button
-                button.disabled = false;
-                buttonText.textContent = 'Pay with Card';
-            }
-        });
-        
-        // Helper functions
-        function showError(message) {
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-            errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-        
-        function showFormError(fieldId, message) {
-            const field = document.getElementById(fieldId);
-            const formGroup = field.closest('.form-group');
-            if (formGroup) {
-                formGroup.classList.add('error');
-                const errorElement = formGroup.querySelector('.form-error');
-                if (errorElement) {
-                    errorElement.textContent = message;
-                    errorElement.style.display = 'block';
-                }
-            }
-        }
-        
-        function clearFormErrors() {
-            document.querySelectorAll('.form-group').forEach(group => {
-                group.classList.remove('error');
-                const errorElement = group.querySelector('.form-error');
-                if (errorElement) {
-                    errorElement.style.display = 'none';
-                }
-            });
-        }
-        
-        function validateEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-        
-        // Real-time form validation
-        const nameInput = document.getElementById('customerName');
-        const emailInput = document.getElementById('customerEmail');
-        const birthDateInput = document.getElementById('birthDate');
-        const questionInput = document.getElementById('customerQuestion');
-        
-        nameInput.addEventListener('blur', () => {
-            if (!nameInput.value.trim()) {
-                showFormError('customerName', 'Please enter your name');
-            } else {
-                clearFieldError('customerName');
-            }
-        });
-        
-        emailInput.addEventListener('blur', () => {
-            if (!emailInput.value.trim()) {
-                showFormError('customerEmail', 'Please enter your email address');
-            } else if (!validateEmail(emailInput.value)) {
-                showFormError('customerEmail', 'Please enter a valid email address');
-            } else {
-                clearFieldError('customerEmail');
-            }
-        });
-        
-        birthDateInput.addEventListener('blur', () => {
-            if (!birthDateInput.value) {
-                showFormError('birthDate', 'Please enter your birth date');
-            } else {
-                const today = new Date();
-                const selectedDate = new Date(birthDateInput.value);
-                if (selectedDate > today) {
-                    showFormError('birthDate', 'Birth date cannot be in the future');
-                } else {
-                    clearFieldError('birthDate');
-                }
-            }
-        });
-        
-        questionInput.addEventListener('input', () => {
-            if (questionInput.value.length > 500) {
-                showFormError('customerQuestion', 'Question must be 500 characters or less');
-            } else {
-                clearFieldError('customerQuestion');
-            }
-        });
-        
-        function clearFieldError(fieldId) {
-            const field = document.getElementById(fieldId);
-            const formGroup = field.closest('.form-group');
-            if (formGroup) {
-                formGroup.classList.remove('error');
-                const errorElement = formGroup.querySelector('.form-error');
-                if (errorElement) {
-                    errorElement.style.display = 'none';
-                }
-            }
-        }
-        
-        // Auto-select tier from URL parameter
-        function handleUrlParameters() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const tier = urlParams.get('tier');
-            if (tier && tiers[tier]) {
-                selectTier(tier);
-            }
-        }
-        
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            handleUrlParameters();
-            
-            // Set max date for birth date to today
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('birthDate').max = today;
-            
-            // Add label note for required fields
-            const birthDateLabel = document.querySelector('label[for="birthDate"]');
-            if (birthDateLabel) {
-                birthDateLabel.innerHTML = 'Birth Date * <span style="color: #666; font-size: 0.85rem;">(Required for accurate birth chart)</span>';
-            }
-        });
-        
-    })();
-    </script>
+    <script src="assets/js/cosmic-reader.js"></script>
+    <script src="assets/js/oracle.js"></script>
 </body>
 </html>
