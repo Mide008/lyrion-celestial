@@ -1,6 +1,6 @@
 /**
  * LYRĪON - Cosmic Reader
- * Floating orb with birth chart analysis and Oracle integration
+ * Floating orb with birth chart analysis - MOBILE FIXED
  */
 
 // ==========================================
@@ -109,96 +109,21 @@ function initCosmicReader() {
     console.log('🌟 Initializing Cosmic Reader...');
     
     CosmicReader.orb = document.getElementById('cosmicOrb');
+    CosmicReader.modal = document.getElementById('cosmicModal');
     
-    if (!CosmicReader.orb) {
-        console.error('Cosmic orb element not found');
+    if (!CosmicReader.orb || !CosmicReader.modal) {
+        console.error('Cosmic elements not found');
         return;
     }
-    
-    // Create modal
-    createCosmicModal();
     
     // Setup orb click
     CosmicReader.orb.addEventListener('click', openCosmicModal);
     
-    CosmicReader.initialized = true;
-    console.log('✅ Cosmic Reader initialized');
-}
-
-// ==========================================
-// CREATE COSMIC MODAL
-// ==========================================
-function createCosmicModal() {
-    const modal = document.createElement('div');
-    modal.id = 'cosmicModal';
-    modal.className = 'cosmic-modal';
-    modal.innerHTML = `
-        <div class="cosmic-modal-overlay"></div>
-        <div class="cosmic-modal-content">
-            <button class="cosmic-modal-close" aria-label="Close">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 6L6 18M6 6l12 12"/>
-                </svg>
-            </button>
-            
-            <!-- Step 1: Birth Data Input -->
-            <div class="cosmic-step" id="cosmicStepInput">
-                <div class="cosmic-header">
-                    <h2>Your Cosmic Signature</h2>
-                    <p class="cosmic-subtitle">The stars have a message for you</p>
-                </div>
-                
-                <form id="cosmicForm" class="cosmic-form">
-                    <div class="form-group">
-                        <label for="birthDate" class="form-label">Birth Date *</label>
-                        <input type="date" 
-                               id="birthDate" 
-                               class="form-input" 
-                               required
-                               max="${new Date().toISOString().split('T')[0]}">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="birthTime" class="form-label">
-                            Birth Time
-                            <span style="color: #999; font-weight: 400;">(Optional - improves accuracy)</span>
-                        </label>
-                        <input type="time" 
-                               id="birthTime" 
-                               class="form-input">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="birthLocation" class="form-label">
-                            Birth Location 
-                            <span style="color: #999; font-weight: 400;">(Optional)</span>
-                        </label>
-                        <input type="text" 
-                               id="birthLocation" 
-                               class="form-input"
-                               placeholder="e.g., London, UK">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-full cosmic-submit-btn">
-                        Reveal My Reading
-                    </button>
-                </form>
-            </div>
-            
-            <!-- Step 2: Reading Results -->
-            <div class="cosmic-step cosmic-step-hidden" id="cosmicStepResults">
-                <div class="cosmic-results">
-                    <!-- Results loaded dynamically -->
-                </div>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-    CosmicReader.modal = modal;
-
     // Setup modal interactions
     setupCosmicModalInteractions();
+    
+    CosmicReader.initialized = true;
+    console.log('✅ Cosmic Reader initialized');
 }
 
 // ==========================================
@@ -211,10 +136,20 @@ function setupCosmicModalInteractions() {
     const form = modal.querySelector('#cosmicForm');
     
     // Close button
-    closeBtn.addEventListener('click', closeCosmicModal);
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeCosmicModal);
+    }
+    
+    // Close buttons in results
+    const closeButtons = modal.querySelectorAll('.cosmic-modal-close');
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', closeCosmicModal);
+    });
 
     // Click overlay to close
-    overlay.addEventListener('click', closeCosmicModal);
+    if (overlay) {
+        overlay.addEventListener('click', closeCosmicModal);
+    }
 
     // Escape key to close
     document.addEventListener('keydown', (e) => {
@@ -224,7 +159,9 @@ function setupCosmicModalInteractions() {
     });
 
     // Form submission
-    form.addEventListener('submit', handleCosmicFormSubmit);
+    if (form) {
+        form.addEventListener('submit', handleCosmicFormSubmit);
+    }
 }
 
 // ==========================================
@@ -232,15 +169,19 @@ function setupCosmicModalInteractions() {
 // ==========================================
 function openCosmicModal() {
     CosmicReader.modal.classList.add('active');
+    document.body.classList.add('modal-open');
     document.body.style.overflow = 'hidden';
     
     // Reset to step 1
-    document.getElementById('cosmicStepInput').classList.remove('cosmic-step-hidden');
-    document.getElementById('cosmicStepResults').classList.add('cosmic-step-hidden');
+    document.getElementById('cosmicStep1').classList.remove('cosmic-step-hidden');
+    document.getElementById('cosmicStep2').classList.add('cosmic-step-hidden');
 
     // Focus on date input
     setTimeout(() => {
-        document.getElementById('birthDate').focus();
+        const dateInput = document.getElementById('birthDate');
+        if (dateInput) {
+            dateInput.focus();
+        }
     }, 300);
 }
 
@@ -249,10 +190,14 @@ function openCosmicModal() {
 // ==========================================
 function closeCosmicModal() {
     CosmicReader.modal.classList.remove('active');
+    document.body.classList.remove('modal-open');
     document.body.style.overflow = '';
     
     // Reset form
-    document.getElementById('cosmicForm').reset();
+    const form = document.getElementById('cosmicForm');
+    if (form) {
+        form.reset();
+    }
 }
 
 // ==========================================
@@ -263,7 +208,7 @@ async function handleCosmicFormSubmit(e) {
     
     const birthDate = document.getElementById('birthDate').value;
     const birthTime = document.getElementById('birthTime').value;
-    const birthLocation = document.getElementById('birthLocation').value;
+    const birthCity = document.getElementById('birthCity').value;
 
     if (!birthDate) {
         alert('Please enter your birth date');
@@ -272,32 +217,36 @@ async function handleCosmicFormSubmit(e) {
 
     // Show loading
     const submitBtn = e.target.querySelector('.cosmic-submit-btn');
+    const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Reading the stars...';
 
     try {
+        // Simulate loading for smooth UX
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
         // Generate reading
-        const reading = generateCosmicReading(birthDate, birthTime, birthLocation);
+        const reading = generateCosmicReading(birthDate, birthTime, birthCity);
         
         // Display results
         displayCosmicReading(reading);
         
         // Switch to results step
-        document.getElementById('cosmicStepInput').classList.add('cosmic-step-hidden');
-        document.getElementById('cosmicStepResults').classList.remove('cosmic-step-hidden');
+        document.getElementById('cosmicStep1').classList.add('cosmic-step-hidden');
+        document.getElementById('cosmicStep2').classList.remove('cosmic-step-hidden');
         
     } catch (error) {
         console.error('Error generating reading:', error);
         alert('Unable to generate reading. Please try again.');
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Reveal My Reading';
+        submitBtn.textContent = originalText;
     }
 }
 
 // ==========================================
 // GENERATE COSMIC READING
 // ==========================================
-function generateCosmicReading(birthDate, birthTime, birthLocation) {
+function generateCosmicReading(birthDate, birthTime, birthCity) {
     const date = new Date(birthDate);
     const month = date.getMonth() + 1;
     const day = date.getDate();
@@ -388,7 +337,7 @@ function generateCosmicReading(birthDate, birthTime, birthLocation) {
         sunSign: signData,
         date: birthDate,
         time: birthTime || 'Unknown',
-        location: birthLocation || 'Not provided',
+        location: birthCity || 'Not provided',
         reading: reading
     };
 }
@@ -413,7 +362,7 @@ function calculateSunSign(month, day) {
 // DISPLAY COSMIC READING
 // ==========================================
 function displayCosmicReading(data) {
-    const resultsContainer = document.querySelector('.cosmic-results');
+    const resultsContainer = document.querySelector('#cosmicStep2 .cosmic-results');
     resultsContainer.innerHTML = `
         <div class="cosmic-results-header">
             <div class="cosmic-sign-icon">${data.sunSign.symbol}</div>
@@ -451,7 +400,6 @@ function displayCosmicReading(data) {
                 
                 <div class="cosmic-actions">
                     <a href="oracle.html" class="btn btn-primary">Get Full Reading</a>
-                    <button onclick="shareReading()" class="btn btn-secondary">Share</button>
                     <button onclick="tryAnotherDate()" class="btn btn-outline">Try Another Date</button>
                 </div>
             </div>
@@ -462,23 +410,9 @@ function displayCosmicReading(data) {
 // ==========================================
 // HELPER FUNCTIONS
 // ==========================================
-function shareReading() {
-    if (navigator.share) {
-        navigator.share({
-            title: 'My Cosmic Signature | LYRĪON',
-            text: 'I just discovered my cosmic signature with LYRĪON!',
-            url: window.location.href
-        }).catch(err => console.log('Error sharing:', err));
-    } else {
-        // Fallback: copy link
-        navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
-    }
-}
-
 function tryAnotherDate() {
-    document.getElementById('cosmicStepResults').classList.add('cosmic-step-hidden');
-    document.getElementById('cosmicStepInput').classList.remove('cosmic-step-hidden');
+    document.getElementById('cosmicStep2').classList.add('cosmic-step-hidden');
+    document.getElementById('cosmicStep1').classList.remove('cosmic-step-hidden');
     document.getElementById('cosmicForm').reset();
 }
 
@@ -494,3 +428,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for global access
 window.CosmicReader = CosmicReader;
+window.tryAnotherDate = tryAnotherDate;
