@@ -8,12 +8,28 @@
 // CONFIGURATION - CORRECTED KEYS
 // ==========================================
 const STRIPE_PUBLIC_KEY = 'pk_live_51ST0Yr6kwOhs68PfwI2N6I6rKXBx8TKEvkPdwfR7sLpKQiAiQ09QPLpy1XalDPf9Zrs3SL5DkWxKKQjdZq1JoLoP00QdElzZjF';
-const WORKER_URL = 'https://lyrion-order-broker.hello-2a3.workers.dev';
+const WORKER_URL = 'https://lyrion-order-broker.hello-2a3.workers.dev'; // UNIQUE NAME
+const ORACLE_ENDPOINT = `${WORKER_URL}/create-oracle-session`; // ADD THIS LINE - FIXED
 
 // ==========================================
 // ORACLE TIERS
 // ==========================================
 const ORACLE_TIERS = {
+    // ADD THIS NEW TIER:
+    '2026predictive': {
+        id: '2026predictive',
+        name: '2026 Predictive Reading',
+        price: 49.00,
+        description: 'What Has Been Written For You - Your comprehensive 2026 cosmic forecast',
+        wordCount: '2,000+ words',
+        delivery: '24 hours',
+        features: [
+            '12-month planetary forecast',
+            'Personal transit analysis',
+            'Karmic lessons revealed',
+            '25+ pages detailed report'
+        ]
+    },
     essence: {
         id: 'essence',
         name: 'Essence Reading',
@@ -108,7 +124,7 @@ let stripe = null;
 function initOracle() {
     console.log('🔮 Initializing Oracle with correct Stripe key...');
     console.log('Stripe Key:', STRIPE_PUBLIC_KEY.substring(0, 20) + '...');
-    console.log('Worker URL:', WORKER_URL);
+    console.log('Worker URL:', WORKER_URL); // CHANGED THIS LINE
     
     // Initialize Stripe
     if (typeof Stripe !== 'undefined') {
@@ -312,10 +328,10 @@ async function handleFormSubmit(e) {
         };
         
         console.log('Request data:', requestData);
-        console.log('Sending to:', `${WORKER_URL}/create-oracle-session`);
+        console.log('Sending to:', ORACLE_ENDPOINT);
         
         // Create Stripe Checkout Session via Cloudflare Worker
-        const response = await fetch(`${WORKER_URL}/create-oracle-session`, {
+        const response = await fetch(ORACLE_ENDPOINT, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

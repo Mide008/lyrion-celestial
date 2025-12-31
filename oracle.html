@@ -13,9 +13,205 @@
     <script src="https://js.stripe.com/v3/"></script>
     
     <style>
+        /* NEW: 2026 Special Offer Section */
+        .special-2026-section {
+            background: linear-gradient(135deg, #0f0d0b 0%, #1a150f 100%);
+            color: var(--color-cream);
+            padding: 4rem 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 3px solid var(--color-gold-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .special-2026-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .special-2026-text {
+            padding-right: 2rem;
+        }
+        
+        .special-2026-image-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(184, 134, 11, 0.3);
+            position: relative;
+        }
+        
+        .special-2026-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .special-2026-image-container:hover .special-2026-image {
+            transform: scale(1.05);
+        }
+        
+        .special-2026-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 13, 11, 0.9), transparent);
+            padding: 2rem;
+            color: var(--color-cream);
+        }
+        
+        .special-2026-year {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--color-gold-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            font-family: var(--font-serif);
+        }
+        
+        .special-2026-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .special-2026-description {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        .special-2026-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .special-2026-price-main {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-gold-primary);
+        }
+        
+        .special-2026-price-note {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .special-2026-button {
+            background: linear-gradient(135deg, var(--color-gold-primary), #b8860b);
+            color: var(--color-white);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .special-2026-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.3);
+            background: linear-gradient(135deg, #b8860b, var(--color-gold-primary));
+        }
+        
+        .special-2026-button:active {
+            transform: translateY(-1px);
+        }
+        
+        .special-2026-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .special-2026-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .special-2026-feature svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-gold-primary);
+        }
+        
+        .special-2026-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            z-index: 2;
+        }
+        
+        @media (max-width: 1024px) {
+            .special-2026-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .special-2026-text {
+                padding-right: 0;
+            }
+            
+            .special-2026-title {
+                font-size: 2rem;
+            }
+            
+            .special-2026-year {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .special-2026-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .special-2026-title {
+                font-size: 1.75rem;
+            }
+            
+            .special-2026-year {
+                font-size: 2.5rem;
+            }
+            
+            .special-2026-price-main {
+                font-size: 2rem;
+            }
+        }
+
         .oracle-hero {
             background: linear-gradient(135deg, rgba(15, 13, 11, 0.95) 0%, rgba(15, 13, 11, 0.85) 100%), 
-                        url('https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f5?w=1600&h=600&fit=crop') center/cover;
+                        url('./assets/img/2026-reading2.jpeg') center/cover;
             min-height: 400px;
             display: flex;
             align-items: center;
@@ -284,6 +480,70 @@
             </div>
         </nav>
     </div>
+
+    <!-- NEW: 2026 Special Offer Section -->
+    <section class="special-2026-section">
+        <div class="special-2026-content">
+            <div class="special-2026-text">
+                <div class="special-2026-year">2026</div>
+                <h1 class="special-2026-title">What Has Been Written For You</h1>
+                <p class="special-2026-description">
+                    Some years change everything. Is 2026 yours? Uncover the cosmic forces shaping your path before they unfold. 
+                    Our most comprehensive 2026 predictive reading reveals your personal transits, karmic lessons, and opportunities 
+                    for the year ahead.
+                </p>
+                
+                <div class="special-2026-price">
+                    <div class="special-2026-price-main">£49</div>
+                    <div class="special-2026-price-note">One-time payment • Digital delivery</div>
+                </div>
+                
+                <button class="special-2026-button" id="special2026Button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Discover Your 2026 Path
+                </button>
+                
+                <div class="special-2026-features">
+                    <div class="special-2026-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        12-month planetary forecast
+                    </div>
+                    <div class="special-2026-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Personal transit analysis
+                    </div>
+                    <div class="special-2026-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Karmic lessons revealed
+                    </div>
+                    <div class="special-2026-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        25+ pages detailed report
+                    </div>
+                </div>
+            </div>
+            
+            <div class="special-2026-image-container">
+                <div class="special-2026-badge">Limited Time</div>
+                <!-- Replace this with your actual image -->
+                <img src="./assets/img/2026-reading2.jpeg" alt="2026 Astrology Reading" class="special-2026-image" id="special2026Image">
+                <div class="special-2026-image-overlay">
+                    <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem;">Your 2026 Cosmic Blueprint</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">See what the stars have planned</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Oracle Hero -->
     <section class="oracle-hero">
@@ -653,7 +913,7 @@
         </div>
     </div>
 
-        <!-- NEW: Cosmic Reading Orb (Floating) -->
+    <!-- NEW: Cosmic Reading Orb (Floating) -->
     <div id="cosmicOrb" class="cosmic-orb" title="Discover Your Cosmic Signature">
         <div class="orb-inner">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -742,5 +1002,105 @@
     <script src="assets/js/search.js"></script>
     <script src="assets/js/cosmic-reader.js"></script>
     <script src="assets/js/oracle.js"></script>
+    
+   <!-- NEW: 2026 Special Offer JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 2026 Special Offer Button
+        const special2026Button = document.getElementById('special2026Button');
+        const special2026Image = document.getElementById('special2026Image');
+        
+        // FORCE IMAGE RELOAD (no caching)
+        if (special2026Image) {
+            // Create timestamp for cache-busting
+            const timestamp = new Date().getTime();
+            const imageUrl = 'assets/img/2026-reading.jpg';
+            
+            // Set image with cache-buster
+            special2026Image.src = imageUrl + '?t=' + timestamp;
+            special2026Image.alt = '2026 Astrology Reading - What Has Been Written For You';
+            
+            // Handle image loading errors
+            special2026Image.onerror = function() {
+                console.error('Failed to load 2026 image, using fallback');
+                // Fallback to Unsplash image
+                special2026Image.src = 'https://images.unsplash.com/photo-1543722530-d2c3201371e7?w=800&h=500&fit=crop&crop=center&auto=format';
+            };
+            
+            // Confirm image loaded
+            special2026Image.onload = function() {
+                console.log('✅ 2026 image loaded successfully');
+            };
+        }
+        
+        if (special2026Button) {
+            special2026Button.addEventListener('click', function() {
+                console.log('2026 Special Reading selected');
+                
+                // Create 2026 tier object if it doesn't exist
+                if (!ORACLE_TIERS['2026predictive']) {
+                    ORACLE_TIERS['2026predictive'] = {
+                        id: '2026predictive',
+                        name: '2026 Predictive Reading',
+                        price: 49.00,
+                        description: 'What Has Been Written For You - Your comprehensive 2026 cosmic forecast',
+                        wordCount: '2,000+ words',
+                        delivery: '24 hours'
+                    };
+                }
+                
+                // Trigger the payment modal with 2026 reading data
+                const modal = document.getElementById('paymentModal');
+                const modalTierName = document.getElementById('modalTierName');
+                const modalTierDescription = document.getElementById('modalTierDescription');
+                const modalSelectedTier = document.getElementById('modalSelectedTier');
+                const modalPrice = document.getElementById('modalPrice');
+                
+                if (modal && modalTierName && modalTierDescription && modalSelectedTier && modalPrice) {
+                    // Set modal content for 2026 reading
+                    modalTierName.textContent = '2026 Predictive Reading';
+                    modalTierDescription.textContent = 'What Has Been Written For You - Your comprehensive 2026 cosmic forecast';
+                    modalSelectedTier.textContent = '2026 Predictive Reading';
+                    modalPrice.textContent = '£49.00';
+                    
+                    // Store the selected tier data
+                    modal.dataset.tier = '2026predictive';
+                    modal.dataset.price = '49';
+                    
+                    // Clear any previous errors
+                    const errorDiv = document.getElementById('modalErrors');
+                    if (errorDiv) {
+                        errorDiv.style.display = 'none';
+                        errorDiv.textContent = '';
+                    }
+                    
+                    // Open the modal
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Scroll to the top of the modal
+                    setTimeout(() => {
+                        modal.scrollTop = 0;
+                    }, 100);
+                    
+                    // Auto-focus on first input
+                    setTimeout(() => {
+                        const nameInput = document.getElementById('customerName');
+                        if (nameInput) nameInput.focus();
+                    }, 200);
+                } else {
+                    console.error('Modal elements not found');
+                    showError('Payment system not available. Please try again.');
+                }
+            });
+        }
+    });
+    
+    // Helper function to show errors
+    function showError(message) {
+        console.error('Showing error:', message);
+        alert('Error: ' + message);
+    }
+</script>
 </body>
 </html>
