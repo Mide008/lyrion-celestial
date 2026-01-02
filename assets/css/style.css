@@ -2837,3 +2837,227 @@ footer {
     height: 32px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
+
+/* Social Media Links Section */
+        .social-media-section {
+            background: linear-gradient(135deg, #0F0D0B 0%, #1a1816 100%);
+            padding: 3rem 0;
+            border-top: 1px solid rgba(196, 164, 73, 0.2);
+            border-bottom: 1px solid rgba(196, 164, 73, 0.2);
+        }
+
+        .social-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .social-header {
+            margin-bottom: 2rem;
+        }
+
+        .social-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 2rem;
+            color: #C4A449;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .social-subtitle {
+            color: #FAF8F5;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(250, 248, 245, 0.05);
+            border: 2px solid rgba(196, 164, 73, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 164, 73, 0.2), transparent);
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+
+        .social-link:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .social-link:hover {
+            transform: translateY(-8px) scale(1.1);
+            border-color: #C4A449;
+            box-shadow: 0 12px 40px rgba(196, 164, 73, 0.4);
+        }
+
+        .social-link svg {
+            width: 32px;
+            height: 32px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        /* Individual brand colors on hover */
+        .social-link.instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-color: #e6683c;
+            box-shadow: 0 12px 40px rgba(230, 104, 60, 0.5);
+        }
+
+        .social-link.tiktok:hover {
+            background: linear-gradient(135deg, #00f2ea 0%, #ff0050 100%);
+            border-color: #00f2ea;
+            box-shadow: 0 12px 40px rgba(0, 242, 234, 0.5);
+        }
+
+        .social-link.facebook:hover {
+            background: #1877F2;
+            border-color: #1877F2;
+            box-shadow: 0 12px 40px rgba(24, 119, 242, 0.5);
+        }
+
+        .social-link.youtube:hover {
+            background: #FF0000;
+            border-color: #FF0000;
+            box-shadow: 0 12px 40px rgba(255, 0, 0, 0.5);
+        }
+
+        .social-link.pinterest:hover {
+            background: #E60023;
+            border-color: #E60023;
+            box-shadow: 0 12px 40px rgba(230, 0, 35, 0.5);
+        }
+
+        .social-link:hover svg {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Icon colors */
+        .social-link svg {
+            fill: #C4A449;
+            transition: fill 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            fill: white;
+        }
+
+        /* Pulse animation for social icons */
+        @keyframes social-pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(196, 164, 73, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(196, 164, 73, 0);
+            }
+        }
+
+        .social-link.pulse {
+            animation: social-pulse 2s infinite;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .social-link:nth-child(1) { animation: float 3s ease-in-out infinite; }
+        .social-link:nth-child(2) { animation: float 3.5s ease-in-out infinite; }
+        .social-link:nth-child(3) { animation: float 4s ease-in-out infinite; }
+        .social-link:nth-child(4) { animation: float 3.2s ease-in-out infinite; }
+        .social-link:nth-child(5) { animation: float 3.8s ease-in-out infinite; }
+
+        .social-link:hover {
+            animation: none !important;
+        }
+
+        /* Tooltip on hover */
+        .social-link::after {
+            content: attr(data-platform);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            background: rgba(196, 164, 73, 0.95);
+            color: #0F0D0B;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .social-link:hover::after {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+            bottom: -45px;
+        }
+
+        /* Follow CTA */
+        .social-cta {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: rgba(250, 248, 245, 0.7);
+        }
+
+        .social-cta span {
+            color: #C4A449;
+            font-weight: 600;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            .social-link {
+                width: 60px;
+                height: 60px;
+            }
+
+            .social-link svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .social-title {
+                font-size: 1.5rem;
+            }
