@@ -3247,3 +3247,9 @@ footer {
         border-top: 1px solid #ddd;
     }
 }
+
+#accessLink:hover {
+    background: rgba(184, 134, 11, 0.1);
+    border-color: var(--color-gold-primary);
+    color: var(--color-gold-primary);
+}

@@ -1,0 +1,34 @@
+{
+  "codes": [
+    {
+      "code": "DENPLUG",
+      "owner": "Denilson",
+      "uses_remaining": 40,
+      "total_uses": 0,
+      "created": "2025-01-17",
+      "expires": "2025-02-16",
+      "status": "active",
+      "discount_percent": 15
+    },
+    {
+      "code": "HARUNLOCK",
+      "owner": "Harun",
+      "uses_remaining": 40,
+      "total_uses": 0,
+      "created": "2025-01-17",
+      "expires": "2025-02-16",
+      "status": "active",
+      "discount_percent": 15
+    },
+    {
+      "code": "RILEYMODE",
+      "owner": "Riley",
+      "uses_remaining": 40,
+      "total_uses": 0,
+      "created": "2025-01-17",
+      "expires": "2025-02-16",
+      "status": "active",
+      "discount_percent": 15
+    }
+  ]
+}

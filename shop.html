@@ -33,14 +33,24 @@
             </a>
             
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
                 <li><a href="oracle.html">The Oracle</a></li>
                 <li><a href="codex.html">Codex</a></li>
                 <li><a href="compatibility.html">Compatibility</a></li>
                 <!-- <li><a href="codex.html">Codex</a></li> -->
 
             </ul>
+
+            <div class="nav-icons">
+    <!-- Friend Access Link - ADDED -->
+    <a href="plug.html" id="accessLink" style="font-size: 0.75rem; color: rgba(184, 134, 11, 0.8); text-decoration: none; padding: 0.5rem 1rem; border: 1px solid rgba(184, 134, 11, 0.3); border-radius: 20px; transition: all 0.3s ease; margin-right: 1rem;">
+        Got a code?
+    </a>
+    
+    <button class="nav-icon" id="searchBtn" aria-label="Search">
+        <!-- existing search icon -->
+    </button>
             
             <div class="nav-icons">
                 <button class="nav-icon" id="searchBtn" aria-label="Search">
@@ -48,6 +58,11 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                 </button>
+                
+                <!-- Friend Access Indicator -->
+<div id="accessIndicator" style="display: none; font-size: 0.75rem; color: var(--color-gold-primary); font-weight: 600; letter-spacing: 1px; padding: 0.5rem 1rem; background: rgba(184, 134, 11, 0.1); border-radius: 20px;">
+    TAPPED IN
+</div>
                 
                 <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -312,5 +327,59 @@
     <script src="assets/js/search.js"></script>
     <script src="assets/js/shop.js"></script>
     <script src="assets/js/cosmic-reader.js"></script>
+    
+<script>
+    // Show access indicator if active
+    document.addEventListener('DOMContentLoaded', () => {
+        const accessData = JSON.parse(sessionStorage.getItem('lyrion_access') || 'null');
+        
+        if (accessData && accessData.code) {
+            const indicator = document.getElementById('accessIndicator');
+            if (indicator) {
+                indicator.style.display = 'block';
+                indicator.title = `Friend access via ${accessData.owner}`;
+            }
+        }
+    });
+</script>
+
+<script>
+// Show access indicator if friend access is active
+document.addEventListener('DOMContentLoaded', () => {
+    const accessData = JSON.parse(sessionStorage.getItem('lyrion_access') || 'null');
+    
+    if (accessData && accessData.code) {
+        // Hide the "Got a code?" link since they already have access
+        const accessLink = document.getElementById('accessLink');
+        if (accessLink) {
+            accessLink.style.display = 'none';
+        }
+        
+        // Create and show the "TAPPED IN" indicator
+        const navIcons = document.querySelector('.nav-icons');
+        if (navIcons) {
+            const indicator = document.createElement('div');
+            indicator.id = 'accessIndicator';
+            indicator.style.cssText = `
+                font-size: 0.75rem;
+                color: var(--color-gold-primary);
+                font-weight: 600;
+                letter-spacing: 1px;
+                padding: 0.5rem 1rem;
+                background: rgba(184, 134, 11, 0.1);
+                border-radius: 20px;
+                margin-right: 1rem;
+                border: 1px solid var(--color-gold-primary);
+            `;
+            indicator.textContent = 'TAPPED IN';
+            indicator.title = `Friend access via ${accessData.owner}`;
+            
+            // Insert before search button
+            const searchBtn = document.getElementById('searchBtn');
+            navIcons.insertBefore(indicator, searchBtn);
+        }
+    }
+});
+</script>
 </body>
 </html>

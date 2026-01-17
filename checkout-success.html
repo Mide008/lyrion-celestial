@@ -207,6 +207,12 @@
                         <span class="order-detail-value" style="color: var(--color-gold-primary); font-size: 1.3rem;" id="orderTotal">£0.00</span>
                     </div>
                     
+                    <!-- Referral Info (if applicable) -->
+<div id="referralInfo" style="display: none;" class="order-detail-row">
+    <span class="order-detail-label">Referred by</span>
+    <span class="order-detail-value" id="referralOwner" style="color: var(--color-gold-primary);">—</span>
+</div>
+                    
                     <!-- Order Items -->
                     <div class="order-items-list">
                         <h3 style="font-size: 1.1rem; margin-bottom: 1rem; text-align: center;">Items Ordered</h3>
@@ -358,6 +364,17 @@
         document.getElementById('orderDate').textContent = orderDate;
         document.getElementById('orderEmail').textContent = orderData.customer?.email || orderData.customer?.name || 'Check your email';
         document.getElementById('orderTotal').textContent = orderData.amount ? `£${orderData.amount.toFixed(2)}` : '£0.00';
+        
+        // Add to displayOrderConfirmation function
+        if (orderData.referralCode) {
+            const referralRow = document.getElementById('referralInfo');
+            const referralOwner = document.getElementById('referralOwner');
+            
+            if (referralRow && referralOwner) {
+                referralOwner.textContent = orderData.referralOwner || orderData.referralCode;
+                referralRow.style.display = 'flex';
+            }
+        }
         
         // Render order items
         renderOrderItems(orderData.items);

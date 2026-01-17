@@ -1,7 +1,7 @@
 /**
- * LYRĪON - Checkout - FIXED VERSION
+ * LYRĪON - Checkout - WITH FRIEND ACCESS INTEGRATION
  * Stripe payment integration and order processing
- * Corrected Stripe keys
+ * Now includes friend access discount support
  */
 
 // ==========================================
@@ -28,7 +28,7 @@ let elements = null;
 let cardElement = null;
 
 // ==========================================
-// CHECKOUT STATE
+// CHECKOUT STATE (with friend access)
 // ==========================================
 let checkoutData = {
     cart: null,
@@ -45,7 +45,12 @@ let checkoutData = {
     },
     shipping: 0,
     tax: 0,
-    total: 0
+    total: 0,
+    // Friend access fields
+    accessCode: null,
+    accessOwner: null,
+    accessDiscount: 0,
+    discountAmount: 0
 };
 
 // ==========================================
@@ -73,10 +78,13 @@ async function initCheckout() {
             return;
         }
         
+        // Check for active access code
+        await loadAccessCode();
+        
         // Render order summary
         renderOrderSummary();
         
-        // Calculate totals
+        // Calculate totals (with discount if applicable)
         calculateTotals();
         
         // Setup Stripe Elements
@@ -100,6 +108,82 @@ function getCartFromStorage() {
         console.error('Error reading cart from storage:', e);
         return null;
     }
+}
+
+// ==========================================
+// LOAD ACCESS CODE FROM SESSION
+// ==========================================
+async function loadAccessCode() {
+    try {
+        const accessData = JSON.parse(sessionStorage.getItem('lyrion_access') || 'null');
+        
+        if (accessData && accessData.code) {
+            // Verify code is still valid
+            const config = getConfig();
+            const response = await fetch(`${config.WORKER_URL}/validate-code`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ code: accessData.code })
+            });
+            
+            const result = await response.json();
+            
+            if (result.valid) {
+                checkoutData.accessCode = accessData.code;
+                checkoutData.accessOwner = result.owner;
+                checkoutData.accessDiscount = result.discount || 15;
+                
+                console.log(`✅ Friend access active: ${checkoutData.accessCode} (${checkoutData.accessDiscount}% off)`);
+                
+                // Show access badge
+                showAccessBadge();
+            } else {
+                // Code no longer valid, clear from session
+                sessionStorage.removeItem('lyrion_access');
+                console.log('⚠️ Access code expired or invalid');
+            }
+        }
+    } catch (error) {
+        console.error('Error loading access code:', error);
+        // Don't fail checkout, just proceed without discount
+    }
+}
+
+// ==========================================
+// SHOW ACCESS BADGE IN CHECKOUT
+// ==========================================
+function showAccessBadge() {
+    const summarySection = document.querySelector('.checkout-summary-section');
+    if (!summarySection) return;
+    
+    // Check if badge already exists
+    if (document.getElementById('accessBadge')) return;
+    
+    const badge = document.createElement('div');
+    badge.id = 'accessBadge';
+    badge.style.cssText = `
+        background: rgba(184, 134, 11, 0.1);
+        border: 2px solid var(--color-gold-primary);
+        border-radius: var(--radius-sm);
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    `;
+    
+    badge.innerHTML = `
+        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.25rem;">
+            Friend Access Active
+        </div>
+        <div style="font-size: 0.9rem; color: #666;">
+            Tapped in via ${checkoutData.accessOwner}
+        </div>
+    `;
+    
+    // Insert at the top of summary section
+    const firstChild = summarySection.firstElementChild;
+    summarySection.insertBefore(badge, firstChild);
 }
 
 // ==========================================
@@ -183,7 +267,7 @@ function setupFormListeners() {
 }
 
 // ==========================================
-// HANDLE CHECKOUT SUBMIT - FIXED REDIRECT LOGIC
+// HANDLE CHECKOUT SUBMIT - WITH ACCESS CODE
 // ==========================================
 async function handleCheckoutSubmit(e) {
     e.preventDefault();
@@ -207,17 +291,28 @@ async function handleCheckoutSubmit(e) {
         // Collect customer data
         collectCustomerData(form);
         
+        // Prepare request headers (include access code if present)
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+        
+        if (checkoutData.accessCode) {
+            headers['x-access-code'] = checkoutData.accessCode;
+        }
+        
         // Create Stripe Checkout Session via Cloudflare Worker
         const response = await fetch(`${config.WORKER_URL}/create-payment-intent`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: headers,
             body: JSON.stringify({
                 amount: Math.round(checkoutData.total * 100), // Convert to cents
                 currency: 'gbp',
                 cart: checkoutData.cart,
-                customer: checkoutData.customer
+                customer: checkoutData.customer,
+                // Include access code data
+                accessCode: checkoutData.accessCode,
+                accessDiscount: checkoutData.accessDiscount,
+                accessOwner: checkoutData.accessOwner
             })
         });
         
@@ -236,16 +331,28 @@ async function handleCheckoutSubmit(e) {
             throw new Error('No session ID received from server');
         }
         
-        // Store order for success page
-        localStorage.setItem('last_order', JSON.stringify({
+        // Store order for success page (include referral info)
+        const orderData = {
             sessionId: data.sessionId,
             amount: checkoutData.total,
             customer: checkoutData.customer,
             items: checkoutData.cart.items,
-            timestamp: Date.now()
-        }));
+            timestamp: Date.now(),
+            subtotal: checkoutData.cart.total,
+            shipping: checkoutData.shipping,
+            vat: checkoutData.tax,
+            discountAmount: checkoutData.discountAmount
+        };
         
-        // FIXED: Only use stripe.redirectToCheckout(), NEVER use data.url
+        // Add referral info if access code was used
+        if (checkoutData.accessCode) {
+            orderData.referralCode = checkoutData.accessCode;
+            orderData.referralOwner = checkoutData.accessOwner;
+        }
+        
+        localStorage.setItem('last_order', JSON.stringify(orderData));
+        
+        // Redirect to Stripe Checkout
         if (data.sessionId && stripe) {
             const { error } = await stripe.redirectToCheckout({
                 sessionId: data.sessionId
@@ -337,15 +444,22 @@ function collectCustomerData(form) {
 }
 
 // ==========================================
-// CALCULATE TOTALS
+// CALCULATE TOTALS (WITH FRIEND DISCOUNT)
 // ==========================================
 function calculateTotals() {
-    const subtotal = checkoutData.cart.total;
+    let subtotal = checkoutData.cart.total;
     
-    // Calculate shipping (free over £75, otherwise £4.95)
-    checkoutData.shipping = subtotal >= 75 ? 0 : 4.95;
+    // Apply friend access discount FIRST (before shipping/tax)
+    if (checkoutData.accessDiscount > 0) {
+        checkoutData.discountAmount = subtotal * (checkoutData.accessDiscount / 100);
+        subtotal = subtotal - checkoutData.discountAmount;
+        console.log(`💰 Friend discount applied: ${checkoutData.accessDiscount}% (£${checkoutData.discountAmount.toFixed(2)} off)`);
+    }
     
-    // Calculate tax (20% VAT for UK)
+    // Calculate shipping (£4.95 always - NO free shipping threshold)
+    checkoutData.shipping = 4.95;
+    
+    // Calculate tax (20% VAT on subtotal + shipping)
     const taxableAmount = subtotal + checkoutData.shipping;
     checkoutData.tax = taxableAmount * 0.20;
     
@@ -357,31 +471,48 @@ function calculateTotals() {
 }
 
 // ==========================================
-// UPDATE TOTALS DISPLAY
+// UPDATE TOTALS DISPLAY (WITH DISCOUNT ROW)
 // ==========================================
 function updateTotalsDisplay() {
-    const subtotalElement = document.getElementById('subtotal');
-    const shippingElement = document.getElementById('shipping');
-    const taxElement = document.getElementById('tax');
-    const totalElement = document.getElementById('total');
+    const orderTotals = document.querySelector('.order-totals');
+    if (!orderTotals) return;
     
-    if (subtotalElement) {
-        subtotalElement.textContent = formatPrice(checkoutData.cart.total);
+    // Build totals HTML with discount row if applicable
+    let totalsHTML = `
+        <div class="total-row">
+            <span>Subtotal</span>
+            <span id="subtotal">${formatPrice(checkoutData.cart.total)}</span>
+        </div>
+    `;
+    
+    // Add discount row if friend access is active
+    if (checkoutData.discountAmount > 0) {
+        totalsHTML += `
+            <div class="total-row" style="color: var(--color-gold-primary);">
+                <span>Friend Access (${checkoutData.accessDiscount}%)</span>
+                <span>-${formatPrice(checkoutData.discountAmount)}</span>
+            </div>
+        `;
     }
     
-    if (shippingElement) {
-        shippingElement.textContent = checkoutData.shipping === 0 
-            ? 'FREE' 
-            : formatPrice(checkoutData.shipping);
-    }
+    totalsHTML += `
+        <div class="total-row">
+            <span>Shipping</span>
+            <span id="shipping">${formatPrice(checkoutData.shipping)}</span>
+        </div>
+        
+        <div class="total-row">
+            <span>VAT (20%)</span>
+            <span id="tax">${formatPrice(checkoutData.tax)}</span>
+        </div>
+        
+        <div class="total-row grand-total">
+            <span>Total</span>
+            <span id="total">${formatPrice(checkoutData.total)}</span>
+        </div>
+    `;
     
-    if (taxElement) {
-        taxElement.textContent = formatPrice(checkoutData.tax);
-    }
-    
-    if (totalElement) {
-        totalElement.textContent = formatPrice(checkoutData.total);
-    }
+    orderTotals.innerHTML = totalsHTML;
 }
 
 function formatPrice(price) {

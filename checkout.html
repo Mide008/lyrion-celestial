@@ -285,6 +285,16 @@
                 <div class="checkout-summary-section">
                     <h2 class="form-section-title">Order Summary</h2>
                     
+                    <!-- Friend Access Badge (insert in checkout-summary-section) -->
+<div id="accessBadge" style="display: none; background: rgba(184, 134, 11, 0.1); border: 2px solid var(--color-gold-primary); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.5rem; text-align: center;">
+    <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--color-gold-primary); font-weight: 600; margin-bottom: 0.25rem;">
+        Friend Access Active
+    </div>
+    <div id="accessOwner" style="font-size: 0.9rem; color: #666;">
+        Tapped in
+    </div>
+</div>
+                    
                     <div id="orderSummary">
                         <!-- Order items will be loaded here -->
                         <div class="order-item">
@@ -367,5 +377,27 @@
             }
         });
     </script>
+    
+<script>
+    // Check for active access code
+    document.addEventListener('DOMContentLoaded', () => {
+        const accessData = JSON.parse(sessionStorage.getItem('lyrion_access') || 'null');
+        
+        if (accessData && accessData.code) {
+            // Show access badge
+            const badge = document.getElementById('accessBadge');
+            const ownerText = document.getElementById('accessOwner');
+            
+            if (badge && ownerText) {
+                ownerText.textContent = `Connected through ${accessData.owner}`;
+                badge.style.display = 'block';
+            }
+            
+            // Store code for checkout
+            window.activeAccessCode = accessData.code;
+            window.accessDiscount = accessData.discount || 15;
+        }
+    });
+</script>
 </body>
 </html>
