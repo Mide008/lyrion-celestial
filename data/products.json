@@ -687,6 +687,180 @@
     "fulfillment_type": "pod"
   },
   {
+    "sku": "WOMEN LONG SLEEVE PAJAMA",
+    "title": "Women-long-sleeve-pajama-top",
+    "category": ["Women"],
+    "zodiac_sign": "",
+    "price": 32.97,
+    "compare_at_price": 0,
+    "description": "Drift into the night with our Signature Long Sleeve Pajama Top. Crafted from ultra-soft, breathable fabric, this piece features our iconic celestial detailing for the woman who finds her power in the stars.",
+    "image_front": "Women-long-sleeve-pajama-top.webp",
+    "tags": ["zodiac", "apparel", "tee", "air"],
+    "variants": [
+    {"size": "S", "price": 32.97},
+    {"size": "M", "price": 32.97},
+    {"size": "L", "price": 34.97},
+    {"size": "XL", "price": 36.97},
+    {"size": "XS", "price": 39.97},
+    {"size": "2XL", "price": 41.97}
+  ],
+    "fulfillment_type": "pod"
+    
+  },
+  {
+    "sku": "TAURUS-SLIDE-SIDE",
+    "title": "Taurus-Slide-Men-Side",
+    "category": ["Men"],
+    "zodiac_sign": "Taurus",
+    "price": 40.30,
+    "compare_at_price": 0,
+    "description": "🐂✨ Unshakeable stability meets high-end comfort. Featuring an ergonomic footbed and signature LYRĪON branding, these slides are built for the man who values the finer things.",
+    "image_front": "taurus-slides-side.jpg",
+    "image_back": "taurus-slides-flat.jpg",
+    "image_side": "taurus-slides-lifestyle.jpg",
+    "image_detail": "taurus-slides-front.jpg",
+    "tags": ["zodiac", "taurus", "slide", "air"],
+    "variants": [
+    {"size": "7", "price": 40.30},
+    {"size": "8", "price": 40.30},
+    {"size": "8.5", "price": 40.30},
+    {"size": "9.5", "price": 40.30},
+    {"size": "10", "price": 40.30},
+    {"size": "11", "price": 40.30},
+    {"size": "11.5", "price": 40.30},
+    {"size": "12", "price": 40.30},
+    {"size": "12.5", "price": 40.30}
+  ],
+    "fulfillment_type": "pod"
+  },
+
+  {
+    "sku": "PISCES-MOUSE-PAD",
+    "title": "Pisces Mouse Pad",
+    "category": [""],
+    "zodiac_sign": "Pisces",
+    "price": 27.11,
+    "compare_at_price": 0,
+    "description": "♓️✨ Smooth, fluid tracking for your deepest creative sessions. Let the Pisces energy bring intuitive flow to your workspace.",
+    "image_front": "pisces-mousepad-lifestyle-1.jpg",
+    "tags": ["zodiac", "pisces", "mousepad", "air"],
+    "variants": [
+    {"size": "", "price": 27.11}
+  ],
+    "fulfillment_type": "pod"
+  },
+
+  {
+    "sku": "PISCES-WOMEN-WINDBREAKER",
+    "title": "Pisces Women Windbreaker",
+    "category": ["Women"],
+    "zodiac_sign": "Pisces",
+    "price": 63.75,
+    "compare_at_price": 0,
+    "description": "♓️✨ Lightweight, water-resistant, and inspired by the deep. The perfect layer for the woman who flows through life with intuitive grace and cosmic energy.",
+    "image_front": "pisces-windbreaker-lifestyle-2.jpg",
+    "image_back": "pisces-windbreaker-lifestyle-4.jpg",
+    "image_side": "all-over-print-womens-cropped-windbreaker-black-front-696059ca65826.jpg",
+    "image_detail": "pisces-windbreaker-lifestyle-5.jpg",
+    "tags": ["zodiac", "pisces", "windbreaker", "air"],
+    "variants": [
+    {"size": "XS", "price": 63.30},
+    {"size": "S", "price": 63.30},
+    {"size": "M", "price": 63.30},
+    {"size": "L", "price": 63.30},
+    {"size": "XL", "price": 63.30},
+    {"size": "2XL", "price": 64.30}
+  ],
+    "fulfillment_type": "pod"
+  },
+
+  {
+    "sku": "TAURUS-RAM-ORGANIC-TEE",
+    "title": "Taurus Ram Organic Tee",
+    "category": ["Men", "Women"],
+    "zodiac_sign": "Taurus",
+    "price": 39.57,
+    "compare_at_price": 0,
+    "description": "🐂✨ Premium organic cotton meets unshakeable Taurus energy. A high-end, eco-friendly staple for the man who values quality that lasts a lifetime.",
+    "image_front": "taurus-organic-tee-lifestyle-7.jpg",
+    "image_back": "taurus-organic-tee-lifestyle-8.jpg",
+    "image_side": "taurus-organic-tee-lifestyle-5.jpg",
+    "image_detail": "taurus-organic-tee-lifestyle-3.jpg",
+    "tags": ["zodiac", "taurus", "tee", "air"],
+    "variants": [
+    {"size": "S", "price": 39.57},
+    {"size": "M", "price": 39.57},
+    {"size": "L", "price": 39.57},
+    {"size": "XL", "price": 39.57},
+    {"size": "2XL", "price": 41.57}
+  ],
+    "fulfillment_type": "pod"
+  },
+
+  {
+    "sku": "ARIES-UNISEX-HOODIE",
+    "title": "Aries Unisex Hoodie",
+    "category": ["Men", "Women"],
+    "zodiac_sign": "Aries",
+    "price": 46.95,
+    "compare_at_price": 0,
+    "description": "♈️🔥 Bold energy meets premium warmth. This heavyweight hoodie is designed for the pioneers, the leaders, and the fearless souls who strike first.",
+    "image_front": "unisex-heavy-blend-hoodie-white-back.jpg",
+    "image_back": "unisex-heavy-blend-hoodie-white-front.jpg",
+    "image_side": "unisex-heavy-blend-hoodie-white-front-69743.jpg",
+    "tags": ["zodiac", "aries", "hoodie", "air"],
+    "variants": [
+    {"size": "S", "price": 46.95},
+    {"size": "M", "price": 46.95},
+    {"size": "L", "price": 46.95},
+    {"size": "XL", "price": 46.95},
+    {"size": "2XL", "price": 47.95},
+    {"size": "3XL", "price": 48.95},
+    {"size": "4XL", "price": 50.95},
+    {"size": "5XL", "price": 51.57}
+  ],
+    "fulfillment_type": "pod"
+  },
+
+  {
+    "sku": "CROSSBODY-BAG",
+    "title": "Pisces Crossbody Bag",
+    "category": [""],
+    "zodiac_sign": "Pisces",
+    "price": 36.64,
+    "compare_at_price": 0,
+    "description": "🌌✨ Designed for the urban mystic on the move. This structured crossbody keeps your essentials secure while leaving you free to follow your intuition. Minimalist, durable, and universally styled.",
+    "image_front": "all-over-print-crossbody-bag-black-front.jpg",
+    "tags": ["zodiac", "pisces", "crossbag", "air"],
+    "variants": [
+    {"size": "", "price": 36.64}
+  ],
+    "fulfillment_type": "pod"
+  },
+
+  {
+    "sku": "PISCES-TOTE-BAG",
+    "title": "Pisces Tote Bag",
+    "category": ["Men", "Women"],
+    "zodiac_sign": "Pisces",
+    "price": 33.70,
+    "compare_at_price": 0,
+    "description": "♓️✨ Spacious, durable, and flowing with Pisces energy. The ultimate tote for the visionary who carries their world—and their imagination everywhere they go.",
+    "image_front": "clear-tote-bag-one-size-front-2.jpg",
+    "image_back": "clear-tote-bag-one-size-left-front-6.jpg",
+    "image_side": "clear-tote-bag-one-size-f.jpg",
+    "tags": ["zodiac", "pisces", "tote", "air"],
+    "variants": [
+    {"size": "S", "price": 33.70},
+    {"size": "M", "price": 33.70},
+    {"size": "L", "price": 33.70},
+    {"size": "XL", "price": 33.70}
+  ],
+    "fulfillment_type": "pod"
+  },
+
+
+  {
     "sku": "A-TEE-STAPLE-YOUTH",
     "title": "Staple Youth Tee",
     "category": ["Moon Girls", "Star Boys"],
