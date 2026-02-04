@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LYRĪON Valentine's Day - Celestial Love & Cosmic Connections. Discover zodiac-compatible gifts and romantic celestial readings.">
+    <title>Celestial Valentine | LYRĪON - Cosmic Connections</title>
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Celestial Valentine | LYRĪON">
+    <meta property="og:description" content="Discover zodiac-compatible gifts and romantic cosmic readings. Celebrate love written in the stars.">
+    <meta property="og:image" content="https://lyrion.co.uk/assets/img/valentine-og.jpg">
+    <meta property="og:url" content="https://lyrion.co.uk/valentine.html">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Celestial Valentine | LYRĪON">
+    <meta name="twitter:description" content="Love written in the stars. Discover zodiac-compatible gifts.">
+    <meta name="twitter:image" content="https://lyrion.co.uk/assets/img/valentine-og.jpg">
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Valentine-specific CSS -->
+    <style>
+        /* === VALENTINE HERO SECTION === */
+        .valentine-hero {
+            min-height: 90vh;
+            background: linear-gradient(135deg, 
+                rgba(123, 44, 191, 0.85) 0%, 
+                rgba(184, 134, 11, 0.75) 50%,
+                rgba(215, 38, 61, 0.8) 100%),
+                url('./assets/img/valentine-stars.jpg') center/cover;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatHeart 15s infinite linear;
+            color: rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* === COUPLE ZODIAC MATCHING === */
+        .zodiac-match-section {
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+        }
+        
+        .match-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .zodiac-selector {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease;
+        }
+        
+        .zodiac-selector:hover {
+            transform: translateY(-5px);
+        }
+        
+        .selector-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--color-gold-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .zodiac-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .zodiac-option {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-cream-dark);
+            border: 2px solid transparent;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+        }
+        
+        .zodiac-option:hover {
+            background: var(--color-white);
+            border-color: var(--color-gold-accent);
+        }
+        
+        .zodiac-option.selected {
+            background: var(--color-gold-primary);
+            color: var(--color-white);
+            border-color: var(--color-gold-primary);
+            transform: scale(1.05);
+        }
+        
+        .zodiac-symbol-small {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .zodiac-name-small {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .match-center {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .heart-connector {
+            font-size: 3rem;
+            color: #D7263D;
+            animation: heartbeat 1.5s infinite;
+            margin: 1rem 0;
+            filter: drop-shadow(0 0 10px rgba(215, 38, 61, 0.3));
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .compatibility-result {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .compatibility-result.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .match-score {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #D7263D;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .match-text {
+            font-size: 1.2rem;
+            color: var(--color-ink);
+            margin-bottom: 1rem;
+        }
+        
+        .match-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* === VALENTINE PRODUCTS === */
+        .valentine-products {
+            padding: var(--spacing-xl) 0;
+            background: var(--color-white);
+        }
+        
+        .products-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--color-ink);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .valentine-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .category-card {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 400px;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .category-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover .category-image {
+            transform: scale(1.1);
+        }
+        
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 13, 11, 0.9), transparent);
+            padding: 2rem;
+            color: var(--color-white);
+        }
+        
+        .category-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* === LOVE STORIES SECTION === */
+        .love-stories {
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.05), rgba(215, 38, 61, 0.05));
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .story-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .story-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 4rem;
+            color: rgba(184, 134, 11, 0.1);
+            font-family: var(--font-serif);
+            line-height: 1;
+        }
+        
+        .story-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .story-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-gold-primary);
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+        
+        .author-zodiac {
+            font-size: 0.9rem;
+            color: var(--color-gold-accent);
+            font-weight: 600;
+        }
+        
+        /* === ROMANTIC READINGS === */
+        .romantic-readings {
+            padding: var(--spacing-xl) 0;
+            background: var(--color-white);
+        }
+        
+        .readings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .reading-card {
+            background: linear-gradient(135deg, var(--color-white), var(--color-cream-dark));
+            border: 2px solid transparent;
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reading-card:hover {
+            border-color: #D7263D;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(215, 38, 61, 0.1);
+        }
+        
+        .reading-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #D7263D;
+            transition: transform 0.3s ease;
+        }
+        
+        .reading-card:hover .reading-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .reading-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--color-ink);
+            margin-bottom: 1rem;
+        }
+        
+        .reading-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .reading-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #D7263D;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* === COUNTDOWN TIMER === */
+        .countdown-section {
+            background: linear-gradient(135deg, var(--color-ink), #1a1816);
+            color: var(--color-white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .countdown-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .countdown-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--color-gold-accent);
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .countdown-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-gold-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(184, 134, 11, 0.5);
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+        }
+        
+        /* === COUPLE ZODIAC ANIMATION === */
+        .zodiac-animation {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        
+        .zodiac-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(184, 134, 11, 0.3);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .zodiac-ring:nth-child(2) {
+            animation: rotate 15s linear infinite reverse;
+            border-color: rgba(215, 38, 61, 0.3);
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .match-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .heart-connector {
+                transform: rotate(90deg);
+                margin: 0;
+            }
+            
+            .countdown-timer {
+                gap: 1rem;
+            }
+            
+            .countdown-value {
+                font-size: 2.5rem;
+            }
+            
+            .valentine-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-card {
+                height: 300px;
+            }
+            
+            .floating-heart {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* === SPECIAL OFFER BADGE === */
+        .special-offer {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #D7263D;
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+        
+        /* === INTERACTIVE ELEMENTS === */
+        .interactive-element {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        /* === SCROLL ANIMATIONS === */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="mainNav">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="./assets/img/logo-circle.png" alt="LYRĪON">
+                LYRĪON
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="oracle.html">The Oracle</a></li>
+                <li><a href="valentine.html" class="active">Celestial Valentine</a></li>
+                <li><a href="compatibility.html">Compatibility</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" id="searchBtn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <button class="nav-icon" id="cartBtn" aria-label="Shopping cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Valentine Hero Section -->
+    <section class="valentine-hero">
+        <div class="floating-hearts" id="floatingHearts"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Love Written in the Stars</h1>
+            <p class="hero-subtitle">Discover your cosmic connection this Valentine's Day</p>
+            <div class="hero-cta">
+                <a href="#zodiac-match" class="btn btn-primary">Find Your Match</a>
+                <a href="#valentine-gifts" class="btn btn-outline" style="color: var(--color-white); border-color: var(--color-white);">Shop Gifts</a>
+                <a href="#readings" class="btn btn-secondary" style="background: rgba(255,255,255,0.1); color: var(--color-white);">Romantic Readings</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Couple Zodiac Matching -->
+    <section id="zodiac-match" class="zodiac-match-section">
+        <div class="container">
+            <h2 class="section-title text-center">Discover Your Cosmic Compatibility</h2>
+            <p class="section-subtitle text-center">Select both signs to see how your stars align</p>
+            
+            <div class="match-container">
+                <!-- Person 1 Zodiac Selector -->
+                <div class="zodiac-selector scroll-reveal">
+                    <h3 class="selector-title">Your Sign</h3>
+                    <div class="zodiac-grid-compact" id="zodiacSelector1">
+                        <!-- Generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Center Heart -->
+                <div class="match-center">
+                    <div class="heart-connector">❤</div>
+                    <button id="calculateMatch" class="btn btn-primary" style="background: #D7263D; border-color: #D7263D;">Calculate Match</button>
+                </div>
+                
+                <!-- Person 2 Zodiac Selector -->
+                <div class="zodiac-selector scroll-reveal">
+                    <h3 class="selector-title">Their Sign</h3>
+                    <div class="zodiac-grid-compact" id="zodiacSelector2">
+                        <!-- Generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Compatibility Result -->
+            <div class="compatibility-result" id="compatibilityResult">
+                <div class="match-score">0%</div>
+                <h3 class="match-text" id="matchTitle">Select Both Signs</h3>
+                <p class="match-description" id="matchDescription">Choose your zodiac signs to discover your cosmic compatibility and relationship insights.</p>
+                <div class="zodiac-animation">
+                    <div class="zodiac-ring"></div>
+                    <div class="zodiac-ring"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valentine Products -->
+    <section id="valentine-gifts" class="valentine-products">
+        <div class="container">
+            <div class="products-header scroll-reveal">
+                <h2 class="section-title">Celestial Gifts for Every Love Language</h2>
+                <p class="section-subtitle">Curated pieces that speak to the heart, aligned with cosmic energy</p>
+            </div>
+            
+            <div class="valentine-categories">
+                <!-- For Him -->
+                <a href="shop.html?category=Men&valentine=true" class="category-card interactive-element">
+                    <div class="special-offer">Best Sellers</div>
+                    <img src="./assets/IMG-20260131-WA0017.jpg" alt="For Him" class="category-image">
+                    <div class="category-overlay">
+                        <h3 class="category-title">For Him</h3>
+                        <p>Zodiac-inspired apparel</p>
+                    </div>
+                </a>
+                
+                <!-- For Her -->
+                <a href="shop.html?category=Women&valentine=true" class="category-card interactive-element">
+                    <div class="special-offer">New Arrivals</div>
+                    <img src="./assets/IMG-20260131-WA0021.jpg" alt="For Her" class="category-image">
+                    <div class="category-overlay">
+                        <h3 class="category-title">For Her</h3>
+                        <p>Celestial ritual wear</p>
+                    </div>
+                </a>
+                
+                <!-- Couple Sets -->
+                <!-- <a href="shop.html?category=Bundles&valentine=true" class="category-card interactive-element">
+                    <div class="special-offer">Couple Deal</div>
+                    <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=800&h=600&fit=crop&crop=center" alt="Couple Sets" class="category-image">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Couple Sets</h3>
+                        <p>Matching zodiac constellations</p>
+                    </div>
+                </a> -->
+            </div>
+            
+            <!-- Featured Valentine Products -->
+            <div class="product-grid" id="valentineFeatured">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Stories -->
+    <section class="love-stories">
+        <div class="container">
+            <div class="products-header scroll-reveal">
+                <h2 class="section-title">Cosmic Love Stories</h2>
+                <p class="section-subtitle">Real connections made under our celestial designs</p>
+            </div>
+            
+            <div class="stories-grid">
+                <!-- Story 1 -->
+                <div class="story-card scroll-reveal">
+                    <p class="story-content">
+                        "The Taurus & Gemini couple set we gifted each other perfectly represents our balance. 
+                        He's grounded, I'm airy – together we create magic."
+                    </p>
+                    <div class="story-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b786d4d9?w=100&h=100&fit=crop&crop=face" alt="Alex" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Alex & Jordan</h4>
+                            <div class="author-zodiac">Taurus ♉ & Gemini ♊</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Story 2 -->
+                <div class="story-card scroll-reveal">
+                    <p class="story-content">
+                        "Our Cancer & Pisces matching robes have become our ritual. Every full moon, 
+                        we wear them for our connection meditation. It's our sacred couple time."
+                    </p>
+                    <div class="story-author">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop&crop=face" alt="Sam" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sam & Taylor</h4>
+                            <div class="author-zodiac">Cancer ♋ & Pisces ♓</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Story 3 -->
+                <div class="story-card scroll-reveal">
+                    <p class="story-content">
+                        "The relationship synastry reading revealed aspects of our connection we hadn't understood. 
+                        It helped us navigate challenges with cosmic awareness."
+                    </p>
+                    <div class="story-author">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face" alt="Morgan" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Morgan & Casey</h4>
+                            <div class="author-zodiac">Leo ♌ & Aquarius ♒</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Romantic Readings -->
+    <section id="readings" class="romantic-readings">
+        <div class="container">
+            <div class="products-header scroll-reveal">
+                <h2 class="section-title">Romantic Cosmic Readings</h2>
+                <p class="section-subtitle">Deepen your connection with celestial insights</p>
+            </div>
+            
+            <div class="readings-grid">
+                <!-- Reading 1 -->
+                <div class="reading-card interactive-element" onclick="window.location.href='oracle.html?tier=synastry'">
+                    <div class="reading-icon">☽☌☉</div>
+                    <h3 class="reading-title">Relationship Synastry</h3>
+                    <p class="reading-description">
+                        Detailed compatibility analysis between two birth charts. Understand your cosmic dance.
+                    </p>
+                    <div class="reading-price">£95</div>
+                    <div class="btn btn-outline">Book Reading</div>
+                </div>
+                
+                <!-- Reading 2 -->
+                <div class="reading-card interactive-element" onclick="window.location.href='oracle.html?tier=premium'">
+                    <div class="reading-icon">♡✦♡</div>
+                    <h3 class="reading-title">Love & Connection</h3>
+                    <p class="reading-description">
+                        Focused reading on romantic patterns, timing, and soul connection in your chart.
+                    </p>
+                    <div class="reading-price">£65</div>
+                    <div class="btn btn-outline">Book Reading</div>
+                </div>
+                
+                <!-- Reading 3 -->
+                <div class="reading-card interactive-element" onclick="window.location.href='oracle.html?tier=detailed'">
+                    <div class="special-offer" style="background: var(--color-gold-primary);">Popular</div>
+                    <div class="reading-icon">☾♁☉</div>
+                    <h3 class="reading-title">Couple's Journey</h3>
+                    <p class="reading-description">
+                        Forecasting your relationship's cosmic weather for the next 6 months.
+                    </p>
+                    <div class="reading-price">£125</div>
+                    <div class="btn btn-primary" style="background: #D7263D; border-color: #D7263D;">Book Reading</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section class="countdown-section">
+        <div class="countdown-container">
+            <h2 class="countdown-title scroll-reveal">Valentine's Day Countdown</h2>
+            <p class="section-subtitle scroll-reveal" style="color: rgba(255,255,255,0.8); margin-bottom: 3rem;">
+                Order by February 10th for guaranteed Valentine's delivery
+            </p>
+            
+            <div class="countdown-timer">
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            
+            <a href="shop.html?valentine=true" class="btn btn-primary" style="background: var(--color-gold-primary); border-color: var(--color-gold-primary); font-size: 1.1rem; padding: 1rem 2.5rem;">
+                Shop Valentine Collection
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LYRĪON</h4>
+                    <p>Celestial couture made in England. Wear your sign with intention.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Valentine Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html?category=Men&valentine=true">For Him</a></li>
+                        <li><a href="shop.html?category=Women&valentine=true">For Her</a></li>
+                        <li><a href="shop.html?category=Bundles&valentine=true">Couple Sets</a></li>
+                        <li><a href="shop.html?category=Accessories&valentine=true">Romantic Accessories</a></li>
+                        <li><a href="shop.html?category=Home&valentine=true">Love & Altar</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="valentine.html#zodiac-match">Compatibility Test</a></li>
+                        <li><a href="oracle.html">Romantic Readings</a></li>
+                        <li><a href="compatibility.html">Zodiac Compatibility</a></li>
+                        <li><a href="codex.html">Love in the Stars</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="shipping.html">Valentine Shipping</a></li>
+                        <li><a href="contact.html">Gift Consultation</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 LYRĪON Celestial Couture. All rights reserved. Made with love and intention in England.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">This Valentine's Day, may your stars align perfectly.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/search.js"></script>
+    
+    <!-- Valentine-specific JavaScript -->
+    <script>
+        // ==========================================
+        // FLOATING HEARTS ANIMATION
+        // ==========================================
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            if (!container) return;
+            
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '❤';
+                
+                // Random properties
+                const size = Math.random() * 1.5 + 0.5;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 10;
+                
+                heart.style.cssText = `
+                    left: ${left}%;
+                    font-size: ${size}rem;
+                    animation-delay: ${delay}s;
+                    animation-duration: ${duration}s;
+                `;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // ==========================================
+        // ZODIAC MATCHING SYSTEM
+        // ==========================================
+        const zodiacSigns = [
+            { symbol: '♈', name: 'Aries', element: 'Fire' },
+            { symbol: '♉', name: 'Taurus', element: 'Earth' },
+            { symbol: '♊', name: 'Gemini', element: 'Air' },
+            { symbol: '♋', name: 'Cancer', element: 'Water' },
+            { symbol: '♌', name: 'Leo', element: 'Fire' },
+            { symbol: '♍', name: 'Virgo', element: 'Earth' },
+            { symbol: '♎', name: 'Libra', element: 'Air' },
+            { symbol: '♏', name: 'Scorpio', element: 'Water' },
+            { symbol: '♐', name: 'Sagittarius', element: 'Fire' },
+            { symbol: '♑', name: 'Capricorn', element: 'Earth' },
+            { symbol: '♒', name: 'Aquarius', element: 'Air' },
+            { symbol: '♓', name: 'Pisces', element: 'Water' }
+        ];
+        
+        const compatibilityMatrix = {
+            'Aries': { best: ['Leo', 'Sagittarius', 'Gemini', 'Aquarius'], worst: ['Cancer', 'Capricorn'] },
+            'Taurus': { best: ['Virgo', 'Capricorn', 'Cancer', 'Pisces'], worst: ['Leo', 'Aquarius'] },
+            'Gemini': { best: ['Libra', 'Aquarius', 'Aries', 'Leo'], worst: ['Virgo', 'Pisces'] },
+            'Cancer': { best: ['Scorpio', 'Pisces', 'Taurus', 'Virgo'], worst: ['Aries', 'Libra'] },
+            'Leo': { best: ['Aries', 'Sagittarius', 'Gemini', 'Libra'], worst: ['Taurus', 'Scorpio'] },
+            'Virgo': { best: ['Taurus', 'Capricorn', 'Cancer', 'Scorpio'], worst: ['Gemini', 'Sagittarius'] },
+            'Libra': { best: ['Gemini', 'Aquarius', 'Leo', 'Sagittarius'], worst: ['Cancer', 'Capricorn'] },
+            'Scorpio': { best: ['Cancer', 'Pisces', 'Virgo', 'Capricorn'], worst: ['Leo', 'Aquarius'] },
+            'Sagittarius': { best: ['Aries', 'Leo', 'Libra', 'Aquarius'], worst: ['Virgo', 'Pisces'] },
+            'Capricorn': { best: ['Taurus', 'Virgo', 'Scorpio', 'Pisces'], worst: ['Aries', 'Libra'] },
+            'Aquarius': { best: ['Gemini', 'Libra', 'Aries', 'Sagittarius'], worst: ['Taurus', 'Scorpio'] },
+            'Pisces': { best: ['Cancer', 'Scorpio', 'Taurus', 'Capricorn'], worst: ['Gemini', 'Sagittarius'] }
+        };
+        
+        const matchDescriptions = {
+            high: [
+                "Your stars are in perfect alignment! This connection has cosmic approval.",
+                "A harmonious blend of energies. Your differences complement each other beautifully.",
+                "The universe smiles upon this union. Expect deep understanding and mutual growth."
+            ],
+            medium: [
+                "An interesting cosmic dance. With awareness, this can become something special.",
+                "Your energies create sparks – some challenging, some magical.",
+                "A learning relationship that can bring significant growth to both partners."
+            ],
+            low: [
+                "A cosmic challenge! This requires effort and understanding to harmonize.",
+                "Your stars create tension, but tension can lead to transformation.",
+                "A relationship that will teach both of you important lessons about yourselves."
+            ]
+        };
+        
+        let selectedSign1 = null;
+        let selectedSign2 = null;
+        
+        function initializeZodiacSelectors() {
+            const selector1 = document.getElementById('zodiacSelector1');
+            const selector2 = document.getElementById('zodiacSelector2');
+            
+            zodiacSigns.forEach((sign, index) => {
+                const option1 = createZodiacOption(sign, index, 1);
+                const option2 = createZodiacOption(sign, index, 2);
+                
+                selector1.appendChild(option1);
+                selector2.appendChild(option2);
+            });
+        }
+        
+        function createZodiacOption(sign, index, selectorNum) {
+            const div = document.createElement('div');
+            div.className = 'zodiac-option';
+            div.dataset.sign = sign.name;
+            div.dataset.index = index;
+            
+            div.innerHTML = `
+                <div class="zodiac-symbol-small">${sign.symbol}</div>
+                <div class="zodiac-name-small">${sign.name}</div>
+            `;
+            
+            div.addEventListener('click', () => selectZodiac(sign.name, selectorNum));
+            return div;
+        }
+        
+        function selectZodiac(signName, selectorNum) {
+            const selector = selectorNum === 1 ? selectedSign1 : selectedSign2;
+            const otherSelector = selectorNum === 1 ? selectedSign2 : selectedSign1;
+            
+            // Don't allow same sign selection
+            if ((selectorNum === 1 && signName === selectedSign2) || 
+                (selectorNum === 2 && signName === selectedSign1)) {
+                return;
+            }
+            
+            // Update selected sign
+            if (selectorNum === 1) {
+                selectedSign1 = signName;
+            } else {
+                selectedSign2 = signName;
+            }
+            
+            // Update UI
+            updateZodiacSelectionUI(signName, selectorNum);
+            
+            // If both selected, enable calculate button
+            if (selectedSign1 && selectedSign2) {
+                document.getElementById('calculateMatch').disabled = false;
+                document.getElementById('calculateMatch').style.opacity = '1';
+                document.getElementById('calculateMatch').style.cursor = 'pointer';
+            }
+        }
+        
+        function updateZodiacSelectionUI(signName, selectorNum) {
+            const selectorId = `zodiacSelector${selectorNum}`;
+            const options = document.querySelectorAll(`#${selectorId} .zodiac-option`);
+            
+            options.forEach(option => {
+                option.classList.remove('selected');
+                if (option.dataset.sign === signName) {
+                    option.classList.add('selected');
+                }
+            });
+        }
+        
+        function calculateCompatibility() {
+            if (!selectedSign1 || !selectedSign2) return;
+            
+            const compatibility = compatibilityMatrix[selectedSign1];
+            let score = 50; // Base score
+            
+            // Adjust score based on compatibility
+            if (compatibility.best.includes(selectedSign2)) {
+                score = 85 + Math.floor(Math.random() * 15);
+            } else if (compatibility.worst.includes(selectedSign2)) {
+                score = 30 + Math.floor(Math.random() * 20);
+            } else {
+                score = 60 + Math.floor(Math.random() * 25);
+            }
+            
+            // Ensure score is between 0-100
+            score = Math.max(0, Math.min(100, score));
+            
+            // Determine match level
+            let matchLevel, description;
+            if (score >= 75) {
+                matchLevel = 'high';
+                description = matchDescriptions.high[Math.floor(Math.random() * matchDescriptions.high.length)];
+            } else if (score >= 50) {
+                matchLevel = 'medium';
+                description = matchDescriptions.medium[Math.floor(Math.random() * matchDescriptions.medium.length)];
+            } else {
+                matchLevel = 'low';
+                description = matchDescriptions.low[Math.floor(Math.random() * matchDescriptions.low.length)];
+            }
+            
+            // Update result display with animation
+            const resultElement = document.getElementById('compatibilityResult');
+            const scoreElement = resultElement.querySelector('.match-score');
+            const titleElement = document.getElementById('matchTitle');
+            const descElement = document.getElementById('matchDescription');
+            
+            // Animate score
+            animateValue(scoreElement, 0, score, 1500);
+            
+            // Update text
+            titleElement.textContent = `${selectedSign1} ♡ ${selectedSign2}`;
+            descElement.textContent = description;
+            
+            // Show result with animation
+            resultElement.classList.add('show');
+            
+            // Scroll to result
+            setTimeout(() => {
+                resultElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 500);
+        }
+        
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = `${value}%`;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // ==========================================
+        // COUNTDOWN TIMER
+        // ==========================================
+        function updateCountdown() {
+            const valentinesDay = new Date(new Date().getFullYear(), 1, 14); // February 14
+            const now = new Date();
+            
+            // If Valentine's Day has passed this year, set to next year
+            if (now > valentinesDay) {
+                valentinesDay.setFullYear(valentinesDay.getFullYear() + 1);
+            }
+            
+            const diff = valentinesDay - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // ==========================================
+        // SCROLL REVEAL ANIMATIONS
+        // ==========================================
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            revealElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // ==========================================
+        // LOAD VALENTINE PRODUCTS
+        // ==========================================
+        async function loadValentineProducts() {
+            try {
+                const response = await fetch('data/products.json');
+                const products = await response.json();
+                
+                // Filter for Valentine-appropriate products (you might want to add a 'valentine' tag to your products.json)
+                const valentineProducts = products
+                    .filter(p => p.category === 'Women' || p.category === 'Men' || p.category === 'Accessories')
+                    .slice(0, 4);
+                
+                const container = document.getElementById('valentineFeatured');
+                if (!container) return;
+                
+                container.innerHTML = valentineProducts.map(product => `
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="assets/products/${product.image_front}" 
+                                 alt="${product.title}"
+                                 loading="lazy"
+                                 onerror="this.src='assets/img/placeholder.png'">
+                            <span class="product-badge">Valentine's Pick</span>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-title">${product.title}</h3>
+                            <div class="product-price">
+                                <span class="price-current">£${parseFloat(product.price).toFixed(2)}</span>
+                                ${product.compare_at_price > 0 ? `<span class="price-compare">£${parseFloat(product.compare_at_price).toFixed(2)}</span>` : ''}
+                            </div>
+                            <p class="product-description">${product.description}</p>
+                            <a href="product.html?sku=${product.sku}" class="btn btn-primary btn-full">View Details</a>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading Valentine products:', error);
+            }
+        }
+        
+        // ==========================================
+        // INITIALIZE EVERYTHING
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create floating hearts
+            createFloatingHearts();
+            
+            // Initialize zodiac selectors
+            initializeZodiacSelectors();
+            
+            // Setup calculate button
+            const calculateBtn = document.getElementById('calculateMatch');
+            calculateBtn.addEventListener('click', calculateCompatibility);
+            calculateBtn.disabled = true;
+            calculateBtn.style.opacity = '0.5';
+            calculateBtn.style.cursor = 'not-allowed';
+            
+            // Start countdown timer
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Initialize scroll animations
+            initScrollReveal();
+            
+            // Load Valentine products
+            loadValentineProducts();
+            
+            // Add click sound for interactive elements (optional)
+            document.querySelectorAll('.interactive-element').forEach(element => {
+                element.addEventListener('click', () => {
+                    // You could add a subtle sound here
+                    // new Audio('/assets/sounds/click.mp3').play();
+                });
+            });
+            
+            // Add parallax effect to hero on scroll
+            window.addEventListener('scroll', () => {
+                const hero = document.querySelector('.valentine-hero');
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                hero.style.backgroundPosition = `center ${rate}px`;
+            });
+            
+            // Initialize tooltips
+            document.querySelectorAll('[title]').forEach(element => {
+                element.addEventListener('mouseenter', (e) => {
+                    // Could implement custom tooltips here
+                });
+            });
+        });
+        
+        // ==========================================
+        // VALENTINE THEME MUSIC/SOUND (OPTIONAL)
+        // ==========================================
+        // Uncomment to add background music
+        /*
+        const valentineMusic = new Audio('/assets/music/valentine-ambient.mp3');
+        valentineMusic.loop = true;
+        valentineMusic.volume = 0.3;
+        
+        document.addEventListener('click', () => {
+            if (valentineMusic.paused) {
+                valentineMusic.play().catch(e => console.log('Audio play failed:', e));
+            }
+        }, { once: true });
+        */
+    </script>
+</body>
+</html>

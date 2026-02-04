@@ -413,3 +413,32 @@ window.ShopAPI = {
     applyFilters,
     clearAllFilters
 };
+
+// In shop.js, add Valentine filter handling
+function filterProducts(products, filters) {
+  // ... existing filtering logic ...
+  
+  // Add Valentine filter
+  if (filters.valentine) {
+    // Filter for Valentine-appropriate products
+    filtered = filtered.filter(product => 
+      product.category === 'Women' || 
+      product.category === 'Men' || 
+      product.category === 'Accessories' ||
+      product.tags?.includes('valentine')
+    );
+  }
+  
+  return filtered;
+}
+
+// In loadProducts function, check for Valentine URL parameter
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const valentineFilter = urlParams.get('valentine');
+  
+  if (valentineFilter) {
+    // Apply Valentine filter
+    // You'll need to update your filter system to handle this
+  }
+});

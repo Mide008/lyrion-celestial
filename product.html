@@ -36,6 +36,7 @@
            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
+                <li><a href="valentine.html">Celestial Valentine</a></li>
                 <li><a href="oracle.html">The Oracle</a></li>
                 <li><a href="codex.html">Codex</a></li>
                 <li><a href="compatibility.html">Compatibility</a></li>
@@ -680,6 +681,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+// In product.html JavaScript, add:
+const urlParams = new URLSearchParams(window.location.search);
+const fromValentine = urlParams.get('from') === 'valentine';
+
+if (fromValentine) {
+  // Add Valentine styling
+  document.body.classList.add('valentine-theme');
+  
+  // Add Valentine message
+  const productInfo = document.querySelector('.product-info-section');
+  if (productInfo) {
+    const valentineMessage = document.createElement('div');
+    valentineMessage.className = 'valentine-message';
+    valentineMessage.innerHTML = `
+      <div style="background: linear-gradient(135deg, rgba(215, 38, 61, 0.1), rgba(184, 134, 11, 0.1)); 
+                  padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem; 
+                  border-left: 3px solid #D7263D;">
+        <p style="margin: 0; font-size: 0.95rem; color: #D7263D;">
+          ✨ Perfect Valentine's Gift! Ships in time for Feb 14th
+        </p>
+      </div>
+    `;
+    productInfo.insertBefore(valentineMessage, productInfo.firstChild);
+  }
+}
 </script>
 </body>
 </html>

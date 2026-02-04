@@ -859,6 +859,44 @@
     "fulfillment_type": "pod"
   },
 
+  {
+    "sku": "HOODIE",
+    "title": "Zodiac Hoodie",
+    "category": ["Men"],
+    "zodiac_sign": "#",
+    "price": 45.70,
+    "compare_at_price": 0,
+    "description": "✨ Elevated comfort for the modern man. 🪐✨ A premium, heavyweight essential designed for a structured fit and maximum warmth. Whether you’re layering up or standing alone, this hoodie brings a refined, cosmic edge to your daily rotation.",
+    "image_front": "IMG-20260131-WA0017.jpg",
+    "tags": ["zodiac", "air"],
+    "variants": [
+    {"size": "S", "price": 45.70},
+    {"size": "M", "price": 45.70},
+    {"size": "L", "price": 45.70},
+    {"size": "XL", "price": 45.70}
+  ],
+    "fulfillment_type": "pod"
+  },
+
+  {
+    "sku": "HOODIE",
+    "title": "Zodiac Hoodie",
+    "category": ["Women"],
+    "zodiac_sign": "#",
+    "price": 47.70,
+    "compare_at_price": 0,
+    "description": "✨ Designed with a tailored, feminine silhouette and an ultra-soft fleece interior. This hoodie provides the perfect balance of cozy warmth and refined style for your 2026 wardrobe.",
+    "image_front": "IMG-20260131-WA0017.jpg",
+    "tags": ["zodiac", "air"],
+    "variants": [
+    {"size": "S", "price": 47.70},
+    {"size": "M", "price": 47.70},
+    {"size": "L", "price": 47.70},
+    {"size": "XL", "price": 47.70}
+  ],
+    "fulfillment_type": "pod"
+  },
+
 
   {
     "sku": "A-TEE-STAPLE-YOUTH",
