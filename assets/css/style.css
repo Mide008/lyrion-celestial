@@ -3287,3 +3287,150 @@ footer {
     color: rgba(255, 255, 255, 0.95) !important;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
 }
+
+/* ================================
+   ENHANCED MOBILE RESPONSIVENESS
+   Added at the bottom for global coverage
+   ================================ */
+
+/* Base mobile adjustments */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll and ensure full width */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Containers: reduce side padding for more space */
+  .container,
+  .container-narrow {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Typography: scale down headings slightly */
+  h1 { font-size: clamp(2rem, 8vw, 2.5rem); }
+  h2 { font-size: clamp(1.75rem, 7vw, 2rem); }
+  h3 { font-size: clamp(1.25rem, 6vw, 1.5rem); }
+  p  { font-size: 1rem; line-height: 1.6; }
+
+  /* Adjust section spacing */
+  .section { padding: 3rem 0; }
+  .section-sm { padding: 2rem 0; }
+
+  /* Navigation: ensure logo fits */
+  .logo img { height: 32px; }
+  .logo { font-size: 1.25rem; gap: 0.5rem; }
+
+  /* Hero section: reduce min-height and padding */
+  .hero { min-height: 50vh; padding: 2rem 1rem; }
+  .hero h1 { margin-bottom: 1rem; }
+  .hero-subtitle { font-size: 1.25rem; }
+
+  /* Zodiac grid: allow smaller cards */
+  .zodiac-card { padding: 1.5rem 0.5rem; }
+  .zodiac-symbol { font-size: 2.5rem; }
+
+  /* Product grid: single column on very small screens */
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Product card: ensure content doesn't overflow */
+  .product-card { min-height: auto; }
+  .product-info { padding: 1rem; }
+  .product-title { font-size: 1.1rem; }
+  .price-current { font-size: 1.3rem; }
+  .product-description { -webkit-line-clamp: 2; } /* truncate earlier */
+
+  /* Filters: stack and full width */
+  .filters-bar { flex-direction: column; gap: 0.75rem; }
+  .filter-group { width: 100%; }
+  .filter-btn { width: 100%; text-align: center; }
+
+  /* Buttons: full width on mobile for easier tapping */
+  .btn:not(.btn-full) { width: 100%; margin-bottom: 0.5rem; }
+
+  /* Forms: larger touch targets */
+  .form-input,
+  .form-textarea,
+  .form-select {
+    padding: 0.75rem;
+    font-size: 16px; /* prevents zoom on iOS */
+  }
+
+  /* Footer: stack columns */
+  .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-section { text-align: center; }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .footer-links li { margin-bottom: 0; }
+
+  /* Social links: scale down */
+  .social-link { width: 50px; height: 50px; }
+  .social-link svg { width: 24px; height: 24px; }
+  .social-link::after { display: none; } /* tooltips not needed on touch */
+
+  /* Cosmic orb: smaller and positioned safely */
+  .cosmic-orb {
+    width: 56px;
+    height: 56px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .orb-inner { width: 40px; height: 40px; }
+  .orb-inner svg { width: 24px; height: 24px; }
+
+  /* Modal: full screen with safe area */
+  .cosmic-modal { padding: 0; }
+  .cosmic-modal-content {
+    max-height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+  .cosmic-step { padding: 2rem 1rem; }
+  .cosmic-header h2 { font-size: 1.75rem; }
+  .reading-section { padding: 1.25rem; }
+
+  /* Quick order / email signup */
+  .quick-order-grid { grid-template-columns: 1fr; }
+  .email-signup-form { flex-direction: column; }
+
+  /* Special offer banner */
+  .special-offer-banner { padding: 0.75rem 1rem; }
+  .special-offer-banner h4 { font-size: 1rem; }
+}
+
+/* Extra small devices (phones < 480px) */
+@media (max-width: 480px) {
+  .container { padding-left: 0.75rem; padding-right: 0.75rem; }
+
+  h1 { font-size: clamp(1.75rem, 7vw, 2rem); }
+  h2 { font-size: clamp(1.5rem, 6vw, 1.75rem); }
+
+  .nav-wrapper .nav-icons { gap: 0.75rem; }
+  .nav-icon svg { width: 20px; height: 20px; }
+  .cart-badge { width: 16px; height: 16px; font-size: 0.6rem; }
+
+  .product-card { min-height: auto; }
+  .product-image { padding-top: 100%; } /* square images on tiny screens */
+  .product-info { padding: 0.75rem; }
+
+  .signature-grid { gap: 1.5rem; }
+  .signature-card { min-height: auto; }
+  .signature-info { padding: 1.25rem; }
+  .signature-info h3 { font-size: 1.3rem; }
+  .signature-price { font-size: 1.5rem; }
+
+  .tier-card { padding: 1.5rem; min-height: auto; }
+  .tier-name { font-size: 1.5rem; }
+  .tier-price { font-size: 2.25rem; }
+
+  .footer-links { flex-direction: column; gap: 0.5rem; }
+}
+
+/* Tablet adjustments (if needed) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container { padding-left: 2rem; padding-right: 2rem; }
+  .product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+}
